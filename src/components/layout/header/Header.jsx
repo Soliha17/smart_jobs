@@ -23,6 +23,7 @@ function Header() {
 
   const selectButton = (btn) => {
     setSelectedButton(btn);
+    console.log(setIsUser);
   };
 
   return (

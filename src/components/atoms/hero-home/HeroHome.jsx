@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Input, Row, Select, Space } from "antd";
+import { Button, Input, Select, Space } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { SearchOutlined } from "@ant-design/icons";
 
@@ -8,10 +8,8 @@ import LocationIcon from "../../../assets/images/location-icon.svg";
 import CompanyIcon from "../../../assets/images/company-icon.svg";
 import ResumeIcon from "../../../assets/images/resume-icon.svg";
 import VacancyIcon from "../../../assets/images/vacancy-icon.svg";
-import { Typography } from "antd";
 
 const HeroHome = () => {
-  const { Title } = Typography;
   return (
     <div className="hero-home">
       <div className="content__hero-home">
