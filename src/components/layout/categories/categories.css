@@ -1,0 +1,42 @@
+.categories {
+  padding-top: 96px;
+  background: white;
+}
+
+.content__categories {
+  margin-top: 32px;
+}
+
+.item__categories {
+  padding: 16px;
+  width: 187px;
+  height: 160px;
+  border: 1px solid #c6c5c5;
+  border-radius: 12px;
+}
+
+.category__title {
+  margin: 16px 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.category__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8d8c8b;
+}
+
+@media (max-width: 500px) {
+  .title,
+  .subtitle {
+    text-align: center;
+  }
+
+  .item__categories {
+    margin: 0 auto;
+  }
+}

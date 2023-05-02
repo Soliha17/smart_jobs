@@ -1,0 +1,57 @@
+.hero {
+  width: 100%;
+  min-height: 622px;
+  margin-bottom: 24px;
+  background: var(--blue);
+  position: relative;
+}
+
+.hero .shapes-group img {
+  position: absolute;
+}
+
+.shape1__hero {
+  top: 22px;
+  left: 74px;
+}
+
+.shape2__hero {
+  top: 3px;
+  left: 401px;
+}
+
+.shape3__hero {
+  top: 0px;
+  right: 496px;
+}
+
+.shape4__hero {
+  top: 101px;
+  right: 94px;
+}
+
+.shape5__hero {
+  bottom: 113px;
+  right: 0;
+}
+
+.shape6__hero {
+  bottom: 10px;
+  right: 408px;
+}
+
+.shape7__hero {
+  bottom: 0px;
+  left: 439px;
+}
+
+.shape8__hero {
+  bottom: 70px;
+  left: 215px;
+}
+
+@media (max-width: 770px) {
+  .shapes-group {
+    display: none;
+  }
+}

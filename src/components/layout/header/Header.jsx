@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 import { Button, Drawer, Select, Space } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
@@ -26,8 +26,8 @@ function Header() {
   };
 
   return (
-    <div className="container">
-      <header className="header">
+    <div className="header-wrapper">
+      <header className="header container">
         <div className="header__logo">
           <img src={Logo} alt="Smart Jobs' Logo" />
         </div>
@@ -49,7 +49,7 @@ function Header() {
             </ul>
           </nav>
         ) : (
-          <div className="search-group__header">
+          <div className="select-btn-group__header">
             <Button
               type="primary"
               className={`button__search-group ${
@@ -71,8 +71,12 @@ function Header() {
           </div>
         )}
         <div className="header__actions">
-          <Space wrap className={`${isUser ? "mobileHidden" : ""}`}>
+          <Space
+            wrap
+            className={`white-select ${isUser ? "mobileHidden" : ""}`}
+          >
             <Select
+              className="white-select"
               defaultValue="UZ"
               style={{
                 width: 60,
@@ -100,12 +104,14 @@ function Header() {
               <p className="profile__name">G’ayrat Rakhamtov</p>
             </div>
           ) : (
-            <Button type="primary" className="enter-btn__header">Kirish</Button>
+            <Button type="primary" className="enter-btn__header">
+              Kirish
+            </Button>
           )}
         </div>
         {isUser && (
           <div className="mobileVisible">
-            <Space wrap>
+            <Space wrap className="white-select">
               <Select
                 defaultValue="UZ"
                 style={{
@@ -176,6 +182,7 @@ function Header() {
           </div>
         )}
       </header>
+      <Outlet />
     </div>
   );
 }
