@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Header from "../components/layout/header/Header";
 import { routesDatas } from "../mock/routes";
+import Header from "../components/layout/header/Header";
 
 const Rout = () => {
   return (

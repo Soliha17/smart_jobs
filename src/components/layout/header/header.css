@@ -1,0 +1,154 @@
+/* ----- HEADER ----- */
+
+.header {
+  padding: 9px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo img {
+  width: 100%;
+  max-width: 183px;
+  height: auto;
+}
+
+.search-group__header {
+  padding: 4px;
+  width: 346px;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--lightblue);
+  border-radius: 26px;
+}
+
+.search-group__header button {
+  width: 169px;
+  height: 100%;
+  color: white;
+  background: transparent;
+  border-radius: 24px;
+  transition: 0.3s all ease-in;
+}
+
+.selected-button__header {
+  background: white !important;
+  color: var(--gray) !important;
+}
+
+.enter-btn__header {
+  width: 91px;
+  height: 43px;
+  background: var(--lightblue);
+  border-radius: 8px;
+}
+
+.enter-btn__header:hover {
+  background: var(--black) !important;
+}
+
+.ant-select-selector {
+  color: white !important;
+}
+
+.ant-select-arrow {
+  color: white !important;
+}
+
+.header nav ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+  list-style: none;
+}
+
+.header nav a {
+  color: var(--white);
+  text-decoration: none;
+  transition: all 0.3s ease-in;
+}
+
+.header nav a:hover,
+.header nav a.active,
+.ant-drawer nav a.active {
+  color: var(--black);
+}
+
+.ant-drawer nav ul {
+  list-style: none;
+}
+
+.ant-drawer nav li {
+  margin: 15px 0;
+}
+
+.ant-drawer nav a {
+  color: #333;
+}
+
+.header__actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.header__profile {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.profile__name {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--white);
+}
+
+.header__hamburger-btn {
+  margin-left: 24px;
+  background: var(--lightblue);
+}
+
+.mobileVisible {
+  display: none;
+}
+
+.mobileHidden {
+  display: block;
+}
+
+/* ----- RESPONSIVE ----- */
+
+@media only screen and (max-width: 1000px) {
+  .header__logo img {
+    max-width: 140px;
+  }
+
+  .profile__name {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .mobileVisible {
+    display: block;
+  }
+
+  .mobileHidden {
+    display: none;
+  }
+
+  .header__profile--none {
+    display: none;
+  }
+
+  .header__hamburger-btn {
+    margin-left: 10px;
+  }
+}

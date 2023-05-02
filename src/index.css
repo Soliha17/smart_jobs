@@ -1,0 +1,91 @@
+/* ----- FONTS ----- */
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Bold.eot");
+  src: url("./assets/fonts/Inter-Bold.eot?#iefix") format("embedded-opentype"),
+    url("./assets/fonts/Inter-Bold.woff") format("woff"),
+    url("./assets/fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-SemiBold.eot");
+  src: url("./assets/fonts/Inter-SemiBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/Inter-SemiBold.woff") format("woff"),
+    url("./assets/fonts/Inter-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Regular.eot");
+  src: url("./assets/fonts/Inter-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/Inter-Regular.woff") format("woff"),
+    url("./assets/fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Medium.eot");
+  src: url("./assets/fonts/Inter-Medium.eot?#iefix") format("embedded-opentype"),
+    url("./assets/fonts/Inter-Medium.woff") format("woff"),
+    url("./assets/fonts/Inter-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans Condensed";
+  src: url("./assets/fonts/OpenSansCondensed-SemiBold.eot");
+  src: url("./assets/fonts/OpenSansCondensed-SemiBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/fonts/OpenSansCondensed-SemiBold.woff") format("woff"),
+    url("./assets/fonts/OpenSansCondensed-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ----- VARIABLES ----- */
+:root {
+  --blue: #008dff;
+  --lightblue: rgba(255, 255, 255, 0.32);
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #555351;
+}
+
+/* ----- GENERAL STYLES ----- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  scroll-behavior: smooth;
+}
+
+/* ----- GENERAL CLASSES ----- */
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--blue);
+}
