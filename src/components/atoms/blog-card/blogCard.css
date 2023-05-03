@@ -21,3 +21,10 @@
   line-height: 19px;
   color: #555351;
 }
+
+@media (max-width: 400px) {
+  .card___blog img{
+    max-width: 247px;
+    height: auto;
+  }
+}

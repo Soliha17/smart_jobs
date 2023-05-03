@@ -2,7 +2,19 @@
   display: none;
 }
 
-.alice-carousel__stage{
+.alice-carousel__stage {
   display: flex;
   gap: 24px;
+}
+
+@media (max-width: 450px) {
+  .alice-carousel__stage {
+    gap: 50px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .alice-carousel__stage {
+    gap: 80px !important;
+  }
 }

@@ -24,14 +24,3 @@
   line-height: 17px;
   color: #8d8c8b;
 }
-
-@media (max-width: 1024px) {
-  .card_wrap {
-    margin: auto;
-  }
-}
-@media (max-width: 425px) {
-  .card_wrap {
-    width: 320px;
-  }
-}

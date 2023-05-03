@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./hero.css";
+import HeroArrow from "../../../assets/images/hero-arrow.svg";
 import Shape1 from "../../../assets/images/shape-1.svg";
 import Shape2 from "../../../assets/images/shape2.svg";
 import Shape3 from "../../../assets/images/shape3.svg";
@@ -14,6 +15,7 @@ const Hero = ({ children }) => {
   return (
     <div className="hero">
       <div className="shapes-group">
+        <img src={HeroArrow} className="arrow__hero" alt="HeroArrow" />
         <img src={Shape1} className="shape1__hero" alt="Round shape" />
         <img src={Shape2} className="shape2__hero" alt="Round shape" />
         <img src={Shape3} className="shape3__hero" alt="Round shape" />

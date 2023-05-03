@@ -1,9 +1,18 @@
 .occupations {
+  margin-top: 96px;
   padding: 40px;
   background: #f2f3f7;
   border-radius: 16px;
+  position: relative;
 }
 
 .occupations__content {
   margin-top: 40px;
+}
+
+@media (max-width: 650px) {
+  .occupations{
+    padding: 24px;
+    min-height: 340px;
+  }
 }

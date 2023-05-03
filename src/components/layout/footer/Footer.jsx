@@ -52,11 +52,13 @@ const Footer = () => {
           </div>
           <div className="footer__right">
             <h6>Mobil ilova</h6>
-            <div>
-              <img src={GooglePlay} alt="GooglePlay" />
-            </div>
-            <div>
-              <img src={AppStore} alt="AppStore" />
+            <div className="inner__footer-right">
+              <div>
+                <img src={GooglePlay} alt="GooglePlay" />
+              </div>
+              <div>
+                <img src={AppStore} alt="AppStore" />
+              </div>
             </div>
           </div>
         </div>

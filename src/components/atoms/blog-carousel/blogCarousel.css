@@ -2,7 +2,19 @@
   display: none;
 }
 
-.alice-carousel__stage{
+.alice-carousel__stage {
   display: flex;
   gap: 24px;
+}
+
+@media (max-width: 1350px) {
+  .blog .alice-carousel__stage {
+    gap: 70px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .blog .alice-carousel__stage {
+    gap: 30px !important;
+  }
 }

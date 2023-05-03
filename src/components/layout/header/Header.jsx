@@ -51,24 +51,22 @@ function Header() {
           </nav>
         ) : (
           <div className="select-btn-group__header">
-            <Button
-              type="primary"
+            <button
               className={`button__search-group ${
                 selectedButton === "btn1" && "selected-button__header"
               }`}
               onClick={() => selectButton("btn1")}
             >
               Ish Izlash
-            </Button>
-            <Button
-              type="primary"
+            </button>
+            <button
               className={`button__search-group ${
                 selectedButton === "btn2" && "selected-button__header"
-              }`}
+              }`} 
               onClick={() => selectButton("btn2")}
             >
               Hodim Izlash
-            </Button>
+            </button>
           </div>
         )}
         <div className="header__actions">

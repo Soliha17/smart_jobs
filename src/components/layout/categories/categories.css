@@ -32,19 +32,37 @@
 }
 
 .see-all__btn {
-  padding: 0 24px;
+  padding: 12px 24px;
   margin: 32px auto;
   display: block;
   border-radius: 26px;
+  border: 1px solid #008dff;
+  background: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #008dff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.see-all__btn:hover {
+  background: var(--blue);
+  color: white;
 }
 
 @media (max-width: 500px) {
-  .title,
-  .subtitle {
-    text-align: center;
-  }
-
   .item__categories {
-    margin: 0 auto;
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 380px) {
+  .see-all__btn {
+    width: 100%;
+  }
+  .item__categories {
+    padding: 12px;
+    max-width: 140px;
   }
 }

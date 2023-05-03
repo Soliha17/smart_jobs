@@ -4,5 +4,34 @@
 }
 
 .btn__sections-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 48px;
+  padding: 24px;
+  color: #008dff;
+  background: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
   border-radius: 26px;
+  border: 1px solid #008dff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn__sections-header:hover {
+  background: var(--blue);
+  color: white;
+}
+
+@media (max-width: 650px) {
+  .btn__sections-header {
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
+  }
 }

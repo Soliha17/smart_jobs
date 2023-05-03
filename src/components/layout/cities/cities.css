@@ -1,6 +1,7 @@
 .cities{
   margin-top: 96px;
   padding-bottom: 98px;
+  position: relative;
 }
 
 .cities__content{

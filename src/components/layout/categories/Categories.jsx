@@ -15,7 +15,7 @@ const Categories = () => {
         </p>
         <Row className="content__categories" gutter={[8, 16]} wrap="wrap">
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -28,7 +28,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -41,7 +41,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -54,7 +54,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -67,7 +67,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -80,7 +80,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -93,7 +93,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -106,7 +106,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -120,7 +120,7 @@ const Categories = () => {
           </Col>
 
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -133,7 +133,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -146,7 +146,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -159,7 +159,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -172,7 +172,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -185,7 +185,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -198,7 +198,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -211,7 +211,7 @@ const Categories = () => {
             </div>
           </Col>
           <Col
-            xs={{ span: 24 }}
+            xs={{ span: 12 }}
             sm={{ span: 12 }}
             md={{ span: 6 }}
             xl={{ span: 4 }}
@@ -224,9 +224,7 @@ const Categories = () => {
             </div>
           </Col>
         </Row>
-        <Button className="see-all__btn" type="primary" ghost>
-          Barchasini ko’rsatish
-        </Button>
+        <button className="see-all__btn">Barchasini ko’rsatish</button>
       </div>
     </div>
   );

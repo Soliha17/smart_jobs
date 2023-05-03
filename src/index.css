@@ -78,6 +78,7 @@ body {
   font-family: "Inter", sans-serif;
   font-style: normal;
   scroll-behavior: smooth;
+  background: white !important;
 }
 
 /* ----- GENERAL CLASSES ----- */
@@ -104,8 +105,36 @@ body {
   color: #555351;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1300px) {
   .container {
-    width: 90%;
+    max-width: 1000px;
+  }
+}
+
+@media only screen and (max-width: 1070px) {
+  .container {
+    max-width: 850px;
+  }
+}
+
+@media only screen and (max-width: 834px) {
+  .container {
+    max-width: 756px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 39px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  .container {
+    max-width: 90%;
   }
 }
