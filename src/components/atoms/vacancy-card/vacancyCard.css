@@ -15,7 +15,7 @@
   margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .title__vacancy-card {

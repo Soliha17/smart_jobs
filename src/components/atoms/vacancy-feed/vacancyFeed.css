@@ -45,7 +45,7 @@
 @media only screen and (max-width: 1170px) {
   .left__vacancy-feed {
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 
