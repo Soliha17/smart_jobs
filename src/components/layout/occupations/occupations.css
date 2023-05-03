@@ -1,0 +1,9 @@
+.occupations {
+  padding: 40px;
+  background: #f2f3f7;
+  border-radius: 16px;
+}
+
+.occupations__content {
+  margin-top: 40px;
+}

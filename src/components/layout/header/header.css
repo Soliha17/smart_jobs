@@ -1,6 +1,7 @@
 /* ----- HEADER ----- */
 .header-wrapper {
   background: var(--blue);
+  height: 80px;
 }
 
 .header {

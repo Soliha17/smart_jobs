@@ -1,0 +1,28 @@
+.companies {
+  margin-top: 96px;
+  padding-top: 64px;
+  padding-bottom: 72px;
+  background: #f9f9fb;
+}
+
+.companies__content {
+  margin-top: 56px;
+}
+
+@media (max-width: 580px) {
+  .companies__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+  }
+
+  .companies__content .ant-row {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .companies__content .ant-col-xs-12 {
+    flex: none;
+  }
+}

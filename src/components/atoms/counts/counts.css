@@ -1,0 +1,47 @@
+.counts {
+  min-height: 191px !important;
+  background: rgba(249, 249, 251, 1);
+  background-image: url("../../../assets/images/vector-1.svg"),
+    url("../../../assets/images/vector-2.svg");
+  background-position: left top, right bottom;
+  background-repeat: no-repeat, no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counts__content {
+  width: 100%;
+  padding-left: 48px;
+}
+
+.counts__number {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 49px;
+  line-height: 59px;
+  color: var(--blue);
+}
+
+.counts__text {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #555351;
+}
+
+@media (max-width: 600px) {
+  .counts {
+    text-align: center;
+  }
+  .counts__content {
+    padding-left: 0px;
+  }
+  .counts__number {
+    font-size: 35px;
+    margin-bottom: 0px;
+  }
+  .counts__text {
+    font-size: 18px;
+  }
+}

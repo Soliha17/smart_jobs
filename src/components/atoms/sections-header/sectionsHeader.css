@@ -1,0 +1,8 @@
+.sections-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn__sections-header {
+  border-radius: 26px;
+}

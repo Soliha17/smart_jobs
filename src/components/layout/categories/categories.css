@@ -1,5 +1,6 @@
 .categories {
   padding-top: 96px;
+  padding-bottom: 64px;
   background: white;
 }
 
@@ -28,6 +29,13 @@
   font-size: 14px;
   line-height: 20px;
   color: #8d8c8b;
+}
+
+.see-all__btn {
+  padding: 0 24px;
+  margin: 32px auto;
+  display: block;
+  border-radius: 26px;
 }
 
 @media (max-width: 500px) {

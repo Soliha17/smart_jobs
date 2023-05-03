@@ -1,0 +1,8 @@
+.alice-carousel__dots {
+  display: none;
+}
+
+.alice-carousel__stage{
+  display: flex;
+  gap: 24px;
+}

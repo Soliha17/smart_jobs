@@ -1,0 +1,37 @@
+.occupation__card {
+  width: 187px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.occupation__title {
+  margin-bottom: 14px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.occupation__cost {
+  margin-bottom: 12px;
+}
+
+.occupation__cost,
+.occupation__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8d8c8b;
+}
+
+@media (max-width: 1024px) {
+  .card_wrap {
+    margin: auto;
+  }
+}
+@media (max-width: 425px) {
+  .card_wrap {
+    width: 320px;
+  }
+}

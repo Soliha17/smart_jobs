@@ -1,0 +1,14 @@
+.cities{
+  margin-top: 96px;
+  padding-bottom: 98px;
+}
+
+.cities__content{
+  margin-top: 40px;
+}
+
+.cities__item{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
