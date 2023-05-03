@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import { Button, Drawer, Dropdown, Select, Space } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
@@ -17,6 +17,7 @@ function Header() {
   const [isUser, setIsUser] = useState(false);
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.pathname === "/vacancy") {
@@ -50,12 +51,16 @@ function Header() {
     },
   ];
 
+  function goToVacancyPage() {
+    navigate("/vacancy");
+  }
+
   return (
     <div>
       <div className="header-wrapper">
         <header className="header container">
           <div className="header__logo">
-            <img src={Logo} alt="Smart Jobs' Logo" />
+            <img src={Logo} alt="Smart Jobs' Logo" onClick={goToVacancyPage} />
           </div>
           {isUser ? (
             <nav className="mobileHidden">
