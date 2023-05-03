@@ -113,6 +113,11 @@
   align-items: center;
 }
 
+.header__profile button{
+  background: none;
+  border: none;
+}
+
 .profile__name {
   font-weight: 300;
   font-size: 16px;

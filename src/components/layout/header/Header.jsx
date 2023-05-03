@@ -24,7 +24,7 @@ function Header() {
     } else {
       setIsUser(false);
     }
-  }, []);
+  }, [location.pathname]);
 
   const showDrawer = () => {
     setVisible(true);
@@ -130,13 +130,13 @@ function Header() {
                   }}
                   trigger={["click"]}
                 >
-                  <a onClick={(e) => e.preventDefault()}>
+                  <button onClick={(e) => e.preventDefault()}>
                     <Space className="profile__name">
                       <img src={ProfileImg} alt="Pofile Img" width={43} />
                       G’ayrat Rakhamtov
                       <DownOutlined />
                     </Space>
-                  </a>
+                  </button>
                 </Dropdown>
               </div>
             ) : (
