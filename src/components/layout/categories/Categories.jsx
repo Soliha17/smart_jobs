@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./categories.css";
-import { Button, Col, Row } from "antd";
+import { Col, Row } from "antd";
 
 import PersonIcon from "../../../assets/images/person-icon.svg";
 
