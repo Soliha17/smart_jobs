@@ -1,7 +1,7 @@
 /* ----- HEADER ----- */
 .header-wrapper {
   background: var(--blue);
-  height: 80px;
+  height: auto;
 }
 
 .header {
@@ -166,10 +166,6 @@
 @media only screen and (max-width: 697px) {
   .header__logo {
     max-width: 120px;
-  }
-
-  .header-wrapper {
-    height: 200px;
   }
 
   .header {

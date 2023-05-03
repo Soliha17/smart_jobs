@@ -1,5 +1,5 @@
-import About from "../pages/about/About";
 import Home from "../pages/home/Home";
+import Vacancies from "../pages/vacancies/Vacancies";
 
 export const routesDatas = [
   {
@@ -10,8 +10,8 @@ export const routesDatas = [
   },
   {
     id: 2,
-    title: "About Page",
-    path: "/about",
-    element: About,
+    title: "Vacancy Page",
+    path: "/vacancy",
+    element: Vacancies,
   },
 ];

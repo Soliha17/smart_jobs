@@ -1,0 +1,12 @@
+.vacancy-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .vacancy-main {
+    justify-content: center;
+    gap: 0;
+  }
+}

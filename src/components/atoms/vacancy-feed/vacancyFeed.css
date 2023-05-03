@@ -1,0 +1,73 @@
+.vacancy-feed {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left__vacancy-feed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.right__vacancy-feed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right__vacancy-feed button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: #f2f3f7;
+  border-radius: 8px 0px 0px 8px;
+  border: 1px solid #ffffff;
+}
+
+.right__vacancy-feed button:last-child {
+  border-radius: 0px 8px 8px 0px;
+}
+
+.selected-btn__vacancy-feed {
+  background: #ffffff !important;
+}
+
+.mobile__vacancy-feed {
+  display: none;
+  gap: 16px;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1170px) {
+  .left__vacancy-feed {
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .left__vacancy-feed .ant-btn {
+    width: 30%;
+  }
+  .right__vacancy-feed {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .left__vacancy-feed {
+    display: none;
+  }
+
+  .vacancy-feed{
+    justify-content: center;
+  }
+
+  .mobile__vacancy-feed {
+    display: flex;
+  }
+}
