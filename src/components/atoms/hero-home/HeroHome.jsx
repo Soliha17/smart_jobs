@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { AutoComplete, Input, Select } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
 
 import "./herohome.css";
 
-// import LocationIcon from "../../../assets/images/location-icon.svg";
 import CompanyIcon from "../../../assets/images/company-icon.svg";
 import ResumeIcon from "../../../assets/images/resume-icon.svg";
 import VacancyIcon from "../../../assets/images/vacancy-icon.svg";
