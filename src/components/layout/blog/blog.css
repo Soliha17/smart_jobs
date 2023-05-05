@@ -4,6 +4,18 @@
   padding-bottom: 128px;
 }
 
-.content__blog{
+.content__blog {
   margin-top: 72px;
+}
+
+@media (max-width: 834px) {
+  .blog {
+    margin-top: 76px;
+  }
+}
+
+@media (max-width: 500px) {
+  .blog {
+    margin-top: 55px;
+  }
 }

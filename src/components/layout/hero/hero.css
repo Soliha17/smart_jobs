@@ -1,7 +1,6 @@
 .hero {
   width: 100%;
   min-height: 622px;
-  margin-bottom: 24px;
   background: var(--blue);
   position: relative;
 }

@@ -100,54 +100,87 @@ function Header() {
             </div>
           )}
           <div className="header__actions">
-            <Space
-              wrap
-              className={`white-select ${isUser ? "mobileHidden" : ""}`}
-            >
-              <Select
-                className="white-select"
-                defaultValue="UZ"
-                style={{
-                  width: 60,
-                }}
-                bordered={false}
-                options={[
-                  {
-                    value: "uz",
-                    label: "UZ",
-                  },
-                  {
-                    value: "ru",
-                    label: "RU",
-                  },
-                  {
-                    value: "en",
-                    label: "EN",
-                  },
-                ]}
-              />
-            </Space>
             {isUser ? (
-              <div className="header__profile header__profile--none">
-                <Dropdown
-                  menu={{
-                    items,
-                  }}
-                  trigger={["click"]}
+              <>
+                <Space
+                  wrap
+                  className={`white-select ${isUser ? "mobileHidden" : ""}`}
                 >
-                  <button onClick={(e) => e.preventDefault()}>
-                    <Space className="profile__name">
-                      <img src={ProfileImg} alt="Pofile Img" width={43} />
-                      G’ayrat Rakhamtov
-                      <DownOutlined />
-                    </Space>
-                  </button>
-                </Dropdown>
-              </div>
+                  <Select
+                    className="white-select"
+                    defaultValue="UZ"
+                    style={{
+                      width: 60,
+                    }}
+                    bordered={false}
+                    options={[
+                      {
+                        value: "uz",
+                        label: "UZ",
+                      },
+                      {
+                        value: "ru",
+                        label: "RU",
+                      },
+                      {
+                        value: "en",
+                        label: "EN",
+                      },
+                    ]}
+                  />
+                </Space>
+                <div className="header__profile header__profile--none">
+                  <Dropdown
+                    menu={{
+                      items,
+                    }}
+                    trigger={["click"]}
+                  >
+                    <button onClick={(e) => e.preventDefault()}>
+                      <Space className="profile__name">
+                        <img src={ProfileImg} alt="Pofile Img" width={43} />
+                        G’ayrat Rakhamtov
+                        <DownOutlined />
+                      </Space>
+                    </button>
+                  </Dropdown>
+                </div>
+              </>
             ) : (
-              <Button type="primary" className="enter-btn__header">
-                Kirish
-              </Button>
+              <>
+                <Space
+                  wrap
+                  className={`white-select ${
+                    isUser ? "mobileHidden" : "white-select--none"
+                  }`}
+                >
+                  <Select
+                    className="white-select"
+                    defaultValue="UZ"
+                    style={{
+                      width: 60,
+                    }}
+                    bordered={false}
+                    options={[
+                      {
+                        value: "uz",
+                        label: "UZ",
+                      },
+                      {
+                        value: "ru",
+                        label: "RU",
+                      },
+                      {
+                        value: "en",
+                        label: "EN",
+                      },
+                    ]}
+                  />
+                </Space>
+                <Button type="primary" className="enter-btn__header">
+                  Kirish
+                </Button>
+              </>
             )}
           </div>
           {isUser && (

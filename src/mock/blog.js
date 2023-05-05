@@ -31,11 +31,4 @@ export const blogDatas = [
     title: "Rezyume qanday tayyorlanadi",
     text: "Eng birinchi navbatda o’rganishni o’rganish qoidalari muhim hisoblanadi. Agar siz bu ko’nikmani egallagan bo’lsangiz reyume tayyorlashni ham siz tezda....",
   },
-  {
-    id: 5,
-    img: Blog2,
-    date: "18-mart, 2023",
-    title: "Rezyume qanday tayyorlanadi",
-    text: "Eng birinchi navbatda o’rganishni o’rganish qoidalari muhim hisoblanadi. Agar siz bu ko’nikmani egallagan bo’lsangiz reyume tayyorlashni ham siz tezda....",
-  },
 ];

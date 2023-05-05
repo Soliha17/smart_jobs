@@ -1,3 +1,13 @@
+.card___blog {
+  width: 397px;
+}
+
+.card___blog img {
+  width: 100%;
+  max-width: 397px;
+  height: auto;
+}
+
 .blog__date {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -22,9 +32,18 @@
   color: #555351;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1350px) {
+  .card___blog {
+    width: 350px;
+  }
+}
+
+@media (max-width: 800px) {
+  .card___blog {
+    width: 100%;
+  }
+
   .card___blog img{
-    max-width: 247px;
-    height: auto;
+    max-width: 100%;
   }
 }

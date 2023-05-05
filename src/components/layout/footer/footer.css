@@ -43,7 +43,6 @@
 .footer__social-group {
   display: flex;
   gap: 12px;
-  align-items: center;
 }
 
 .bottom__footer {
@@ -62,6 +61,22 @@
   .footer__right .inner__footer-right {
     display: flex;
     gap: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer__left {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 0px;
+  }
+}
+
+@media (max-width: 740px) {
+  .footer__left {
+    flex-wrap: wrap;
+    gap: 30px;
   }
 }
 

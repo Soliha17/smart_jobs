@@ -24,3 +24,15 @@
   line-height: 17px;
   color: #8d8c8b;
 }
+
+@media (max-width: 450px) {
+  .occupations__content .alice-carousel__stage-item {
+    margin-right: 70px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .occupations__content .alice-carousel__stage-item {
+    margin-right: 100px !important;
+  }
+}

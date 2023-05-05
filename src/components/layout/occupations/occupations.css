@@ -10,9 +10,21 @@
   margin-top: 40px;
 }
 
+@media (max-width: 834px) {
+  .occupations {
+    margin-top: 76px;
+  }
+}
+
 @media (max-width: 650px) {
-  .occupations{
+  .occupations {
     padding: 24px;
     min-height: 340px;
+  }
+}
+
+@media (max-width: 500px) {
+  .occupations {
+    margin-top: 55px;
   }
 }

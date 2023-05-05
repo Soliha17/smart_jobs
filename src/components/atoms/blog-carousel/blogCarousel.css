@@ -2,19 +2,22 @@
   display: none;
 }
 
-.alice-carousel__stage {
-  display: flex;
-  gap: 24px;
+.slick-dots li {
+  background: #e0f1ff;
+  width: 51px !important;
 }
 
-@media (max-width: 1350px) {
-  .blog .alice-carousel__stage {
-    gap: 70px !important;
-  }
+.slick-dots li.slick-active button {
+  background: #1c1917 !important;
+  opacity: 1;
 }
 
-@media (max-width: 400px) {
-  .blog .alice-carousel__stage {
-    gap: 30px !important;
+.slick-dots-bottom {
+  bottom: -70px !important;
+}
+
+@media (max-width: 800px) {
+  .slick-dots-bottom {
+    bottom: -30px !important;
   }
 }

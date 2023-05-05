@@ -14,104 +14,56 @@ const Categories = () => {
           Ish joylari ichindan o’zinigizga mosini tanlang
         </p>
         <Row className="content__categories" gutter={[8, 16]} wrap="wrap">
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={12} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={12} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={12} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={12} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={12} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={12} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={12} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={12} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
@@ -119,104 +71,28 @@ const Categories = () => {
             </div>
           </Col>
 
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={0} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={0} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={0} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>
               <p className="category__text">3650 vokansiya</p>
             </div>
           </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
-            <div className="item__categories gutter-row">
-              <img src={PersonIcon} alt="person icon" />
-              <p className="category__title">Buxgalteriya va moliya sohasida</p>
-              <p className="category__text">3650 vokansiya</p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
-            <div className="item__categories gutter-row">
-              <img src={PersonIcon} alt="person icon" />
-              <p className="category__title">Buxgalteriya va moliya sohasida</p>
-              <p className="category__text">3650 vokansiya</p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
-            <div className="item__categories gutter-row">
-              <img src={PersonIcon} alt="person icon" />
-              <p className="category__title">Buxgalteriya va moliya sohasida</p>
-              <p className="category__text">3650 vokansiya</p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
-            <div className="item__categories gutter-row">
-              <img src={PersonIcon} alt="person icon" />
-              <p className="category__title">Buxgalteriya va moliya sohasida</p>
-              <p className="category__text">3650 vokansiya</p>
-            </div>
-          </Col>
-          <Col
-            xs={{ span: 12 }}
-            sm={{ span: 12 }}
-            md={{ span: 6 }}
-            xl={{ span: 4 }}
-            span={3}
-          >
+          <Col xs={0} sm={8} md={6} xl={4}>
             <div className="item__categories gutter-row">
               <img src={PersonIcon} alt="person icon" />
               <p className="category__title">Buxgalteriya va moliya sohasida</p>

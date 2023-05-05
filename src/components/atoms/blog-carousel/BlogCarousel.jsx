@@ -1,39 +1,41 @@
-import React from "react";
-
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
+import React, { useEffect, useState } from "react";
 
 import "./blogCarousel.css";
 
 import { blogDatas } from "../../../mock/blog";
 import BlogCard from "../blog-card/BlogCard";
+import { Carousel } from "antd";
 
 const items = blogDatas.map(({ id, title, date, text, img }) => {
   return <BlogCard key={id} title={title} img={img} text={text} cost={date} />;
 });
 
 const BlogCarousel = () => {
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const windowWidth = window.innerWidth;
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (windowWidth <= 800) {
+        setSlidesToShow(1);
+      } else if (windowWidth <= 1300) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [windowWidth]);
+
   return (
     <div>
-      <AliceCarousel
-        autoPlay
-        autoPlayInterval={1500}
-        mouseTracking
-        infinite
-        disableButtonsControls
-        items={items}
-        responsive={{
-          0: {
-            items: 1,
-          },
-          768: {
-            items: 2,
-          },
-          1024: {
-            items: 3,
-          },
-        }}
-      />
+      <Carousel slidesToShow={slidesToShow}>
+        {items}
+      </Carousel>
     </div>
   );
 };

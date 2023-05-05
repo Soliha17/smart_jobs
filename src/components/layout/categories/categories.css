@@ -14,6 +14,15 @@
   height: 160px;
   border: 1px solid #c6c5c5;
   border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.item__categories:hover{
+  border-color: var(--blue);
 }
 
 .category__title {
@@ -51,18 +60,36 @@
   color: white;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 834px) {
+  .categories {
+    padding-top: 76px;
+  }
+  .content__categories {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
   .item__categories {
-    max-width: 160px;
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .categories {
+    padding-top: 56px;
+  }
+
+  .item__categories {
+    padding: 12px;
+    height: 144px;
+  }
+
+  .category__title {
+    margin: 12px 0;
   }
 }
 
 @media (max-width: 380px) {
   .see-all__btn {
     width: 100%;
-  }
-  .item__categories {
-    padding: 12px;
-    max-width: 140px;
   }
 }

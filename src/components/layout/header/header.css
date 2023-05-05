@@ -113,7 +113,7 @@
   align-items: center;
 }
 
-.header__profile button{
+.header__profile button {
   background: none;
   border: none;
 }
@@ -184,12 +184,17 @@
     align-self: center;
     order: 10;
   }
+
   .header__hamburger-btn {
     margin-left: 0px;
   }
 }
 
-@media only screen and (max-width: 370px) {
+@media only screen and (max-width: 400px) {
+  .white-select--none {
+    display: none;
+  }
+
   .select-btn-group__header {
     max-width: 90% !important;
   }
