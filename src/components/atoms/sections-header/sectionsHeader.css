@@ -10,20 +10,20 @@
   gap: 6px;
   height: 48px;
   padding: 24px;
-  color: #008dff;
-  background: white;
+  color: var(--blue);
+  background: var(--white);
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   border-radius: 26px;
-  border: 1px solid #008dff;
+  border: 1px solid var(--blue);
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
 .btn__sections-header:hover {
   background: var(--blue);
-  color: white;
+  color: var(--white);
 }
 
 @media (max-width: 650px) {

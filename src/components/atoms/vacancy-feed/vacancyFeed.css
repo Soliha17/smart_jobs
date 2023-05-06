@@ -23,9 +23,9 @@
   align-items: center;
   width: 44px;
   height: 44px;
-  background: #f2f3f7;
+  background: var(--lightsmoke);
   border-radius: 8px 0px 0px 8px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--white);
 }
 
 .right__vacancy-feed button:last-child {
@@ -33,7 +33,7 @@
 }
 
 .selected-btn__vacancy-feed {
-  background: #ffffff !important;
+  background: var(--white) !important;
 }
 
 .mobile__vacancy-feed {
@@ -63,7 +63,7 @@
     display: none;
   }
 
-  .vacancy-feed{
+  .vacancy-feed {
     justify-content: center;
   }
 

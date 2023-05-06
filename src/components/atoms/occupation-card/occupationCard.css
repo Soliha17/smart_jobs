@@ -1,7 +1,7 @@
 .occupation__card {
   width: 187px;
   padding: 16px;
-  background: #ffffff;
+  background: var(--white);
   border-radius: 12px;
 }
 
@@ -10,7 +10,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  color: #000000;
+  color: var(--black);
 }
 
 .occupation__cost {
@@ -22,7 +22,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #8d8c8b;
+  color: var(--darkgray);
 }
 
 @media (max-width: 450px) {

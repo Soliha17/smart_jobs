@@ -1,14 +1,14 @@
 .footer-wrapper {
   margin-top: 96px;
   width: 100%;
-  background: #1c1917;
+  background: var(--dark);
 }
 
 .footer {
   padding: 49px 0 32px 0;
   display: flex;
   flex-direction: column;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .top__footer {
@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  color: #f2f3f7;
+  color: var(--lightsmoke);
 }
 
 .footer__social-group {
@@ -46,7 +46,7 @@
 }
 
 .bottom__footer {
-  border-top: 1px solid #f9f9fb;
+  border-top: 1px solid var(--whitesmoke);
 }
 
 .bottom__footer p {
@@ -54,7 +54,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: #f9f9fb;
+  color: var(--whitesmoke);
 }
 
 @media (max-width: 1300px) {
@@ -79,6 +79,7 @@
     gap: 30px;
   }
 }
+
 
 @media (max-width: 340px) {
   .footer__right .inner__footer-right {

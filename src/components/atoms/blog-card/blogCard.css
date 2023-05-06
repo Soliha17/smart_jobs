@@ -14,7 +14,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  color: #1c1917;
+  color: var(--dark);
 }
 
 .blog__title {
@@ -22,14 +22,14 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  color: #1c1917;
+  color: var(--dark);
 }
 
 .blog__text {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: #555351;
+  color: var(--gray);
 }
 
 @media (max-width: 1350px) {
@@ -43,7 +43,7 @@
     width: 100%;
   }
 
-  .card___blog img{
+  .card___blog img {
     max-width: 100%;
   }
 }

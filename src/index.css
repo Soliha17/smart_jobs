@@ -60,10 +60,17 @@
 /* ----- VARIABLES ----- */
 :root {
   --blue: #008dff;
+  --aqua: #40aaff;
   --lightblue: rgba(255, 255, 255, 0.32);
+  --lightcyan: #e0f1ff;
   --white: #ffffff;
+  --lightsmoke: #f2f3f7;
+  --whitesmoke: #f9f9fb;
   --black: #000000;
+  --dark: #1c1917;
   --gray: #555351;
+  --darkgray: #8d8c8b;
+  --lightgray: #c6c5c5;
 }
 
 /* ----- GENERAL STYLES ----- */

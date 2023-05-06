@@ -2,7 +2,7 @@
   margin-bottom: 24px;
   padding: 24px 0;
   width: 608px;
-  background: #ffffff;
+  background: var(--white);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.04);
   border-radius: 12px;
 }
@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-bottom: 1px solid #c6c5c5;
+  border-bottom: 1px solid var(--lightgray);
 }
 
 .header-top__vacancy-full {
@@ -26,14 +26,14 @@
   font-weight: 600;
   font-size: 32px;
   line-height: 39px;
-  color: #1c1917;
+  color: var(--dark);
 }
 
 .company__vacancy-full {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  color: #555351;
+  color: var(--gray);
 }
 
 .header-bottom__vacancy-full {
@@ -59,7 +59,7 @@
 .content__vacancy-full {
   padding: 0 24px;
   margin-top: 24px;
-  border-bottom: 1px solid #c6c5c5;
+  border-bottom: 1px solid var(--lightgray);
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #555351;
+  color: var(--gray);
 }
 
 .inner-content__vacancy-full div {
@@ -85,14 +85,14 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #555351;
+  color: var(--gray);
 }
 
 .inner-content__vacancy-full span {
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
-  color: #555351;
+  color: var(--gray);
 }
 
 /* ----- INFO ----- */
@@ -107,7 +107,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
-  color: #1c1917;
+  color: var(--dark);
 }
 
 .skills-group__vacancy-full {
@@ -127,8 +127,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #555351;
-  border: 1px solid #555351;
+  color: var(--gray);
+  border: 1px solid var(--gray);
   border-radius: 16px;
 }
 
@@ -141,7 +141,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
-  color: #555351;
+  color: var(--gray);
 }
 
 .description__vacancy-full p {
@@ -149,13 +149,13 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: #1c1917;
+  color: var(--dark);
 }
 
 .address__vacancy-full {
   padding: 8px 12px;
   width: 254px;
-  border: 1px solid #c6c5c5;
+  border: 1px solid var(--lightgray);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -172,11 +172,11 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #8d8c8b;
+  color: var(--darkgray);
 }
 
 .address__vacancy-full .ant-btn {
-  background: #40aaff !important;
+  background: var(--aqua) !important;
   border-radius: 8px !important;
 }
 

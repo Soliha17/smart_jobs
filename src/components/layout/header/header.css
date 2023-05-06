@@ -36,14 +36,14 @@
 .select-btn-group__header button {
   width: 169px;
   height: 100%;
-  color: white;
+  color: var(--white);
   background: transparent;
   border-radius: 24px;
   transition: 0.3s all ease-in;
 }
 
 .selected-button__header {
-  background: white !important;
+  background: var(--white) !important;
   color: var(--gray) !important;
 }
 
@@ -56,15 +56,15 @@
 
 .enter-btn__header:hover {
   background: var(--white) !important;
-  color: #008dff !important;
+  color: var(--blue) !important;
 }
 
 .white-select .ant-select-selector {
-  color: white !important;
+  color: var(--white) !important;
 }
 
 .white-select .ant-select-arrow {
-  color: white !important;
+  color: var(--white) !important;
 }
 
 .header nav ul {
@@ -98,7 +98,7 @@
 }
 
 .ant-drawer nav a {
-  color: #333;
+  color: var(--gray);
 }
 
 .header__actions {
@@ -201,6 +201,5 @@
 
   .button__search-group {
     width: 130px !important;
-    background: red;
   }
 }

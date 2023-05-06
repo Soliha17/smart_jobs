@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ffffff;
+  background: var(--white);
   border-radius: 12px;
 }
 
@@ -20,7 +20,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: #1c1917;
+  color: var(--dark);
 }
 
 .number__vacancy-result {
@@ -40,10 +40,10 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: #1c1917;
-  border: 1px solid #c6c5c5;
+  color: var(--dark);
+  border: 1px solid var(--lightgray);
   border-radius: 8px;
-  background: white;
+  background: var(--white);
 }
 
 @media (max-width: 1300px) {

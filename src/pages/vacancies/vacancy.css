@@ -1,4 +1,4 @@
 .vacancies {
-  background: #f2f3f7;
+  background: var(--lightsmoke);
   width: 100%;
 }
