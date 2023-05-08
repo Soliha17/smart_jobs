@@ -1,14 +1,13 @@
 import React from "react";
 
 import "./vacancyInput.css";
-import { AutoComplete, Input, Select, Space } from "antd";
+import { AutoComplete, Input, Select } from "antd";
 
 import HeroSearchIcon from "../../molecules/HeroSearchIcon";
 import HeroSelect from "../../molecules/hero-select/HeroSelect";
 import LocationIcon from "../../molecules/HeroSelectLocationIcon";
 
 const { Option } = Select;
-
 
 const VacancyInput = () => {
   const options = [
