@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import "./blogCarousel.css";
 
@@ -11,31 +11,44 @@ const items = blogDatas.map(({ id, title, date, text, img }) => {
 });
 
 const BlogCarousel = () => {
-  const [slidesToShow, setSlidesToShow] = useState(3);
-  const windowWidth = window.innerWidth;
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (windowWidth <= 800) {
-        setSlidesToShow(1);
-      } else if (windowWidth <= 1300) {
-        setSlidesToShow(2);
-      } else {
-        setSlidesToShow(3);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, [windowWidth]);
+  var settings = {
+    dots: true,
+    arrows: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 2,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1224,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 810,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <div>
-      <Carousel slidesToShow={slidesToShow}>
-        {items}
-      </Carousel>
+      <Carousel {...settings}>{items}</Carousel>
     </div>
   );
 };

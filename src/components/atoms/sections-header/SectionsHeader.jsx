@@ -2,7 +2,7 @@ import React from "react";
 
 import "./sectionsHeader.css";
 
-import { RightOutlined } from "@ant-design/icons";
+import RightArrow from "../../../assets/images/right-blue-icon.svg";
 
 const SectionsHeader = ({ children }) => {
   return (
@@ -13,7 +13,7 @@ const SectionsHeader = ({ children }) => {
       </div>
       <button className="btn__sections-header">
         Barcha {children.btnText}
-        <RightOutlined />
+        <img src={RightArrow} alt="RightArrow icon" />
       </button>
     </div>
   );

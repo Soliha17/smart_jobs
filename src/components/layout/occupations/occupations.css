@@ -10,6 +10,14 @@
   margin-top: 40px;
 }
 
+.shadow__occupation {
+  position: absolute;
+  bottom: 33px;
+  right: 40px;
+  width: 157px;
+  height: 144px;
+}
+
 @media (max-width: 834px) {
   .occupations {
     margin-top: 76px;
@@ -20,6 +28,11 @@
   .occupations {
     padding: 24px;
     min-height: 340px;
+  }
+
+  .shadow__occupation{
+    bottom: 100px;
+    right: 20px;
   }
 }
 

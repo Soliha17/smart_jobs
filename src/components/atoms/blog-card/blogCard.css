@@ -38,12 +38,36 @@
   }
 }
 
+@media (max-width: 1186px) {
+  .card___blog {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .card___blog {
+    width: 250px;
+  }
+}
+
+@media (max-width: 860px) {
+  .card___blog {
+    width: 238px;
+  }
+}
+
 @media (max-width: 800px) {
   .card___blog {
-    width: 100%;
+    width: 90%;
   }
 
   .card___blog img {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card___blog {
+    width: 100%;
   }
 }

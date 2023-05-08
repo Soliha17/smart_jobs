@@ -3,6 +3,7 @@
   padding: 16px;
   background: var(--white);
   border-radius: 12px;
+
 }
 
 .occupation__title {
@@ -25,14 +26,8 @@
   color: var(--darkgray);
 }
 
-@media (max-width: 450px) {
-  .occupations__content .alice-carousel__stage-item {
-    margin-right: 70px !important;
-  }
-}
-
-@media (max-width: 350px) {
-  .occupations__content .alice-carousel__stage-item {
-    margin-right: 100px !important;
+@media (max-width: 490px) {
+  .occupation__card {
+    margin: 0 auto;
   }
 }

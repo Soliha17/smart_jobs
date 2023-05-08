@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AutoComplete, Input, Select } from "antd";
 
 import "./herohome.css";
@@ -14,6 +15,12 @@ const { Option } = Select;
 
 const HeroHome = () => {
   const [selectedTag, setSelectedTag] = useState("tag0");
+
+  const navigate = useNavigate();
+
+  function navigateFn(page) {
+    navigate(page);
+  }
 
   const selectTag = (tag) => {
     setSelectedTag(tag);
@@ -123,15 +130,25 @@ const HeroHome = () => {
         </div>
       </div>
       <div className="footer__hero-home">
-        <div className="footer-item__hero-home">
+        <div
+          className="footer-item__hero-home"
+          onClick={() => navigateFn("vacancy")}
+        >
           <img src={VacancyIcon} alt="vacancy icon" />
           <p>Vokansiyalar</p>
         </div>
-        <div className="footer-item__hero-home">
+        <div
+          className="footer-item__hero-home"
+          onClick={() => navigateFn("company")}
+        >
           <img src={CompanyIcon} alt="company icon" />
           <p>Kompaniyalar</p>
         </div>
-        <div className="footer-item__hero-home">
+
+        <div
+          className="footer-item__hero-home"
+          onClick={() => navigateFn("resume")}
+        >
           <img src={ResumeIcon} alt="resume icon" />
           <p>Rezyume konstuktor</p>
         </div>

@@ -1,9 +1,8 @@
 import React from "react";
 
 import "./blog.css";
-import SectionsHeader from "../../atoms/sections-header/SectionsHeader";
 
-import "react-alice-carousel/lib/alice-carousel.css";
+import SectionsHeader from "../../atoms/sections-header/SectionsHeader";
 import BlogCarousel from "../../atoms/blog-carousel/BlogCarousel";
 
 const Blog = () => {

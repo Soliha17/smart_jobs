@@ -17,13 +17,18 @@
   line-height: 19px;
   border-radius: 26px;
   border: 1px solid var(--blue);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s linear;
   cursor: pointer;
 }
 
 .btn__sections-header:hover {
   background: var(--blue);
   color: var(--white);
+}
+
+.btn__sections-header:hover img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%)
+    hue-rotate(140deg) brightness(108%) contrast(100%);
 }
 
 @media (max-width: 650px) {
