@@ -11,7 +11,7 @@
   height: 48px;
   padding: 24px;
   color: var(--blue);
-  background: var(--white);
+  background: transparent;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;

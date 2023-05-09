@@ -1,9 +1,11 @@
 .hero-home {
+  position: relative;
   padding-top: 64px;
+  max-width: 715px auto;
+  height: 518px;
   display: flex;
   flex-direction: column;
-  max-width: 715px auto;
-  position: relative;
+  box-sizing: content-box;
 }
 
 .hero__title {
@@ -120,7 +122,7 @@
 }
 
 .work-types__hero-home {
-  margin-top: 32px;
+  margin-top: 16px;
   display: flex;
   gap: 12px;
 }
@@ -145,7 +147,7 @@
 }
 
 .footer__hero-home {
-  margin-top: 140px;
+  margin-top: auto;
   width: 100%;
   display: flex;
   gap: 24px;
@@ -244,6 +246,10 @@
 }
 
 @media (max-width: 570px) {
+  .hero-home {
+    height: auto;
+  }
+
   .hero__title {
     font-size: 32px;
     line-height: 39px;

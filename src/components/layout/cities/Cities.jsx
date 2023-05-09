@@ -19,145 +19,145 @@ const Cities = () => {
 
       <div className="cities__content container">
         <Row gutter={[24, 24]}>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Toshkent</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
-              <p>Baku</p>
+              <p>Nukus</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Sirdaryo</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Urganch</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Toshkent</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Baku</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Istanbul</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Buxoro</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Istanbul</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Sirdaryo</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Qarshi</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Bishkek</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Samarqand</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Samarqand</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Baku</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Sirdaryo</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Urganch</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Toshkent</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Baku</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Sirdaryo</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Urganch</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Andijon</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Navoiy</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
+            <div className="cities__item">
+              <img src={CheckCircle} alt="CheckCircle" />
+              <p>Xiva</p>
+            </div>
+          </Col>
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Toshkent</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Baku</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Sirdaryo</p>
             </div>
           </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Urganch</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Toshkent</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Baku</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Sirdaryo</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Urganch</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Toshkent</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Baku</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
-            <div className="cities__item">
-              <img src={CheckCircle} alt="CheckCircle" />
-              <p>Sirdaryo</p>
-            </div>
-          </Col>
-          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }} >
+          <Col xs={{ span: 12 }} sm={{ span: 8 }} lg={{ span: 6 }}>
             <div className="cities__item">
               <img src={CheckCircle} alt="CheckCircle" />
               <p>Urganch</p>
