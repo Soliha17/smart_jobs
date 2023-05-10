@@ -106,7 +106,7 @@
   }
 } */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .vacancy-input .action__hero-home,
   .vacancy-input .input-group__hero-home {
     flex-direction: column;

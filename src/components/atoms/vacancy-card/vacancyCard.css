@@ -1,7 +1,5 @@
 .vacancy-card {
-  margin-bottom: 24px;
   padding: 24px;
-  width: 608px;
   background: var(--white);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.04);
   border-radius: 12px;
@@ -58,24 +56,6 @@
   font-size: 14px;
   line-height: 17px;
   color: var(--gray);
-}
-
-@media (max-width: 1300px) {
-  .vacancy-card {
-    max-width: 500px;
-  }
-}
-
-@media (max-width: 1170px) {
-  .vacancy-card {
-    max-width: 450px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .vacancy-card {
-    max-width: 400px;
-  }
 }
 
 @media (max-width: 900px) {

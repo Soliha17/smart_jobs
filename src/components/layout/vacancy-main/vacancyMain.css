@@ -1,12 +1,60 @@
 .vacancy-main {
   display: flex;
   justify-content: space-between;
+}
+
+.right__vacancy-main{
+  position: relative;
+}
+
+.card-group__vacancy {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 24px;
+  overflow-y: auto;
+  max-height: 1711px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.card-group__vacancy::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.card-group__vacancy {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.list-group__vacancy {
+  overflow-y: none;
+  max-height: none;
+}
+
+.vacancy-card {
+  flex: 49% !important;
+}
+
+@media (max-width: 1300px) {
+  .card-group__vacancy {
+    gap: 20px;
+  }
+
+  .vacancy-list-card {
+    flex: 45% !important;
+  }
 }
 
 @media (max-width: 900px) {
   .vacancy-main {
     justify-content: center;
-    gap: 0;
+    gap: 0 !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .vacancy-card {
+    flex: 100% !important;
   }
 }

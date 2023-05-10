@@ -7,11 +7,11 @@ import { DownOutlined } from "@ant-design/icons";
 import LeftLayoutIcon from "../../../assets/images/left-layout-btn.svg";
 import RightLayoutIcon from "../../../assets/images/right-layout-btn.svg";
 
-const VacancyFeed = () => {
-  const [selectedButton, setSelectedButton] = useState("btn2");
+const VacancyFeed = ({ state, setState }) => {
+  // const [selectedButton, setSelectedButton] = useState("btn2");
 
   const selectButton = (btn) => {
-    setSelectedButton(btn);
+    setState(btn);
   };
 
   const handleMenuClick = (e) => {
@@ -170,17 +170,13 @@ const VacancyFeed = () => {
       </div>
       <div className="right__vacancy-feed">
         <button
-          className={`${
-            selectedButton === "btn1" && "selected-btn__vacancy-feed"
-          }`}
+          className={`${state === "btn1" && "selected-btn__vacancy-feed"}`}
           onClick={() => selectButton("btn1")}
         >
           <img src={LeftLayoutIcon} alt="LeftLayoutIcon" />
         </button>
         <button
-          className={`${
-            selectedButton === "btn2" && "selected-btn__vacancy-feed"
-          }`}
+          className={`${state === "btn2" && "selected-btn__vacancy-feed"}`}
           onClick={() => selectButton("btn2")}
         >
           <img src={RightLayoutIcon} alt="RightLayoutIcon" />

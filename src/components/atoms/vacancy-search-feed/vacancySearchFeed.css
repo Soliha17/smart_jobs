@@ -1,7 +1,7 @@
 .vacancy-result {
   margin-bottom: 20px;
   padding: 22px 12px 22px 24px;
-  width: 608px;
+  width: 100%;
   height: 68px;
   display: flex;
   justify-content: space-between;
@@ -46,41 +46,23 @@
   background: var(--white);
 }
 
-@media (max-width: 1300px) {
-  .vacancy-result {
-    max-width: 500px;
-  }
-}
-
-@media (max-width: 1170px) {
-  .vacancy-result {
-    max-width: 450px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .vacancy-result {
-    max-width: 400px;
-  }
-}
-
 @media (max-width: 900px) {
   .vacancy-result {
     width: 100%;
-    height: auto;
     max-width: none !important;
   }
 }
 
 @media (max-width: 834px) {
   .right__vacancy-result {
-    display: flex;
+    display: flex !important;
   }
 }
 
 @media (max-width: 534px) {
   .vacancy-result {
     padding: 12px;
+    height: auto;
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;

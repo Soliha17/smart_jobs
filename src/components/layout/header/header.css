@@ -136,6 +136,8 @@
 
 .mobileHidden {
   display: block;
+  margin-right: auto;
+  margin-left: 40px;
 }
 
 /* ----- RESPONSIVE ----- */
@@ -145,26 +147,24 @@
     max-width: 140px;
   }
 
-  .profile__name {
-    display: none;
+  .header__actions--auto {
+    margin-left: auto;
   }
-}
 
-@media only screen and (max-width: 767px) {
   .mobileVisible {
     display: block;
   }
 
   .mobileHidden {
-    display: none;
+    display: none !important;
   }
 
-  .header__profile--none {
-    display: none;
+  .white-select--none {
+    display: none !important;
   }
 
   .header__hamburger-btn {
-    margin-left: 10px;
+    margin-left: 24px;
   }
 }
 
@@ -178,6 +178,10 @@
     height: auto;
   }
 
+  .header__actions{
+    gap: 10px;
+  }
+
   .select-btn-group__header {
     margin: 0 auto;
     margin-top: 10px;
@@ -185,21 +189,26 @@
     order: 10;
   }
 
+}
+
+@media only screen and (max-width: 550px) {
+  .header__profile--none {
+    display: none;
+  }
+
   .header__hamburger-btn {
     margin-left: 0px;
   }
-}
 
-@media only screen and (max-width: 400px) {
-  .white-select--none {
+  .white-select{
     display: none;
   }
 
   .select-btn-group__header {
-    max-width: 90% !important;
+    max-width: 100% !important;
   }
 
   .button__search-group {
-    width: 130px !important;
+    width: 164px !important;
   }
 }

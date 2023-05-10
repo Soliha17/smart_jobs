@@ -69,4 +69,74 @@ export const VacancyCardDatas = [
     `,
     date: "13-mart, 2023",
   },
+  {
+    id: 6,
+    title: "Mahsulot menejeri",
+    company: "Worko",
+    jobType: "Masofadan",
+    jobTime: "To’liq stavka",
+    text: `Rus tilini ishonchli bilish
+    Yoshi 18+
+    Sizda o'rganish va pul ishlash istagi bor;
+    Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
+    Mas'uliyat
+    `,
+    date: "13-mart, 2023",
+  },
+  {
+    id: 7,
+    title: "Mahsulot menejeri",
+    company: "Worko",
+    jobType: "Masofadan",
+    jobTime: "To’liq stavka",
+    text: `Rus tilini ishonchli bilish
+    Yoshi 18+
+    Sizda o'rganish va pul ishlash istagi bor;
+    Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
+    Mas'uliyat
+    `,
+    date: "13-mart, 2023",
+  },
+  {
+    id: 8,
+    title: "Mahsulot menejeri",
+    company: "Worko",
+    jobType: "Masofadan",
+    jobTime: "To’liq stavka",
+    text: `Rus tilini ishonchli bilish
+    Yoshi 18+
+    Sizda o'rganish va pul ishlash istagi bor;
+    Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
+    Mas'uliyat
+    `,
+    date: "13-mart, 2023",
+  },
+  {
+    id: 9,
+    title: "Mahsulot menejeri",
+    company: "Worko",
+    jobType: "Masofadan",
+    jobTime: "To’liq stavka",
+    text: `Rus tilini ishonchli bilish
+    Yoshi 18+
+    Sizda o'rganish va pul ishlash istagi bor;
+    Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
+    Mas'uliyat
+    `,
+    date: "13-mart, 2023",
+  },
+  {
+    id: 10,
+    title: "Mahsulot menejeri",
+    company: "Worko",
+    jobType: "Masofadan",
+    jobTime: "To’liq stavka",
+    text: `Rus tilini ishonchli bilish
+    Yoshi 18+
+    Sizda o'rganish va pul ishlash istagi bor;
+    Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
+    Mas'uliyat
+    `,
+    date: "13-mart, 2023",
+  },
 ];

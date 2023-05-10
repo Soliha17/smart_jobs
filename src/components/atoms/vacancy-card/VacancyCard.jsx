@@ -4,9 +4,17 @@ import "./vacancyCard.css";
 
 import ThreeDots from "../../../assets/images/three-dots.svg";
 
-const VacancyCard = ({ id, title, date, text, company, jobType, jobTime }) => {
+const VacancyCard = ({
+  className,
+  title,
+  date,
+  text,
+  company,
+  jobType,
+  jobTime,
+}) => {
   return (
-    <div className="vacancy-card">
+    <div className={className}>
       <div className="info__vacancy-card">
         <div className="top__vacancy-card">
           <span>

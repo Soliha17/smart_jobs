@@ -99,12 +99,12 @@ function Header() {
               </button>
             </div>
           )}
-          <div className="header__actions">
+          <div className={`header__actions ${isUser && "header__actions--auto"}`}>
             {isUser ? (
               <>
                 <Space
                   wrap
-                  className={`white-select ${isUser ? "mobileHidden" : ""}`}
+                  className={`white-select ${!isUser ? "mobileHidden" : ""}`}
                 >
                   <Select
                     className="white-select"
@@ -185,7 +185,12 @@ function Header() {
           </div>
           {isUser && (
             <div className="mobileVisible">
-              <Space wrap className="white-select">
+              <Space
+                wrap
+                className={`white-select ${
+                  isUser ? "mobileHidden" : "white-select--none"
+                }`}
+              >
                 <Select
                   defaultValue="UZ"
                   style={{

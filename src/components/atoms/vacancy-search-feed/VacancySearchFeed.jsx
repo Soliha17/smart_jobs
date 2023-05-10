@@ -2,7 +2,7 @@ import React from "react";
 
 import "./vacancySearchFeed.css";
 
-const VacancySearchFeed = () => {
+const VacancySearchFeed = ({ style }) => {
   return (
     <div className="vacancy-result">
       <div className="left__vacancy-result">
@@ -34,7 +34,7 @@ const VacancySearchFeed = () => {
           <span className="number__vacancy-result">285</span>
         </p>
       </div>
-      <div className="right__vacancy-result">
+      <div className="right__vacancy-result" style={style}>
         <button>
           <svg
             width="20"

@@ -11,9 +11,9 @@ import DashboardIcon from "../../../assets/images/dashboard-icon.svg";
 import SchoolIcon from "../../../assets/images/school-icon.svg";
 import TranslateIcon from "../../../assets/images/translate-icon.svg";
 
-const VacancyFullCard = () => {
+const VacancyFullCard = ({ style }) => {
   return (
-    <div className="vacancy-full">
+    <div className="vacancy-full" style={style}>
       <div className="header__vacancy-full">
         <div className="header-top__vacancy-full">
           <p className="title__vacancy-full">Mahsulot menejeri</p>

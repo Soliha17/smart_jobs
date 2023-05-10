@@ -1,10 +1,24 @@
 .vacancy-full {
-  margin-bottom: 24px;
-  padding: 24px 0;
-  width: 608px;
+  position: sticky !important;
+  top: 0;
+  padding-top: 24px;
+  width: 713px;
+  height: 100vh;
   background: var(--white);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.04);
   border-radius: 12px;
+  overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.vacancy-full::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.vacancy-full {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .header__vacancy-full {
@@ -181,8 +195,11 @@
 }
 
 .footer__vacancy-full {
-  margin-top: 24px;
-  padding: 0 24px;
+  position: sticky;
+  bottom: 0;
+  background: var(--white);
+  padding: 24px;
+  padding-top: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -208,6 +225,6 @@
 
 @media (max-width: 900px) {
   .vacancy-full {
-    display: none;
+    display: none !important;
   }
 }

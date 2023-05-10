@@ -50,9 +50,14 @@
 }
 
 @media only screen and (max-width: 870px) {
+  .left__vacancy-feed {
+    justify-content: space-between;
+  }
+
   .left__vacancy-feed .ant-btn {
     width: 30%;
   }
+
   .right__vacancy-feed {
     display: none;
   }
