@@ -1,11 +1,11 @@
 
 .slick-dots li {
-  background: var(--lightcyan);
+  background: var(--primary-12);
   width: 51px !important;
 }
 
 .slick-dots li.slick-active button {
-  background: var(--dark) !important;
+  background: var(--black-100) !important;
   opacity: 1;
 }
 

@@ -21,7 +21,7 @@
   font-weight: 600;
   font-size: 25px;
   line-height: 30px;
-  color: var(--dark);
+  color: var(--black-100);
 }
 
 .company__vacancy-card {
@@ -48,14 +48,14 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 .date__vacancy-card {
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 @media (max-width: 900px) {

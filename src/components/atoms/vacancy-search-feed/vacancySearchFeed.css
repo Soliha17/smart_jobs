@@ -20,7 +20,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: var(--dark);
+  color: var(--black-100);
 }
 
 .number__vacancy-result {
@@ -40,7 +40,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: var(--dark);
+  color: var(--black-100);
   border: 1px solid var(--lightgray);
   border-radius: 8px;
   background: var(--white);

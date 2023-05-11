@@ -59,17 +59,19 @@
 
 /* ----- VARIABLES ----- */
 :root {
-  --blue: #008dff;
-  --aqua: #40aaff;
+  --primary-100: #008dff;
+  --primary-75: #40aaff;
+  --primary-50: #7fc5ff;
+  --primary-25: #bfe2ff;
+  --primary-12: #e0f1ff;
   --lightblue: rgba(255, 255, 255, 0.32);
-  --lightcyan: #e0f1ff;
   --white: #ffffff;
-  --lightsmoke: #f2f3f7;
-  --whitesmoke: #f9f9fb;
+  --white-100: #f2f3f7;
+  --white-50: #f9f9fb;
   --black: #000000;
-  --dark: #1c1917;
-  --gray: #555351;
-  --darkgray: #8d8c8b;
+  --black-100: #1c1917;
+  --black-75: #555351;
+  --black-50: #8d8c8b;
   --lightgray: #c6c5c5;
 }
 

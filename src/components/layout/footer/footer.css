@@ -1,7 +1,7 @@
 .footer-wrapper {
   margin-top: 96px;
   width: 100%;
-  background: var(--dark);
+  background: var(--black-100);
 }
 
 .footer {
@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  color: var(--lightsmoke);
+  color: var(--white-100);
 }
 
 .footer__social-group {
@@ -46,7 +46,7 @@
 }
 
 .bottom__footer {
-  border-top: 1px solid var(--whitesmoke);
+  border-top: 1px solid var(--white-50);
 }
 
 .bottom__footer p {
@@ -54,7 +54,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: var(--whitesmoke);
+  color: var(--white-50);
 }
 
 @media (max-width: 1300px) {

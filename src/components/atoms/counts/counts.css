@@ -21,14 +21,14 @@
   font-weight: 600;
   font-size: 49px;
   line-height: 59px;
-  color: var(--blue);
+  color: var(--primary-100);
 }
 
 .counts__text {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 @media (max-width: 900px) {

@@ -1,6 +1,6 @@
 /* ----- HEADER ----- */
 .header-wrapper {
-  background: var(--blue);
+  background: var(--primary-100);
   height: auto;
 }
 
@@ -44,7 +44,7 @@
 
 .selected-button__header {
   background: var(--white) !important;
-  color: var(--gray) !important;
+  color: var(--black-75) !important;
 }
 
 .enter-btn__header {
@@ -56,7 +56,7 @@
 
 .enter-btn__header:hover {
   background: var(--white) !important;
-  color: var(--blue) !important;
+  color: var(--primary-100) !important;
 }
 
 .white-select .ant-select-selector {
@@ -98,7 +98,7 @@
 }
 
 .ant-drawer nav a {
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 .header__actions {
@@ -178,7 +178,7 @@
     height: auto;
   }
 
-  .header__actions{
+  .header__actions {
     gap: 10px;
   }
 
@@ -188,7 +188,6 @@
     align-self: center;
     order: 10;
   }
-
 }
 
 @media only screen and (max-width: 550px) {
@@ -200,7 +199,7 @@
     margin-left: 0px;
   }
 
-  .white-select{
+  .white-select {
     display: none;
   }
 

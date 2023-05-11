@@ -24,7 +24,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: var(--darkgray);
+  color: var(--black-50);
 }
 
 @media (max-width: 490px) {

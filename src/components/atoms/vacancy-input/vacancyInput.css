@@ -1,7 +1,7 @@
 .vacancy-input {
   padding-top: 12px;
   padding-bottom: 12px;
-  background: var(--blue);
+  background: var(--primary-100);
 }
 
 .vacancy-input .action__hero-home {

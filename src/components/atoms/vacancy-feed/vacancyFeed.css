@@ -23,7 +23,7 @@
   align-items: center;
   width: 44px;
   height: 44px;
-  background: var(--lightsmoke);
+  background: var(--white-100);
   border-radius: 8px 0px 0px 8px;
   border: 1px solid var(--white);
 }

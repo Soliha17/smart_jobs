@@ -40,14 +40,14 @@
   font-weight: 600;
   font-size: 32px;
   line-height: 39px;
-  color: var(--dark);
+  color: var(--black-100);
 }
 
 .company__vacancy-full {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 .header-bottom__vacancy-full {
@@ -56,7 +56,7 @@
   align-items: flex-end;
 }
 .header-bottom__vacancy-full .ant-btn {
-  background: var(--blue);
+  background: var(--primary-100);
 }
 
 .actions-group__vacancy-full {
@@ -85,7 +85,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 .inner-content__vacancy-full div {
@@ -99,14 +99,14 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 .inner-content__vacancy-full span {
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 /* ----- INFO ----- */
@@ -121,7 +121,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
-  color: var(--dark);
+  color: var(--black-100);
 }
 
 .skills-group__vacancy-full {
@@ -141,8 +141,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: var(--gray);
-  border: 1px solid var(--gray);
+  color: var(--black-75);
+  border: 1px solid var(--black-75);
   border-radius: 16px;
 }
 
@@ -155,7 +155,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
-  color: var(--gray);
+  color: var(--black-75);
 }
 
 .description__vacancy-full p {
@@ -163,7 +163,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: var(--dark);
+  color: var(--black-100);
 }
 
 .address__vacancy-full {
@@ -186,11 +186,11 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: var(--darkgray);
+  color: var(--black-50);
 }
 
 .address__vacancy-full .ant-btn {
-  background: var(--aqua) !important;
+  background: var(--primary-75) !important;
   border-radius: 8px !important;
 }
 

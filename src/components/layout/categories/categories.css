@@ -22,7 +22,7 @@
 }
 
 .item__categories:hover {
-  border-color: var(--blue);
+  border-color: var(--primary-100);
 }
 
 .category__title {
@@ -37,7 +37,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: var(--darkgray);
+  color: var(--black-50);
 }
 
 .see-all__btn {
@@ -45,18 +45,18 @@
   margin: 32px auto;
   display: block;
   border-radius: 26px;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--primary-100);
   background: var(--white);
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: var(--blue);
+  color: var(--primary-100);
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
 .see-all__btn:hover {
-  background: var(--blue);
+  background: var(--primary-100);
   color: var(--white);
 }
 

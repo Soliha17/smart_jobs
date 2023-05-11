@@ -18,12 +18,12 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  color: var(--gray);
+  color: var(--black-75);
   transition: all 0.3s ease;
 }
 
 .cities__item:hover p {
-  color: var(--blue);
+  color: var(--primary-100);
 }
 
 .cities__item:hover img {
