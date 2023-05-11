@@ -243,6 +243,10 @@
     margin-top: 64px;
     margin-bottom: 26px;
   }
+
+  .hero-select-wrapper {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 570px) {
@@ -290,10 +294,6 @@
     background: var(--white);
     margin-left: 0;
     border-radius: 12px;
-  }
-
-  .hero-select-wrapper {
-    width: 100% !important;
   }
 
   .search-btn__hero-home {

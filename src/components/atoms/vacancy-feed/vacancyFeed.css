@@ -12,11 +12,13 @@
   justify-content: center;
   gap: 16px;
 }
+
 .right__vacancy-feed {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .right__vacancy-feed button {
   display: flex;
   justify-content: center;
@@ -40,6 +42,10 @@
   display: none;
   gap: 16px;
   justify-content: center;
+}
+
+.clear-btn__vacancy-feed .ant-space-item {
+  color: var(--primary-75);
 }
 
 @media only screen and (max-width: 1170px) {
@@ -73,6 +79,24 @@
   }
 
   .mobile__vacancy-feed {
+    width: 400px;
     display: flex;
+    justify-content: space-between;
+  }
+
+  .mobile__vacancy-feed .ant-btn {
+    flex: 50%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .mobile__vacancy-feed{
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .mobile__vacancy-feed{
+    width: 300px;
   }
 }

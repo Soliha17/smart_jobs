@@ -78,6 +78,14 @@
   background: var(--lightblue) !important;
 }
 
+.search-text {
+  display: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--white);
+}
+
 @media (max-width: 1100px) {
   .vacancy-input .action__hero-home {
     width: 100%;
@@ -139,6 +147,10 @@
   .vacancy-input .search-btn__hero-home {
     width: 100%;
     min-width: 400px !important;
+  }
+
+  .search-text {
+    display: block;
   }
 }
 

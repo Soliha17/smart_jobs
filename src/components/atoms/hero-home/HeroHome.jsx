@@ -7,6 +7,7 @@ import "./herohome.css";
 import CompanyIcon from "../../../assets/images/company-icon.svg";
 import ResumeIcon from "../../../assets/images/resume-icon.svg";
 import VacancyIcon from "../../../assets/images/vacancy-icon.svg";
+import SearchIcon from "../../../assets/images/hero-search-icon.svg";
 import LocationIcon from "../../molecules/HeroSelectLocationIcon";
 import HeroSelect from "../../molecules/hero-select/HeroSelect";
 import HeroSearchIcon from "../../molecules/HeroSearchIcon";
@@ -77,18 +78,7 @@ const HeroHome = () => {
           </div>
           <div>
             <button className="search-btn__hero-home">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10.861 2C15.7523 2 19.722 5.96973 19.722 10.861C19.722 15.7523 15.7523 19.722 10.861 19.722C5.96973 19.722 2 15.7523 2 10.861C2 5.96973 5.96973 2 10.861 2ZM10.861 17.7529C14.6688 17.7529 17.7529 14.6688 17.7529 10.861C17.7529 7.05324 14.6688 3.96911 10.861 3.96911C7.05324 3.96911 3.96911 7.05324 3.96911 10.861C3.96911 14.6688 7.05324 17.7529 10.861 17.7529ZM19.2153 17.8229L22 20.6076L20.6076 22L17.8229 19.2153L19.2153 17.8229Z"
-                  fill="white"
-                />
-              </svg>
+              <img src={SearchIcon} alt="search icon" />
 
               <span>Qidirish</span>
             </button>

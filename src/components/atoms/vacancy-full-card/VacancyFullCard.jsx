@@ -7,9 +7,13 @@ import ReportIcon from "../../../assets/images/report-icon.svg";
 import SaveIcon from "../../../assets/images/save-icon.svg";
 import BalanceIcon from "../../../assets/images/balance-icon.svg";
 import LocationIcon from "../../../assets/images/blue-location-icon.svg";
-import DashboardIcon from "../../../assets/images/dashboard-icon.svg";
+import AwayIcon from "../../../assets/images/location-away-icon.svg";
 import SchoolIcon from "../../../assets/images/school-icon.svg";
 import TranslateIcon from "../../../assets/images/translate-icon.svg";
+import MapIcon from "../../../assets/images/show-map-icon.svg";
+import CalendarIcon from "../../../assets/images/calendar-icon.svg";
+import TimeplaceIcon from "../../../assets/images/timeplace-icon.svg";
+import PendingActionIcon from "../../../assets/images/pending-actions.svg";
 
 const VacancyFullCard = ({ style }) => {
   return (
@@ -31,41 +35,72 @@ const VacancyFullCard = ({ style }) => {
         </div>
       </div>
       <div className="content__vacancy-full">
-        <p className="date__vacancy-full">E’lon qilingan sana: 13-mart, 2023</p>
-        <div className="inner-content__vacancy-full">
-          <div>
-            <img src={BalanceIcon} alt="LocationIcon" />
-            <p>Maosh</p>
-          </div>
-          <span>12 000 000 - 18 000 000 so’m / oyiga</span>
-        </div>
-        <div className="inner-content__vacancy-full">
-          <div>
-            <img src={LocationIcon} alt="LocationIcon" />
-            <p>Joy</p>
-          </div>
-          <span>Toshkent</span>
-        </div>
-        <div className="inner-content__vacancy-full">
-          <div>
-            <img src={DashboardIcon} alt="LocationIcon" />
-            <p>Format</p>
-          </div>
-          <span>Ofisda</span>
-        </div>
-        <div className="inner-content__vacancy-full">
-          <div>
-            <img src={SchoolIcon} alt="LocationIcon" />
-            <p>Ta’lim</p>
-          </div>
-          <span>Bakalavr darjasi</span>
-        </div>
-        <div className="inner-content__vacancy-full">
-          <div>
-            <img src={TranslateIcon} alt="LocationIcon" />
-            <p>Til bilish</p>
-          </div>
-          <span>Ingliz tili B1 +</span>
+        <p className="date__vacancy-full">E'lon qilingan sana: 13-mart, 2023</p>
+        <div className="wrapper__vacancy-content">
+          <span className="row__vacancy-content">
+            <div className="inner-content__vacancy-full">
+              <div>
+                <img src={LocationIcon} alt="LocationIcon" />
+                <p>Joy</p>
+              </div>
+              <span>Toshkent, O'zbekiston</span>
+            </div>
+            <div className="inner-content__vacancy-full">
+              <div>
+                <img src={CalendarIcon} alt="CalendarIcon" />
+                <p>Ariza topshirish muddati</p>
+              </div>
+              <span>25.02.2023</span>
+            </div>
+          </span>
+          <span className="row__vacancy-content">
+            <div className="inner-content__vacancy-full">
+              <div>
+                <img src={TimeplaceIcon} alt="TimeplaceIcon" />
+                <p>Ishlash turi</p>
+              </div>
+              <span>To’liq stavka</span>
+            </div>
+            <div className="inner-content__vacancy-full">
+              <div>
+                <img src={AwayIcon} alt="LocationAwayIcon" />
+                <p>Ishlash formati</p>
+              </div>
+              <span>Gibrid</span>
+            </div>
+          </span>
+          <span className="row__vacancy-content">
+            <div className="inner-content__vacancy-full">
+              <div>
+                <img src={PendingActionIcon} alt="PendingActionIcon" />
+                <p>Tajribasi</p>
+              </div>
+              <span>1-3 yil</span>
+            </div>
+            <div className="inner-content__vacancy-full">
+              <div>
+                <img src={SchoolIcon} alt="SchoolIcon" />
+                <p>Ma’lumot darajasi</p>
+              </div>
+              <span>-</span>
+            </div>
+          </span>
+          <span className="row__vacancy-content">
+            <div className="inner-content__vacancy-full">
+              <div>
+                <img src={TranslateIcon} alt="LocationIcon" />
+                <p>Talab qilinayotgan tillar</p>
+              </div>
+              <span>Ingliz, Rus</span>
+            </div>
+            <div className="inner-content__vacancy-full">
+              <div>
+                <img src={BalanceIcon} alt="LocationIcon" />
+                <p>ish haqqi oralig’i</p>
+              </div>
+              <span>12 000 000 - 18 000 000 </span>
+            </div>
+          </span>
         </div>
       </div>
       <div className="info__vacancy-full">
@@ -76,6 +111,7 @@ const VacancyFullCard = ({ style }) => {
               O’rganishni o’rgana olish
             </p>
             <p className="circle-text__vacancy-full">Jamoada ishlay olish</p>
+            <p className="circle-text__vacancy-full">Doimiy ishlay olish</p>
             <p className="circle-text__vacancy-full">Strategik fikrlash</p>
           </div>
         </div>
@@ -87,46 +123,34 @@ const VacancyFullCard = ({ style }) => {
           <h6>Tavsif:</h6>
           <p>
             PRO Tach kompaniyasi ish tajribasiga ega bo'lmagan masofaviy
-            xodimlarni mustaqil ish uchun yollaydi. PRO Tach - ishonchli ish
-            beruvchi, biz pandemiyadan ish o'rinlarini qisqartirmasdan o'tdik,
-            bundan tashqari, biz ularni ko'paytirdik! Mijozlar yirik
-            telekommunikatsiya kompaniyalari, davlat tashkilotlari, yetakchi
-            banklar, sug‘urta kompaniyalari, onlayn-do‘konlar, pochta va
-            logistika kompaniyalaridir. Bu ish siz uchun, agar: Rus tilini
-            ishonchli bilish Yoshi 18+ Sizda o'rganish va pul ishlash istagi
-            bor; Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
-            Mas'uliyat Ishlaydigan mahsulotning ishlashini tekshirish kerak. Ish
+            xodimlarni mustaqil ish <br />
+            uchun yollaydi.
+            <br />
+            <br />
+            PRO Tach - ishonchli ish beruvchi, biz pandemiyadan ish o'rinlarini
+            qisqartirmasdan o'tdik, bundan tashqari, biz ularni ko'paytirdik!
+            Mijozlar yirik telekommunikatsiya kompaniyalari, davlat
+            tashkilotlari, yetakchi banklar, sug‘urta kompaniyalari,
+            onlayn-do‘konlar, pochta va logistika kompaniyalaridir. <br />
+            <br /> Bu ish siz uchun, agar: <br />
+            <br />
+            Rus tilini ishonchli bilish
+            <br /> Yoshi 18+ <br />
+            Sizda o'rganish va pul ishlash istagi bor; <br />
+            Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
+            <br />
+            Mas'uliyat
+            <br />
+            <br /> Ishlaydigan mahsulotning ishlashini tekshirish kerak. Ish
             qiyin emas, biz sizga hamma narsani o'rgatamiz. Siz qilishingiz
-            kerak bo'lgan narsa hamma narsani tezda tushunishdir. Vakansiya
-            haqida telegram soliha_work da yozing
+            kerak bo'lgan narsa hamma narsani tezda tushunishdir. <br />
+            <br />
+            Vakansiya haqida telegram soliha_work da yozing
           </p>
         </div>
         <div className="address__vacancy-full">
           <div>
-            <svg
-              width="25"
-              height="25"
-              viewBox="0 0 25 25"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_12_4136)">
-                <path
-                  d="M21.4722 3.5L21.3033 3.53L15.6667 5.6L9.33333 3.5L3.38 5.4C3.15833 5.47 3 5.65 3 5.88V21C3 21.28 3.23222 21.5 3.52778 21.5L3.69667 21.47L9.33333 19.4L15.6667 21.5L21.62 19.6C21.8417 19.53 22 19.35 22 19.12V4C22 3.72 21.7678 3.5 21.4722 3.5ZM10.3889 5.97L14.6111 7.37V19.03L10.3889 17.63V5.97ZM5.11111 6.96L8.27778 5.95V17.65L5.11111 18.81V6.96ZM19.8889 18.04L16.7222 19.05V7.36L19.8889 6.2V18.04Z"
-                  fill="#8D8C8B"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_12_4136">
-                  <rect
-                    width="25"
-                    height="24"
-                    fill="white"
-                    transform="translate(0 0.5)"
-                  />
-                </clipPath>
-              </defs>
-            </svg>
+            <img src={MapIcon} alt="map icon" />
             <p className="address-text__vacancy-full">Manzil</p>
           </div>
           <Button type="primary" size="medium">

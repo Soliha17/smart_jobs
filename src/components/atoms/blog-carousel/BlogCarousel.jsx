@@ -7,7 +7,7 @@ import BlogCard from "../blog-card/BlogCard";
 import { Carousel } from "antd";
 
 const items = blogDatas.map(({ id, title, date, text, img }) => {
-  return <BlogCard key={id} title={title} img={img} text={text} cost={date} />;
+  return <BlogCard key={id} title={title} img={img} text={text} date={date} />;
 });
 
 const BlogCarousel = () => {
