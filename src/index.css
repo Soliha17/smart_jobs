@@ -59,20 +59,27 @@
 
 /* ----- VARIABLES ----- */
 :root {
+  --primary: #196dff;
   --primary-100: #008dff;
   --primary-75: #40aaff;
   --primary-50: #7fc5ff;
   --primary-25: #bfe2ff;
   --primary-12: #e0f1ff;
-  --lightblue: rgba(255, 255, 255, 0.32);
+
   --white: #ffffff;
   --white-100: #f2f3f7;
   --white-50: #f9f9fb;
+
   --black: #000000;
   --black-100: #1c1917;
   --black-75: #555351;
   --black-50: #8d8c8b;
+
+  --lightblue: rgba(255, 255, 255, 0.32);
   --lightgray: #c6c5c5;
+
+  --red: #ff4433;
+  --skyblue: #f3f6fc;
 }
 
 /* ----- GENERAL STYLES ----- */

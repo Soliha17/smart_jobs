@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./vacancyFullCard.css";
-import { Button } from "antd";
+import { Button, Modal } from "antd";
 
 import ShareIcon from "../../../assets/images/share-icon.svg";
 import ReportIcon from "../../../assets/images/report-icon.svg";
@@ -14,8 +14,20 @@ import MapIcon from "../../../assets/images/show-map-icon.svg";
 import CalendarIcon from "../../../assets/images/calendar-icon.svg";
 import TimeplaceIcon from "../../../assets/images/timeplace-icon.svg";
 import PendingActionIcon from "../../../assets/images/pending-actions.svg";
+import YmapsComponent from "../../molecules/yandex-map/YmapsComponent";
+import YandexCard from "../../molecules/yandex-card/YandexCard";
 
 const VacancyFullCard = ({ style }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className="vacancy-full" style={style}>
       <div className="header__vacancy-full">
@@ -153,9 +165,22 @@ const VacancyFullCard = ({ style }) => {
             <img src={MapIcon} alt="map icon" />
             <p className="address-text__vacancy-full">Manzil</p>
           </div>
-          <Button type="primary" size="medium">
+          <Button type="primary" size="medium" onClick={showModal}>
             xaritada ko‘rsatish
           </Button>
+          <Modal
+            width={1200}
+            bodyStyle={{ height: "500px" }}
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            footer={null}
+          >
+            <div className="yandex-modal">
+              <YmapsComponent />
+              <YandexCard />
+            </div>
+          </Modal>
         </div>
       </div>
       <div className="footer__vacancy-full">
