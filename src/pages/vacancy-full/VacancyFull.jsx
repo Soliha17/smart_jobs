@@ -341,12 +341,12 @@ const VacancyFull = () => {
                 className={"vacancy-card vacancy-list-card"}
                 title={"Mahsulot menejeri"}
                 date="13-mart, 2023"
-                text="Rus tilini ishonchli bilish
+                text={`Rus tilini ishonchli bilish
       Yoshi 18+
       Sizda o'rganish va pul ishlash istagi bor;
       Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
       Mas'uliyat
-      "
+      `}
                 company="Worko"
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
@@ -357,12 +357,12 @@ const VacancyFull = () => {
                 className={"vacancy-card vacancy-list-card"}
                 title={"Mahsulot menejeri"}
                 date="13-mart, 2023"
-                text="Rus tilini ishonchli bilish
+                text={`Rus tilini ishonchli bilish
       Yoshi 18+
       Sizda o'rganish va pul ishlash istagi bor;
       Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
       Mas'uliyat
-      "
+      `}
                 company="Worko"
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
@@ -373,12 +373,12 @@ const VacancyFull = () => {
                 className={"vacancy-card vacancy-list-card"}
                 title={"Mahsulot menejeri"}
                 date="13-mart, 2023"
-                text="Rus tilini ishonchli bilish
+                text={`Rus tilini ishonchli bilish
       Yoshi 18+
       Sizda o'rganish va pul ishlash istagi bor;
       Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
       Mas'uliyat
-      "
+      `}
                 company="Worko"
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
@@ -389,12 +389,12 @@ const VacancyFull = () => {
                 className={"vacancy-card vacancy-list-card"}
                 title={"Mahsulot menejeri"}
                 date="13-mart, 2023"
-                text="Rus tilini ishonchli bilish
+                text={`Rus tilini ishonchli bilish
       Yoshi 18+
       Sizda o'rganish va pul ishlash istagi bor;
       Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
       Mas'uliyat
-      "
+      `}
                 company="Worko"
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
@@ -405,12 +405,12 @@ const VacancyFull = () => {
                 className={"vacancy-card vacancy-list-card"}
                 title={"Mahsulot menejeri"}
                 date="13-mart, 2023"
-                text="Rus tilini ishonchli bilish
+                text={`Rus tilini ishonchli bilish
       Yoshi 18+
       Sizda o'rganish va pul ishlash istagi bor;
       Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
       Mas'uliyat
-      "
+      `}
                 company="Worko"
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
@@ -421,12 +421,12 @@ const VacancyFull = () => {
                 className={"vacancy-card vacancy-list-card"}
                 title={"Mahsulot menejeri"}
                 date="13-mart, 2023"
-                text="Rus tilini ishonchli bilish
+                text={`Rus tilini ishonchli bilish
       Yoshi 18+
       Sizda o'rganish va pul ishlash istagi bor;
       Siz ishonchli kompyuter yoki telefon foydalanuvchisimisiz?
       Mas'uliyat
-      "
+      `}
                 company="Worko"
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
