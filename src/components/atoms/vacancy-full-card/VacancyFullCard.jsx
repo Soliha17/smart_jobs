@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./vacancyFullCard.css";
 import { Button, Modal } from "antd";
 
@@ -19,20 +20,31 @@ import YandexCard from "../../molecules/yandex-card/YandexCard";
 
 const VacancyFullCard = ({ style }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  function goVacancyFullPage() {
+    navigate("/full");
+  }
+
   return (
     <div className="vacancy-full" style={style}>
       <div className="header__vacancy-full">
         <div className="header-top__vacancy-full">
-          <p className="title__vacancy-full">Mahsulot menejeri</p>
+          <p className="title__vacancy-full" onClick={goVacancyFullPage}>
+            Mahsulot menejeri
+          </p>
           <p className="company__vacancy-full">Pro tach</p>
         </div>
         <div className="header-bottom__vacancy-full">
