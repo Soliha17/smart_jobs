@@ -108,6 +108,10 @@
 }
 
 @media (max-width: 534px) {
+  .vacancy-card{
+    padding: 16px;
+  }
+  
   .title__vacancy-card {
     font-size: 22px;
   }

@@ -1,0 +1,344 @@
+.vacancy-full-wrapper {
+  margin-top: 32px;
+  margin-bottom: 96px;
+}
+
+.vacancy-full-wrapper .vacancy-full {
+  margin-top: 32px;
+  position: static !important;
+  width: 100%;
+  height: auto;
+  background: var(--white);
+  box-shadow: 0px 6px 26px rgba(0, 0, 0, 0.04);
+  border-radius: 26px;
+  overflow-y: auto;
+}
+
+.vacancy-full-wrapper .header__vacancy-full {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.vacancy-full-wrapper .content__vacancy-full {
+  padding: 0 48px;
+}
+
+.vacancy-full-wrapper .info__vacancy-full {
+  padding: 0 48px;
+  margin-top: 48px;
+}
+
+.vacancy-full-wrapper .footer__vacancy-full {
+  padding: 24px 48px;
+}
+
+.vacancy-full-wrapper .company__vacancy-full {
+  color: var(--black-100);
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+.info__vacancy-full-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vacancy-full-wrapper .wrapper__vacancy-content {
+  display: block;
+}
+
+.vacancy-full-wrapper .content__vacancy-full {
+  border-bottom: none;
+}
+
+.vacancy-full-wrapper .section-name__vacancy-full {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  color: var(--black-100);
+}
+
+.vacancy-full-wrapper .skills-group__vacancy-full {
+  width: 70%;
+}
+
+.vacancy-full-wrapper .circle-text__vacancy-full {
+  padding: 12px 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-100);
+  border-radius: 24px;
+  background: var(--white-100);
+  border: none;
+}
+
+.professions-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.vacancy-full-wrapper .directions__vacancy-full .circle-text__vacancy-full {
+  width: auto;
+}
+
+.vacancy-full-wrapper .description__vacancy-full {
+  margin-bottom: 56px;
+}
+
+.vacancy-full-wrapper .description__vacancy-full p,
+.vacancy-full-wrapper .description__vacancy-full li {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--black-100);
+}
+
+.vacancy-full-wrapper ul {
+  margin-bottom: 25px;
+}
+
+.vacancy-full-wrapper ul li {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+.vacancy-full-wrapper .address__vacancy-full {
+  margin-bottom: 56px;
+}
+
+.vacancy-full-wrapper .description__vacancy-full p {
+  margin-bottom: 0;
+}
+
+/* COMPANY CARD OF VACANCY FULL PAGE */
+.company-card__vacancy {
+  margin-top: 16px;
+  padding: 32px 48px;
+  width: 100%;
+  border-radius: 26px;
+  background: var(--white);
+}
+
+.first-col__company-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.company-card__vacancy h6 {
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+  color: var(--black);
+}
+
+.title__company-card {
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--black-75);
+}
+
+.subtitle__company-card {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+/* ----- SAME VACANCIES SECTION ----- */
+.same-vacancies {
+  margin-top: 76px;
+}
+
+.same-vacancies .title__vacancy-card {
+  margin-bottom: 32px;
+  font-weight: 700;
+}
+
+@media (max-width: 1300px) {
+  .vacancy-full-wrapper .vacancy-full {
+    max-width: none;
+  }
+}
+
+@media (max-width: 1170px) {
+  .vacancy-full-wrapper .vacancy-full {
+    max-width: none;
+  }
+
+  .wrapper__vacancy-content .row__vacancy-content {
+    gap: 0px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .vacancy-full-wrapper .vacancy-full {
+    max-width: none;
+  }
+
+  .vacancy-full-wrapper .wrapper__vacancy-content {
+    gap: 20px;
+  }
+
+  .vacancy-full-wrapper .wrapper__vacancy-content {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .third-col__company-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  /* hierarchy */
+
+  .vacancy-full-wrapper {
+    margin-top: 24px;
+    margin-bottom: 76px;
+  }
+
+  .vacancy-full-wrapper .vacancy-full {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  .vacancy-full-wrapper .header__vacancy-full {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .vacancy-full-wrapper .content__vacancy-full {
+    padding: 0 24px;
+  }
+
+  .vacancy-full-wrapper .info__vacancy-full {
+    padding: 0 24px;
+    margin-top: 40px;
+  }
+
+  .vacancy-full-wrapper .footer__vacancy-full {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .vacancy-full-wrapper .vacancy-full {
+    display: block !important;
+  }
+
+  .vacancy-full-wrapper .skills-group__vacancy-full {
+    width: 100%;
+  }
+
+  /* COMPANY CARD */
+
+  .company-card__vacancy {
+    margin-top: 32px;
+    padding: 24px;
+  }
+
+  .first-col__company-card {
+    gap: 21px;
+  }
+}
+
+@media (max-width: 778px) {
+  .third-col__company-card {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .vacancy-full-wrapper .title__vacancy-full {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+  }
+
+  .info__vacancy-full-page {
+    flex-direction: column-reverse;
+  }
+
+  .vacancy-full-wrapper .circle-text__vacancy-full {
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .professions-container {
+    flex-wrap: wrap;
+  }
+
+  .vacancy-full-wrapper .section-name__vacancy-full {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .vacancy-full-wrapper ul {
+    margin-bottom: 20px;
+  }
+
+  .vacancy-full-wrapper .address__vacancy-full {
+    margin-bottom: 32px;
+  }
+
+  .vacancy-full-wrapper .description__vacancy-full {
+    margin-bottom: 40px;
+  }
+
+  /* COMPANY CARD */
+
+  .company-card__vacancy {
+    padding: 12px;
+  }
+
+  .first-col__company-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* hierarchy */
+
+  .vacancy-full-wrapper {
+    margin-top: 20px;
+    margin-bottom: 64px;
+  }
+
+  .vacancy-full-wrapper .vacancy-full {
+    margin-top: 24px;
+    padding-top: 12px;
+  }
+
+  .vacancy-full-wrapper .header__vacancy-full {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .vacancy-full-wrapper .content__vacancy-full {
+    padding: 0 12px;
+  }
+
+  .vacancy-full-wrapper .info__vacancy-full {
+    padding: 0 12px;
+    margin-top: 32px;
+  }
+
+  .vacancy-full-wrapper .footer__vacancy-full {
+    padding: 12px;
+  }
+
+  .vacancy-full-wrapper .actions-group__vacancy-full {
+    gap: 12px;
+  }
+}

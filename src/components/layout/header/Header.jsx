@@ -20,7 +20,7 @@ function Header() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.pathname === "/vacancy") {
+    if (location.pathname === "/vacancy" || location.pathname === "/full") {
       setIsUser(true);
     } else {
       setIsUser(false);
@@ -99,7 +99,9 @@ function Header() {
               </button>
             </div>
           )}
-          <div className={`header__actions ${isUser && "header__actions--auto"}`}>
+          <div
+            className={`header__actions ${isUser && "header__actions--auto"}`}
+          >
             {isUser ? (
               <>
                 <Space
