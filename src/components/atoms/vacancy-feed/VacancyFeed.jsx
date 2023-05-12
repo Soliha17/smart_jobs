@@ -6,8 +6,6 @@ import { DownOutlined } from "@ant-design/icons";
 
 import LeftLayoutIcon from "../../../assets/images/left-layout-btn.svg";
 import RightLayoutIcon from "../../../assets/images/right-layout-btn.svg";
-import FilterIcon from "../../../assets/images/filter-icon.svg";
-import ClearIcon from "../../../assets/images/clear-icon.svg";
 
 const VacancyFeed = ({ state, setState }) => {
   const selectButton = (btn) => {
