@@ -1,3 +1,4 @@
+import CompaniesFull from "../pages/companies-full/CompaniesFull";
 import Companies from "../pages/companies/Companies";
 import Home from "../pages/home/Home";
 import Vacancies from "../pages/vacancies/Vacancies";
@@ -27,5 +28,11 @@ export const routesDatas = [
     title: "Companies Page",
     path: "/companies",
     element: Companies,
+  },
+  {
+    id: 5,
+    title: "Companies Full Page",
+    path: "/companiesFull",
+    element: CompaniesFull,
   },
 ];

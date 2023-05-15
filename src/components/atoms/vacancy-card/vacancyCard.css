@@ -94,6 +94,12 @@
   text-decoration: none;
 }
 
+.footer__vacancy-card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (max-width: 900px) {
   .vacancy-card {
     width: 100% !important;
@@ -111,7 +117,7 @@
   .vacancy-card{
     padding: 16px;
   }
-  
+
   .title__vacancy-card {
     font-size: 22px;
   }

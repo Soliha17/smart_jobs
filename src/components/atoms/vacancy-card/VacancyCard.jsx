@@ -4,6 +4,7 @@ import "./vacancyCard.css";
 
 import ThreeDots from "../../../assets/images/three-dots.svg";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
 
 const VacancyCard = ({
   className,
@@ -13,6 +14,7 @@ const VacancyCard = ({
   company,
   jobType,
   jobTime,
+  button,
 }) => {
   const [dots, setDots] = useState(false);
 
@@ -71,7 +73,20 @@ const VacancyCard = ({
       <p className="text__vacancy-card" style={{ whiteSpace: "pre-line" }}>
         {text}
       </p>
-      <p className="date__vacancy-card">E’lon qilingan sana: {date}</p>
+      {button ? (
+        <span className="footer__vacancy-card">
+          <p className="date__vacancy-card">{date}</p>
+          <Button
+            type="primary"
+            size="large"
+            style={{ backgroundColor: "var(--primary-100)" }}
+          >
+            {button}
+          </Button>
+        </span>
+      ) : (
+        <p className="date__vacancy-card">E’lon qilingan sana: {date}</p>
+      )}
     </div>
   );
 };

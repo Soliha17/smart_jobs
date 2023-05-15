@@ -31,7 +31,7 @@
   display: none;
 }
 
-.right__search-result button {
+.btn__search-result {
   padding: 12px;
   display: flex;
   align-items: center;
@@ -44,6 +44,11 @@
   border: 1px solid var(--lightgray);
   border-radius: 8px;
   background: var(--white);
+  transition: all 0.3s ease-in-out !important;
+}
+
+.btn__search-result:hover img {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
 }
 
 @media (max-width: 900px) {

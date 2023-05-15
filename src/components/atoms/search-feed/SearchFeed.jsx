@@ -3,8 +3,48 @@ import React from "react";
 import "./searchFeed.css";
 
 import SortIcon from "../../../assets/images/sort-icon.svg";
+import { Button, Dropdown } from "antd";
 
 const SearchFeed = (children) => {
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          1st menu item
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          2nd menu item
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.luohanacademy.com"
+        >
+          3rd menu item
+        </a>
+      ),
+    },
+  ];
+
   return (
     <div className="search-result">
       <div className="left__search-result">
@@ -15,10 +55,18 @@ const SearchFeed = (children) => {
         </p>
       </div>
       <div className="right__search-result" style={children.style}>
-        <button>
-          <img src={SortIcon} alt="sort icon" />
-          Saralash
-        </button>
+        <Dropdown
+          menu={{
+            items,
+          }}
+          placement="bottom"
+          arrow
+        >
+          <Button size="large" className="btn__search-result">
+            <img src={SortIcon} alt="sort icon" />
+            Saralash
+          </Button>
+        </Dropdown>
       </div>
     </div>
   );

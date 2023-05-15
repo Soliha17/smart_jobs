@@ -10,6 +10,7 @@ import { Col, Row } from "antd";
 import Footer from "../../components/layout/footer/Footer";
 
 import PaginationCompany from "../../components/molecules/pagination/Pagination";
+import { Link } from "react-router-dom";
 
 const Companies = () => {
   return (
@@ -23,11 +24,13 @@ const Companies = () => {
         <Row gutter={[24, 24]} className="content__companies">
           {CompaniesDatas.map((item) => (
             <Col xs={24} sm={12} lg={8}>
-              <CompaniesCard
-                image={item.companyLogo}
-                company={item.companyName}
-                number={item.vacancyNumber}
-              />
+              <Link to={"/companiesFull"}>
+                <CompaniesCard
+                  image={item.companyLogo}
+                  company={item.companyName}
+                  number={item.vacancyNumber}
+                />
+              </Link>
             </Col>
           ))}
         </Row>

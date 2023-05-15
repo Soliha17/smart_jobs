@@ -6,6 +6,12 @@
   gap: 18px;
   background: var(--white);
   border-radius: 16px;
+  border: 1px solid transparent;
+  transition: all 0.3s linear;
+}
+
+.companies-card:hover {
+  border-color: var(--primary-100);
 }
 
 .companies-card img {
