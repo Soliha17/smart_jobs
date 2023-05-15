@@ -1,0 +1,40 @@
+.companies-card {
+  padding: 24px;
+  max-width: 397px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--white);
+  border-radius: 16px;
+}
+
+.companies-card img {
+  width: 64px;
+}
+
+.companies-card span {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.companies-card h6 {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  color: var(--black-75);
+}
+
+.companies-card p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--black-75);
+}
+
+@media (max-width: 576px) {
+  .companies-card {
+    max-width: none;
+    width: 100%;
+  }
+}

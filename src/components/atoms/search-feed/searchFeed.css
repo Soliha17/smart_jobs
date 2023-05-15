@@ -1,4 +1,4 @@
-.vacancy-result {
+.search-result {
   margin-bottom: 20px;
   padding: 22px 12px 22px 24px;
   width: 100%;
@@ -10,28 +10,28 @@
   border-radius: 12px;
 }
 
-.left__vacancy-result {
+.left__search-result {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.left__vacancy-result p {
+.left__search-result p {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: var(--black-100);
 }
 
-.number__vacancy-result {
+.number__search-result {
   font-weight: 600;
 }
 
-.right__vacancy-result {
+.right__search-result {
   display: none;
 }
 
-.right__vacancy-result button {
+.right__search-result button {
   padding: 12px;
   display: flex;
   align-items: center;
@@ -47,20 +47,20 @@
 }
 
 @media (max-width: 900px) {
-  .vacancy-result {
+  .search-result {
     width: 100%;
     max-width: none !important;
   }
 }
 
 @media (max-width: 834px) {
-  .right__vacancy-result {
+  .right__search-result {
     display: flex !important;
   }
 }
 
 @media (max-width: 534px) {
-  .vacancy-result {
+  .search-result {
     padding: 12px;
     height: auto;
     align-items: flex-start;
@@ -68,11 +68,11 @@
     gap: 8px;
   }
 
-  .right__vacancy-result {
+  .right__search-result {
     align-self: center;
   }
 
-  .right__vacancy-result button {
+  .right__search-result button {
     display: flex !important;
     width: 100% !important;
     flex: 1;

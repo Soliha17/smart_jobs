@@ -3,8 +3,9 @@ import React from "react";
 import "./vacancyMain.css";
 import VacancyCard from "../../atoms/vacancy-card/VacancyCard";
 import { VacancyCardDatas } from "../../../mock/vacancyCard";
-import VacancySearchFeed from "../../atoms/vacancy-search-feed/VacancySearchFeed";
+import SearchFeed from "../../atoms/search-feed/SearchFeed";
 import VacancyFullCard from "../../atoms/vacancy-full-card/VacancyFullCard";
+import SearchResultIcon from "../../../assets/images/search-result--icon.svg";
 
 const VacancyMain = ({ state, setState }) => {
   return (
@@ -16,7 +17,10 @@ const VacancyMain = ({ state, setState }) => {
         className="left__vacancy-main"
         style={state === "btn2" ? { width: "100%" } : { width: "auto" }}
       >
-        <VacancySearchFeed
+        <SearchFeed
+          icon={SearchResultIcon}
+          text={"Qidiruvlar  natijasi: "}
+          number={"205"}
           style={state === "btn2" ? { display: "flex" } : { display: "none" }}
         />
         <div

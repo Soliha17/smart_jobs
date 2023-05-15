@@ -1,7 +1,7 @@
 import React from "react";
 import SectionsHeader from "../../atoms/sections-header/SectionsHeader";
 
-import "./companies.css";
+import "./companiesSection.css";
 import { Col, Row } from "antd";
 
 import Logo1 from "../../../assets/images/logo1.png";
@@ -23,19 +23,25 @@ import Logo16 from "../../../assets/images/logo16.png";
 import Logo17 from "../../../assets/images/logo17.png";
 import Logo18 from "../../../assets/images/logo18.png";
 
-const Companies = () => {
+const CompaniesSection = () => {
   return (
-    <div className="companies">
+    <div className="companies-section">
       <SectionsHeader
         children={{
           title: "Kompaniyalar",
           text: "Ish joylari ichindan o’zinigizga mosini tanlang",
           btnText: "kompaniyalar",
+          link: "/companies",
         }}
       />
-      <div className="companies__content container">
+      <div className="content__companies-section container">
         <Row gutter={[40, 40]} justify={"space-between"}>
-          <Col xs={{ span: 12 }} sm={{ span: 5 }} lg={{ span: 4 }} justify="center">
+          <Col
+            xs={{ span: 12 }}
+            sm={{ span: 5 }}
+            lg={{ span: 4 }}
+            justify="center"
+          >
             <img src={Logo1} alt="logo of company" />
           </Col>
           <Col xs={{ span: 12 }} sm={{ span: 5 }} lg={{ span: 4 }}>
@@ -96,4 +102,4 @@ const Companies = () => {
   );
 };
 
-export default Companies;
+export default CompaniesSection;

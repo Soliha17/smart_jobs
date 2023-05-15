@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import "./sectionsHeader.css";
 
 import RightArrow from "../../../assets/images/right-blue-icon.svg";
@@ -11,10 +13,12 @@ const SectionsHeader = ({ children }) => {
         <p className="title">{children.title}</p>
         <p className="subtitle">{children.text}</p>
       </div>
-      <button className="btn__sections-header">
-        Barcha {children.btnText}
-        <img src={RightArrow} alt="RightArrow icon" />
-      </button>
+      <Link to={children.link}>
+        <button className="btn__sections-header">
+          Barcha {children.btnText}
+          <img src={RightArrow} alt="RightArrow icon" />
+        </button>
+      </Link>
     </div>
   );
 };

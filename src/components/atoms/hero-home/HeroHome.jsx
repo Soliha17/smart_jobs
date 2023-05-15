@@ -129,7 +129,7 @@ const HeroHome = () => {
         </div>
         <div
           className="footer-item__hero-home"
-          onClick={() => navigateFn("company")}
+          onClick={() => navigateFn("companies")}
         >
           <img src={CompanyIcon} alt="company icon" />
           <p>Kompaniyalar</p>

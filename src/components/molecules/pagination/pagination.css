@@ -1,0 +1,66 @@
+.pagination-company {
+  margin-top: 56px;
+  margin-bottom: 96px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-company .button-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pagination-company .button-group:first-child {
+  margin-right: 20px;
+}
+
+.pagination-company .button-group:last-child {
+  margin-left: 20px;
+}
+
+.pagination-company .button-group .prev-img {
+  transform: rotate(180deg);
+}
+
+.button-group a {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--black) !important;
+}
+
+.ant-pagination-options {
+  display: none !important;
+}
+
+.ant-pagination-disabled .button-group a {
+  color: var(--black-50) !important;
+}
+
+.ant-pagination-disabled .button-group img {
+  filter: brightness(0) saturate(100%) invert(64%) sepia(6%) saturate(63%)
+    hue-rotate(349deg) brightness(86%) contrast(81%);
+}
+
+.ant-pagination-item-active {
+  background-color: transparent !important;
+  border-color: var(--black-75) !important;
+}
+
+.ant-pagination-item-active a {
+  color: var(--black-75) !important;
+}
+
+@media (max-width: 600px) {
+  .pagination-company .button-group a {
+    display: none;
+  }
+
+  .pagination-company .button-group:first-child {
+    margin-right: 10px;
+  }
+
+  .pagination-company .button-group:last-child {
+    margin-left: 10px;
+  }
+}

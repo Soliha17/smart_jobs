@@ -3,6 +3,10 @@
   justify-content: space-between;
 }
 
+.sections-header a{
+  text-decoration: none;
+}
+
 .btn__sections-header {
   display: flex;
   align-items: center;

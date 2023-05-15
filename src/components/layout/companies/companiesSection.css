@@ -1,4 +1,4 @@
-.companies {
+.companies-section {
   margin-top: 96px;
   padding-top: 64px;
   padding-bottom: 72px;
@@ -6,24 +6,24 @@
   position: relative;
 }
 
-.companies__content {
+.content__companies-section {
   margin-top: 56px;
 }
 
 @media (max-width: 580px) {
-  .companies__content {
+  .content__companies-section {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .companies__content .ant-col-xs-12 {
+  .content__companies-section .ant-col-xs-12 {
     flex: none;
   }
 }
 
 @media (max-width: 490px) {
-  .companies__content .ant-row {
+  .content__companies-section .ant-row {
     justify-content: center;
     margin: 0 auto;
   }
