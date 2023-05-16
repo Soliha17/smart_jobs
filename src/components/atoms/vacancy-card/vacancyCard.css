@@ -64,37 +64,12 @@
   color: var(--black-75);
 }
 
-.three-dots {
-  display: inline-flex;
-  position: relative;
+.three-dots .ant-btn-default {
+  border: none;
+  padding: 0;
 }
 
-.three-dots:hover .dots-content {
-  display: block;
-}
-.three-dots .dots-content {
-  padding: 10px 20px;
-  display: none;
-  position: absolute;
-  top: 25px;
-  right: 0;
-  width: 180px;
-  overflow: auto;
-  background: var(--white);
-  border: 1px solid var(--lightgray);
-  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.12);
-}
-
-.dots-content a {
-  text-align: center;
-  display: flex;
-  gap: 5px;
-  color: var(--black);
-  padding: 5px 0;
-  text-decoration: none;
-}
-
-.footer__vacancy-card{
+.footer__vacancy-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -114,7 +89,7 @@
 }
 
 @media (max-width: 534px) {
-  .vacancy-card{
+  .vacancy-card {
     padding: 16px;
   }
 

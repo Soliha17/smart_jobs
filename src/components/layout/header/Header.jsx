@@ -51,8 +51,8 @@ function Header() {
     },
   ];
 
-  function goToVacancyPage() {
-    navigate("/vacancy");
+  function goToHomePage() {
+    navigate("/");
   }
 
   return (
@@ -60,7 +60,7 @@ function Header() {
       <div className="header-wrapper">
         <header className="header container">
           <div className="header__logo">
-            <img src={Logo} alt="Smart Jobs' Logo" onClick={goToVacancyPage} />
+            <img src={Logo} alt="Smart Jobs' Logo" onClick={goToHomePage} />
           </div>
           {isUser ? (
             <nav className="mobileHidden">

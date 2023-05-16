@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 
 import "./vacancyCard.css";
 
 import ThreeDots from "../../../assets/images/three-dots.svg";
 import { Link } from "react-router-dom";
-import { Button } from "antd";
+import { Button, Dropdown } from "antd";
 
 const VacancyCard = ({
   className,
@@ -16,23 +16,44 @@ const VacancyCard = ({
   jobTime,
   button,
 }) => {
-  const [dots, setDots] = useState(false);
-
-  function handleDots() {
-    setDots(!dots);
-  }
-
-  useEffect(() => {
-    document.addEventListener("click", handleClick);
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-  });
-
-  const handleClick = useCallback((event) => {
-    const clickedElement = event.target.closest(".three-dots");
-    if (!clickedElement) setDots(false);
-  }, []);
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          Saqlash
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Ulashish
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.luohanacademy.com"
+        >
+          Shikoyat qilish
+        </a>
+      ),
+    },
+  ];
 
   return (
     <div className={className}>
@@ -43,26 +64,18 @@ const VacancyCard = ({
             <p className="company__vacancy-card">{company}</p>
           </span>
           <span className="three-dots">
-            <span>
-              <img src={ThreeDots} onClick={handleDots} alt="dots icon" />
-            </span>
-            <span
-              className="dots-content font-style__1417"
-              style={dots ? { display: "block" } : { display: "none" }}
+            <Dropdown
+              menu={{
+                items,
+              }}
+              placement="bottomRight"
+              arrow
+              trigger={["click"]}
             >
-              <Link to="">
-                {/* <img src={copyIcon} alt="copy icon" /> */}
-                Saqlash
-              </Link>
-              <Link to="">
-                {/* <img src={copyIcon} alt="copy icon" /> */}
-                Ulashish
-              </Link>
-              <Link to="">
-                {/* <img src={spamIcon} alt="spam icon" /> */}
-                Shikoyat qilish
-              </Link>
-            </span>
+              <Button>
+                <img src={ThreeDots} alt="dots icon" />
+              </Button>
+            </Dropdown>
           </span>
         </div>
         <div className="bottom__vacancy-card">

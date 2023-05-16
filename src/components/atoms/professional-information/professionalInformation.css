@@ -1,0 +1,9 @@
+.action-group__resume {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.action-group__resume img {
+  cursor: pointer;
+}

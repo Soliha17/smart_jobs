@@ -1,0 +1,78 @@
+.labeled-input {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.labeled-input label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black-75);
+}
+
+.labeled-input > .ant-input,
+.labeled-input > div {
+  background: var(--white-50) !important;
+  border: 0.5px solid var(--primary-12) !important;
+  border-radius: 12px !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: var(--black-50) !important;
+}
+
+.labeled-input .ant-select-selector,
+.labeled-input .add--tag-input {
+  background: var(--white-50) !important;
+  border: 0.5px solid var(--primary-12) !important;
+  border-radius: 12px !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: var(--black-50) !important;
+}
+
+.labeled-input .ant-input-affix-wrapper:first-child {
+  background: var(--white-50) !important;
+  border: 0.5px solid var(--primary-12) !important;
+  border-radius: 12px !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: var(--black-50) !important;
+}
+
+.ant-input-affix-wrapper:first-child .ant-input {
+  background: var(--white-50) !important;
+}
+
+.labeled-input .ant-radio-group label {
+  width: 50%;
+  background: var(--white-50);
+  border: 0.5px solid var(--primary-12);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black-50);
+}
+
+.labeled-input .ant-radio-group {
+  border-radius: 12px;
+}
+
+.labeled-input .ant-radio-button + span {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.labeled-input .ant-radio-button-checked + span {
+  color: var(--primary-100) !important;
+}
+
+.labeled-input .ant-radio-button-wrapper-checked {
+  border-color: var(--primary-100) !important;
+}

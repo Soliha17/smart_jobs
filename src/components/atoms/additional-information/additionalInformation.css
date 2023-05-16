@@ -1,0 +1,21 @@
+.language-group {
+  width: 100%;
+  gap: 13px;
+  display: flex;
+  flex-direction: column;
+}
+
+.language-group div {
+  display: flex;
+  gap: 15px;
+}
+
+.language-group .ant-select {
+  width: 50%;
+}
+
+@media (max-width: 500px) {
+  .language-group div {
+    /* flex-direction: column; */
+  }
+}

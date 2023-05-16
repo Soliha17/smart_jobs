@@ -1,0 +1,37 @@
+.header__resume {
+  padding: 32px 48px;
+  border-bottom: 1px solid var(--light);
+}
+
+.content__resume {
+  padding: 32px 48px;
+}
+
+.header__resume h3 {
+  margin-bottom: 11px;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  color: var(--black-75);
+}
+
+.header__resume p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--black-75);
+}
+
+@media (max-width: 900px) {
+  .header__resume,
+  .content__resume {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  .header__resume,
+  .content__resume {
+    padding: 16px;
+  }
+}

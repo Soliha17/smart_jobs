@@ -1,3 +1,4 @@
+import BuildResume from "../pages/build-resume/BuildResume";
 import CompaniesFull from "../pages/companies-full/CompaniesFull";
 import Companies from "../pages/companies/Companies";
 import Home from "../pages/home/Home";
@@ -34,5 +35,11 @@ export const routesDatas = [
     title: "Companies Full Page",
     path: "/companiesFull",
     element: CompaniesFull,
+  },
+  {
+    id: 6,
+    title: "Resume Builder Page",
+    path: "/resume",
+    element: BuildResume,
   },
 ];

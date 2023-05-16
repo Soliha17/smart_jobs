@@ -1,0 +1,20 @@
+.labeled-input .ant-tag {
+  padding: 4px 4px 4px 10px;
+  border-radius: 16px;
+  border: 1px solid var(--black-75);
+  background: var(--white);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.labeled-input .ant-tag-close-icon {
+  background: #f2f3f7;
+  border-radius: 20px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+}
