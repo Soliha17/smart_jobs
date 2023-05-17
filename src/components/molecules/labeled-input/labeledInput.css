@@ -1,16 +1,53 @@
-.labeled-input {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.labeled-input label {
+.ant-form-item .ant-form-item-label > label {
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
   color: var(--black-75);
 }
 
+.ant-form .ant-input,
+.ant-form .ant-picker,
+.ant-form .ant-select {
+  background: var(--white-50) !important;
+  border: 0.5px solid var(--primary-12) !important;
+  border-radius: 12px !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: var(--black-50) !important;
+}
+
+.ant-form .ant-radio-group {
+  max-width: none;
+}
+
+.ant-form .ant-picker,
+.ant-form .ant-radio-group {
+  width: 100%;
+}
+
+.ant-form .ant-radio-button-wrapper {
+  width: 50%;
+}
+
+.ant-form .ant-radio-group {
+  text-align: center;
+  background: var(--white-50) !important;
+  border: 0.5px solid var(--primary-12) !important;
+  border-radius: 12px !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: var(--black-50) !important;
+}
+
+.ant-form .ant-radio-button-wrapper,
+.ant-form .ant-select-selector {
+  background: var(--white-50) !important;
+}
+
+/* sasasa */
+/* 
 .labeled-input > .ant-input,
 .labeled-input > div {
   background: var(--white-50) !important;
@@ -45,8 +82,8 @@
 
 .ant-input-affix-wrapper:first-child .ant-input {
   background: var(--white-50) !important;
-}
-
+} */
+/*
 .labeled-input .ant-radio-group label {
   width: 50%;
   background: var(--white-50);
@@ -75,4 +112,4 @@
 
 .labeled-input .ant-radio-button-wrapper-checked {
   border-color: var(--primary-100) !important;
-}
+} */
