@@ -187,6 +187,7 @@ const VacancyFullCard = ({ style }) => {
             onOk={handleOk}
             onCancel={handleCancel}
             footer={null}
+            className="vacancy-modal"
           >
             <div className="yandex-modal">
               <YmapsComponent />

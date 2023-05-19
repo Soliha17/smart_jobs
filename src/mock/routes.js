@@ -1,3 +1,4 @@
+import JobSeekerModal from "../components/molecules/modal/JobSeeker";
 import BuildResume from "../pages/build-resume/BuildResume";
 import CompaniesFull from "../pages/companies-full/CompaniesFull";
 import Companies from "../pages/companies/Companies";
@@ -41,5 +42,11 @@ export const routesDatas = [
     title: "Resume Builder Page",
     path: "/resume",
     element: BuildResume,
+  },
+  {
+    id: 7,
+    title: "Login page",
+    path: "/login",
+    element: JobSeekerModal,
   },
 ];

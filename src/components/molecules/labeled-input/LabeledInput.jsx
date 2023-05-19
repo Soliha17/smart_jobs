@@ -1,41 +1,26 @@
-import React, { useState } from "react";
-
-import "./labeledInput.css";
+import React from "react";
 import { Form } from "antd";
 
-const LabeledInput = ({ labelName, labelFor, input }) => {
-  const [form] = Form.useForm();
-  const [requiredMark, setRequiredMarkType] = useState("optional");
-  const onRequiredTypeChange = ({ requiredMarkValue }) => {
-    setRequiredMarkType(requiredMarkValue);
-  };
+import "./labeledInput.css";
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const validateMessages = {
-    required: `${labelName} is required!`,
-    types: {
-      email: `${labelName} is not a valid email!`,
-      number: `${labelName} is not a valid number!`,
-    },
-    number: {
-      range: `${labelName} must be between ${0} and ${10}`,
-    },
-  };
-
+const LabeledInput = ({
+  labelName,
+  labelFor,
+  input,
+  req,
+  className,
+  valuePropName,
+}) => {
   return (
     <Form.Item
       label={labelName}
       name={labelFor}
+      className={className}
+      valuePropName={valuePropName}
       rules={[
         {
-          required: true,
-          // message: "Please input your username!",
+          // required: req,
+          // message: validateMessages,
         },
       ]}
     >

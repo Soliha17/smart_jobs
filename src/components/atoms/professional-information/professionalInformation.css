@@ -1,3 +1,33 @@
+.field__resume {
+  padding: 16px;
+  height: 41px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--white-50) !important;
+  border: 0.5px solid var(--primary-12) !important;
+  border-radius: 12px !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: var(--black-50) !important;
+}
+
+.field__resume span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.field__resume span h4 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 19px;
+}
+
 .action-group__resume {
   display: flex;
   align-items: center;

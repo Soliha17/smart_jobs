@@ -1,8 +1,8 @@
-.ant-modal-content {
+.vacancy-modal .ant-modal-content {
   padding: 0 !important;
 }
 
-.ant-modal-close{
+.vacancy-modal .ant-modal-close {
   background: var(--white) !important;
   border-radius: 50% !important;
 }

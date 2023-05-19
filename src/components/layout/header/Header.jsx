@@ -10,11 +10,13 @@ import ProfileImg from "../../../assets/images/profile-img.svg";
 
 import { DownOutlined } from "@ant-design/icons";
 import VacancyInput from "../../atoms/vacancy-input/VacancyInput";
+import JobSeekerModal from "../../molecules/modal/JobSeeker";
 
 function Header() {
   const [visible, setVisible] = useState(false);
   const [selectedButton, setSelectedButton] = useState("btn1");
   const [isUser, setIsUser] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -179,7 +181,11 @@ function Header() {
                     ]}
                   />
                 </Space>
-                <Button type="primary" className="enter-btn__header">
+                <Button
+                  type="primary"
+                  className="enter-btn__header"
+                  onClick={() => setIsModalOpen(true)}
+                >
                   Kirish
                 </Button>
               </>
@@ -266,6 +272,7 @@ function Header() {
         {location.pathname === "/vacancy" && <VacancyInput />}
       </div>
       <Outlet />
+      <JobSeekerModal open={isModalOpen} setOpen={setIsModalOpen} />
     </div>
   );
 }

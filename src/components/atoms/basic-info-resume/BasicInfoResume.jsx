@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./basicInfoResume.css";
-import { Button, Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
+import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
 import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
-import BuildResume from "../../../pages/build-resume/BuildResume";
 
-const BasicInfoResume = () => {
+const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
-  const [requiredMark, setRequiredMarkType] = useState("optional");
-  const onRequiredTypeChange = ({ requiredMarkValue }) => {
-    setRequiredMarkType(requiredMarkValue);
-  };
+  // const [requiredMark, setRequiredMarkType] = useState("optional");
+  // const onRequiredTypeChange = ({ requiredMarkValue }) => {
+  //   setRequiredMarkType(requiredMarkValue);
+  // };
+
+  const next = props.next;
+  console.log(next);
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    next(1);
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -23,16 +26,16 @@ const BasicInfoResume = () => {
     console.log(date, dateString);
   };
 
-  // const validateMessages = {
-  //   required: `${labelName} is required!`,
-  //   types: {
-  //     email: `${labelName} is not a valid email!`,
-  //     number: `${labelName} is not a valid number!`,
-  //   },
-  //   number: {
-  //     range: `${labelName} must be between ${0} and ${10}`,
-  //   },
-  // };
+  const validateMessages = {
+    required: "Iltimos, ${label}ni kiriting!",
+    types: {
+      email: "${label} is not a valid email!",
+      number: "${label} is not a valid number!",
+    },
+    number: {
+      range: "${label} must be between ${0} and ${10}",
+    },
+  };
 
   return (
     <>
@@ -44,15 +47,18 @@ const BasicInfoResume = () => {
         <Form
           form={form}
           layout="vertical"
-          // validateMessages={validateMessages}
+          validateMessages={validateMessages}
           name="basic"
-          initialValues={{
-            remember: true,
-            requiredMarkValue: requiredMark,
-          }}
+          initialValues={
+            {
+              // require: true,
+              // requiredMark: true,
+              // requiredMarkValue: requiredMark,
+            }
+          }
           onFinish={onFinish}
-          onValuesChange={onRequiredTypeChange}
-          requiredMark={requiredMark}
+          // onValuesChange={onRequiredTypeChange}
+          // requiredMark={requiredMark}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
@@ -61,13 +67,15 @@ const BasicInfoResume = () => {
               <LabeledInput
                 labelName="Ism"
                 labelFor="name"
+                req={true}
                 input={<Input size="large" />}
               />
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Familiyasi"
+                labelName="Familiya"
                 labelFor="surname"
+                req={true}
                 input={<Input size="large" />}
               />
             </Col>
@@ -75,6 +83,7 @@ const BasicInfoResume = () => {
               <LabeledInput
                 labelName="Tug’ilgan sana"
                 labelFor="birthday"
+                req={true}
                 input={
                   <DatePicker onChange={onChange} size="large" picker="date" />
                 }
@@ -82,12 +91,13 @@ const BasicInfoResume = () => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Jinsi"
+                labelName="Jins"
                 labelFor="gender"
+                req={true}
                 input={
                   <Radio.Group
                     onChange={onChange}
-                    defaultValue="male"
+                    // defaultValue="male"
                     size="large"
                   >
                     <Radio.Button value="male">Erkak</Radio.Button>
@@ -100,9 +110,11 @@ const BasicInfoResume = () => {
               <LabeledInput
                 labelName="Mamlakat"
                 labelFor="country"
+                req={true}
                 input={
                   <Select
-                    defaultValue="uzbekistan"
+                    // defaultValue="uzbekistan"
+                    placeholder="Tanlang"
                     size="large"
                     onChange={onChange}
                     options={[
@@ -127,9 +139,11 @@ const BasicInfoResume = () => {
               <LabeledInput
                 labelName="Shahar"
                 labelFor="city"
+                req={true}
                 input={
                   <Select
-                    defaultValue="buxoro"
+                    // defaultValue="buxoro"
+                    placeholder="Tanlang"
                     size="large"
                     onChange={onChange}
                     options={[
@@ -156,7 +170,8 @@ const BasicInfoResume = () => {
                 labelFor="citizenship"
                 input={
                   <Select
-                    defaultValue="uzbek"
+                    // defaultValue="uzbek"
+                    placeholder="Tanlang"
                     size="large"
                     onChange={onChange}
                     options={[
@@ -188,6 +203,7 @@ const BasicInfoResume = () => {
               <LabeledInput
                 labelName="Telefon raqamingiz"
                 labelFor="number"
+                req={true}
                 input={<Input size="large" type="number" />}
               />
             </Col>
@@ -195,6 +211,7 @@ const BasicInfoResume = () => {
               <LabeledInput
                 labelName="E-mail"
                 labelFor="email"
+                req={true}
                 input={<Input size="large" type="email" />}
               />
             </Col>
@@ -205,7 +222,7 @@ const BasicInfoResume = () => {
                 input={
                   <Select
                     placeholder="Havola turini tanglang"
-                    defaultValue="link"
+                    // defaultValue="link"
                     size="large"
                     onChange={onChange}
                     options={[
@@ -230,6 +247,16 @@ const BasicInfoResume = () => {
               />
             </Col>
           </Row>
+          <div className="footer__resume">
+            <button
+              size="large"
+              className="primary-btn"
+              type="submit"
+              style={{ marginLeft: "auto" }}
+            >
+              Davom etish
+            </button>
+          </div>
         </Form>
       </div>
     </>

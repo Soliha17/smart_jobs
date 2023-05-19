@@ -25,11 +25,11 @@ const BuildResume = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
 
-  const next = () => {
-    setCurrent(current + 1);
+  const next = (stepNumber) => {
+    setCurrent(current + stepNumber);
   };
-  const prev = () => {
-    setCurrent(current - 1);
+  const prev = (stepNumber) => {
+    setCurrent(current - stepNumber);
   };
 
   const items = steps.map((item) => ({
@@ -41,8 +41,15 @@ const BuildResume = () => {
     <div className="build-resume container">
       <Steps current={current} items={items} />
       <div className="content__build-resume">
-        <div>{steps[current].content}</div>
-        <div className="footer__resume">
+        {/* <div>{steps[current].content}</div> */}
+        {current === 0 ? (
+          <BasicInfoResume props={{ next, prev }} />
+        ) : current === 1 ? (
+          <ProfessionalInformation props={{ next, prev }} />
+        ) : (
+          <AdditionalInformation props={{ next, prev }} />
+        )}
+        {/* <div className="footer__resume">
           {current > 0 && (
             <Button size="large" onClick={() => prev()}>
               Orqaga
@@ -67,7 +74,7 @@ const BuildResume = () => {
               Saqlash
             </Button>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
