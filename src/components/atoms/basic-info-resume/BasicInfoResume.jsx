@@ -13,7 +13,7 @@ const BasicInfoResume = ({ props }) => {
   // };
 
   const next = props.next;
-  console.log(next);
+  // console.log(next);
 
   const onFinish = (values) => {
     console.log("Success:", values);

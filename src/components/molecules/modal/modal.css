@@ -37,15 +37,28 @@
   justify-content: center;
 }
 
+.ant-modal-body {
+  width: 481px;
+}
+
 .body__login-modal h3 {
-  margin-bottom: 40px;
+  margin-top: 20px;
   font-weight: 600;
   font-size: 25px;
   line-height: 30px;
   color: var(--black-100);
 }
 
+.body__login-modal .info__modal {
+  margin: 15px 0 40px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
 .select-btn-group__login-modal {
+  margin-top: 40px;
   margin-bottom: 48px;
   padding: 4px;
   width: 346px;
@@ -92,6 +105,28 @@
   color: var(--black-75);
 }
 
+.code-group__modal {
+  margin-bottom: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.code-input__modal {
+  width: 59px;
+  height: 56px;
+  color: var(--black-100);
+  background: var(--white-50);
+  border: 0.5px solid var(--black-50);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  outline: none;
+}
+
 @media (max-width: 900px) {
   .login-modal.ant-modal {
     width: 90% !important;
@@ -111,6 +146,10 @@
 
   .login-modal .ant-modal-body {
     padding: 20px;
+  }
+
+  .login-modal .ant-modal-body {
+    max-width: 400px;
   }
 
   .select-btn-group__login-modal {
@@ -133,6 +172,12 @@
   .text__login-modal p {
     font-size: 14px;
     line-height: 17px;
+  }
+}
+
+@media (max-width: 400px) {
+  .login-modal .ant-modal-body {
+    max-width: 350px;
   }
 }
 

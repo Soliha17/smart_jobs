@@ -18,8 +18,14 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import AddCircle from "../../../assets/images/add-circle.svg";
 import JobInsideDrawer from "./JobInsideDrawer";
-
-const JobDrawer = ({ open, setOpen, values, setValues }) => {
+import { v4 as uuidv4 } from "uuid";
+const JobDrawer = ({
+  open,
+  setOpen,
+  jobValues,
+  setJobValues,
+  getJobFunction,
+}) => {
   const [form] = Form.useForm();
 
   const [childrenDrawer, setChildrenDrawer] = useState(false);
@@ -40,19 +46,32 @@ const JobDrawer = ({ open, setOpen, values, setValues }) => {
     setChildrenDrawer(false);
   };
 
+  let isJobEditValues = JSON.parse(localStorage.getItem("isJobEdit"));
   useEffect(() => {
-    let jobDrawerValues = JSON.parse(localStorage.getItem("jobDrawerValues"));
-
-    if (jobDrawerValues !== null) {
-      setValues(jobDrawerValues);
+    if (isJobEditValues !== null) {
+      form.setFieldsValue(isJobEditValues);
     }
-  }, []);
+  }, [open, form]);
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const onFinish = (data) => {
+    console.log("Success:", data);
     setOpen(false);
-    setValues(values);
-    localStorage.setItem("jobDrawerValues", JSON.stringify(values));
+    getJobFunction();
+    if (isJobEditValues != null) {
+      const index = jobValues.findIndex(
+        (item) => item.id === isJobEditValues.id
+      );
+      if (index !== -1) {
+        jobValues[index] = data;
+        setJobValues([...jobValues]);
+        localStorage.removeItem("isJobEdit");
+      }
+    } else {
+      jobValues.push({ ...data, id: uuidv4() });
+      setJobValues([...jobValues]);
+    }
+    localStorage.setItem("jobDrawerValues", JSON.stringify(jobValues));
+    form.resetFields();
   };
 
   const onFinishFailed = (errorInfo) => {

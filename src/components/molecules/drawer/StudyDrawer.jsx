@@ -1,20 +1,56 @@
 import { Checkbox, Col, Drawer, Form, Input, Row, Select, Space } from "antd";
 
+import { v4 as uuidv4 } from "uuid";
+
 import CloseIcon from "../../../assets/images/Exit.svg";
 
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
+import { useEffect } from "react";
 
-const StudyDrawer = ({ open, setOpen }) => {
+const StudyDrawer = ({
+  open,
+  setOpen,
+  studyValues,
+  setStudyValues,
+  getStudyFunction,
+}) => {
   const [form] = Form.useForm();
 
   const onClose = () => {
     setOpen(false);
   };
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  let isStudyEditValues = JSON.parse(localStorage.getItem("isStudyEdit"));
+
+  useEffect(() => {
+    if (isStudyEditValues !== null) {
+      form.setFieldsValue(isStudyEditValues);
+    }
+  }, [open]);
+
+  const onFinish = (data) => {
+    console.log("Success:", data);
     setOpen(false);
+
+    getStudyFunction();
+    if (isStudyEditValues !== null) {
+      const index = studyValues.findIndex(
+        (item) => item.id === isStudyEditValues.id
+      );
+
+      if (index !== -1) {
+        studyValues[index] = data;
+        setStudyValues([...studyValues]);
+        localStorage.removeItem("isStudyEdit");
+      }
+    } else {
+      studyValues.push({ ...data, id: uuidv4() });
+      setStudyValues([...studyValues]);
+    }
+
+    localStorage.setItem("studyDrawerValues", JSON.stringify(studyValues));
+    form.resetFields();
 
     // next(2);
   };
@@ -112,12 +148,12 @@ const StudyDrawer = ({ open, setOpen }) => {
               </Col>
 
               <Col xs={24} sm={12}>
-                <LabeledInput
-                  labelName="Boshlash vaqti"
-                  labelFor="studyBegin"
-                  input={
-                    <Row gutter={[12, 5]}>
-                      <Col xs={12}>
+                <Row gutter={[12, 5]}>
+                  <Col xs={12}>
+                    <LabeledInput
+                      labelName="Boshlash vaqti"
+                      labelFor="beginsMonthOfStudy"
+                      input={
                         <Select
                           // defaultValue="oy"
                           placeholder="Oy"
@@ -146,10 +182,16 @@ const StudyDrawer = ({ open, setOpen }) => {
                             },
                           ]}
                         />
-                      </Col>
-                      <Col xs={12}>
+                      }
+                    />
+                  </Col>
+                  <Col xs={12}>
+                    <LabeledInput
+                      labelName="&nbsp;"
+                      labelFor="beginsYearOfStudy"
+                      input={
                         <Select
-                          // defaultValue="uzbek"
+                          // defaultValue="oy"
                           placeholder="Yil"
                           size="large"
                           // onChange={onChange}
@@ -172,19 +214,19 @@ const StudyDrawer = ({ open, setOpen }) => {
                             },
                           ]}
                         />
-                      </Col>
-                    </Row>
-                  }
-                />
+                      }
+                    />
+                  </Col>
+                </Row>
               </Col>
 
               <Col xs={24} sm={12}>
-                <LabeledInput
-                  labelName="Tugash vaqti"
-                  labelFor="studyFinish"
-                  input={
-                    <Row gutter={[12, 12]}>
-                      <Col xs={12}>
+                <Row gutter={[12, 5]}>
+                  <Col xs={12}>
+                    <LabeledInput
+                      labelName="Tugash vaqti"
+                      labelFor="finishMonthOfStudy"
+                      input={
                         <Select
                           // defaultValue="oy"
                           placeholder="Oy"
@@ -213,10 +255,16 @@ const StudyDrawer = ({ open, setOpen }) => {
                             },
                           ]}
                         />
-                      </Col>
-                      <Col xs={12}>
+                      }
+                    />
+                  </Col>
+                  <Col xs={12}>
+                    <LabeledInput
+                      labelName="&nbsp;"
+                      labelFor="finishYearOfStudy"
+                      input={
                         <Select
-                          // defaultValue="uzbek"
+                          // defaultValue="oy"
                           placeholder="Yil"
                           size="large"
                           // onChange={onChange}
@@ -239,13 +287,13 @@ const StudyDrawer = ({ open, setOpen }) => {
                             },
                           ]}
                         />
-                      </Col>
-                      <Col xs={24}>
-                        <Checkbox checked={true}>Hozirgacha</Checkbox>
-                      </Col>
-                    </Row>
-                  }
-                />
+                      }
+                    />
+                  </Col>
+                  <Col xs={24}>
+                    <Checkbox checked={true}>Hozirgacha</Checkbox>
+                  </Col>
+                </Row>
               </Col>
             </Row>
             <button

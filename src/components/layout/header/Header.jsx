@@ -11,6 +11,9 @@ import ProfileImg from "../../../assets/images/profile-img.svg";
 import { DownOutlined } from "@ant-design/icons";
 import VacancyInput from "../../atoms/vacancy-input/VacancyInput";
 import JobSeekerModal from "../../molecules/modal/JobSeeker";
+import Login from "../../molecules/modal/Login";
+import SignUp from "../../molecules/modal/SignUp";
+import InfoFills from "../../molecules/modal/FillInfos";
 
 function Header() {
   const [visible, setVisible] = useState(false);
@@ -272,7 +275,10 @@ function Header() {
         {location.pathname === "/vacancy" && <VacancyInput />}
       </div>
       <Outlet />
-      <JobSeekerModal open={isModalOpen} setOpen={setIsModalOpen} />
+      {/* <JobSeekerModal open={isModalOpen} setOpen={setIsModalOpen} /> */}
+      {/* <Login open={isModalOpen} setOpen={setIsModalOpen} /> */}
+      {/* <SignUp open={isModalOpen} setOpen={setIsModalOpen} /> */}
+      <InfoFills open={isModalOpen} setOpen={setIsModalOpen} />
     </div>
   );
 }

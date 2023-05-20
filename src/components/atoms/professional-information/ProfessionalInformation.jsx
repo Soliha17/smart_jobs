@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button, Col, Form, Input, Row, Select } from "antd";
 import "./professionalInformation.css";
@@ -17,19 +17,42 @@ const ProfessionalInformation = ({ props }) => {
 
   const [openJobDrawer, setOpenJobDrawer] = useState(false);
   const [openStudyDrawer, setOpenStudyDrawer] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [values, setValues] = useState([]);
+
+  const [jobValues, setJobValues] = useState([]);
+  const [studyValues, setStudyValues] = useState([]);
+
+  // const [studyValues, setStudyValues] = useState([]);
+  // const [isEdit, setIsEdit] = useState(null);
 
   // const [requiredMark, setRequiredMarkType] = useState("optional");
   // const onRequiredTypeChange = ({ requiredMarkValue }) => {
   //   setRequiredMarkType(requiredMarkValue);
   // };
 
+  useEffect(() => {
+    getJobFromLocalStorage();
+    getStudyFromLocalStorage();
+  }, []);
+
+  function getJobFromLocalStorage() {
+    let jobDrawerValues = JSON.parse(localStorage.getItem("jobDrawerValues"));
+    if (jobDrawerValues !== null) {
+      setJobValues(jobDrawerValues);
+    }
+  }
+
+  function getStudyFromLocalStorage() {
+    let studyDrawerValues = JSON.parse(
+      localStorage.getItem("studyDrawerValues")
+    );
+    if (studyDrawerValues !== null) {
+      setStudyValues(studyDrawerValues);
+    }
+  }
+
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
-
-  console.log(values);
 
   const next = props.next;
   const prev = props.prev;
@@ -41,15 +64,6 @@ const ProfessionalInformation = ({ props }) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
-  function handleEdit() {
-    setOpenJobDrawer(true);
-    let jobDrawerValues = JSON.parse(localStorage.getItem("jobDrawerValues"));
-
-    if (jobDrawerValues !== null) {
-      setValues(jobDrawerValues);
-    }
-  }
 
   const validateMessages = {
     required: "Iltimos, ${label}ni kiriting!",
@@ -72,7 +86,7 @@ const ProfessionalInformation = ({ props }) => {
         <Form
           form={form}
           layout="vertical"
-          initialValues={{ experience: values.workedCompany }}
+          initialValues={{ experience: jobValues.workedCompany }}
           validateMessages={validateMessages}
           name="basic"
           onFinish={onFinish}
@@ -94,30 +108,47 @@ const ProfessionalInformation = ({ props }) => {
               <LabeledInput
                 labelName="Ish tajribangiz"
                 labelFor="experience"
-                className={!isVisible ? "d-none" : ""}
                 // req="true"
-                input={
-                  <div className="field__resume">
+                input={jobValues?.map((item) => (
+                  <div key={item?.id} className="field__resume">
                     <span>
-                      <h4>{values.workedLevel}</h4>
-                      <p>{values.workedCompany}</p>
+                      <h4>{item?.workedLevel}</h4>•<p>{item?.workedCompany}</p>•
                       <p>
-                        {values.beginsMonthOfJob} {values.beginsYearOfJob}
+                        {item?.beginsMonthOfJob} {item?.beginsYearOfJob}
                       </p>
-                      <p>- {values.finishOfJob}</p>
-                      <p>{values.workedType}</p>
-                      <p>{values.format}</p>
+                      <p>- {item?.finishOfJob}</p>•<p>{item?.workedType}</p>•
+                      <p>{item?.format}</p>
                     </span>
                     <span className="action-group__resume">
-                      <img src={Edit} alt="Edit icon" onClick={handleEdit} />
+                      <img
+                        src={Edit}
+                        alt="Edit icon"
+                        onClick={() => {
+                          localStorage.setItem(
+                            "isJobEdit",
+                            JSON.stringify(item)
+                          );
+                          setOpenJobDrawer(true);
+                        }}
+                      />
                       <img
                         src={Trash}
-                        onClick={() => setIsVisible(false)}
+                        onClick={() => {
+                          let newArray = jobValues.filter(
+                            (del) => del.id !== item.id
+                          );
+                          setJobValues(newArray);
+                          localStorage.setItem(
+                            "jobDrawerValues",
+                            JSON.stringify(newArray)
+                          );
+                          getJobFromLocalStorage();
+                        }}
                         alt="Trash icon"
                       />
                     </span>
                   </div>
-                }
+                ))}
               />
               <Row>
                 <Col xs={24} sm={24}>
@@ -205,18 +236,47 @@ const ProfessionalInformation = ({ props }) => {
               <LabeledInput
                 labelName="Ta'lim muassasasini kiriting"
                 labelFor="education"
-                input={
-                  <Input
-                    size="large"
-                    value="Kompyuter injiniring • TUIT • Bakalavr darajasi • 2019-2023"
-                    suffix={
-                      <span className="action-group__resume">
-                        <img src={Edit} alt="Edit icon" />
-                        <img src={Trash} alt="Trash icon" />
-                      </span>
-                    }
-                  />
-                }
+                input={studyValues?.map((item) => (
+                  <div key={item?.id} className="field__resume">
+                    <span>
+                      <h4>{item?.facultyName}</h4>•<p>{item?.studySchool}</p>•
+                      <p>{item?.studyLevel}</p>•
+                      <p>
+                        {item?.beginsMonthOfStudy} {item?.beginsYearOfStudy}
+                      </p>
+                      <p>- {item?.finishMonthOfStudy}</p>
+                      <p>{item?.finishYearOfStudy}</p>
+                    </span>
+                    <span className="action-group__resume">
+                      <img
+                        src={Edit}
+                        alt="Edit icon"
+                        onClick={() => {
+                          localStorage.setItem(
+                            "isStudyEdit",
+                            JSON.stringify(item)
+                          );
+                          setOpenStudyDrawer(true);
+                        }}
+                      />
+                      <img
+                        src={Trash}
+                        onClick={() => {
+                          let newArray = studyValues.filter(
+                            (del) => del.id !== item.id
+                          );
+                          setStudyValues(newArray);
+                          localStorage.setItem(
+                            "studyDrawerValues",
+                            JSON.stringify(newArray)
+                          );
+                          getStudyFromLocalStorage();
+                        }}
+                        alt="Trash icon"
+                      />
+                    </span>
+                  </div>
+                ))}
               />
               <Row>
                 <Col xs={24} sm={24}>
@@ -246,7 +306,7 @@ const ProfessionalInformation = ({ props }) => {
 
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Ko’nikmalaringiz"
+                labelName="Ko'nikmalaringiz"
                 labelFor="skills"
                 input={
                   <span
@@ -281,11 +341,20 @@ const ProfessionalInformation = ({ props }) => {
         <JobDrawer
           open={openJobDrawer}
           setOpen={setOpenJobDrawer}
-          values={values}
-          setValues={setValues}
+          jobValues={jobValues}
+          setJobValues={setJobValues}
+          getJobFunction={getJobFromLocalStorage}
         />
       }
-      {<StudyDrawer open={openStudyDrawer} setOpen={setOpenStudyDrawer} />}
+      {
+        <StudyDrawer
+          open={openStudyDrawer}
+          setOpen={setOpenStudyDrawer}
+          studyValues={studyValues}
+          setStudyValues={setStudyValues}
+          getStudyFunction={getStudyFromLocalStorage}
+        />
+      }
     </>
   );
 };

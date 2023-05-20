@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Checkbox, Col, Form, Input, Row, Select } from "antd";
 import LabeledInput from "../labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import AddCircle from "../../../assets/images/add-circle.svg";
-import ExtraExperience from "./ExtraExperience";
 
-const JobInsideDrawer = ({ open, setOpen }) => {
+const ExtraExtraExperience = ({ open, setOpen }) => {
   const [form] = Form.useForm();
-
-  const [extraExperience, setExtraExperience] = useState(false);
 
   const onChildrenDriwerFinish = (values) => {
     console.log("Success:", values);
@@ -37,19 +34,16 @@ const JobInsideDrawer = ({ open, setOpen }) => {
         onFinishFailed={onChildrenDriwerFinishFailed}
         autoComplete="off"
       >
-        <Row gutter={[24, 0]}>
+        <Row gutter={[24, 0]} style={{marginTop:"40px"}}>
           <Col xs={24} sm={24}>
-            <LabeledInput
-              labelName="Qaysi kompaniyada ishlagansiz?"
-              labelFor="nameOfCompanyWorked"
-              req={true}
-              input={<Input size="large" />}
-            />
+            <h3 className="title__job-drawer">
+              Kompaniyada qo’shimcha tajriba
+            </h3>
           </Col>
           <Col xs={24} sm={24}>
             <LabeledInput
               labelName="Qaysi lavozimda ishlagansiz?"
-              labelFor="positionOfWorked"
+              labelFor="positionOfThatCompany"
               req={true}
               input={<Input size="large" />}
             />
@@ -57,7 +51,7 @@ const JobInsideDrawer = ({ open, setOpen }) => {
           <Col xs={24} sm={24}>
             <LabeledInput
               labelName="Bandlik Turi"
-              labelFor="busyType"
+              labelFor="busyTypeOfThatCompany"
               req={true}
               input={
                 <Select
@@ -82,7 +76,7 @@ const JobInsideDrawer = ({ open, setOpen }) => {
           <Col xs={24} sm={24}>
             <LabeledInput
               labelName="Joylashuv"
-              labelFor="locationOfWorkedCompany"
+              labelFor="locationOfThatCompany"
               req={true}
               input={
                 <Select
@@ -111,7 +105,7 @@ const JobInsideDrawer = ({ open, setOpen }) => {
           <Col xs={24} sm={24}>
             <LabeledInput
               labelName="Format"
-              labelFor="formatOfWorkedCompany"
+              labelFor="formatOfThatCompany"
               req={true}
               input={
                 <Select
@@ -136,14 +130,14 @@ const JobInsideDrawer = ({ open, setOpen }) => {
           <Col xs={24} sm={24}>
             <LabeledInput
               labelName="Ishdagi yutuqlaringiz haqida yozing"
-              labelFor="aboutAwardsOfWorkedCompany"
+              labelFor="aboutAwardsOfThatCompany"
               input={<TextArea rows={4} />}
             />
           </Col>
           <Col xs={24} sm={12}>
             <LabeledInput
               labelName="Boshlash vaqti"
-              labelFor="beginsOfWorkedCompany"
+              labelFor="beginsOfThatCompany"
               input={
                 <Row gutter={[12, 5]}>
                   <Col xs={12}>
@@ -209,20 +203,30 @@ const JobInsideDrawer = ({ open, setOpen }) => {
           <Col xs={24} sm={12}>
             <LabeledInput
               labelName="Tugash vaqti"
-              labelFor="finishOfWorkedCompany"
+              labelFor="finishOfThatCompany"
               input={<Checkbox checked={true}>Hozirgacha</Checkbox>}
             />
           </Col>
+          <Col xs={24} sm={24}>
+            <Button
+              block
+              size="large"
+              icon={<img src={AddCircle} alt="" />}
+              // onClick={showChildrenDrawer}
+              style={{
+                textAlign: "left",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
+              Qo'shish
+            </Button>
+          </Col>
         </Row>
-        <ExtraExperience open={extraExperience} setOpen={setExtraExperience} />
-        <div className="footer__resume" style={{ marginTop: "30px" }}>
-          <button size="large" className="primary-btn" type="submit">
-            Saqlash
-          </button>
-        </div>
       </Form>
     </>
   );
 };
 
-export default JobInsideDrawer;
+export default ExtraExtraExperience;

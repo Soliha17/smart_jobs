@@ -5,9 +5,11 @@ import CloseIcon from "../../../assets/images/Exit.svg";
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
+import { useState } from "react";
 
 const AcademicResultDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
+  const [files, setFiles] = useState([]);
 
   const onClose = () => {
     setOpen(false);
@@ -22,6 +24,37 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+  };
+
+  // const handleUpload = (event) => {
+  //   // console.log("result",event.fileList[0].type);
+  //   const file = event.fileList[0];
+  //   if (file.type === "application/zip" || file.type === "application/pdf") {
+  //     setFiles([file]);
+  //   }
+
+  //   console.log(files);
+  // };
+
+  const acceptedFileTypes =
+    "application/zip, application/x-rar-compressed, application/pdf, image/jpeg";
+
+  const normFile = (e) => {
+    console.log("Upload event:", e);
+    if (!e || !e.fileList) {
+      return [];
+    }
+    if (Array.isArray(e.fileList)) {
+      return e.fileList;
+    }
+    return [e.fileList];
+  };
+
+  const handleUpload = (file) => {
+    if (file.type === "application/zip" || file.type === "application/pdf") {
+      setFiles([file]);
+    }
+    console.log(files);
   };
 
   const validateMessages = {
@@ -98,9 +131,17 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
                 <LabeledInput
                   labelName="Tasdiqlovchi hujjat"
                   labelFor="document"
-                  req={true}
+                  // req={true}
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
                   input={
-                    <Upload name="logo" action="/upload.do" listType="picture">
+                    <Upload
+                      name="logo"
+                      action="/upload.do"
+                      listType="picture"
+                      accept="application/zip, application/x-rar-compressed, application/pdf, image/jpeg"
+                      onChange={handleUpload}
+                    >
                       <Button
                         icon={<img src={UploadIcon} alt="" />}
                         size="large"
