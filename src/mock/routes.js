@@ -1,11 +1,14 @@
 import JobSeekerModal from "../components/molecules/modal/JobSeeker";
 import Login from "../components/molecules/modal/Login";
 import BuildResume from "../pages/build-resume/BuildResume";
+import Blog from "../pages/blog/Blog";
 import CompaniesFull from "../pages/companies-full/CompaniesFull";
 import Companies from "../pages/companies/Companies";
 import Home from "../pages/home/Home";
+import Profile from "../pages/profile/Profile";
 import Vacancies from "../pages/vacancies/Vacancies";
 import VacancyFull from "../pages/vacancy-full/VacancyFull";
+import BlogFull from "../pages/blog-full/BlogFull";
 
 export const routesDatas = [
   {
@@ -43,5 +46,23 @@ export const routesDatas = [
     title: "Resume Builder Page",
     path: "/resume",
     element: BuildResume,
+  },
+  {
+    id: 7,
+    title: "Profile Page",
+    path: "/profile",
+    element: Profile,
+  },
+  {
+    id: 8,
+    title: "Blog Page",
+    path: "/blog",
+    element: Blog,
+  },
+  {
+    id: 9,
+    title: "Blog Full Page",
+    path: "/blogFull",
+    element: BlogFull,
   },
 ];

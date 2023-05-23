@@ -37,7 +37,7 @@ const ExtraExtraExperience = ({ open, setOpen }) => {
         <Row gutter={[24, 0]} style={{marginTop:"40px"}}>
           <Col xs={24} sm={24}>
             <h3 className="title__job-drawer">
-              Kompaniyada qo’shimcha tajriba
+              Kompaniyada qo'shimcha tajriba
             </h3>
           </Col>
           <Col xs={24} sm={24}>

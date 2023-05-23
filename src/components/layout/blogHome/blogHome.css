@@ -1,21 +1,21 @@
-.blog {
+.home-blog {
   position: relative;
   margin-top: 96px;
   padding-bottom: 128px;
 }
 
-.content__blog {
+.content__home-blog {
   margin-top: 72px;
 }
 
 @media (max-width: 834px) {
-  .blog {
+  .home-blog {
     margin-top: 76px;
   }
 }
 
 @media (max-width: 500px) {
-  .blog {
+  .home-blog {
     margin-top: 55px;
   }
 }

@@ -214,7 +214,30 @@ const JobInsideDrawer = ({ open, setOpen }) => {
             />
           </Col>
         </Row>
-        <ExtraExperience open={extraExperience} setOpen={setExtraExperience} />
+        <Col xs={24} sm={24}>
+          <Button
+            block
+            size="large"
+            icon={<img src={AddCircle} alt="" />}
+            onClick={() => setExtraExperience(!extraExperience)}
+            style={{
+              textAlign: "left",
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+            }}
+          >
+            Qo'shish
+          </Button>
+        </Col>
+        {extraExperience ? (
+          <ExtraExperience
+            open={extraExperience}
+            setOpen={setExtraExperience}
+          />
+        ) : (
+          ""
+        )}
         <div className="footer__resume" style={{ marginTop: "30px" }}>
           <button size="large" className="primary-btn" type="submit">
             Saqlash

@@ -18,6 +18,10 @@ const LabeledInput = ({
     },
   ];
 
+  // if (labelFor === "workedDate") {
+  //   rules.push({ type: "object" });
+  // }
+
   if (labelFor === "agreementOfInfo") {
     rules.push({
       // add your new rule here

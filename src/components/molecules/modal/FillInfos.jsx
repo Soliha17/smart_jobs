@@ -83,7 +83,7 @@ const InfoFills = ({ open, setOpen }) => {
                   <LabeledInput
                     labelName="Ismingizni kiriting*"
                     labelFor="nameOfInfo"
-                    // req={true}
+                    req={true}
                     input={<Input size="large" placeholder="Nodir" />}
                   />
                 </Col>
@@ -91,7 +91,7 @@ const InfoFills = ({ open, setOpen }) => {
                   <LabeledInput
                     labelName="Familiyaningizni kiriting*"
                     labelFor="surnameOfInfo"
-                    // req={true}
+                    req={true}
                     input={<Input size="large" placeholder="Karimov" />}
                   />
                 </Col>

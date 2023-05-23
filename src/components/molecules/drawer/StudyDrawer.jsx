@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Checkbox, Col, Drawer, Form, Input, Row, Select, Space } from "antd";
 
 import { v4 as uuidv4 } from "uuid";
@@ -6,7 +7,6 @@ import CloseIcon from "../../../assets/images/Exit.svg";
 
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
-import { useEffect } from "react";
 
 const StudyDrawer = ({
   open,
@@ -16,10 +16,7 @@ const StudyDrawer = ({
   getStudyFunction,
 }) => {
   const [form] = Form.useForm();
-
-  const onClose = () => {
-    setOpen(false);
-  };
+  const [isChecked, setIsChecked] = useState(true);
 
   let isStudyEditValues = JSON.parse(localStorage.getItem("isStudyEdit"));
 
@@ -29,11 +26,25 @@ const StudyDrawer = ({
     }
   }, [open]);
 
+  function onChange(event) {
+    setIsChecked(event.target.checked);
+  }
+
+  const onClose = () => {
+    if (isStudyEditValues !== null) {
+      localStorage.removeItem("isStudyEdit");
+      form.resetFields();
+    }
+
+    setOpen(false);
+  };
+
   const onFinish = (data) => {
     console.log("Success:", data);
     setOpen(false);
 
     getStudyFunction();
+    
     if (isStudyEditValues !== null) {
       const index = studyValues.findIndex(
         (item) => item.id === isStudyEditValues.id
@@ -73,7 +84,7 @@ const StudyDrawer = ({
   return (
     <>
       <Drawer
-        title="Ta’lim muassasasi"
+        title="Ta'lim muassasasi"
         size="large"
         closable={false}
         onClose={onClose}
@@ -231,6 +242,7 @@ const StudyDrawer = ({
                           // defaultValue="oy"
                           placeholder="Oy"
                           size="large"
+                          disabled={isChecked}
                           // onChange={onChange}
                           options={[
                             {
@@ -267,6 +279,7 @@ const StudyDrawer = ({
                           // defaultValue="oy"
                           placeholder="Yil"
                           size="large"
+                          disabled={isChecked}
                           // onChange={onChange}
                           options={[
                             {
@@ -291,7 +304,16 @@ const StudyDrawer = ({
                     />
                   </Col>
                   <Col xs={24}>
-                    <Checkbox checked={true}>Hozirgacha</Checkbox>
+                    <LabeledInput
+                      // labelName="&nbsp;"
+                      valuePropName="checked"
+                      labelFor="studyingUntilNow"
+                      input={
+                        <Checkbox checked={isChecked} onChange={onChange}>
+                          Hozirgacha
+                        </Checkbox>
+                      }
+                    />
                   </Col>
                 </Row>
               </Col>

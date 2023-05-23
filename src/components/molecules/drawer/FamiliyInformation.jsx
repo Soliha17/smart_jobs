@@ -1,5 +1,5 @@
 import { Button, Col, Drawer, Form, Input, Row, Select, Space } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import CloseIcon from "../../../assets/images/Exit.svg";
 
@@ -14,6 +14,8 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
 
   const [childrenDrawer, setChildrenDrawer] = useState(false);
+
+  const [familyValues, setFamilyValues] = useState([]);
 
   // const showDrawer = () => {
   //   setOpen(true);
@@ -53,6 +55,20 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
   // const onChildrenDriwerFinishFailed = (errorInfo) => {
   //   console.log("Failed:", errorInfo);
   // };
+
+  useEffect(() => {
+    getFamilyFromLocalStorage();
+  }, []);
+
+  function getFamilyFromLocalStorage() {
+    let familyDrawerValues = JSON.parse(
+      localStorage.getItem("familyDrawerValues")
+    );
+
+    if (familyDrawerValues !== null) {
+      setFamilyValues(familyDrawerValues);
+    }
+  }
 
   return (
     <>
@@ -138,44 +154,80 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Oila a’zosi haqida ma’lumot qo’shish"
+                  labelName="Oila a'zosi haqida ma'lumot qo'shish"
                   labelFor="extraInfoAboutFamilier"
-                  req={true}
-                  input={
-                    <span
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "12px",
-                      }}
-                    >
-                      <Input
-                        size="large"
-                        value="Otasi • Karimov Nodirjon Hotamovich • O’zbekiston • 12.08.1886 • O’zbekiston, Toshkent • Soliq • Inspektor"
-                        suffix={
-                          <span className="action-group__resume">
-                            <img src={Edit} alt="Edit icon" />
-                            <img src={Trash} alt="Trash icon" />
-                          </span>
-                        }
-                      />
-                      <Button
-                        block
-                        size="large"
-                        onClick={showChildrenDrawer}
-                        icon={<img src={AddCircle} alt="" />}
-                        style={{
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "12px",
-                        }}
-                      >
-                        Qo'shish
-                      </Button>
-                    </span>
-                  }
+                  input={familyValues?.map((item) => (
+                    <div key={item?.id} className="field__resume">
+                      <span>
+                        <h4>{item?.familiarPerson}</h4>•
+                        <p>{item?.fullNameOfFather}</p>•
+                        <p>{item?.citizenship}</p>•
+                        <p>
+                          {item?.workedDate &&
+                            new Date(item?.workedDate).toLocaleDateString(
+                              "en-US",
+                              { year: "numeric", month: "long", day: "numeric" }
+                            )}
+                        </p>
+                        •<p>{item?.countryFamily}</p>
+                        <p> ,{item?.cityFamily}</p>•<p>{item?.workFamily}</p>•
+                        <p>{item?.positionFamily}</p>
+                      </span>
+                      <span className="action-group__resume">
+                        <img
+                          src={Edit}
+                          alt="Edit icon"
+                          onClick={() => {
+                            localStorage.setItem(
+                              "familyDrawerValues",
+                              JSON.stringify(item)
+                            );
+                            setChildrenDrawer(true);
+                          }}
+                        />
+                        <img
+                          src={Trash}
+                          onClick={() => {
+                            let newArray = familyValues.filter(
+                              (del) => del.id !== item.id
+                            );
+                            setFamilyValues(newArray);
+                            localStorage.setItem(
+                              "familyDrawerValues",
+                              JSON.stringify(newArray)
+                            );
+                            getFamilyFromLocalStorage();
+                          }}
+                          alt="Trash icon"
+                        />
+                      </span>
+                    </div>
+                  ))}
                 />
+                <Row>
+                  <Col xs={24} sm={24}>
+                    <LabeledInput
+                      // labelName=""
+                      labelFor="familyAddButton"
+                      input={
+                        <Button
+                          block
+                          size="large"
+                          onClick={() => setChildrenDrawer(true)}
+                          icon={<img src={AddCircle} alt="" />}
+                          style={{
+                            textAlign: "left",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "12px",
+                          }}
+                        >
+                          Qo'shish
+                        </Button>
+                      }
+                    />
+                  </Col>
+                </Row>
               </Col>
 
               {/* <Col xs={24} sm={24}>
@@ -204,29 +256,14 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
             </button>
           </Form>
         </div>
-        <Drawer
-          title="Oila a’zosi"
-          width={603}
-          closable={false}
+        <FamiliarInsideDrawer
           onClose={onChildrenDrawerClose}
           open={childrenDrawer}
-          extra={
-            <Space>
-              <img
-                src={CloseIcon}
-                onClick={onChildrenDrawerClose}
-                alt="CloseIcon"
-              />
-            </Space>
-          }
-        >
-          <div className="content__drawer">
-            <FamiliarInsideDrawer
-              open={childrenDrawer}
-              setOpen={setChildrenDrawer}
-            />
-          </div>
-        </Drawer>
+          setOpen={setChildrenDrawer}
+          familyValues={familyValues}
+          setFamilyValues={setFamilyValues}
+          getFamilyFn={getFamilyFromLocalStorage}
+        />
       </Drawer>
     </>
   );

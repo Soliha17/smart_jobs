@@ -36,9 +36,6 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
   //   console.log(files);
   // };
 
-  const acceptedFileTypes =
-    "application/zip, application/x-rar-compressed, application/pdf, image/jpeg";
-
   const normFile = (e) => {
     console.log("Upload event:", e);
     if (!e || !e.fileList) {
@@ -132,11 +129,11 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
                   labelName="Tasdiqlovchi hujjat"
                   labelFor="document"
                   // req={true}
-                  valuePropName="fileList"
+                  // valuePropName="fileList"
                   getValueFromEvent={normFile}
                   input={
                     <Upload
-                      name="logo"
+                      name="akademic result"
                       action="/upload.do"
                       listType="picture"
                       accept="application/zip, application/x-rar-compressed, application/pdf, image/jpeg"

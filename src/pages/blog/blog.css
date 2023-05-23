@@ -1,0 +1,156 @@
+.blog-page {
+  background: var(--white);
+}
+
+.blog {
+  padding-top: 24px;
+  padding-bottom: 98px;
+}
+
+.header__blog {
+  margin: 31px 0 31px 0;
+  width: 100%;
+}
+
+.top-header__blog {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-header__blog .title {
+  margin-right: 30px;
+}
+
+.top-header__blog .ant-input-group-wrapper {
+  height: 56px;
+}
+
+.top-header__blog .ant-input-group-addon {
+  border-radius: 12px !important;
+  background: transparent;
+}
+
+.top-header__blog .ant-input-group-addon .ant-btn {
+  margin-left: 20px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--lightgray);
+  border-radius: 12px;
+  background: var(--white);
+  cursor: pointer;
+  border-radius: 12px !important;
+}
+
+.top-header__blog .ant-btn img {
+  width: 24px;
+}
+
+.top-header__blog .ant-input-affix-wrapper {
+  border-radius: 12px !important;
+}
+
+.top-header__blog .ant-input {
+  height: 46px;
+}
+
+.input-group__blog .ant-input-affix-wrapper {
+  visibility: hidden;
+}
+
+.input-group__blog--visible .ant-input-affix-wrapper {
+  visibility: visible;
+}
+
+.bottom-header__blog {
+  width: 95%;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  row-gap: 24px;
+}
+
+.bottom-header__blog .circle-text__blog {
+  padding: 12px 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-100);
+  border-radius: 24px;
+  background: var(--white-100);
+  border: none;
+}
+
+.content__blog {
+  margin-top: 41px;
+}
+
+.container__blog {
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  row-gap: 66px;
+}
+
+.container__blog .blog__date {
+  margin: 10px 0;
+}
+
+.container__blog .blog__title {
+  margin-bottom: 10px;
+}
+
+.blog .see-all__btn {
+  margin: 0 auto;
+  margin-top: 64px;
+}
+
+@media (max-width: 1050px) {
+  .container__blog .card___blog {
+    width: 48%;
+  }
+}
+
+@media (max-width: 670px) {
+  .container__blog .card___blog {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .bottom-header__blog {
+    width: 100%;
+    gap: 16px;
+    row-gap: 16px;
+  }
+
+  .bottom-header__blog p:nth-last-child(1),
+  .bottom-header__blog p:nth-last-child(2),
+  .bottom-header__blog p:nth-last-child(3),
+  .bottom-header__blog p:nth-last-child(4),
+  .bottom-header__blog p:nth-last-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .blog {
+    padding-bottom: 0;
+  }
+
+  .blog .see-all__btn {
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  .top-header__blog .title {
+    margin-right: 10px;
+  }
+
+  .top-header__blog .ant-input-group-addon .ant-btn {
+    margin-left: 10px;
+  }
+}

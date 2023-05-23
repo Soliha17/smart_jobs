@@ -6,9 +6,11 @@ import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import TextArea from "antd/es/input/TextArea";
+import { useState } from "react";
 
 const PortfolioDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
+  const [files, setFiles] = useState([]);
 
   const onClose = () => {
     setOpen(false);
@@ -23,6 +25,24 @@ const PortfolioDrawer = ({ open, setOpen }) => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+  };
+
+  const normFile = (e) => {
+    console.log("Upload event:", e);
+    if (!e || !e.fileList) {
+      return [];
+    }
+    if (Array.isArray(e.fileList)) {
+      return e.fileList;
+    }
+    return [e.fileList];
+  };
+
+  const handleUpload = (file) => {
+    if (file.type === "application/zip" || file.type === "application/pdf") {
+      setFiles([file]);
+    }
+    console.log(files);
   };
 
   const validateMessages = {
@@ -89,9 +109,16 @@ const PortfolioDrawer = ({ open, setOpen }) => {
                 <LabeledInput
                   labelName="Portfolio"
                   labelFor="portfolioFile"
-                  req={true}
+                  // req={true}
+                  getValueFromEvent={normFile}
                   input={
-                    <Upload name="logo" action="/upload.do" listType="picture">
+                    <Upload
+                      name="logo"
+                      action="/upload.do"
+                      listType="picture"
+                      accept="application/zip, application/x-rar-compressed, application/pdf, image/jpeg"
+                      onChange={handleUpload}
+                    >
                       <Button
                         icon={<img src={UploadIcon} alt="" />}
                         size="large"

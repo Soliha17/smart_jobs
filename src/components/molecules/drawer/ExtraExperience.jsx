@@ -13,7 +13,7 @@ const ExtraExperience = ({ open, setOpen }) => {
 
   const onChildrenDriwerFinish = (values) => {
     console.log("Success:", values);
-    setOpen(false);
+    // setOpen(false);
   };
   const onChildrenDriwerFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -38,10 +38,10 @@ const ExtraExperience = ({ open, setOpen }) => {
         onFinishFailed={onChildrenDriwerFinishFailed}
         autoComplete="off"
       >
-        <Row gutter={[24, 0]}>
+        <Row gutter={[24, 0]} style={{ marginTop: "40px" }}>
           <Col xs={24} sm={24}>
             <h3 className="title__job-drawer">
-              Kompaniyada qo’shimcha tajriba
+              Kompaniyada qo'shimcha tajriba
             </h3>
           </Col>
           <Col xs={24} sm={24}>
@@ -216,7 +216,9 @@ const ExtraExperience = ({ open, setOpen }) => {
               block
               size="large"
               icon={<img src={AddCircle} alt="" />}
-              onClick={() => setShowExtraExtraExperience(true)}
+              onClick={() =>
+                setShowExtraExtraExperience(!showExtraExtraExperience)
+              }
               style={{
                 textAlign: "left",
                 display: "flex",
@@ -229,7 +231,12 @@ const ExtraExperience = ({ open, setOpen }) => {
           </Col>
         </Row>
       </Form>
-      <ExtraExtraExperience open={showExtraExtraExperience} setOpen={setShowExtraExtraExperience} />
+      {showExtraExtraExperience && (
+        <ExtraExtraExperience
+          open={showExtraExtraExperience}
+          setOpen={setShowExtraExtraExperience}
+        />
+      )}
     </>
   );
 };

@@ -116,8 +116,15 @@ const ProfessionalInformation = ({ props }) => {
                       <p>
                         {item?.beginsMonthOfJob} {item?.beginsYearOfJob}
                       </p>
-                      <p>- {item?.finishOfJob}</p>•<p>{item?.workedType}</p>•
-                      <p>{item?.format}</p>
+                      {item.workingUntilNow ? (
+                        <p>- hozirgacha</p>
+                      ) : (
+                        <>
+                          <p>- {item?.finishMonthOfJob}</p>
+                          <p>{item?.finishYearOfJob}</p>
+                        </>
+                      )}
+                      •<p>{item?.workedType}</p>•<p>{item?.format}</p>
                     </span>
                     <span className="action-group__resume">
                       <img
@@ -177,7 +184,7 @@ const ProfessionalInformation = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Ishlamoqchi bo’lgan formatingiz"
+                labelName="Ishlamoqchi bo'lgan formatingiz"
                 labelFor="jobDirection"
                 req={true}
                 input={
@@ -202,7 +209,7 @@ const ProfessionalInformation = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Ishlamoqchi bo’lgan ish turingiz"
+                labelName="Ishlamoqchi bo'lgan ish turingiz"
                 labelFor="jobType"
                 req={true}
                 input={
@@ -244,8 +251,14 @@ const ProfessionalInformation = ({ props }) => {
                       <p>
                         {item?.beginsMonthOfStudy} {item?.beginsYearOfStudy}
                       </p>
-                      <p>- {item?.finishMonthOfStudy}</p>
-                      <p>{item?.finishYearOfStudy}</p>
+                      {item.studyingUntilNow ? (
+                        <p>- hozirgacha</p>
+                      ) : (
+                        <>
+                          <p>- {item?.finishMonthOfStudy}</p>
+                          <p>{item?.finishYearOfStudy}</p>
+                        </>
+                      )}
                     </span>
                     <span className="action-group__resume">
                       <img

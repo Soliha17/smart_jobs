@@ -19,6 +19,7 @@ import TextArea from "antd/es/input/TextArea";
 import AddCircle from "../../../assets/images/add-circle.svg";
 import JobInsideDrawer from "./JobInsideDrawer";
 import { v4 as uuidv4 } from "uuid";
+import ExtraExperience from "./ExtraExperience";
 const JobDrawer = ({
   open,
   setOpen,
@@ -30,13 +31,15 @@ const JobDrawer = ({
 
   const [childrenDrawer, setChildrenDrawer] = useState(false);
 
+  const [isChecked, setIsChecked] = useState(true);
+
+  function onChange(event) {
+    setIsChecked(event.target.checked);
+  }
+
   // const showDrawer = () => {
   //   setOpen(true);
   // };
-
-  const onClose = () => {
-    setOpen(false);
-  };
 
   const showChildrenDrawer = () => {
     setChildrenDrawer(true);
@@ -47,11 +50,12 @@ const JobDrawer = ({
   };
 
   let isJobEditValues = JSON.parse(localStorage.getItem("isJobEdit"));
+  
   useEffect(() => {
     if (isJobEditValues !== null) {
       form.setFieldsValue(isJobEditValues);
     }
-  }, [open, form]);
+  }, [open]);
 
   const onFinish = (data) => {
     console.log("Success:", data);
@@ -72,6 +76,14 @@ const JobDrawer = ({
     }
     localStorage.setItem("jobDrawerValues", JSON.stringify(jobValues));
     form.resetFields();
+  };
+
+  const onClose = () => {
+    if (isJobEditValues !== null) {
+      localStorage.removeItem("isJobEdit");
+      form.resetFields();
+    }
+    setOpen(false);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -293,20 +305,108 @@ const JobDrawer = ({
                   </Col>
                 </Row>
               </Col>
+
               <Col xs={24} sm={12}>
+                <Row gutter={[12, 5]}>
+                  <Col xs={12}>
+                    <LabeledInput
+                      labelName="Tugash vaqti"
+                      labelFor="finishMonthOfJob"
+                      input={
+                        <Select
+                          // defaultValue="oy"
+                          placeholder="Oy"
+                          size="large"
+                          disabled={isChecked}
+                          // onChange={onChange}
+                          options={[
+                            {
+                              value: "dekabr",
+                              label: "Dekabr",
+                            },
+                            {
+                              value: "yanvar",
+                              label: "Yanvar",
+                            },
+                            {
+                              value: "fevral",
+                              label: "Fevral",
+                            },
+                            {
+                              value: "mart",
+                              label: "Mart",
+                            },
+                            {
+                              value: "iyun",
+                              label: "Iyun",
+                            },
+                          ]}
+                        />
+                      }
+                    />
+                  </Col>
+                  <Col xs={12}>
+                    <LabeledInput
+                      labelName="&nbsp;"
+                      labelFor="finishYearOfJob"
+                      input={
+                        <Select
+                          // defaultValue="oy"
+                          placeholder="Yil"
+                          size="large"
+                          disabled={isChecked}
+                          // onChange={onChange}
+                          options={[
+                            {
+                              value: "2020",
+                              label: "2020",
+                            },
+                            {
+                              value: "2021",
+                              label: "2021",
+                            },
+                            {
+                              value: "2022",
+                              label: "2022",
+                            },
+                            {
+                              value: "2023",
+                              label: "2023",
+                            },
+                          ]}
+                        />
+                      }
+                    />
+                  </Col>
+                  <Col xs={24}>
+                    <LabeledInput
+                      // labelName="&nbsp;"
+                      valuePropName="checked"
+                      labelFor="workingUntilNow"
+                      input={
+                        <Checkbox checked={isChecked} onChange={onChange}>
+                          Hozirgacha
+                        </Checkbox>
+                      }
+                    />
+                  </Col>
+                </Row>
+              </Col>
+
+              {/* <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName="Tugash vaqti"
                   labelFor="finishOfJob"
                   valuePropName="checked"
                   input={<Checkbox>Hozirgacha</Checkbox>}
                 />
-              </Col>
+              </Col> */}
               <Col xs={24} sm={24}>
                 <Button
                   block
                   size="large"
                   icon={<img src={AddCircle} alt="" />}
-                  onClick={showChildrenDrawer}
+                  onClick={() => setChildrenDrawer(!childrenDrawer)}
                   style={{
                     textAlign: "left",
                     display: "flex",
@@ -318,6 +418,14 @@ const JobDrawer = ({
                 </Button>
               </Col>
             </Row>
+            <div className="content__drawer">
+              {childrenDrawer && (
+                <ExtraExperience
+                  open={childrenDrawer}
+                  setOpen={setChildrenDrawer}
+                />
+              )}
+            </div>
             <button
               type="submit"
               style={{ marginTop: "32px" }}
@@ -328,7 +436,7 @@ const JobDrawer = ({
           </Form>
         </div>
 
-        <Drawer
+        {/* <Drawer
           title="Ish tajribangiz"
           width={603}
           closable={false}
@@ -343,14 +451,9 @@ const JobDrawer = ({
               />
             </Space>
           }
-        >
-          <div className="content__drawer">
-            <JobInsideDrawer
-              open={childrenDrawer}
-              setOpen={setChildrenDrawer}
-            />
-          </div>
-        </Drawer>
+        > */}
+
+        {/* </Drawer> */}
       </Drawer>
     </>
   );

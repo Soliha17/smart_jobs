@@ -1,0 +1,33 @@
+.profile {
+  background: var(--white);
+  padding-bottom: 96px;
+}
+
+.profile .title {
+  margin-bottom: 32px;
+}
+
+.profile .ant-btn-default {
+  background-color: transparent;
+}
+.ant-tabs {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--black-50);
+}
+
+.ant-tabs-nav-wrap {
+  /* background: var(--white-50); */
+}
+
+.ant-tabs-ink-bar {
+  height: 3px !important;
+  background: var(--primary-75) !important;
+  border-radius: 0px 12px 12px 0px !important;
+}
+
+.profile-card {
+  background: var(--white-50);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.04);
+}

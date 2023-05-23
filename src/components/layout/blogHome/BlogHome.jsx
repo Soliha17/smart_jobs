@@ -1,13 +1,13 @@
 import React from "react";
 
-import "./blog.css";
+import "./blogHome.css";
 
 import SectionsHeader from "../../atoms/sections-header/SectionsHeader";
 import BlogCarousel from "../../atoms/blog-carousel/BlogCarousel";
 
-const Blog = () => {
+const BlogHome = () => {
   return (
-    <div className="blog container">
+    <div className="home-blog container">
       <SectionsHeader
         children={{
           title: "Blog",
@@ -16,11 +16,11 @@ const Blog = () => {
         }}
       />
 
-      <div className="content__blog">
+      <div className="content__home-blog">
         <BlogCarousel />
       </div>
     </div>
   );
 };
 
-export default Blog;
+export default BlogHome;
