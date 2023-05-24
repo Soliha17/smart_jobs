@@ -13,6 +13,7 @@ const BlogHome = () => {
           title: "Blog",
           text: "Ish topish va professional sohalardagi maqalalar",
           btnText: "maqolalar",
+          link: "/blog",
         }}
       />
 

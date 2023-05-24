@@ -63,7 +63,9 @@ const Blog = () => {
           />
           <div className="header__blog">
             <div className="top-header__blog">
-              <p className="title">Blog</p>
+              <Link to="/blogfull">
+                <p className="title">Blog</p>
+              </Link>
               <Search
                 placeholder="Qidiring"
                 onSearch={onSearch}

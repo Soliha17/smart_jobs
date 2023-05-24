@@ -39,6 +39,16 @@
   background: var(--white);
   cursor: pointer;
   border-radius: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.top-header__blog .ant-btn:hover {
+  background: var(--primary-100);
+}
+
+.top-header__blog .ant-btn:hover img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(8%) saturate(0%)
+    hue-rotate(157deg) brightness(107%) contrast(108%);
 }
 
 .top-header__blog .ant-btn img {

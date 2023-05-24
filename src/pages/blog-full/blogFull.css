@@ -20,6 +20,12 @@
   gap: 24px;
 }
 
+.actions__blog-full div{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .card__blog-full p {
   font-weight: 400;
   font-size: 20px;
