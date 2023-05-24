@@ -277,8 +277,8 @@ function Header() {
       <Outlet />
       {/* <JobSeekerModal open={isModalOpen} setOpen={setIsModalOpen} /> */}
       {/* <Login open={isModalOpen} setOpen={setIsModalOpen} /> */}
-      <SignUp open={isModalOpen} setOpen={setIsModalOpen} />
-      {/* <InfoFills open={isModalOpen} setOpen={setIsModalOpen} /> */}
+      {/* <SignUp open={isModalOpen} setOpen={setIsModalOpen} /> */}
+      <InfoFills open={isModalOpen} setOpen={setIsModalOpen} />
     </div>
   );
 }

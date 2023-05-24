@@ -89,6 +89,20 @@
   justify-content: center;
 }
 
+.phone-input .ant-input {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.phone-input .ant-input-group-addon {
+  border-color: var(--primary-12);
+}
+
+.phone-input .ant-select {
+  background: transparent;
+  border: none;
+}
+
 .d-none {
   display: none !important;
 }

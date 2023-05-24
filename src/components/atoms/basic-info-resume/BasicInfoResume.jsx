@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./basicInfoResume.css";
 import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
@@ -11,6 +11,19 @@ const BasicInfoResume = ({ props }) => {
   // const onRequiredTypeChange = ({ requiredMarkValue }) => {
   //   setRequiredMarkType(requiredMarkValue);
   // };
+
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    const digitsOnly = inputValue.replace(/\D/g, ""); // Remove non-digit characters
+
+    if (digitsOnly.length <= 9) {
+      setValue(digitsOnly);
+    } else {
+      setValue(0);
+    }
+  };
 
   const next = props.next;
   // console.log(next);
@@ -36,6 +49,16 @@ const BasicInfoResume = ({ props }) => {
       range: "${label} must be between ${0} and ${10}",
     },
   };
+  const { Option } = Select;
+
+  const prefixSelector = (
+    <Form.Item name="prefix" noStyle>
+      <Select style={{ width: 100 }} defaultValue={"998"}>
+        <Option value="998">+998</Option>
+        <Option value="1">+1</Option>
+      </Select>
+    </Form.Item>
+  );
 
   return (
     <>
@@ -194,17 +217,29 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="O’zingizni tavsiflang"
+                labelName="O'zingizni tavsiflang"
                 labelFor="desc"
                 input={<TextArea rows={4} />}
               />
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
+                className={"phone-input"}
                 labelName="Telefon raqamingiz"
                 labelFor="number"
                 req={true}
-                input={<Input size="large" type="number" />}
+                input={
+                  <Input
+                    addonBefore={prefixSelector}
+                    size="large"
+                    type="number"
+                    value={value}
+                    onChange={(e) => {
+                      e.target.value.length <= 10 && setValue(e.target.value);
+                    }}
+                    // maxLength={9} // Set the maximum length of the input value
+                  />
+                }
               />
             </Col>
             <Col xs={24} sm={12}>
