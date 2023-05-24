@@ -116,9 +116,9 @@
 .code-input__modal {
   width: 59px;
   height: 56px;
-  color: var(--black-100);
-  background: var(--white-50);
-  border: 0.5px solid var(--black-50);
+  color: var(--black-100) !important;
+  background: var(--white-50) !important;
+  border: 0.5px solid var(--black-50) !important;
   border-radius: 12px;
   font-weight: 600;
   font-size: 20px;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./additionalInformation.css";
-import { Button, Col, Form, Row, Select, message } from "antd";
+import { Button, Col, Form, Input, Row, Select, Space, message } from "antd";
 import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 
 import Trash from "../../../assets/images/trash-icon.svg";
@@ -10,6 +10,8 @@ import AcademicResultDrawer from "../../molecules/drawer/AcademicResult";
 import FamilyInformationDrawer from "../../molecules/drawer/FamiliyInformation";
 import PortfolioDrawer from "../../molecules/drawer/PortfolioDrawer";
 import LicenseDrawer from "../../molecules/drawer/LicenseDrawer";
+
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 
 const AdditionalInformation = ({ props }) => {
   const [form] = Form.useForm();
@@ -23,6 +25,10 @@ const AdditionalInformation = ({ props }) => {
 
   const [openLicense, setOpenLicense] = useState(false);
 
+  const [language, setLanguage] = useState("");
+
+  const [level, setLevel] = useState("");
+
   // const [requiredMark, setRequiredMarkType] = useState("optional");
   // const onRequiredTypeChange = ({ requiredMarkValue }) => {
   //   setRequiredMarkType(requiredMarkValue);
@@ -31,12 +37,24 @@ const AdditionalInformation = ({ props }) => {
   const next = props.next;
   const prev = props.prev;
 
+  const onChangeLanguage = (date, dateString) => {
+    console.log(date, dateString);
+    console.log(date);
+    setLanguage(date);
+  };
+
+  const onChangeLevel = (date, dateString) => {
+    console.log(date, dateString);
+    console.log(date);
+    setLevel(date);
+  };
+
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const onFinish = (datas) => {
+    console.log("Success:", datas);
     message.success("Muvaffaqiyatli saqlandi!");
     next(0);
   };
@@ -47,8 +65,8 @@ const AdditionalInformation = ({ props }) => {
   return (
     <>
       <div className="header__resume">
-        <h3>Qo’shimcha ma’lumotlar</h3>
-        <p>O’zingiz haqingizda asosiy ma’lumotlani kiriting</p>
+        <h3>Qo'shimcha ma'lumotlar</h3>
+        <p>O'zingiz haqingizda asosiy ma'lumotlani kiriting</p>
       </div>
       <div className="content__resume">
         <Form
@@ -68,86 +86,158 @@ const AdditionalInformation = ({ props }) => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Row gutter={[24, 34]}>
-            <Col xs={24} sm={24}>
-              <LabeledInput
-                labelName="Biladigan tillaringizni kiriting"
-                labelFor="languages"
-                req={true}
-                input={
-                  <span className="language-group">
-                    <div>
-                      <Select
-                        defaultValue={"uzb"}
-                        size="large"
-                        onChange={onChange}
-                        options={[
-                          {
-                            value: "uzb",
-                            label: "O'zbek tili",
-                          },
-                          {
-                            value: "russian",
-                            label: "Rus tili",
-                          },
-                          {
-                            value: "english",
-                            label: "Ingliz tili",
-                          },
-                        ]}
-                      />
-                      <Select
-                        defaultValue={"b1"}
-                        size="large"
-                        onChange={onChange}
-                        options={[
-                          {
-                            value: "b1",
-                            label: "B1",
-                          },
-                          {
-                            value: "a2",
-                            label: "A2",
-                          },
-                        ]}
-                      />
-                      <img src={Trash} width={24} alt="Trash icon" />
-                    </div>
-                    <div>
-                      <Select
-                        placeholder="Til"
-                        size="large"
-                        onChange={onChange}
-                        options={[
-                          {
-                            value: "uzb",
-                            label: "O'zbek",
-                          },
-                          {
-                            value: "russian",
-                            label: "Rus",
-                          },
-                        ]}
-                      />
-                      <Select
-                        placeholder="Daraja"
-                        size="large"
-                        onChange={onChange}
-                        options={[
-                          {
-                            value: "b1",
-                            label: "B1",
-                          },
-                          {
-                            value: "a2",
-                            label: "A2",
-                          },
-                        ]}
-                      />
-                    </div>
-                  </span>
-                }
-              />
+          <Row gutter={[24, 8]}>
+            <Col xs={24}>
+              <p className="language-label">Biladigan tillaringizni kiriting</p>
+              <Form.List name="users">
+                {(fields, { add, remove }) => (
+                  <>
+                    {fields.map(({ key, name, ...restField }) => (
+                      <Row gutter={[15, 12]}>
+                        <Col xs={24} sm={11}>
+                          <Form.Item
+                            {...restField}
+                            name={[name, "first"]}
+                            // rules={[
+                            //   {
+                            //     required: true,
+                            //     message: "Missing first name",
+                            //   },
+                            // ]}
+                          >
+                            <Select
+                              defaultValue={language}
+                              // value={language}
+                              // onChange={()=>setLanguage(language)}
+                              // placeholder="adsnk"
+                              size="large"
+                              options={[
+                                {
+                                  value: "uzb",
+                                  label: "O'zbek tili",
+                                },
+                                {
+                                  value: "russian",
+                                  label: "Rus tili",
+                                },
+                                {
+                                  value: "english",
+                                  label: "Ingliz tili",
+                                },
+                              ]}
+                            />
+                          </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={11}>
+                          <Form.Item
+                            {...restField}
+                            name={[name, "last"]}
+                            // rules={[
+                            //   {
+                            //     required: true,
+                            //     message: "Missing last name",
+                            //   },
+                            // ]}
+                          >
+                            <Select
+                              defaultValue={level}
+                              // placeholder="Daraja tanlang"
+                              // value={level}
+                              size="large"
+                              options={[
+                                {
+                                  value: "b1",
+                                  label: "B1",
+                                },
+                                {
+                                  value: "a2",
+                                  label: "A2",
+                                },
+                              ]}
+                            />
+                          </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={2}>
+                          <Button
+                            type="dashed"
+                            size="large"
+                            className="action-btn__lan-resume"
+                            onClick={() => remove(name)}
+                            block
+                          >
+                            <span className="hidden-text__lan-resume">
+                              O'chirish
+                            </span>
+                            <DeleteOutlined />
+                          </Button>
+                        </Col>
+                      </Row>
+                    ))}
+                    <Row gutter={[15, 12]} className="main-lan-row__resume">
+                      <Col xs={24} sm={11}>
+                        <Form.Item>
+                          <Select
+                            // defaultValue={"uzb"}
+                            placeholder="Til tanlang"
+                            size="large"
+                            onChange={onChangeLanguage}
+                            options={[
+                              {
+                                value: "uzb",
+                                label: "O'zbek tili",
+                              },
+                              {
+                                value: "russian",
+                                label: "Rus tili",
+                              },
+                              {
+                                value: "english",
+                                label: "Ingliz tili",
+                              },
+                            ]}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col sm={11} xs={24}>
+                        <Form.Item>
+                          <Select
+                            // defaultValue={"b1"}
+                            placeholder="Daraja tanlang"
+                            size="large"
+                            onChange={onChangeLevel}
+                            options={[
+                              {
+                                value: "b1",
+                                label: "B1",
+                              },
+                              {
+                                value: "a2",
+                                label: "A2",
+                              },
+                            ]}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col xs={24} sm={2}>
+                        <Form.Item>
+                          <Button
+                            className="action-btn__lan-resume"
+                            size="large"
+                            type="dashed"
+                            onClick={() => add()}
+                            block
+                          >
+                            <span className="hidden-text__lan-resume">
+                              Qo'shish
+                            </span>
+                            <PlusOutlined />
+                          </Button>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  </>
+                )}
+              </Form.List>
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput

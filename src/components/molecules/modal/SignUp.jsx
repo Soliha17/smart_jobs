@@ -1,12 +1,13 @@
 import { Col, Input, Modal, Row, Form } from "antd";
 
-import "./modal.css";
-
 import SmartJobLogo from "../../../assets/images/smart-logo.svg";
 import PrivacyIcon from "../../../assets/images/privacy-icon.svg";
 import { useState } from "react";
 import LabeledInput from "../labeled-input/LabeledInput";
 import BackIcon from "../../../assets/images/back-icon-modal.svg";
+import OTPInput from "./OTPInput";
+
+import "./modal.css";
 
 const SignUp = ({ open, setOpen }) => {
   const [form] = Form.useForm();
@@ -71,12 +72,13 @@ const SignUp = ({ open, setOpen }) => {
             >
               <Row gutter={[24, 24]}>
                 <Col xs={24} sm={24}>
-                  <div className="code-group__modal">
+                  <OTPInput />
+                  {/* <div className="code-group__modal">
                     <input className="code-input__modal" />
                     <input className="code-input__modal" />
                     <input className="code-input__modal" />
                     <input className="code-input__modal" />
-                  </div>
+                  </div> */}
                 </Col>
               </Row>
             </Form>

@@ -1,4 +1,4 @@
-import { Breadcrumb, Input } from "antd";
+import { Breadcrumb, Input, Space } from "antd";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -11,15 +11,40 @@ import BlogCard from "../../components/atoms/blog-card/BlogCard";
 import { blogDatas } from "../../mock/blog";
 import { threeBlogDatas } from "../../mock/threeBlogCard";
 import Footer from "../../components/layout/footer/Footer";
+import CheckableTag from "antd/es/tag/CheckableTag";
+
+const tagsData = [
+  "Kompaniyalar",
+  "Vakansiyalar",
+  "Ish izlash haqida",
+  "Biznes",
+  "Sport",
+  "Rezyume to'ldirish",
+  "Ish topish haqida",
+  "Biznes yuritish",
+  "Kompaniyalar rivoji",
+  "Vakansiyalar holati",
+  "Ish berish haqida",
+  "Biznesmen",
+];
 
 const Blog = () => {
   const { Search } = Input;
-  const [inputVisible, setInputVisible] = useState(false);
+  // const [inputVisible, setInputVisible] = useState(false);
 
   const onSearch = (value) => console.log(value);
 
-  const onButtonClick = () => {
-    setInputVisible(!inputVisible);
+  // const onButtonClick = () => {
+  //   setInputVisible(!inputVisible);
+  // };
+
+  const [selectedTags, setSelectedTags] = useState(["Books"]);
+  const handleChange = (tag, checked) => {
+    const nextSelectedTags = checked
+      ? [...selectedTags, tag]
+      : selectedTags.filter((t) => t !== tag);
+    console.log("You are interested in: ", nextSelectedTags);
+    setSelectedTags(nextSelectedTags);
   };
 
   return (
@@ -40,31 +65,29 @@ const Blog = () => {
             <div className="top-header__blog">
               <p className="title">Blog</p>
               <Search
-                className={`input-group__blog ${
-                  inputVisible ? "input-group__blog--visible" : ""
-                }`}
                 placeholder="Qidiring"
                 onSearch={onSearch}
                 enterButton={
-                  <button className="ant-btn" onClick={onButtonClick}>
+                  <button className="ant-btn">
                     <img src={SearchIcon} alt="SearchIcon" />
                   </button>
                 }
-                prefix={<img src={SearchIcon} alt="SearchIcon" />}
+                // prefix={<img src={SearchIcon} alt="SearchIcon" />}
               />
             </div>
             <div className="bottom-header__blog">
-              <p className="circle-text__blog">Kompaniyalar</p>
-              <p className="circle-text__blog">Vakansiyalar</p>
-              <p className="circle-text__blog">Ish izlash haqida</p>
-              <p className="circle-text__blog">Biznes</p>
-              <p className="circle-text__blog">Kompaniyalar</p>
-              <p className="circle-text__blog">Vakansiyalar</p>
-              <p className="circle-text__blog">Ish izlash haqida</p>
-              <p className="circle-text__blog">Biznes</p>
-              <p className="circle-text__blog">Kompaniyalar</p>
-              <p className="circle-text__blog">Vakansiyalar</p>
-              <p className="circle-text__blog">Ish izlash haqida</p>
+              <Space size={[16, 24]} wrap>
+                {tagsData.map((tag) => (
+                  <CheckableTag
+                    className="circle-text__blog"
+                    key={tag}
+                    checked={selectedTags.includes(tag)}
+                    onChange={(checked) => handleChange(tag, checked)}
+                  >
+                    {tag}
+                  </CheckableTag>
+                ))}
+              </Space>
             </div>
           </div>
           <div className="content__blog">

@@ -62,7 +62,7 @@ const BasicInfoResume = ({ props }) => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Row gutter={[24, 34]}>
+          <Row gutter={[24, 8]}>
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName="Ism"

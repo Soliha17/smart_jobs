@@ -95,7 +95,7 @@ const ProfessionalInformation = ({ props }) => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Row gutter={[24, 24]}>
+          <Row gutter={[24, 8]}>
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName="Sohangiz"
