@@ -31,10 +31,24 @@ const LabeledInput = ({
           : Promise.reject(new Error("Should accept agreement")),
     });
   }
+
   if (labelFor === "confirmParolOfInfo") {
     rules.push(({ getFieldValue }) => ({
       validator(_, value) {
         if (!value || getFieldValue("parolOfInfo") === value) {
+          return Promise.resolve();
+        }
+        return Promise.reject(
+          new Error("The two passwords that you entered do not match!")
+        );
+      },
+    }));
+  }
+
+  if (labelFor === "confirmParolOfProfile") {
+    rules.push(({ getFieldValue }) => ({
+      validator(_, value) {
+        if (!value || getFieldValue("newParolOfProfile") === value) {
           return Promise.resolve();
         }
         return Promise.reject(

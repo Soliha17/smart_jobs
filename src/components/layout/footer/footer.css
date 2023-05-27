@@ -71,6 +71,10 @@
     flex-wrap: nowrap;
     gap: 0px;
   }
+
+  .footer-wrapper {
+    margin-top: 76px;
+  }
 }
 
 @media (max-width: 740px) {
@@ -78,8 +82,11 @@
     flex-wrap: wrap;
     gap: 30px;
   }
-}
 
+  .footer-wrapper {
+    margin-top: 64px;
+  }
+}
 
 @media (max-width: 340px) {
   .footer__right .inner__footer-right {

@@ -1,8 +1,12 @@
 import React from "react";
 
-import "./profile.css";
 import { Tabs } from "antd";
+
+import "./profile.css";
+
 import SavedProfile from "./SavedProfile";
+import SettingsProfile from "./SettingsProfile";
+import Footer from "../../components/layout/footer/Footer";
 
 const Profile = () => {
   const onChange = (key) => {
@@ -32,15 +36,14 @@ const Profile = () => {
     {
       key: "5",
       label: `Sozlamalar`,
-      children: `Content of Tab Pane 5`,
+      children: <SettingsProfile />,
     },
   ];
 
   return (
     <div className="profile">
-      <div className="container">
-        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-      </div>
+      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+      <Footer />
     </div>
   );
 };

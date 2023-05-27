@@ -4,7 +4,7 @@ import { Col, Row } from "antd";
 
 const SavedProfile = () => {
   return (
-    <div>
+    <div className="saved-profile container">
       <p className="title">Saqlangalar</p>
       <Row gutter={[24, 24]}>
         <Col xs={24} sm={24} md={12} lg={12}>

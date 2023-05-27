@@ -107,6 +107,13 @@ body {
   margin-right: auto;
 }
 
+.ant-tabs-nav {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .title {
   margin-bottom: 8px;
   font-weight: 600;
@@ -136,19 +143,22 @@ body {
 }
 
 @media only screen and (max-width: 1300px) {
-  .container {
+  .container,
+  .ant-tabs-nav {
     max-width: 1100px;
   }
 }
 
 @media only screen and (max-width: 1170px) {
-  .container {
+  .container,
+  .ant-tabs-nav {
     max-width: 1000px;
   }
 }
 
 @media only screen and (max-width: 1000px) {
-  .container {
+  .container,
+  .ant-tabs-nav {
     max-width: 856px;
   }
 
@@ -164,7 +174,8 @@ body {
 }
 
 @media only screen and (max-width: 880px) {
-  .container {
+  .container,
+  .ant-tabs-nav {
     max-width: 90%;
   }
 }
