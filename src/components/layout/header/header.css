@@ -56,7 +56,7 @@
 
 .enter-btn__header:hover {
   background: var(--white) !important;
-  color: var(--primary-100) !important;
+  color: var(--black-100) !important;
 }
 
 .white-select .ant-select-selector {

@@ -140,6 +140,11 @@ body {
   line-height: 24px;
   color: var(--white);
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover{
+  background-color: var(--primary-75);
 }
 
 @media only screen and (max-width: 1300px) {

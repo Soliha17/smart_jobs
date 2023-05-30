@@ -9,7 +9,8 @@
 .ant-form .ant-picker,
 .ant-form .ant-select,
 .ant-form .ant-input-affix-wrapper,
-.ant-form .ant-upload .ant-btn {
+.ant-form .ant-upload .ant-btn,
+.input__job-seeker {
   background: var(--white-50) !important;
   border: 0.5px solid var(--primary-12);
   border-radius: 12px !important;
@@ -17,6 +18,12 @@
   font-size: 16px !important;
   line-height: 24px !important;
   color: var(--black-50) !important;
+}
+
+.input__job-seeker{
+  outline: none;
+  padding: 10px 16px;
+  width: 100%;
 }
 
 .ant-form .ant-upload {

@@ -171,8 +171,13 @@
   color: var(--black-75);
   border: 1px solid var(--black-75);
   border-radius: 16px;
+  transition: all 0.3s ease;
 }
 
+.circle-text__vacancy-full:hover{
+  background-color: var(--black-100);
+  color: var(--white);
+}
 .directions__vacancy-full .circle-text__vacancy-full {
   width: 103px;
 }

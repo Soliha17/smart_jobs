@@ -7,6 +7,7 @@ import "./profile.css";
 import SavedProfile from "./SavedProfile";
 import SettingsProfile from "./SettingsProfile";
 import Footer from "../../components/layout/footer/Footer";
+import Information from "./Information";
 
 const Profile = () => {
   const onChange = (key) => {
@@ -16,7 +17,7 @@ const Profile = () => {
     {
       key: "1",
       label: `Profil`,
-      children: `Content of Tab Pane 1`,
+      children: <Information />,
     },
     {
       key: "2",

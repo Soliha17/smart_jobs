@@ -97,6 +97,144 @@
   margin-inline-start: 0px !important;
 }
 
+/* Information profile */
+
+.info-profile {
+  margin-top: 73px;
+}
+
+.info-profile .title {
+  margin-bottom: 32px;
+}
+
+.info-profile .primary-btn {
+  width: 100%;
+}
+
+.info-card__profile {
+  /* padding: 30px 24px; */
+  width: 397px;
+  border-radius: 16px;
+  background: var(--white-50);
+}
+
+.info-card__profile h4 {
+  padding: 30px 24px;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 24px;
+  color: var(--black);
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.wrapper__info-profile {
+  padding: 24px;
+}
+
+.header__info-profile {
+  padding-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.header__info-profile span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header__info-profile h6 {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 39px;
+  color: var(--primary-75);
+}
+
+.header__info-profile p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+.content__info-card {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--lightgray);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content__info-card h5 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--black-75);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.content__info-card h5:hover {
+  color: var(--primary-100);
+}
+
+.content__info-card div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content__info-card h6 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black-75);
+}
+
+.row__info-card {
+  border-bottom: 1px solid transparent;
+}
+
+.row__info-card:hover {
+  border-color: var(--primary-100);
+}
+
+.row__info-card div {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.row__info-card span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.info-card__profile .primary-btn {
+  width: 100%;
+  margin-top: 24px;
+}
+
+/* left of info profile */
+
+.avatar-card__info-profile {
+  margin-bottom: 32px;
+  display: inline-block;
+  padding: 16px;
+  border: 1px solid var(--light);
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .right__info-profile {
+    max-width: 367px;
+  }
+}
+
 @media (max-width: 800px) {
   .profile .title {
     margin-bottom: 24px;
@@ -108,6 +246,13 @@
 
   .footer__settings-profile {
     padding-top: 47px;
+  }
+}
+
+@media (max-width: 600px) {
+  .right__info-profile {
+    max-width: none;
+    width: 100%;
   }
 }
 

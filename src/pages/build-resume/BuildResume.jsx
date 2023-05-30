@@ -28,6 +28,7 @@ const BuildResume = () => {
   const next = (stepNumber) => {
     setCurrent(current + stepNumber);
   };
+
   const prev = (stepNumber) => {
     setCurrent(current - stepNumber);
   };
@@ -41,7 +42,6 @@ const BuildResume = () => {
     <div className="build-resume container">
       <Steps current={current} items={items} />
       <div className="content__build-resume">
-        {/* <div>{steps[current].content}</div> */}
         {current === 0 ? (
           <BasicInfoResume props={{ next, prev }} />
         ) : current === 1 ? (
@@ -49,32 +49,6 @@ const BuildResume = () => {
         ) : (
           <AdditionalInformation props={{ next, prev }} />
         )}
-        {/* <div className="footer__resume">
-          {current > 0 && (
-            <Button size="large" onClick={() => prev()}>
-              Orqaga
-            </Button>
-          )}
-          {current < steps.length - 1 && (
-            <Button
-              size="large"
-              type="primary"
-              onClick={() => next()}
-              style={{ marginLeft: "auto" }}
-            >
-              Davom etish
-            </Button>
-          )}
-          {current === steps.length - 1 && (
-            <Button
-              type="primary"
-              size="large"
-              onClick={() => message.success("Processing complete!")}
-            >
-              Saqlash
-            </Button>
-          )}
-        </div> */}
       </div>
     </div>
   );

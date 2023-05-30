@@ -142,8 +142,9 @@
 
 .work-type__hero-home:hover,
 .selected-tag__hero-home {
-  border-color: var(--lightblue);
-  background: var(--lightblue);
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--black-100);
 }
 
 .footer__hero-home {

@@ -64,7 +64,13 @@ const SettingsProfile = () => {
                 input={<Input.Password size="large" />}
               />
             </Col>
-            <Col xs={24} sm={12} md={8} offset={offset}>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              offset={offset}
+              style={{ marginLeft: "auto" }}
+            >
               <button
                 type="submit"
                 className="primary-btn"
