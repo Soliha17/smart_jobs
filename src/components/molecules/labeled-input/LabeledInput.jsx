@@ -14,13 +14,32 @@ const LabeledInput = ({
   const rules = [
     {
       required: req,
+      // max: 32,
+
       // message: validateMessages,
     },
   ];
 
-  // if (labelFor === "workedDate") {
-  //   rules.push({ type: "object" });
-  // }
+  if (labelFor === "email" || labelFor === "emailOfInfo") {
+    rules.push({ type: "email" });
+  }
+
+  if (labelFor === "number") {
+    rules.push(
+      {
+        pattern: /^(?:\d*)$/,
+        message: "Value should contain just number",
+      },
+      {
+        pattern: /^[\d]{0,7}$/,
+        message: "Value should be less than 7 character",
+      },
+      {
+        len: 7,
+        message: "Value should be exactly 7 characters",
+      }
+    );
+  }
 
   if (labelFor === "agreementOfInfo") {
     rules.push({

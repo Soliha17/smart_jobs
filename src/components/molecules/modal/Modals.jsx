@@ -45,7 +45,7 @@ const Modals = ({ open, setOpen }) => {
   };
 
   const handleCancel = () => {
-    setOpen(false);
+    setOpen(!open);
   };
 
   return (
@@ -63,16 +63,11 @@ const Modals = ({ open, setOpen }) => {
           footer={false}
         >
           {current === 0 ? (
-            <JobSeekerModal
-              next={next}
-              prev={prev}
-              open={open}
-              setOpen={setOpen}
-            />
+            <JobSeekerModal next={next} prev={prev} />
           ) : current === 1 ? (
-            <Login next={next} prev={prev} open={open} setOpen={setOpen} />
+            <Login next={next} prev={prev} />
           ) : (
-            <InfoFills next={next} prev={prev} open={open} setOpen={setOpen} />
+            <InfoFills next={next} prev={prev} />
           )}
         </Modal>
       </div>

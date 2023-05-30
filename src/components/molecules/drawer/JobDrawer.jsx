@@ -50,7 +50,7 @@ const JobDrawer = ({
   };
 
   let isJobEditValues = JSON.parse(localStorage.getItem("isJobEdit"));
-  
+
   useEffect(() => {
     if (isJobEditValues !== null) {
       form.setFieldsValue(isJobEditValues);
@@ -140,7 +140,7 @@ const JobDrawer = ({
                   labelName="Qaysi kompaniyada ishlagansiz?"
                   labelFor="workedCompany"
                   req={true}
-                  input={<Input size="large" />}
+                  input={<Input size="large" maxLength={9} />}
                 />
               </Col>
               <Col xs={24} sm={24}>
@@ -148,7 +148,7 @@ const JobDrawer = ({
                   labelName="Qaysi lavozimda ishlagansiz?"
                   labelFor="workedLevel"
                   req={true}
-                  input={<Input size="large" />}
+                  input={<Input size="large" maxLength={9} />}
                 />
               </Col>
               <Col xs={24} sm={24}>

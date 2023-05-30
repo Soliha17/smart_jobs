@@ -91,7 +91,7 @@ const BasicInfoResume = ({ props }) => {
                 labelName="Ism"
                 labelFor="name"
                 req={true}
-                input={<Input size="large" />}
+                input={<Input size="large" maxLength={32} />}
               />
             </Col>
             <Col xs={24} sm={12}>
@@ -99,16 +99,21 @@ const BasicInfoResume = ({ props }) => {
                 labelName="Familiya"
                 labelFor="surname"
                 req={true}
-                input={<Input size="large" />}
+                input={<Input size="large" maxLength={32} />}
               />
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Tug’ilgan sana"
+                labelName="Tug'ilgan sana"
                 labelFor="birthday"
                 req={true}
                 input={
-                  <DatePicker onChange={onChange} size="large" picker="date" />
+                  <DatePicker
+                    onChange={onChange}
+                    format={"DD/MM/YYYY"}
+                    size="large"
+                    picker="date"
+                  />
                 }
               />
             </Col>
@@ -232,12 +237,9 @@ const BasicInfoResume = ({ props }) => {
                   <Input
                     addonBefore={prefixSelector}
                     size="large"
-                    type="number"
+                    // type="number"
                     value={value}
-                    onChange={(e) => {
-                      e.target.value.length <= 10 && setValue(e.target.value);
-                    }}
-                    // maxLength={9} // Set the maximum length of the input value
+                    maxLength={9}
                   />
                 }
               />
@@ -247,7 +249,7 @@ const BasicInfoResume = ({ props }) => {
                 labelName="E-mail"
                 labelFor="email"
                 req={true}
-                input={<Input size="large" type="email" />}
+                input={<Input size="large" />}
               />
             </Col>
             <Col xs={24} sm={12}>

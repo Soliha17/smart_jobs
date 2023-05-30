@@ -60,7 +60,9 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                 labelName="Ismingizni kiriting*"
                 labelFor="nameOfInfo"
                 req={true}
-                input={<Input size="large" placeholder="Nodir" />}
+                input={
+                  <Input size="large" maxLength={32} placeholder="Nodir" />
+                }
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -68,7 +70,9 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                 labelName="Familiyaningizni kiriting*"
                 labelFor="surnameOfInfo"
                 req={true}
-                input={<Input size="large" placeholder="Karimov" />}
+                input={
+                  <Input size="large" maxLength={32} placeholder="Karimov" />
+                }
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -81,6 +85,7 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                     // onChange={onChange}
                     size="large"
                     picker="date"
+                    format={"DD/MM/YYYY"}
                   />
                 }
               />
@@ -173,7 +178,7 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                 labelName="Parol o'ylab toping"
                 labelFor="parolOfInfo"
                 req={true}
-                input={<Input.Password size="large" />}
+                input={<Input.Password size="large" maxLength={32} />}
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -181,7 +186,7 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                 labelName="Parolni qayta kiriting"
                 labelFor="confirmParolOfInfo"
                 req={true}
-                input={<Input.Password size="large" />}
+                input={<Input.Password size="large" maxLength={32} />}
               />
             </Col>
             <Col xs={24} sm={24}>
