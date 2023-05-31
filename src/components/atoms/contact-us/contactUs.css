@@ -1,0 +1,92 @@
+.contact-us {
+  margin-top: 96px;
+  padding: 64px;
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  background-color: var(--white-50);
+}
+
+.contact-us h3 {
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 39px;
+  line-height: 47px;
+  color: var(--black-100);
+}
+
+.contact-us p {
+  margin-bottom: 25px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black-50);
+}
+
+.contact-us .primary-btn {
+  width: 100%;
+}
+
+.contact-us .ant-input {
+  background: var(--white) !important;
+}
+
+.contact-us .ant-input-group-addon {
+  background: var(--white) !important;
+}
+
+.contact-us .ant-select-selector {
+  background: var(--white) !important;
+}
+
+@media (max-width: 1170px) {
+  .contact-us {
+    gap: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .contact-us {
+    padding: 48px;
+    gap: 0;
+  }
+
+  .contact-us img {
+    max-width: 319px;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-us h3 {
+    font-size: 32px;
+    line-height: 39px;
+  }
+
+  .contact-us p {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-us {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-us {
+    padding: 20px;
+  }
+
+  .contact-us h3 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  .contact-us img {
+    max-width: 295px;
+  }
+}

@@ -11,7 +11,9 @@ const Login = ({ next, prev }) => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    next(2);
+    if (values.parolOfLogin === "solya") {
+      next(2);
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -23,7 +25,7 @@ const Login = ({ next, prev }) => {
   }
 
   return (
-    <div className="login-modal">
+    <div className="signin-modal">
       <img src={BackIcon} onClick={handleBack} alt="BackIcon" />
       <h3 className="header__modal">Kirish</h3>
       <div className="content__login-modal">
@@ -48,9 +50,9 @@ const Login = ({ next, prev }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName="Parolingizni kiriting"
-                labelFor="phoneOrEmail"
+                labelFor="parolOfLogin"
                 className={"parol-input__modal"}
-                // req={true}
+                req={true}
                 input={<Input.Password size="large" />}
               />
             </Col>

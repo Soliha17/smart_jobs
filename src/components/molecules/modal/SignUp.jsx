@@ -5,24 +5,29 @@ import OTPInput from "../../atoms/OTPInput";
 
 import "./modal.css";
 
-const SignUp = ({ next, prev }) => {
+const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    next(2);
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
+  console.log(data);
+
+  function handleBack() {
+    prev(1);
+  }
+
   return (
     <div className="body__login-modal">
-      <img src={BackIcon} alt="BackIcon" />
+      <img src={BackIcon} alt="BackIcon" onClick={handleBack} />
       <h3 className="header__modal">Tekshirish kodi</h3>
-      <p className="info__modal">
-        Tasdiqlash kodi +998 99 501 67 16 raqamiga yuborildi
-      </p>
+      <p className="info__modal">Tasdiqlash kodi {data} raqamiga yuborildi</p>
       <div className="content__login-modal">
         <Form
           form={form}

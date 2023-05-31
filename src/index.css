@@ -79,7 +79,9 @@
   --lightgray: #c6c5c5;
   --light: #e3e3e3;
 
-  --red: #ff4433;
+  --orange: #ff4433;
+  --red: #e61f2a;
+
   --skyblue: #f3f6fc;
 }
 
@@ -89,10 +91,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 body {
-  font-family: "Inter", sans-serif;
   font-style: normal;
   scroll-behavior: smooth;
   background: var(--white-100) !important;
@@ -143,8 +145,26 @@ body {
   transition: all 0.3s ease;
 }
 
-.primary-btn:hover{
+.primary-btn:hover {
   background-color: var(--primary-75);
+}
+
+.default-btn {
+  height: 48px;
+  background-color: var(--white);
+  color: var(--black-75);
+  border-radius: 12px;
+  border: 1px solid var(--black-75);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.default-btn:hover {
+  color: var(--white);
+  background-color: var(--black-75);
 }
 
 @media only screen and (max-width: 1300px) {

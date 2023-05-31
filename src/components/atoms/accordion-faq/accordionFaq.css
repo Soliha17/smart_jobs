@@ -1,0 +1,32 @@
+.accordion-faq {
+  margin-top: 96px;
+}
+
+.accordion-faq .title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.accordion-faq .ant-collapse-item {
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.accordion-faq .ant-collapse-header-text {
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 32px;
+  color: var(black-100);
+}
+
+.accordion-faq .close-icon__antd,
+.accordion-faq .plus-icon__antd {
+  font-size: 23px !important;
+}
+
+.accordion-faq .ant-collapse-item-active .close-icon__antd {
+  color: var(--primary-100) !important;
+}
+
+.accordion-faq .ant-collapse-item-active .ant-collapse-header-text {
+  color: var(--primary-100);
+}

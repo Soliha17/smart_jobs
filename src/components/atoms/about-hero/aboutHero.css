@@ -1,0 +1,88 @@
+.about-hero {
+  margin-bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+}
+
+.about-hero h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 39px;
+  line-height: 47px;
+  color: var(--black-1000);
+}
+
+.tag-group__about-hero {
+  margin-bottom: 40px;
+  width: 90%;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-group__about-hero {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-group__about-hero button {
+  width: 221px;
+}
+
+.image__about-hero img {
+  /* width: 100%; */
+  max-width: 604px;
+  height: auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  .image__about-hero img {
+    max-width: 504px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .image__about-hero img {
+    max-width: 404px;
+  }
+
+  .tag-group__about-hero {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+
+  .about-hero h2 {
+    margin-bottom: 10px;
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .btn-group__about-hero button {
+    width: 174px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .image__about-hero img {
+    max-width: 367px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .about-hero {
+    flex-direction: column-reverse;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .image__about-hero img {
+    max-width: 337px;
+  }
+
+  .btn-group__about-hero button {
+    width: 150px;
+  }
+}

@@ -9,6 +9,7 @@ import Profile from "../pages/profile/Profile";
 import Vacancies from "../pages/vacancies/Vacancies";
 import VacancyFull from "../pages/vacancy-full/VacancyFull";
 import BlogFull from "../pages/blog-full/BlogFull";
+import About from "../pages/about/About";
 
 export const routesDatas = [
   {
@@ -64,5 +65,11 @@ export const routesDatas = [
     title: "Blog Full Page",
     path: "/blogFull",
     element: BlogFull,
+  },
+  {
+    id: 10,
+    title: "About Us Page",
+    path: "/about",
+    element: About,
   },
 ];

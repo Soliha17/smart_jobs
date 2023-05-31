@@ -14,13 +14,12 @@ import "./modal.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import BackIcon from "../../../assets/images/back-icon-modal.svg";
 
-const InfoFills = ({ open, setOpen, next, prev }) => {
+const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log("Success:", values);
     setOpen(false);
-    next(3);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -31,11 +30,13 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
     prev(2);
   }
 
+  console.log(selectedButton);
+
   return (
-    <div className="fill-infos-modal">
-      <img src={BackIcon} onClick={handleBack} alt="BackIcon" />
-      <h3 className="header__modal">Ma'lumotlaringizni kiriting</h3>
-      <p className="info__modal">Ro'yxatdan o'tish uchun quyidagilar talab</p>
+    <div className="body__login-modal full-infos-modal">
+      <img src={BackIcon} alt="BackIcon" onClick={handleBack} />
+      <h3>Ma’lumotlaringizni kiriting</h3>
+      <p className="info__modal">Ro’yxatdan o’tish uchun quyidagilar talab</p>
       <div className="content__login-modal">
         <Form
           form={form}
@@ -55,29 +56,46 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
           autoComplete="off"
         >
           <Row gutter={[24, 5]}>
+            {selectedButton === "btn2" && (
+              <>
+                <Col xs={24} sm={24}>
+                  <LabeledInput
+                    labelName="Kompaniyangiz nomini kiriting"
+                    labelFor="nameOfCompanyInfo"
+                    req={true}
+                    input={<Input size="large" />}
+                  />
+                </Col>
+                <Col xs={24} sm={24}>
+                  <LabeledInput
+                    labelName="Hodimlar soni"
+                    labelFor="amountOfCompanyInfo"
+                    req={true}
+                    input={<Input size="large" type="number" />}
+                  />
+                </Col>
+              </>
+            )}
+
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Ismingizni kiriting*"
+                labelName="Ismingizni kiriting"
                 labelFor="nameOfInfo"
                 req={true}
-                input={
-                  <Input size="large" maxLength={32} placeholder="Nodir" />
-                }
+                input={<Input size="large" placeholder="Nodir" />}
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Familiyaningizni kiriting*"
+                labelName="Familiyaningizni kiriting"
                 labelFor="surnameOfInfo"
                 req={true}
-                input={
-                  <Input size="large" maxLength={32} placeholder="Karimov" />
-                }
+                input={<Input size="large" placeholder="Karimov" />}
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Tug’ilgan sana*"
+                labelName="Tug’ilgan sana"
                 labelFor="birthdayOfInfo"
                 req={true}
                 input={
@@ -85,14 +103,13 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                     // onChange={onChange}
                     size="large"
                     picker="date"
-                    format={"DD/MM/YYYY"}
                   />
                 }
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Jinsi*"
+                labelName="Jinsi"
                 labelFor="genderOfInfo"
                 req={true}
                 input={
@@ -170,7 +187,7 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                 labelName="E-mail"
                 labelFor="emailOfInfo"
                 req={true}
-                input={<Input size="large" type="email" />}
+                input={<Input size="large" />}
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -178,7 +195,7 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                 labelName="Parol o'ylab toping"
                 labelFor="parolOfInfo"
                 req={true}
-                input={<Input.Password size="large" maxLength={32} />}
+                input={<Input.Password size="large" />}
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -186,7 +203,7 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
                 labelName="Parolni qayta kiriting"
                 labelFor="confirmParolOfInfo"
                 req={true}
-                input={<Input.Password size="large" maxLength={32} />}
+                input={<Input.Password size="large" />}
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -203,11 +220,7 @@ const InfoFills = ({ open, setOpen, next, prev }) => {
               />
             </Col>
             <Col xs={24} sm={24}>
-              <button
-                type="submit"
-                className="primary-btn"
-                style={{ marginTop: "24px" }}
-              >
+              <button type="submit" className="primary-btn">
                 Ro'yxatdan o'tish
               </button>
             </Col>

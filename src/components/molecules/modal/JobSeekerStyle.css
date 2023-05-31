@@ -1,0 +1,57 @@
+.email_phone_form {
+  margin-top: 40px;
+}
+
+.input_label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black-75);
+}
+
+.email_phone_form input[type="text"],
+input[type="email"] {
+  margin-top: 12px;
+  padding: 14px 16px;
+  width: 100%;
+  background: var(--white-50);
+  border: 0.5px solid var(--primary-12);
+  border-radius: 12px;
+  font-weight: 400;
+  color: var(--black-100);
+  font-size: 16px;
+  line-height: 24px;
+  outline: none;
+}
+
+.email_phone_form input[type="submit"] {
+  margin: 42px 0px;
+  padding: 18px 36px;
+  width: 100%;
+  background: var(--primary-100);
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 16px;
+  line-height: 19px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.email_phone_form input[type="submit"]:hover {
+  background-color: var(--primary-75);
+}
+
+.error_form input[type="text"],
+.error_form input[type="email"] {
+  background: var(--white-50);
+  border: 0.5px solid var(--red);
+}
+
+.error-text {
+  color: var(--red);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}

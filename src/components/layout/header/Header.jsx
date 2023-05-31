@@ -118,7 +118,7 @@ function Header() {
                     className="white-select"
                     defaultValue="UZ"
                     style={{
-                      width: 60,
+                      width: 70,
                     }}
                     bordered={false}
                     options={[
@@ -166,7 +166,7 @@ function Header() {
                     className="white-select"
                     defaultValue="UZ"
                     style={{
-                      width: 60,
+                      width: 70,
                     }}
                     bordered={false}
                     options={[
@@ -206,7 +206,7 @@ function Header() {
                 <Select
                   defaultValue="UZ"
                   style={{
-                    width: 60,
+                    width: 70,
                   }}
                   bordered={false}
                   options={[

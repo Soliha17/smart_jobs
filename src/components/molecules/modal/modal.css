@@ -4,7 +4,11 @@
 
 .login-modal.ant-modal {
   width: 70% !important;
-  top: 50px;
+  top: 73px;
+}
+
+.stepper-none {
+  display: none;
 }
 
 .login-modal .ant-modal-content {
@@ -33,44 +37,53 @@
   /* height: 495px; */
   background: var(--white);
   border-radius: 26px;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .ant-modal-body {
   width: 481px;
 }
 
-.header__modal {
-  margin: 24px 0 15px 0;
+.body__login-modal h3,
+.signin-modal h3 {
+  margin-top: 20px;
   font-weight: 600;
   font-size: 25px;
   line-height: 30px;
   color: var(--black-100);
 }
 
-.info__modal {
-  margin-bottom: 15px;
+.signin-modal h3 {
+  margin-bottom: 40px;
+}
+
+.parol-input__modal .ant-input-affix-wrapper {
+  min-height: 50px;
+}
+
+.signin-modal .primary-btn {
+  margin-bottom: 55px;
+  border-radius: 8px;
+  height: 55px;
+}
+
+.full-infos-modal .primary-btn {
+  border-radius: 8px;
+  height: 55px;
+}
+
+.body__login-modal .info__modal {
+  margin: 15px 0 40px 0;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: var(--black-75);
 }
 
-.job-seeker-modal .header__modal {
-  margin-bottom: 40px;
-}
-
-.job-seeker-modal .info__modal {
-  margin: 15px 0 40px 0;
-}
-
-.fill-infos-modal .info__modal{
-  margin-bottom: 40px;
-}
-
 .select-btn-group__login-modal {
-  margin-bottom: 48px;
+  margin: 0 auto;
+  margin-bottom: 35px;
   padding: 4px;
   width: 346px;
   height: 48px;
@@ -98,7 +111,6 @@
 }
 
 .content__login-modal button {
-  margin-bottom: 56px;
   width: 100% !important;
 }
 
@@ -200,8 +212,4 @@
   .login-modal .ant-modal-body {
     max-width: 335px;
   }
-}
-
-.modals .stepper-none {
-  display: none;
 }

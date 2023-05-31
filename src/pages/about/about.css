@@ -1,0 +1,16 @@
+.about {
+  padding-top: 48px;
+  background: var(--white);
+}
+
+@media only screen and (max-width: 800px) {
+  .about {
+    padding-top: 42px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .about {
+    padding-top: 32px;
+  }
+}
