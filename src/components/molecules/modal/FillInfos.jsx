@@ -63,7 +63,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
                     labelName="Kompaniyangiz nomini kiriting"
                     labelFor="nameOfCompanyInfo"
                     req={true}
-                    input={<Input size="large" />}
+                    input={<Input maxLength={32} size="large" />}
                   />
                 </Col>
                 <Col xs={24} sm={24}>
@@ -71,7 +71,56 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
                     labelName="Hodimlar soni"
                     labelFor="amountOfCompanyInfo"
                     req={true}
-                    input={<Input size="large" type="number" />}
+                    input={
+                      <Select
+                        // defaultValue="full"
+                        placeholder="Tanlang"
+                        size="large"
+                        // onChange={onChange}
+                        options={[
+                          {
+                            value: "1-20",
+                            label: "1-20",
+                          },
+                          {
+                            value: "21-30",
+                            label: "21-30",
+                          },
+                          {
+                            value: "31-50",
+                            label: "31-50",
+                          },
+                          {
+                            value: "51-70",
+                            label: "51-70",
+                          },
+                          {
+                            value: "71-100",
+                            label: "71-100",
+                          },
+                          {
+                            value: "101-150",
+                            label: "101-150",
+                          },
+                          {
+                            value: "151-300",
+                            label: "151-300",
+                          },
+                          {
+                            value: "301-500",
+                            label: "301-500",
+                          },
+                          {
+                            value: "501-800",
+                            label: "501-800",
+                          },
+                          {
+                            value: "801-2000",
+                            label: "801-2000",
+                          },
+                        ]}
+                      />
+                    }
                   />
                 </Col>
               </>
@@ -82,7 +131,9 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
                 labelName="Ismingizni kiriting"
                 labelFor="nameOfInfo"
                 req={true}
-                input={<Input size="large" placeholder="Nodir" />}
+                input={
+                  <Input maxLength={32} size="large" placeholder="Nodir" />
+                }
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -90,12 +141,14 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
                 labelName="Familiyaningizni kiriting"
                 labelFor="surnameOfInfo"
                 req={true}
-                input={<Input size="large" placeholder="Karimov" />}
+                input={
+                  <Input maxLength={32} size="large" placeholder="Karimov" />
+                }
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Tug’ilgan sana"
+                labelName="Tug'ilgan sana"
                 labelFor="birthdayOfInfo"
                 req={true}
                 input={
@@ -103,6 +156,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
                     // onChange={onChange}
                     size="large"
                     picker="date"
+                    format={"DD/MM/YYYY"}
                   />
                 }
               />

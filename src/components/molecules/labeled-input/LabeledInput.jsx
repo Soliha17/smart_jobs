@@ -31,12 +31,12 @@ const LabeledInput = ({
         message: "Value should contain just number",
       },
       {
-        pattern: /^[\d]{0,7}$/,
-        message: "Value should be less than 7 character",
+        pattern: /^[\d]{0,9}$/,
+        message: "Value should be less than 9 character",
       },
       {
-        len: 7,
-        message: "Value should be exactly 7 characters",
+        len: 9,
+        message: "Value should be exactly 9 characters",
       }
     );
   }

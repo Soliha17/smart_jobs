@@ -3,6 +3,7 @@ import { Modal, Steps, theme } from "antd";
 
 import JobSeekerModal from "./JobSeeker";
 import SignUp from "./SignUp";
+import Login from "./Login";
 import InfoFills from "./FillInfos";
 
 import SmartJobLogo from "../../../assets/images/smart-logo.svg";

@@ -32,12 +32,41 @@ const BasicInfoResume = ({ props }) => {
     console.log("Success:", values);
     next(1);
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+
+   const handleKeyDown = (e) => {
+     if (
+       e.key === "*" ||
+       e.key === "/" ||
+       e.key === "+" ||
+       e.key === "-" ||
+       e.key === "_" ||
+       e.key === "(" ||
+       e.key === ")" ||
+       e.key === "&" ||
+       e.key === "%" ||
+       e.key === "$" ||
+       e.key === "@" ||
+       e.key === "!" ||
+       e.key === "^" ||
+       e.key === "~" ||
+       e.key === "#" ||
+       e.key === "." ||
+       e.key === "," ||
+       e.key === "Shift" ||
+       e.key === " " ||
+       e.key === "Alt"
+     ) {
+       e.preventDefault();
+     }
+   };
 
   const validateMessages = {
     required: "Iltimos, ${label}ni kiriting!",
@@ -239,6 +268,7 @@ const BasicInfoResume = ({ props }) => {
                     size="large"
                     // type="number"
                     value={value}
+                    onKeyDown={handleKeyDown}
                     maxLength={9}
                   />
                 }

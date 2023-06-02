@@ -10,7 +10,7 @@ const OTPInput = () => {
       inputRefs.current[index + 1].focus();
     }
   };
-
+  
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && index > 0 && !inputRefs.current[index].value) {
       inputRefs.current[index - 1].focus();

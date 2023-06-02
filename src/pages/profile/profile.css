@@ -173,12 +173,6 @@
   font-size: 20px;
   line-height: 24px;
   color: var(--black-75);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.content__info-card h5:hover {
-  color: var(--primary-100);
 }
 
 .content__info-card div {
@@ -195,11 +189,17 @@
 }
 
 .row__info-card {
-  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.row__info-card:hover {
-  border-color: var(--primary-100);
+.row__info-card:hover h6,
+.row__info-card:hover p {
+  color: var(--primary-100);
+}
+
+.row__info-card:hover img {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
 }
 
 .row__info-card div {

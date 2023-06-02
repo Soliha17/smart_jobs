@@ -101,7 +101,7 @@ const ProfessionalInformation = ({ props }) => {
                 labelName="Sohangiz"
                 labelFor="profession"
                 req={true}
-                input={<Input size="large" />}
+                input={<Input maxLength={70} size="large" />}
               />
             </Col>
             <Col xs={24} sm={24}>

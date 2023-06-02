@@ -11,6 +11,10 @@
   border-bottom: 1px solid var(--lightgray);
 }
 
+.accordion-faq .ant-collapse-item:first-child {
+  border-top: 1px solid var(--lightgray);
+}
+
 .accordion-faq .ant-collapse-header-text {
   font-weight: 400;
   font-size: 25px;
@@ -29,4 +33,27 @@
 
 .accordion-faq .ant-collapse-item-active .ant-collapse-header-text {
   color: var(--primary-100);
+}
+
+@media (max-width: 500px) {
+  .accordion-faq {
+    margin-top: 65px;
+  }
+
+  .accordion-faq .title {
+    margin-bottom: 20px;
+  }
+
+  .accordion-faq .ant-collapse-header-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .accordion-faq .ant-collapse-header {
+    padding: 16px 0 !important;
+  }
+
+  .accordion-faq .ant-collapse-content-box {
+    padding: 24px 0 !important;
+  }
 }

@@ -1,53 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
 
 import EyeIcon from "../../assets/images/eye-icon-profile.svg";
 import VerifyIcon from "../../assets/images/verified-icon.svg";
 import AvatarProfile from "../../assets/images/avatar-profile.svg";
-import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
 import LabeledInput from "../../components/molecules/labeled-input/LabeledInput";
 
 const Information = () => {
   const [form] = Form.useForm();
 
-  const [language, setLanguage] = useState("");
-
-  const [level, setLevel] = useState("");
-
   const [value, setValue] = useState("");
 
-  const onChangeLanguage = (date, dateString) => {
-    console.log(date, dateString);
-    console.log(date);
-    setLanguage(date);
-  };
-
-  const onChangeLevel = (date, dateString) => {
-    console.log(date, dateString);
-    console.log(date);
-    setLevel(date);
-  };
-
-  const handleChange = (e) => {
-    const inputValue = e.target.value;
-    const digitsOnly = inputValue.replace(/\D/g, ""); // Remove non-digit characters
-
-    if (digitsOnly.length <= 9) {
-      setValue(digitsOnly);
-    } else {
-      setValue(0);
+  const handleKeyDown = (e) => {
+    if (
+      e.key === "*" ||
+      e.key === "/" ||
+      e.key === "+" ||
+      e.key === "-" ||
+      e.key === "_" ||
+      e.key === "(" ||
+      e.key === ")" ||
+      e.key === "&" ||
+      e.key === "%" ||
+      e.key === "$" ||
+      e.key === "@" ||
+      e.key === "!" ||
+      e.key === "^" ||
+      e.key === "~" ||
+      e.key === "#" ||
+      e.key === "." ||
+      e.key === "," ||
+      e.key === "Shift" ||
+      e.key === " " ||
+      e.key === "Alt"
+    ) {
+      e.preventDefault();
     }
   };
-
-  // const next = props.next;
-  // console.log(next);
 
   const onFinish = (values) => {
     console.log("Success:", values);
     // next(1);
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
@@ -62,6 +61,7 @@ const Information = () => {
       range: "${label} must be between ${0} and ${10}",
     },
   };
+
   const { Option } = Select;
 
   const prefixSelector = (
@@ -222,6 +222,7 @@ const Information = () => {
                       size="large"
                       // type="number"
                       value={value}
+                      onKeyDown={handleKeyDown}
                       maxLength={9}
                     />
                   }

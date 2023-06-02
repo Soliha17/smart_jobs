@@ -56,15 +56,31 @@ const ContactUs = () => {
           <Row gutter={[0, 14]}>
             <Col xs={24}>
               <Form.Item name="fullNameContactUs" label="Ism Familiyangiz">
-                <Input size="large" />
+                <Input maxLength={50} size="large" />
               </Form.Item>
             </Col>
             <Col xs={24}>
-              <Form.Item name="phoneContactUs" label="Telefon raqamingiz">
+              <Form.Item
+                name="phoneContactUs"
+                label="Telefon raqamingiz"
+                rules={[
+                  {
+                    pattern: /^(?:\d*)$/,
+                    message: "Value should contain just number",
+                  },
+                  {
+                    pattern: /^[\d]{0,9}$/,
+                    message: "Value should be less than 9 character",
+                  },
+                  {
+                    len: 9,
+                    message: "Value should be exactly 9 characters",
+                  },
+                ]}
+              >
                 <Input
                   addonBefore={prefixSelector}
                   size="large"
-                  maxLength={9}
                   className="phone-input"
                 />
               </Form.Item>

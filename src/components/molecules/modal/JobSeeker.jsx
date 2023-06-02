@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Form } from "antd";
 
 import "./modal.css";
 import "./JobSeekerStyle.css";
@@ -48,13 +47,28 @@ const JobSeekerModal = ({
   const onInputValueChange = (e) => {
     if (
       e.key === "*" ||
+      e.key === "/" ||
+      e.key === "+" ||
+      e.key === "-" ||
+      e.key === "_" ||
+      e.key === "(" ||
+      e.key === ")" ||
+      e.key === "&" ||
+      e.key === "%" ||
+      e.key === "$" ||
+      e.key === "@" ||
+      e.key === "!" ||
+      e.key === "^" ||
+      e.key === "~" ||
       e.key === "#" ||
+      e.key === "." ||
+      e.key === "," ||
       e.key === "Shift" ||
       e.key === " " ||
       e.key === "Alt"
     ) {
       e.preventDefault();
-    } else if (e.key == "Backspace") {
+    } else if (e.key === "Backspace") {
       setInputValue(inputValue.slice(0, inputValue.length - 1));
     } else {
       if (!isNaN(e.key - 0) && inputValue.slice(0, 1) !== "+") {
@@ -75,8 +89,11 @@ const JobSeekerModal = ({
       !inputValue.includes("@")
     ) {
       setErrorText("Bu e-mail orqali ro'yxatdan o'tilmagan");
-    } else if (inputValue.slice(0, 1) == "+" && inputValue.length > 14) {
-      setErrorText("Raqam formati noto'ri");
+    } else if (
+      (inputValue.slice(0, 1) === "+" && inputValue.length > 14) ||
+      (inputValue.length > 4 && inputValue.length < 14)
+    ) {
+      setErrorText("Raqam formati noto'g'ri");
     } else if (
       inputValue.length &&
       inputValue.slice(0, 1) !== "+" &&

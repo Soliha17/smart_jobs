@@ -24,7 +24,7 @@ const AccordionFaq = () => (
   <div className="accordion-faq container">
     <h3 className="title">Ko'p beriladigan savollar</h3>
     <Collapse
-      defaultActiveKey={["1"]}
+      defaultActiveKey={["0"]}
       expandIconPosition={"end"}
       size="large"
       expandIcon={customExpandIcon}

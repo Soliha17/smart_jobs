@@ -1,9 +1,10 @@
+import { useState, useEffect } from "react";
 import { Col, Row, Form } from "antd";
+
+import "./modal.css";
 
 import BackIcon from "../../../assets/images/back-icon-modal.svg";
 import OTPInput from "../../atoms/OTPInput";
-
-import "./modal.css";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
@@ -22,6 +23,23 @@ const SignUp = ({ next, prev, data }) => {
   function handleBack() {
     prev(1);
   }
+
+  const [seconds, setSeconds] = useState(60);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prevCount) => {
+        if (prevCount > 0) {
+          return prevCount - 1;
+        } else {
+          clearInterval(interval);
+          return 0;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="body__login-modal">
@@ -54,7 +72,7 @@ const SignUp = ({ next, prev, data }) => {
         </Form>
         <span className="text__login-modal">
           <p style={{ width: "85%", textAlign: "center" }}>
-            Kod kelmasa 60 soniyadan keyin yangisini olishingiz mumkin
+            Kod kelmasa {seconds} soniyadan keyin yangisini olishingiz mumkin
           </p>
         </span>
       </div>
