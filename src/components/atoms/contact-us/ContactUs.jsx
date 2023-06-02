@@ -4,6 +4,7 @@ import "./contactUs.css";
 
 import ContactImg from "../../../assets/images/contact-us-img.png";
 import { Col, Form, Input, Row, Select } from "antd";
+import { useTranslation } from "react-i18next";
 
 const ContactUs = () => {
   const [form] = Form.useForm();
@@ -15,6 +16,8 @@ const ContactUs = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  const { t } = useTranslation();
 
   const { Option } = Select;
 
@@ -31,11 +34,8 @@ const ContactUs = () => {
     <div className="contact-us container">
       <img src={ContactImg} alt="ContactImg" />
       <div className="content__contact-us">
-        <h3>Biz bilan bog'lanish</h3>
-        <p>
-          Ma'lumotlaringizni qoldiring mutaxasislarimizsiz bilan tez orada
-          bog'lanishadi
-        </p>
+        <h3> {t("contactUs")} </h3>
+        <p>{t("contact-text__about")}</p>
         <Form
           form={form}
           layout="vertical"
@@ -55,14 +55,14 @@ const ContactUs = () => {
         >
           <Row gutter={[0, 14]}>
             <Col xs={24}>
-              <Form.Item name="fullNameContactUs" label="Ism Familiyangiz">
+              <Form.Item name="fullNameContactUs" label={t("fullName")}>
                 <Input maxLength={50} size="large" />
               </Form.Item>
             </Col>
             <Col xs={24}>
               <Form.Item
                 name="phoneContactUs"
-                label="Telefon raqamingiz"
+                label={t("phoneNumber")}
                 rules={[
                   {
                     pattern: /^(?:\d*)$/,
@@ -86,7 +86,7 @@ const ContactUs = () => {
               </Form.Item>
             </Col>
             <Col xs={24}>
-              <button className="primary-btn">Yuborish</button>
+              <button className="primary-btn"> {t("sending")} </button>
             </Col>
           </Row>
         </Form>

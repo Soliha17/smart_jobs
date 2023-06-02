@@ -52,7 +52,7 @@
   "levelOfExperience": "Level of Experience",
   "dateOfPublication": "Date of publication: ",
 
-  "searchResults": "Search results: ",
+  "searchResults": "Search results",
 
   "submitToWork": "Submit to Work",
   "place": "Place",
@@ -77,5 +77,33 @@
   "companyWebsite": "Company Website",
   "similarVacancies": "Similar Vacancies",
 
-  "allCompanies": "All companies: "
+  "allCompanies": "All companies",
+  "numberOfOpenVacancies": "Number of Open Vacancies",
+  "vacanciesAnnouncedByTheCompany": "Vacancies Announced by the Company",
+  "showMore": "Show more",
+
+  "homePage": "Home Page",
+  "directionOfManagement": "Direction of Management",
+  "productManager": "Product Manager",
+  "similarArticles": "Similar articles",
+
+  "aboutTitle": "Assisting You in Finding Opportunities or Talent for Your Business",
+  "job_search": "job_search",
+  "employee_search": "employee_search",
+  "high_salaries": "high_salaries",
+  "talented_personnel": "talented_personnel",
+  "different_fields": "different_fields",
+
+  "contactUs": "Contact Us",
+  "contact-text__about": "Leave your information, and our experts will contact you shortly",
+  "fullName": "Full Name",
+  "phoneNumber": "Phone Number",
+  "sending": "Sending",
+
+  "gallery-desc__about": "Smart Jobs team assists you in convenient job search or talent acquisition for companies. Our application is designed for job seekers and delivers your products or services directly to the target audience.",
+  "faq": "Frequently asked questions",
+  "faq1": "Can I submit without a resume?",
+  "faq2": "Will my information be kept secure?",
+  "faq3": "What sets Smart Jobs apart from others?",
+  "faq4": "Is experience required for job placement?"
 }

@@ -2,6 +2,7 @@ import { Collapse } from "antd";
 import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
 
 import "./accordionFaq.css";
+import { useTranslation } from "react-i18next";
 
 const { Panel } = Collapse;
 
@@ -20,30 +21,34 @@ const customExpandIcon = (panelProps) => {
   }
 };
 
-const AccordionFaq = () => (
-  <div className="accordion-faq container">
-    <h3 className="title">Ko'p beriladigan savollar</h3>
-    <Collapse
-      defaultActiveKey={["0"]}
-      expandIconPosition={"end"}
-      size="large"
-      expandIcon={customExpandIcon}
-      accordion
-      ghost
-    >
-      <Panel header="Rezyumesiz ham topshirsa bo’ladimi?" key="1">
-        <p>{text}</p>
-      </Panel>
-      <Panel header="Meni ma’lumotlarim xavfsiz saqlanadimi" key="2">
-        <p>{text}</p>
-      </Panel>
-      <Panel header="Smart Jobning boshqalarni nima farqi bor" key="3">
-        <p>{text}</p>
-      </Panel>
-      <Panel header="Ishga topshirish uchun tajriba shartmi" key="4">
-        <p>{text}</p>
-      </Panel>
-    </Collapse>
-  </div>
-);
+const AccordionFaq = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="accordion-faq container">
+      <h3 className="title"> {t("faq")} </h3>
+      <Collapse
+        defaultActiveKey={["0"]}
+        expandIconPosition={"end"}
+        size="large"
+        expandIcon={customExpandIcon}
+        accordion
+        ghost
+      >
+        <Panel header={t("faq1")} key="1">
+          <p>{text}</p>
+        </Panel>
+        <Panel header={t("faq2")} key="2">
+          <p>{text}</p>
+        </Panel>
+        <Panel header={t("faq3")} key="3">
+          <p>{text}</p>
+        </Panel>
+        <Panel header={t("faq4")} key="4">
+          <p>{text}</p>
+        </Panel>
+      </Collapse>
+    </div>
+  );
+};
 export default AccordionFaq;

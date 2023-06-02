@@ -52,7 +52,7 @@
   "levelOfExperience": "Tajriba darajasi",
   "dateOfPublication": "E'lon qilingan sana: ",
 
-  "searchResults": "Qidiruvlar  natijasi: ",
+  "searchResults": "Qidiruvlar  natijasi",
 
   "submitToWork": "Ishga topshirish",
   "place": "Joy",
@@ -77,7 +77,36 @@
   "companyWebsite": "Kompaniya veb - sayti",
   "similarVacancies": "O'xshash vakansiyalar",
 
-  "allCompanies": "Barcha kompaniyalar: ",
+  "allCompanies": "Barcha kompaniyalar",
+  "numberOfOpenVacancies": "Ochiq vakansiyalar soni",
+  "vacanciesAnnouncedByTheCompany": "Kompaniya tomonidan e'lon qilingan vakansiyalar",
+  "showMore": "Yana ko'rsatish",
+
+  "homePage": "Bosh sahifa",
+  "directionOfManagement": "Boshqaruv yo'nalishi",
+  "productManager": "Mahsulot menejeri",
+  "similarArticles": "O'xshash maqolalar",
+
+  "aboutTitle": "Orzudagi ishni yoki korxonangizga iqtidorlar izlashda ko'maklashamiz",
+  "job_search": "ish_izlash",
+  "employee_search": "talantlarni_izlash",
+  "high_salaries": "yuqori_maoshlar",
+  "talented_personnel": "iqtidorli_kadrlar",
+  "different_fields": "turli_sohalar",
+
+  "contactUs": "Biz bilan bog'lanish",
+  "contact-text__about": " Ma'lumotlaringizni qoldiring mutaxasislarimizsiz bilan tez orada bog'lanishadi",
+  "fullName": "Ism Familiyangiz",
+  "phoneNumber": "Telefon raqamingiz",
+  "sending": "Yuborish",
+
+  "gallery-desc__about": "Biz Smart Jobs jamoasi sizga qulay ish izlash, yoki kopmpaniyalarga talantlar qidirishda ko'makalshadi Ish izlovchilar uchun yaratilgan ilovamiz, sizning mahsulotingiz yoki xizmatlaringizni jonli ko'rsatibmijozlarga to'g'ri yetkazib beradi.",
+  "faq": "Ko'p beriladigan savollar",
+  "faq1": "Rezyumesiz ham topshirsa bo'ladimi?",
+  "faq2": "Meni ma'lumotlarim xavfsiz saqlanadimi",
+  "faq3": "Smart Jobning boshqalarni nima farqi bor",
+  "faq4": "Ishga topshirish uchun tajriba shartmi",
+  
   "": "",
   "": "",
   "": ""

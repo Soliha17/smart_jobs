@@ -97,7 +97,7 @@ const VacancyCard = ({
             size="large"
             style={{ backgroundColor: "var(--primary-100)" }}
           >
-            {button}
+            {t(button)}
           </Button>
         </span>
       ) : (

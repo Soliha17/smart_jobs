@@ -47,10 +47,10 @@ const VacancyFull = () => {
         <Breadcrumb
           items={[
             {
-              title: <Link to={"/"}>Bosh sahifa</Link>,
+              title: <Link to={"/"}>{t("homePage")}</Link>,
             },
             {
-              title: <Link to={"/"}>Boshqaruv yo'nalishi</Link>,
+              title: <Link to={"/"}>{t("directionOfManagement")}</Link>,
             },
             {
               title: "Mahsulot menejeri",

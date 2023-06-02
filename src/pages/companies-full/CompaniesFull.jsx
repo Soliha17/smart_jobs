@@ -17,6 +17,8 @@ import Instagram from "../../assets/images/instagram-icon.svg";
 import Facebook from "../../assets/images/facebook-icon.svg";
 import MapIcon from "../../assets/images/show-map-icon.svg";
 
+import { useTranslation } from "react-i18next";
+
 const CompaniesFull = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -29,16 +31,18 @@ const CompaniesFull = () => {
     setIsModalOpen(false);
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="companies-full container">
         <Breadcrumb
           items={[
             {
-              title: <Link to={"/"}>Bosh sahifa</Link>,
+              title: <Link to={"/"}>{t("homePage")}</Link>,
             },
             {
-              title: <Link to={"/companies"}>Barcha kompaniyalar</Link>,
+              title: <Link to={"/companies"}>{t("allCompanies")}</Link>,
             },
             {
               title: "P&G",
@@ -70,17 +74,19 @@ const CompaniesFull = () => {
           </div>
           <Row gutter={[50, 16]} className="info__companies-full">
             <Col xs={24} sm={12} md={8} lg={6}>
-              <p className="title__companies-full">Ochiq vakansiyalar soni</p>
+              <p className="title__companies-full">
+                {t("numberOfOpenVacancies")}
+              </p>
               <p className="subtitle__companies-full">4</p>
             </Col>
             <Col xs={24} sm={12} md={8} lg={6}>
               <p className="title__companies-full">
-                Kompaniya ishchilari soni{" "}
+                {t("numberOfEmployeesOfTheCompany")}
               </p>
               <p className="subtitle__companies-full">200-500</p>
             </Col>
             <Col xs={24} sm={12} md={8} lg={6}>
-              <p className="title__companies-full">Kompaniya manzili </p>
+              <p className="title__companies-full">{t("companyAddress")} </p>
               <p className="subtitle__companies-full" onClick={showModal}>
                 Germaniya, Berlin , 7-daha, uy
               </p>
@@ -99,14 +105,14 @@ const CompaniesFull = () => {
               </Modal>
             </Col>
             <Col xs={24} sm={12} md={8} lg={6}>
-              <p className="title__companies-full">Kompaniya veb - sayti</p>
+              <p className="title__companies-full">{t("companyWebsite")}</p>
               <Link to={"/"} target="_blank">
                 <p className="subtitle__companies-full">www.PG.com</p>
               </Link>
             </Col>
           </Row>
           <div className="description__companies-full">
-            <h6>Tavsif</h6>
+            <h6>{t("description")}</h6>
             <p>Responsibilities:</p>
             <ul>
               <li>
@@ -162,10 +168,10 @@ const CompaniesFull = () => {
           <div className="address__companies-full">
             <div>
               <img src={MapIcon} alt="map icon" />
-              <p className="address-text__companies-full">Manzil</p>
+              <p className="address-text__companies-full"> {t("address")}</p>
             </div>
             <Button type="primary" size="medium" onClick={showModal}>
-              xaritada ko‘rsatish
+              {t("showOnMap")}
             </Button>
             <Modal
               width={1200}
@@ -184,7 +190,7 @@ const CompaniesFull = () => {
         </div>
 
         <div className="footer__companies-full">
-          <h2>Kompaniya tomonidan e’lon qilingan vakansiyalar</h2>
+          <h2> {t("vacanciesAnnouncedByTheCompany")} </h2>
           <Row gutter={[24, 24]}>
             <Col xs={24} sm={24} md={12} lg={12}>
               <VacancyCard
@@ -199,7 +205,7 @@ const CompaniesFull = () => {
       `}
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
-                button="Ishga topshirish"
+                button="submitToWork"
               />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12}>
@@ -215,7 +221,7 @@ const CompaniesFull = () => {
       `}
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
-                button="Ishga topshirish"
+                button="submitToWork"
               />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12}>
@@ -231,7 +237,7 @@ const CompaniesFull = () => {
       `}
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
-                button="Ishga topshirish"
+                button="submitToWork"
               />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12}>
@@ -247,7 +253,7 @@ const CompaniesFull = () => {
       `}
                 jobType="Masofadan"
                 jobTime="To’liq stavka"
-                button="Ishga topshirish"
+                button="submitToWork"
               />
             </Col>
           </Row>

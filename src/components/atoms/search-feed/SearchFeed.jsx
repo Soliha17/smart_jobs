@@ -53,8 +53,8 @@ const SearchFeed = (children) => {
       <div className="left__search-result">
         {children.icon && <img src={children.icon} alt="search result icon" />}
         <p>
-          {children.text}
-          <span className="number__search-result">{children.number}</span>
+          {children.text}:
+          <span className="number__search-result"> {children.number}</span>
         </p>
       </div>
       <div className="right__search-result" style={children.style}>

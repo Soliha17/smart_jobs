@@ -12,6 +12,7 @@ import { blogDatas } from "../../mock/blog";
 import { threeBlogDatas } from "../../mock/threeBlogCard";
 import Footer from "../../components/layout/footer/Footer";
 import CheckableTag from "antd/es/tag/CheckableTag";
+import { useTranslation } from "react-i18next";
 
 const tagsData = [
   "Kompaniyalar",
@@ -47,6 +48,8 @@ const Blog = () => {
     setSelectedTags(nextSelectedTags);
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="blog-page">
       <div className="blog">
@@ -54,7 +57,7 @@ const Blog = () => {
           <Breadcrumb
             items={[
               {
-                title: <Link to={"/"}>Bosh sahifa</Link>,
+                title: <Link to={"/"}>{t("homePage")}</Link>,
               },
               {
                 title: "Blog",
@@ -64,10 +67,10 @@ const Blog = () => {
           <div className="header__blog">
             <div className="top-header__blog">
               <Link to="/blogfull">
-                <p className="title">Blog</p>
+                <p className="title"> {t("blog")} </p>
               </Link>
               <Search
-                placeholder="Qidiring"
+                placeholder={t("search")}
                 onSearch={onSearch}
                 enterButton={
                   <button className="ant-btn">
@@ -124,7 +127,7 @@ const Blog = () => {
                 );
               })}
             </div>
-            <button className="see-all__btn">Yana ko'rsatish</button>
+            <button className="see-all__btn">{t("showMore")}</button>
           </div>
         </div>
       </div>

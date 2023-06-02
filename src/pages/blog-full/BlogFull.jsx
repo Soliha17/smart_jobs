@@ -11,8 +11,11 @@ import BlogFullImg from "../../assets/images/blog-full-img.png";
 import BlogCard from "../../components/atoms/blog-card/BlogCard";
 
 import Footer from "../../components/layout/footer/Footer";
+import { useTranslation } from "react-i18next";
 
 const BlogFull = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="blog-page">
       <div className="blog-full">
@@ -20,10 +23,10 @@ const BlogFull = () => {
           <Breadcrumb
             items={[
               {
-                title: <Link to={"/"}>Bosh sahifa</Link>,
+                title: <Link to={"/"}>{t("homePage")}</Link>,
               },
               {
-                title: <Link to={"/blog"}>Blog</Link>,
+                title: <Link to={"/blog"}>{t("blog")}</Link>,
               },
               {
                 title: "Maqola",
@@ -38,7 +41,7 @@ const BlogFull = () => {
               <p className="date__blog">18-mart, 2023</p>
               <div>
                 <img src={SendIcon} alt="SendIcon" />
-                <p className="date__blog">Ulashish</p>
+                <p className="date__blog">{t("sharing")}</p>
               </div>
             </div>
             <div className="card__blog-full">
@@ -103,7 +106,7 @@ const BlogFull = () => {
               </p>
             </div>
             <div className="same-cards__blog-full">
-              <p className="title">O'xshash maqolalar</p>
+              <p className="title"> {t("similarArticles")} </p>
               <div className="container__blog">
                 {threeBlogDatas.map(({ id, title, date, text, img }) => {
                   return (
