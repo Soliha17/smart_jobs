@@ -10,9 +10,9 @@ const BlogHome = () => {
     <div className="home-blog container">
       <SectionsHeader
         children={{
-          title: "Blog",
-          text: "Ish topish va professional sohalardagi maqalalar",
-          btnText: "maqolalar",
+          title: "blog",
+          text: "articlesOnFindingAJobAndProfessionalFields",
+          btnText: "articles",
           link: "/blog",
         }}
       />

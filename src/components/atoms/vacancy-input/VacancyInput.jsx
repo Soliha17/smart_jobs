@@ -7,6 +7,7 @@ import SearchIcon from "../../../assets/images/hero-search-icon.svg";
 import HeroSearchIcon from "../../molecules/HeroSearchIcon";
 import HeroSelect from "../../molecules/hero-select/HeroSelect";
 import LocationIcon from "../../molecules/HeroSelectLocationIcon";
+import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
 
@@ -23,6 +24,8 @@ const VacancyInput = () => {
     },
   ];
 
+  const { t } = useTranslation();
+
   return (
     <div className="vacancy-input">
       <div className="action__hero-home container">
@@ -38,7 +41,7 @@ const VacancyInput = () => {
             <Input
               className="input__hero-home"
               size="large"
-              placeholder="Lavozim yoki komyaniyani kiriting"
+              placeholder={t("enterThePositionOrCompany")}
               prefix={<HeroSearchIcon />}
             />
           </AutoComplete>
@@ -49,16 +52,16 @@ const VacancyInput = () => {
               placeholder="Hududni tanlang"
               onChange={(val) => console.log(val)}
             >
-              <Option value="toshkent">Toshkent</Option>
-              <Option value="buxoro">Buxoro</Option>
-              <Option value="samarqand">Samarqand</Option>
+              <Option value="toshkent">{t("tashkent")}</Option>
+              <Option value="buxoro">{t("bukhara")}</Option>
+              <Option value="samarqand">{t("samarkand")}</Option>
             </HeroSelect>
           </div>
         </div>
         <div>
           <button className="search-btn__hero-home">
             <img src={SearchIcon} alt="SearchIcon" />
-            <span className="search-text">Qidirish</span>
+            <span className="search-text">{t("search")}</span>
           </button>
         </div>
       </div>

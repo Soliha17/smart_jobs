@@ -11,9 +11,9 @@ const Cities = () => {
     <div className="cities">
       <SectionsHeader
         children={{
-          title: "Hududlar",
-          text: "Joylashuvlar kesimida ish o’rinlari",
-          btnText: "hududlar",
+          title: "areas",
+          text: "jobsInTheSectionOfLocations",
+          btnText: "areas",
         }}
       />
 

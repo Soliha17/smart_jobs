@@ -6,8 +6,12 @@ import { VacancyCardDatas } from "../../../mock/vacancyCard";
 import SearchFeed from "../../atoms/search-feed/SearchFeed";
 import VacancyFullCard from "../../atoms/vacancy-full-card/VacancyFullCard";
 import SearchResultIcon from "../../../assets/images/search-result--icon.svg";
+import { useTranslation } from "react-i18next";
 
 const VacancyMain = ({ state, setState }) => {
+  const { t } = useTranslation();
+
+
   return (
     <div
       className="vacancy-main container"
@@ -19,7 +23,7 @@ const VacancyMain = ({ state, setState }) => {
       >
         <SearchFeed
           icon={SearchResultIcon}
-          text={"Qidiruvlar  natijasi: "}
+          text={t("searchResults")}
           number={"205"}
           style={state === "btn2" ? { display: "flex" } : { display: "none" }}
         />

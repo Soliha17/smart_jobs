@@ -11,6 +11,7 @@ import SearchIcon from "../../../assets/images/hero-search-icon.svg";
 import LocationIcon from "../../molecules/HeroSelectLocationIcon";
 import HeroSelect from "../../molecules/hero-select/HeroSelect";
 import HeroSearchIcon from "../../molecules/HeroSearchIcon";
+import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
 
@@ -39,13 +40,13 @@ const HeroHome = () => {
     },
   ];
 
+  const { t } = useTranslation();
+
   return (
     <div className="hero-home">
       <div className="content__hero-home">
-        <p className="hero__title">Orzudagi ishni birga topamiz !</p>
-        <p className="hero__subtitle">
-          Smart Jobs sizga ish joyingizni topishda ko’maklashadi
-        </p>
+        <p className="hero__title">{t("weWillFindTheDreamJobTogether")}</p>
+        <p className="hero__subtitle">{t("smartJobsWillHelpYouFindYourJob")}</p>
         <div className="action__hero-home">
           <div className="input-group__hero-home">
             <AutoComplete
@@ -59,7 +60,7 @@ const HeroHome = () => {
               <Input
                 className="input__hero-home"
                 size="large"
-                placeholder="Lavozim yoki komyaniyani kiriting"
+                placeholder={t("enterThePositionOrCompany")}
                 prefix={<HeroSearchIcon />}
               />
             </AutoComplete>
@@ -70,9 +71,9 @@ const HeroHome = () => {
                 placeholder="Hududni tanlang"
                 onChange={(val) => console.log(val)}
               >
-                <Option value="toshkent">Toshkent</Option>
-                <Option value="buxoro">Buxoro</Option>
-                <Option value="samarqand">Samarqand</Option>
+                <Option value="toshkent">{t("tashkent")}</Option>
+                <Option value="buxoro">{t("bukhara")}</Option>
+                <Option value="samarqand">{t("samarkand")}</Option>
               </HeroSelect>
             </div>
           </div>
@@ -80,7 +81,7 @@ const HeroHome = () => {
             <button className="search-btn__hero-home">
               <img src={SearchIcon} alt="search icon" />
 
-              <span>Qidirish</span>
+              <span>{t("search")}</span>
             </button>
           </div>
         </div>
@@ -91,7 +92,7 @@ const HeroHome = () => {
             }`}
             onClick={() => selectTag("tag1")}
           >
-            To‘liq stavka
+            {t("fullTime")}
           </button>
           <button
             className={`work-type__hero-home ${
@@ -99,7 +100,7 @@ const HeroHome = () => {
             }`}
             onClick={() => selectTag("tag2")}
           >
-            Amaliyot
+            {t("practice")}
           </button>
           <button
             className={`work-type__hero-home ${
@@ -107,7 +108,7 @@ const HeroHome = () => {
             }`}
             onClick={() => selectTag("tag3")}
           >
-            Yarim stavka
+            {t("halfRate")}
           </button>
           <button
             className={`work-type__hero-home ${
@@ -115,7 +116,7 @@ const HeroHome = () => {
             }`}
             onClick={() => selectTag("tag4")}
           >
-            Frilans
+            {t("freelance")}
           </button>
         </div>
       </div>
@@ -125,14 +126,14 @@ const HeroHome = () => {
           onClick={() => navigateFn("vacancy")}
         >
           <img src={VacancyIcon} alt="vacancy icon" />
-          <p>Vokansiyalar</p>
+          <p>{t("vacancies")}</p>
         </div>
         <div
           className="footer-item__hero-home"
           onClick={() => navigateFn("companies")}
         >
           <img src={CompanyIcon} alt="company icon" />
-          <p>Kompaniyalar</p>
+          <p>{t("companies")}</p>
         </div>
 
         <div
@@ -140,7 +141,7 @@ const HeroHome = () => {
           onClick={() => navigateFn("resume")}
         >
           <img src={ResumeIcon} alt="resume icon" />
-          <p>Rezyume konstuktor</p>
+          <p>{t("resumeConstructor")}</p>
         </div>
       </div>
     </div>

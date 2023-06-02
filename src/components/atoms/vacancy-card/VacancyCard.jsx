@@ -5,6 +5,7 @@ import "./vacancyCard.css";
 import ThreeDots from "../../../assets/images/three-dots.svg";
 import { Link } from "react-router-dom";
 import { Button, Dropdown } from "antd";
+import { useTranslation } from "react-i18next";
 
 const VacancyCard = ({
   className,
@@ -16,6 +17,8 @@ const VacancyCard = ({
   jobTime,
   button,
 }) => {
+  const { t } = useTranslation();
+
   const items = [
     {
       key: "1",
@@ -25,7 +28,7 @@ const VacancyCard = ({
           rel="noopener noreferrer"
           href="https://www.antgroup.com"
         >
-          Saqlash
+          {t("save")}
         </a>
       ),
     },
@@ -37,7 +40,7 @@ const VacancyCard = ({
           rel="noopener noreferrer"
           href="https://www.aliyun.com"
         >
-          Ulashish
+          {t("sharing")}
         </a>
       ),
     },
@@ -49,7 +52,7 @@ const VacancyCard = ({
           rel="noopener noreferrer"
           href="https://www.luohanacademy.com"
         >
-          Shikoyat qilish
+          {t("complaining")}
         </a>
       ),
     },
@@ -98,7 +101,9 @@ const VacancyCard = ({
           </Button>
         </span>
       ) : (
-        <p className="date__vacancy-card">E’lon qilingan sana: {date}</p>
+        <p className="date__vacancy-card">
+          {t("dateOfPublication")} {date}
+        </p>
       )}
     </div>
   );

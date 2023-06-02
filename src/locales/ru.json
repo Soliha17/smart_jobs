@@ -1,0 +1,81 @@
+{
+  "jobSearch": "Поиск работы",
+  "employeeSearch": "Поиск сотрудников",
+  "entrance": "Вход",
+  "vacancies": "Вакансии",
+  "companies": "Компании",
+  "resumeConstructor": "Конструктор резюме",
+  "help": "Помощь",
+  "supplements": "Дополнения",
+  "nameOfUser": "Гайрат Рахматов",
+
+  "enterThePositionOrCompany": "Введите должность или компанию",
+  "tashkent": "Ташкент",
+  "bukhara": "Бухара",
+  "samarkand": "Самарканд",
+  "search": "Поиск",
+
+  "weWillFindTheDreamJobTogether": "Мы вместе найдем мечтаемую работу!",
+  "smartJobsWillHelpYouFindYourJob": "Smart Jobs поможет вам найти работу",
+  "fullTime": "Полная занятость",
+  "practice": "Практика",
+  "halfRate": "Полставки",
+  "freelance": "Фриланс",
+
+  "categories": "Категории",
+  "chooseTheJobThatSuitsYou": "Выберите работу, которая вам подходит",
+  "showAll": "Показать все",
+
+  "resumes": "Резюме",
+  "areas": "Области",
+
+  "all": "Все",
+  "professions": "Профессии",
+  "jobsInTheSectionOfLocations": "Вакансии в разделе локаций",
+
+  "blog": "Блог",
+  "articlesOnFindingAJobAndProfessionalFields": "Статьи о поиске работы и профессиональных областях",
+  "articles": "Статьи",
+
+  "company": "Компания",
+  "portal": "Портал",
+  "forEmployers": "Для работодателей",
+  "relationship": "Связь",
+  "socialNetworks": "Социальные сети",
+  "mobileApp": "Мобильное приложение",
+
+  "filters": "Фильтры",
+  "turnOff": "Выключить",
+  "directions": "Направления",
+  "workingTime": "Время работы",
+  "typeOfWork": "Тип работы",
+  "levelOfExperience": "Уровень опыта",
+  "dateOfPublication": "Дата публикации: ",
+
+  "searchResults": "Результаты поиска: ",
+
+  "submitToWork": "Отправиться на работу",
+  "place": "Место",
+  "applicationDeadline": "Срок подачи заявки",
+  "workingFormat": "Формат работы",
+  "experience": "Опыт",
+  "levelOfEducation": "Уровень образования",
+  "requiredLanguages": "Требуемые языки",
+  "salaryRange": "Диапазон зарплаты",
+  "skills": "Навыки",
+  "description": "Описание",
+  "address": "Адрес",
+  "showOnMap": "Показать на карте",
+  "sorting": "Сортировка",
+  "save": "Сохранить",
+  "sharing": "Поделиться",
+  "complaining": "Жаловаться",
+
+  "companyAddress": "Адрес компании",
+  "totalNumberOfVacancies": "Общее количество вакансий",
+  "numberOfEmployeesOfTheCompany": "Количество сотрудников компании",
+  "companyWebsite": "Веб-сайт компании",
+  "similarVacancies": "Похожие вакансии",
+
+  "allCompanies": "Все компании:"
+}

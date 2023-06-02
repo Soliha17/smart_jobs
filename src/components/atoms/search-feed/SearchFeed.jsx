@@ -4,6 +4,7 @@ import "./searchFeed.css";
 
 import SortIcon from "../../../assets/images/sort-icon.svg";
 import { Button, Dropdown } from "antd";
+import { useTranslation } from "react-i18next";
 
 const SearchFeed = (children) => {
   const items = [
@@ -45,6 +46,8 @@ const SearchFeed = (children) => {
     },
   ];
 
+  const { t } = useTranslation();
+
   return (
     <div className="search-result">
       <div className="left__search-result">
@@ -64,7 +67,7 @@ const SearchFeed = (children) => {
         >
           <Button size="large" className="btn__search-result">
             <img src={SortIcon} alt="sort icon" />
-            Saralash
+            {t("sorting")}
           </Button>
         </Dropdown>
       </div>

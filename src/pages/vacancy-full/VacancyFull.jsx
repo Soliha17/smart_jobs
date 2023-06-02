@@ -22,18 +22,25 @@ import YandexCard from "../../components/molecules/yandex-card/YandexCard";
 import VacancyCard from "../../components/atoms/vacancy-card/VacancyCard";
 import Footer from "../../components/layout/footer/Footer";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const VacancyFull = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="vacancy-full-wrapper container">
@@ -54,7 +61,7 @@ const VacancyFull = () => {
           <div className="header__vacancy-full">
             <div className="header-bottom__vacancy-full">
               <Button type="primary" size="large">
-                Ishga topshirish
+                {t("submitToWork")}
               </Button>
               <div className="actions-group__vacancy-full">
                 <img src={ShareIcon} alt="ShareIcon" />
@@ -72,7 +79,7 @@ const VacancyFull = () => {
               <img src={PgCompLogo} width={132} alt="pg company logo" />
             </div>
             <p className="date__vacancy-full">
-              E'lon qilingan sana: 13-mart, 2023
+              {t("dateOfPublication")} 13-mart, 2023
             </p>
             <div className="wrapper__vacancy-content">
               <Row gutter={[25, 25]}>
@@ -85,7 +92,7 @@ const VacancyFull = () => {
                 >
                   <div>
                     <img src={LocationIcon} alt="LocationIcon" />
-                    <p>Joy</p>
+                    <p>{t("place")}</p>
                   </div>
                   <span>Toshkent, O'zbekiston</span>
                 </Col>
@@ -98,10 +105,11 @@ const VacancyFull = () => {
                 >
                   <div>
                     <img src={CalendarIcon} alt="CalendarIcon" />
-                    <p>Ariza topshirish muddati</p>
+                    <p>{t("applicationDeadline")}</p>
                   </div>
                   <span>25.02.2023</span>
                 </Col>
+
                 <Col
                   xs={24}
                   sm={12}
@@ -111,7 +119,7 @@ const VacancyFull = () => {
                 >
                   <div>
                     <img src={TimeplaceIcon} alt="TimeplaceIcon" />
-                    <p>Ishlash turi</p>
+                    <p>{t("typeOfWork")}</p>
                   </div>
                   <span>To’liq stavka</span>
                 </Col>
@@ -124,10 +132,11 @@ const VacancyFull = () => {
                 >
                   <div>
                     <img src={AwayIcon} alt="LocationAwayIcon" />
-                    <p>Ishlash formati</p>
+                    <p>{t("workingFormat")}</p>
                   </div>
                   <span>Gibrid</span>
                 </Col>
+
                 <Col
                   xs={24}
                   sm={12}
@@ -137,7 +146,7 @@ const VacancyFull = () => {
                 >
                   <div>
                     <img src={PendingActionIcon} alt="PendingActionIcon" />
-                    <p>Tajribasi</p>
+                    <p>{t("experience")}</p>
                   </div>
                   <span>1-3 yil</span>
                 </Col>
@@ -150,10 +159,11 @@ const VacancyFull = () => {
                 >
                   <div>
                     <img src={SchoolIcon} alt="SchoolIcon" />
-                    <p>Ma’lumot darajasi</p>
+                    <p>{t("levelOfEducation")}</p>
                   </div>
                   <span>-</span>
                 </Col>
+
                 <Col
                   xs={24}
                   sm={12}
@@ -163,10 +173,11 @@ const VacancyFull = () => {
                 >
                   <div>
                     <img src={TranslateIcon} alt="LocationIcon" />
-                    <p>Talab qilinayotgan tillar</p>
+                    <p> {t("requiredLanguages")}</p>
                   </div>
                   <span>Ingliz, Rus</span>
                 </Col>
+
                 <Col
                   xs={24}
                   sm={12}
@@ -176,7 +187,7 @@ const VacancyFull = () => {
                 >
                   <div>
                     <img src={BalanceIcon} alt="LocationIcon" />
-                    <p>ish haqqi oralig’i</p>
+                    <p>{t("salaryRange")}</p>
                   </div>
                   <span>12 000 000 - 18 000 000 </span>
                 </Col>
@@ -185,7 +196,7 @@ const VacancyFull = () => {
           </div>
           <div className="info__vacancy-full">
             <div className="skills__vacancy-full">
-              <p className="section-name__vacancy-full">Ko'nikmalar</p>
+              <p className="section-name__vacancy-full">{t("skills")}</p>
               <div className="skills-group__vacancy-full">
                 <p className="circle-text__vacancy-full">
                   O’rganishni o’rgana olish
@@ -202,15 +213,16 @@ const VacancyFull = () => {
                 <p className="circle-text__vacancy-full">Strategik fikrlash</p>
               </div>
             </div>
+
             <div className="directions__vacancy-full">
-              <p className="section-name__vacancy-full">Yo’nalishlar</p>
+              <p className="section-name__vacancy-full">{t("directions")}</p>
               <div className="professions-container">
                 <p className="circle-text__vacancy-full">Doimiy ishlay olish</p>
                 <p className="circle-text__vacancy-full">Strategik fikrlash</p>
               </div>
             </div>
             <div className="description__vacancy-full">
-              <h6 className="section-name__vacancy-full">Tavsif</h6>
+              <h6 className="section-name__vacancy-full">{t("description")}</h6>
               <p>Responsibilities:</p>
               <ul>
                 <li>
@@ -263,13 +275,14 @@ const VacancyFull = () => {
                 </li>
               </ul>
             </div>
+
             <div className="address__vacancy-full">
               <div>
                 <img src={MapIcon} alt="map icon" />
-                <p className="address-text__vacancy-full">Manzil</p>
+                <p className="address-text__vacancy-full"> {t("address")}</p>
               </div>
               <Button type="primary" size="medium" onClick={showModal}>
-                xaritada ko‘rsatish
+                {t("showOnMap")}
               </Button>
               <Modal
                 width={1200}
@@ -286,9 +299,10 @@ const VacancyFull = () => {
               </Modal>
             </div>
           </div>
+
           <div className="footer__vacancy-full">
             <Button type="primary" size="large">
-              Ishga topshirish
+              {t("submitToWork")}
             </Button>
             <div className="actions-group__vacancy-full">
               <img src={ShareIcon} alt="ShareIcon" />
@@ -309,32 +323,36 @@ const VacancyFull = () => {
               <img src={PgCompLogo} width={132} alt="pg company logo" />
               <div>
                 <h6>Procter&Gamble</h6>
-                <p className="title__company-card">Kompaniya manzili</p>
+                <p className="title__company-card">{t("companyAddress")} </p>
                 <p className="subtitle__company-card">
                   Germaniya, Berlin , 7-daha, uy
                 </p>
               </div>
             </Col>
             <Col xs={24} sm={24} md={12} lg={5}>
-              <p className="title__company-card">Umumiy vakansiyalari</p>
+              <p className="title__company-card">
+                {" "}
+                {t("totalNumberOfVacancies")}
+              </p>
               <p className="subtitle__company-card">4</p>
             </Col>
             <Col xs={24} sm={24} md={12} lg={5}>
               <div className="third-col__company-card">
                 <p className="title__company-card">
-                  Kompaniya ishchilari soni{" "}
+                  {t("numberOfEmployeesOfTheCompany")}
                 </p>
                 <p className="subtitle__company-card">200-500</p>
               </div>
             </Col>
             <Col xs={24} sm={24} md={12} lg={5}>
-              <p className="title__company-card">Kompaniya veb - sayti </p>
+              <p className="title__company-card">{t("companyWebsite")}</p>
               <p className="subtitle__company-card">www.PG.com</p>
             </Col>
           </Row>
         </div>
+
         <div className="same-vacancies">
-          <p className="title__vacancy-card">O'xshash vakansiyalar</p>
+          <p className="title__vacancy-card">{t("similarVacancies")}</p>
           <Row gutter={[24, 24]}>
             <Col xs={24} sm={24} md={12} lg={12}>
               <VacancyCard

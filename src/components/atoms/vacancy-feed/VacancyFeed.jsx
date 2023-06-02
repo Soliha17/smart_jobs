@@ -6,6 +6,7 @@ import { DownOutlined } from "@ant-design/icons";
 
 import LeftLayoutIcon from "../../../assets/images/left-layout-btn.svg";
 import RightLayoutIcon from "../../../assets/images/right-layout-btn.svg";
+import { useTranslation } from "react-i18next";
 
 const VacancyFeed = ({ state, setState }) => {
   const selectButton = (btn) => {
@@ -16,6 +17,7 @@ const VacancyFeed = ({ state, setState }) => {
     message.info("Click on menu item.");
     console.log("click", e);
   };
+
   const items = [
     {
       label: "1st menu item",
@@ -30,17 +32,21 @@ const VacancyFeed = ({ state, setState }) => {
       key: "3",
     },
   ];
+
   const menuProps = {
     items,
     onClick: handleMenuClick,
   };
+
+  const { t } = useTranslation();
+
   return (
     <div className="vacancy-feed container">
       <div className="mobile__vacancy-feed">
         <Dropdown menu={menuProps}>
           <Button size="large">
             <Space>
-              Filterlar
+              {t("filters")}
               {/* <img src={FilterIcon} alt="filter icon" /> */}
               <DownOutlined />
             </Space>
@@ -50,7 +56,7 @@ const VacancyFeed = ({ state, setState }) => {
           <Button size="large" className="clear-btn__vacancy-feed">
             <Space>
               {/* <img src={ClearIcon} alt="clear icon" /> */}
-              O’chirish
+              {t("clear")}
               <DownOutlined />
             </Space>
           </Button>
@@ -60,7 +66,7 @@ const VacancyFeed = ({ state, setState }) => {
         <Dropdown menu={menuProps}>
           <Button size="large">
             <Space>
-              Yo’nalishlar
+              {t("directions")}
               <DownOutlined />
             </Space>
           </Button>
@@ -68,7 +74,7 @@ const VacancyFeed = ({ state, setState }) => {
         <Dropdown menu={menuProps}>
           <Button size="large">
             <Space>
-              Ishlash vaqti
+              {t("workingTime")}
               <DownOutlined />
             </Space>
           </Button>
@@ -76,23 +82,25 @@ const VacancyFeed = ({ state, setState }) => {
         <Dropdown menu={menuProps}>
           <Button size="large">
             <Space>
-              Ishlash turi
+              {t("typeOfWork")}
               <DownOutlined />
             </Space>
           </Button>
         </Dropdown>
+
         <Dropdown menu={menuProps}>
           <Button size="large">
             <Space>
-              Tajriba darajasi
+              {t("levelOfExperience")}
               <DownOutlined />
             </Space>
           </Button>
         </Dropdown>
+
         <Dropdown menu={menuProps}>
           <Button size="large">
             <Space>
-              E’lon qilingan sana
+              {t("dateOfPublication")}
               <DownOutlined />
             </Space>
           </Button>
@@ -100,7 +108,7 @@ const VacancyFeed = ({ state, setState }) => {
         <Dropdown menu={menuProps}>
           <Button size="large" className="clear-btn__vacancy-feed">
             <Space>
-              O'chirish
+              {t("clear")}
               <DownOutlined />
             </Space>
           </Button>

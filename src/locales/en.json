@@ -1,0 +1,81 @@
+{
+  "jobSearch": "Job Search",
+  "employeeSearch": "Employee Search",
+  "entrance": "Login",
+  "vacancies": "Vacancies",
+  "companies": "Companies",
+  "resumeConstructor": "Resume Constructor",
+  "help": "Help",
+  "supplements": "Supplements",
+  "nameOfUser": "G'ayrat Rahmatov",
+
+  "enterThePositionOrCompany": "Enter the position or company",
+  "tashkent": "Tashkent",
+  "bukhara": "Bukhara",
+  "samarkand": "Samarkand",
+  "search": "Search",
+
+  "weWillFindTheDreamJobTogether": "We will find the dream job together!",
+  "smartJobsWillHelpYouFindYourJob": "Smart Jobs will help you find your job",
+  "fullTime": "Full Time",
+  "practice": "Practice",
+  "halfRate": "Half Rate",
+  "freelance": "Freelance",
+
+  "categories": "Categories",
+  "chooseTheJobThatSuitsYou": "Choose the job that suits you",
+  "showAll": "Show All",
+
+  "resumes": "Resumes",
+  "areas": "Areas",
+
+  "all": "All",
+  "professions": "Professions",
+  "jobsInTheSectionOfLocations": "Jobs in the section of locations",
+
+  "blog": "Blog",
+  "articlesOnFindingAJobAndProfessionalFields": "Articles on Finding a Job and Professional Fields",
+  "articles": "Articles",
+
+  "company": "Company",
+  "portal": "Portal",
+  "forEmployers": "For Employers",
+  "relationship": "Relationship",
+  "socialNetworks": "Social Networks",
+  "mobileApp": "Mobile App",
+
+  "filters": "Filters",
+  "clear": "Clear",
+  "directions": "Directions",
+  "workingTime": "Working Time",
+  "typeOfWork": "Type of Work",
+  "levelOfExperience": "Level of Experience",
+  "dateOfPublication": "Date of publication: ",
+
+  "searchResults": "Search results: ",
+
+  "submitToWork": "Submit to Work",
+  "place": "Place",
+  "applicationDeadline": "Application Deadline",
+  "workingFormat": "Working Format",
+  "experience": "Experience",
+  "levelOfEducation": "Level of Education",
+  "requiredLanguages": "Required Languages",
+  "salaryRange": "Salary Range",
+  "skills": "Skills",
+  "description": "Description",
+  "address": "Address",
+  "showOnMap": "Show on Map",
+  "sorting": "Sorting",
+  "save": "Save",
+  "sharing": "Sharing",
+  "complaining": "Complaining",
+
+  "companyAddress": "Company Address",
+  "totalNumberOfVacancies": "Total Number of Vacancies",
+  "numberOfEmployeesOfTheCompany": "Total Number of Employees",
+  "companyWebsite": "Company Website",
+  "similarVacancies": "Similar Vacancies",
+
+  "allCompanies": "All companies: "
+}

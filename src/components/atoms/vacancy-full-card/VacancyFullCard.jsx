@@ -18,6 +18,8 @@ import PendingActionIcon from "../../../assets/images/pending-actions.svg";
 import YmapsComponent from "../../molecules/yandex-map/YmapsComponent";
 import YandexCard from "../../molecules/yandex-card/YandexCard";
 
+import { useTranslation } from "react-i18next";
+
 const VacancyFullCard = ({ style }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -38,6 +40,8 @@ const VacancyFullCard = ({ style }) => {
     navigate("/full");
   }
 
+  const { t } = useTranslation();
+
   return (
     <div className="vacancy-full" style={style}>
       <div className="header__vacancy-full">
@@ -49,7 +53,7 @@ const VacancyFullCard = ({ style }) => {
         </div>
         <div className="header-bottom__vacancy-full">
           <Button type="primary" size="large">
-            Ishga topshirish
+            {t("submitToWork")}
           </Button>
           <div className="actions-group__vacancy-full">
             <img src={ShareIcon} alt="ShareIcon" />
@@ -59,36 +63,41 @@ const VacancyFullCard = ({ style }) => {
         </div>
       </div>
       <div className="content__vacancy-full">
-        <p className="date__vacancy-full">E'lon qilingan sana: 13-mart, 2023</p>
+        <p className="date__vacancy-full">
+          {" "}
+          {t("dateOfPublication")} 13-mart, 2023
+        </p>
+
         <div className="wrapper__vacancy-content">
           <span className="row__vacancy-content">
             <div className="inner-content__vacancy-full">
               <div>
                 <img src={LocationIcon} alt="LocationIcon" />
-                <p>Joy</p>
+                <p> {t("place")}</p>
               </div>
               <span>Toshkent, O'zbekiston</span>
             </div>
             <div className="inner-content__vacancy-full">
               <div>
                 <img src={CalendarIcon} alt="CalendarIcon" />
-                <p>Ariza topshirish muddati</p>
+                <p>{t("applicationDeadline")}</p>
               </div>
               <span>25.02.2023</span>
             </div>
           </span>
+
           <span className="row__vacancy-content">
             <div className="inner-content__vacancy-full">
               <div>
                 <img src={TimeplaceIcon} alt="TimeplaceIcon" />
-                <p>Ishlash turi</p>
+                <p>{t("typeOfWork")}</p>
               </div>
               <span>To’liq stavka</span>
             </div>
             <div className="inner-content__vacancy-full">
               <div>
                 <img src={AwayIcon} alt="LocationAwayIcon" />
-                <p>Ishlash formati</p>
+                <p>{t("workingFormat")}</p>
               </div>
               <span>Gibrid</span>
             </div>
@@ -97,30 +106,31 @@ const VacancyFullCard = ({ style }) => {
             <div className="inner-content__vacancy-full">
               <div>
                 <img src={PendingActionIcon} alt="PendingActionIcon" />
-                <p>Tajribasi</p>
+                <p>{t("experience")}</p>
               </div>
               <span>1-3 yil</span>
             </div>
             <div className="inner-content__vacancy-full">
               <div>
                 <img src={SchoolIcon} alt="SchoolIcon" />
-                <p>Ma’lumot darajasi</p>
+                <p>{t("levelOfEducation")}</p>
               </div>
               <span>-</span>
             </div>
           </span>
+
           <span className="row__vacancy-content">
             <div className="inner-content__vacancy-full">
               <div>
                 <img src={TranslateIcon} alt="LocationIcon" />
-                <p>Talab qilinayotgan tillar</p>
+                <p>{t("requiredLanguages")}</p>
               </div>
               <span>Ingliz, Rus</span>
             </div>
             <div className="inner-content__vacancy-full">
               <div>
                 <img src={BalanceIcon} alt="LocationIcon" />
-                <p>ish haqqi oralig’i</p>
+                <p>{t("salaryRange")}</p>
               </div>
               <span>12 000 000 - 18 000 000 </span>
             </div>
@@ -129,7 +139,7 @@ const VacancyFullCard = ({ style }) => {
       </div>
       <div className="info__vacancy-full">
         <div className="skills__vacancy-full">
-          <p className="section-name__vacancy-full">Ko’nikmalar</p>
+          <p className="section-name__vacancy-full">{t("skills")}</p>
           <div className="skills-group__vacancy-full">
             <p className="circle-text__vacancy-full">
               O’rganishni o’rgana olish
@@ -140,11 +150,12 @@ const VacancyFullCard = ({ style }) => {
           </div>
         </div>
         <div className="directions__vacancy-full">
-          <p className="section-name__vacancy-full">Yo’nalishlar</p>
+          <p className="section-name__vacancy-full">{t("directions")}</p>
           <p className="circle-text__vacancy-full">Boshqaruv</p>
         </div>
+
         <div className="description__vacancy-full">
-          <h6>Tavsif:</h6>
+          <h6>{t("description")}:</h6>
           <p>
             PRO Tach kompaniyasi ish tajribasiga ega bo'lmagan masofaviy
             xodimlarni mustaqil ish <br />
@@ -172,13 +183,14 @@ const VacancyFullCard = ({ style }) => {
             Vakansiya haqida telegram soliha_work da yozing
           </p>
         </div>
+
         <div className="address__vacancy-full">
           <div>
             <img src={MapIcon} alt="map icon" />
-            <p className="address-text__vacancy-full">Manzil</p>
+            <p className="address-text__vacancy-full">{t("address")}</p>
           </div>
           <Button type="primary" size="medium" onClick={showModal}>
-            xaritada ko‘rsatish
+            {t("showOnMap")}
           </Button>
           <Modal
             width={1200}
@@ -198,7 +210,7 @@ const VacancyFullCard = ({ style }) => {
       </div>
       <div className="footer__vacancy-full">
         <Button type="primary" size="large">
-          Ishga topshirish
+          {t("submitToWork")}
         </Button>
         <div className="actions-group__vacancy-full">
           <img src={ShareIcon} alt="ShareIcon" />

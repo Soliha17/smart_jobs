@@ -11,13 +11,16 @@ import Footer from "../../components/layout/footer/Footer";
 
 import PaginationCompany from "../../components/molecules/pagination/Pagination";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Companies = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="companies container">
         <SearchFeed
-          text={"Barcha kompaniyalar: "}
+          text={t("allCompanies")}
           number={"1250"}
           style={{ display: "flex" }}
         />

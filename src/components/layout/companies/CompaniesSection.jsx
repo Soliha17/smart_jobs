@@ -22,15 +22,18 @@ import Logo15 from "../../../assets/images/logo15.png";
 import Logo16 from "../../../assets/images/logo16.png";
 import Logo17 from "../../../assets/images/logo17.png";
 import Logo18 from "../../../assets/images/logo18.png";
+import { useTranslation } from "react-i18next";
 
 const CompaniesSection = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="companies-section">
       <SectionsHeader
         children={{
-          title: "Kompaniyalar",
-          text: "Ish joylari ichindan o’zinigizga mosini tanlang",
-          btnText: "kompaniyalar",
+          title: "companies",
+          text: "chooseTheJobThatSuitsYou",
+          btnText: "companies",
           link: "/companies",
         }}
       />

@@ -15,6 +15,14 @@ import Login from "../../molecules/modal/Login";
 import SignUp from "../../molecules/modal/SignUp";
 import InfoFills from "../../molecules/modal/FillInfos";
 import Modals from "../../molecules/modal/Modals";
+import { useTranslation } from "react-i18next";
+
+const languageOptions = [
+  { value: "en", label: "En" },
+  { value: "ru", label: "Ru" },
+  { value: "uz", label: "Uz" },
+  // Add more language options as needed
+];
 
 function Header() {
   const [visible, setVisible] = useState(false);
@@ -32,6 +40,13 @@ function Header() {
       setIsUser(false);
     }
   }, [location.pathname]);
+
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+  const handleLanguageChange = (value) => {
+    i18n.changeLanguage(value);
+  };
 
   const showDrawer = () => {
     setVisible(true);
@@ -61,6 +76,8 @@ function Header() {
     navigate("/");
   }
 
+  const { t } = useTranslation();
+
   return (
     <div>
       <div className="header-wrapper">
@@ -72,16 +89,16 @@ function Header() {
             <nav className="mobileHidden">
               <ul>
                 <li>
-                  <NavLink to="/vacancies">Vakansiyalar</NavLink>
+                  <NavLink to="/vacancies">{t("vacancies")}</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/resume">Rezyume konstruktor</NavLink>
+                  <NavLink to="/resume">{t("resumeConstructor")}</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/help">Yordam</NavLink>
+                  <NavLink to="/help">{t("help")}</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/addition">Qo’shimchalar</NavLink>
+                  <NavLink to="/addition">{t("supplements")}</NavLink>
                 </li>
               </ul>
             </nav>
@@ -93,7 +110,7 @@ function Header() {
                 }`}
                 onClick={() => selectButton("btn1")}
               >
-                Ish Izlash
+                {t("jobSearch")}
               </button>
               <button
                 className={`button__search-group ${
@@ -101,7 +118,7 @@ function Header() {
                 }`}
                 onClick={() => selectButton("btn2")}
               >
-                Hodim Izlash
+                {t("employeeSearch")}
               </button>
             </div>
           )}
@@ -116,26 +133,19 @@ function Header() {
                 >
                   <Select
                     className="white-select"
-                    defaultValue="UZ"
+                    value={currentLanguage}
+                    onChange={handleLanguageChange}
                     style={{
                       width: 70,
                     }}
                     bordered={false}
-                    options={[
-                      {
-                        value: "uz",
-                        label: "UZ",
-                      },
-                      {
-                        value: "ru",
-                        label: "RU",
-                      },
-                      {
-                        value: "en",
-                        label: "EN",
-                      },
-                    ]}
-                  />
+                  >
+                    {languageOptions.map((option) => (
+                      <Select.Option key={option.value} value={option.value}>
+                        {option.label}
+                      </Select.Option>
+                    ))}
+                  </Select>
                 </Space>
                 <div className="header__profile header__profile--none">
                   <Dropdown
@@ -147,7 +157,7 @@ function Header() {
                     <button onClick={(e) => e.preventDefault()}>
                       <Space className="profile__name">
                         <img src={ProfileImg} alt="Pofile Img" width={43} />
-                        G’ayrat Rakhamtov
+                        {t("nameOfUser")}
                         <DownOutlined />
                       </Space>
                     </button>
@@ -164,33 +174,26 @@ function Header() {
                 >
                   <Select
                     className="white-select"
-                    defaultValue="UZ"
+                    value={currentLanguage}
+                    onChange={handleLanguageChange}
                     style={{
                       width: 70,
                     }}
                     bordered={false}
-                    options={[
-                      {
-                        value: "uz",
-                        label: "UZ",
-                      },
-                      {
-                        value: "ru",
-                        label: "RU",
-                      },
-                      {
-                        value: "en",
-                        label: "EN",
-                      },
-                    ]}
-                  />
+                  >
+                    {languageOptions.map((option) => (
+                      <Select.Option key={option.value} value={option.value}>
+                        {option.label}
+                      </Select.Option>
+                    ))}
+                  </Select>
                 </Space>
                 <Button
                   type="primary"
                   className="enter-btn__header"
                   onClick={() => setIsModalOpen(true)}
                 >
-                  Kirish
+                  {t("entrance")}
                 </Button>
               </>
             )}
@@ -204,26 +207,20 @@ function Header() {
                 }`}
               >
                 <Select
-                  defaultValue="UZ"
+                  className="white-select"
+                  value={currentLanguage}
+                  onChange={handleLanguageChange}
                   style={{
                     width: 70,
                   }}
                   bordered={false}
-                  options={[
-                    {
-                      value: "uz",
-                      label: "UZ",
-                    },
-                    {
-                      value: "ru",
-                      label: "RU",
-                    },
-                    {
-                      value: "en",
-                      label: "EN",
-                    },
-                  ]}
-                />
+                >
+                  {languageOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Space>
               <Button
                 type="primary"
@@ -238,7 +235,7 @@ function Header() {
                     <li>
                       <NavLink onClick={onClose} to="/">
                         <div className="header__profile">
-                          <h6>G’ayrat Rakhamtov</h6>
+                          <h6>{t("nameOfUser")}</h6>
                         </div>
                       </NavLink>
                     </li>

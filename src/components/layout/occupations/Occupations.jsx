@@ -12,8 +12,8 @@ const Occupations = () => {
     <div className="occupations container">
       <SectionsHeader
         children={{
-          title: "Kasblar",
-          btnText: "kompaniyalar",
+          title: "professions",
+          btnText: "professions",
         }}
       />
       <div className="occupations__content">

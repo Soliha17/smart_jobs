@@ -34,6 +34,7 @@
 
 .action__hero-home {
   width: 743px;
+  /* margin: 0 auto; */
   display: flex;
   justify-content: space-between;
 }
