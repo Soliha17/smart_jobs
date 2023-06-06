@@ -3,6 +3,7 @@ import { Col, DatePicker, Drawer, Form, Input, Row, Select, Space } from "antd";
 import LabeledInput from "../labeled-input/LabeledInput";
 import CloseIcon from "../../../assets/images/Exit.svg";
 import { v4 as uuidv4 } from "uuid";
+import { useTranslation } from "react-i18next";
 
 const FamiliarInsideDrawer = ({
   open,
@@ -66,10 +67,12 @@ const FamiliarInsideDrawer = ({
     setDate(date);
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Drawer
-        title="Oila a'zosi"
+        title={t("aFamilyMember")}
         width={603}
         closable={false}
         onClose={onClose}
@@ -101,14 +104,14 @@ const FamiliarInsideDrawer = ({
             <Row gutter={[24, 0]}>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Oila a'zosi"
+                  labelName={t("aFamilyMember")}
                   labelFor="familiarPerson"
                   req={true}
                   input={
                     <Select
                       // defaultValue="full"
                       size="large"
-                      placeholder="Tanlash"
+                      placeholder={t("choose")}
                       // onChange={onChange}
                       options={[
                         {
@@ -126,7 +129,7 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Otasinging F.I.Osi"
+                  labelName={t("fullNameOfFather")}
                   labelFor="fullNameOfFather"
                   req={true}
                   input={
@@ -139,14 +142,14 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Fuqaroligi"
+                  labelName={t("citizenship")}
                   labelFor="citizenship"
                   req={true}
                   input={
                     <Select
                       // defaultValue="full"
                       size="large"
-                      placeholder="Tanlash"
+                      placeholder={t("choose")}
                       // onChange={onChange}
                       options={[
                         {
@@ -164,7 +167,7 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Tug'ilgan sana"
+                  labelName={t("birthday")}
                   labelFor="workedDate"
                   req={true}
                   input={
@@ -179,7 +182,7 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={12}>
                 <LabeledInput
-                  labelName="Mamlakat"
+                  labelName={t("country")}
                   labelFor="countryFamily"
                   req={true}
                   input={
@@ -207,7 +210,7 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={12}>
                 <LabeledInput
-                  labelName="Shahar"
+                  labelName={t("city")}
                   labelFor="cityFamily"
                   req={true}
                   input={
@@ -235,7 +238,7 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Ish joyi"
+                  labelName={t("workplace")}
                   labelFor="workFamily"
                   req={true}
                   input={<Input size="large" />}
@@ -243,7 +246,7 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Lavozimi"
+                  labelName={t("position")}
                   labelFor="positionFamily"
                   req={true}
                   input={<Input size="large" />}
@@ -252,7 +255,7 @@ const FamiliarInsideDrawer = ({
             </Row>
             <div className="footer__resume">
               <button size="large" className="primary-btn" type="submit">
-                Saqlash
+                {t("save")}
               </button>
             </div>
           </Form>

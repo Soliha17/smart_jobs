@@ -12,6 +12,7 @@ import PortfolioDrawer from "../../molecules/drawer/PortfolioDrawer";
 import LicenseDrawer from "../../molecules/drawer/LicenseDrawer";
 
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const AdditionalInformation = ({ props }) => {
   const [form] = Form.useForm();
@@ -58,15 +59,18 @@ const AdditionalInformation = ({ props }) => {
     message.success("Muvaffaqiyatli saqlandi!");
     next(0);
   };
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="header__resume">
-        <h3>Qo'shimcha ma'lumotlar</h3>
-        <p>O'zingiz haqingizda asosiy ma'lumotlani kiriting</p>
+        <h3> {t("additionalInformation")} </h3>
+        <p> {t("enterYourBasicInformation")} </p>
       </div>
       <div className="content__resume">
         <Form
@@ -88,7 +92,7 @@ const AdditionalInformation = ({ props }) => {
         >
           <Row gutter={[24, 8]}>
             <Col xs={24}>
-              <p className="language-label">Biladigan tillaringizni kiriting</p>
+              <p className="language-label">{t("enterTheLanguagesYouKnow")}</p>
               <Form.List name="users">
                 {(fields, { add, remove }) => (
                   <>
@@ -166,7 +170,7 @@ const AdditionalInformation = ({ props }) => {
                             block
                           >
                             <span className="hidden-text__lan-resume">
-                              O'chirish
+                              {t("turnOff")}
                             </span>
                             <DeleteOutlined />
                           </Button>
@@ -178,7 +182,7 @@ const AdditionalInformation = ({ props }) => {
                         <Form.Item>
                           <Select
                             // defaultValue={"uzb"}
-                            placeholder="Til tanlang"
+                            placeholder={t("chooseALanguage")}
                             size="large"
                             onChange={onChangeLanguage}
                             options={[
@@ -202,7 +206,7 @@ const AdditionalInformation = ({ props }) => {
                         <Form.Item>
                           <Select
                             // defaultValue={"b1"}
-                            placeholder="Daraja tanlang"
+                            placeholder={t("selectALevel")}
                             size="large"
                             onChange={onChangeLevel}
                             options={[
@@ -228,7 +232,7 @@ const AdditionalInformation = ({ props }) => {
                             block
                           >
                             <span className="hidden-text__lan-resume">
-                              Qo'shish
+                              {t("add")}
                             </span>
                             <PlusOutlined />
                           </Button>
@@ -241,7 +245,7 @@ const AdditionalInformation = ({ props }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Akademik natijalar"
+                labelName={t("academicResults")}
                 labelFor="languages"
                 input={
                   <Button
@@ -256,14 +260,14 @@ const AdditionalInformation = ({ props }) => {
                       gap: "12px",
                     }}
                   >
-                    Qo'shish
+                    {t("add")}
                   </Button>
                 }
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Litsenizya va sertifikatlar"
+                labelName={t("licenseAndCertificates")}
                 labelFor="languages"
                 input={
                   <Button
@@ -278,14 +282,14 @@ const AdditionalInformation = ({ props }) => {
                       gap: "12px",
                     }}
                   >
-                    Qo'shish
+                    {t("add")}
                   </Button>
                 }
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Oila ma'lumotlari"
+                labelName={t("familyInformation")}
                 labelFor="languages"
                 input={
                   <Button
@@ -300,14 +304,14 @@ const AdditionalInformation = ({ props }) => {
                       gap: "12px",
                     }}
                   >
-                    Qo'shish
+                    {t("add")}
                   </Button>
                 }
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Portfolio"
+                labelName={t("portfolio")}
                 labelFor="languages"
                 input={
                   <Button
@@ -322,7 +326,7 @@ const AdditionalInformation = ({ props }) => {
                       gap: "12px",
                     }}
                   >
-                    Qo'shish
+                    {t("add")}
                   </Button>
                 }
               />
@@ -330,7 +334,7 @@ const AdditionalInformation = ({ props }) => {
           </Row>
           <div className="footer__resume">
             <Button size="large" onClick={() => prev(2)}>
-              Orqaga
+              {t("back")}
             </Button>
             <button
               size="large"
@@ -338,7 +342,7 @@ const AdditionalInformation = ({ props }) => {
               type="submit"
               style={{ marginLeft: "auto" }}
             >
-              Saqlash
+              {t("save")}
             </button>
           </div>
         </Form>

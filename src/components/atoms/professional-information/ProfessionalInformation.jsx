@@ -11,6 +11,7 @@ import AddCircle from "../../../assets/images/add-circle.svg";
 import AddTag from "../../molecules/add-tag/AddTag";
 import JobDrawer from "../../molecules/drawer/JobDrawer";
 import StudyDrawer from "../../molecules/drawer/StudyDrawer";
+import { useTranslation } from "react-i18next";
 
 const ProfessionalInformation = ({ props }) => {
   const [form] = Form.useForm();
@@ -76,11 +77,13 @@ const ProfessionalInformation = ({ props }) => {
     },
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="header__resume">
-        <h3>Kasbiy va ta’lim ma’lumotlari</h3>
-        <p>O’zingiz haqingizda asosiy ma’lumotlani kiriting</p>
+        <h3> {t("professionalAndEducationalInformation")} </h3>
+        <p> {t("enterYourBasicInformation")} </p>
       </div>
       <div className="content__resume">
         <Form
@@ -98,7 +101,7 @@ const ProfessionalInformation = ({ props }) => {
           <Row gutter={[24, 8]}>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Sohangiz"
+                labelName={t("profession")}
                 labelFor="profession"
                 req={true}
                 input={<Input maxLength={70} size="large" />}
@@ -106,7 +109,7 @@ const ProfessionalInformation = ({ props }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Ish tajribangiz"
+                labelName={t("yourWorkExperience")}
                 labelFor="experience"
                 // req="true"
                 input={jobValues?.map((item) => (
@@ -175,7 +178,7 @@ const ProfessionalInformation = ({ props }) => {
                           gap: "12px",
                         }}
                       >
-                        Qo'shish
+                        {t("add")}
                       </Button>
                     }
                   />
@@ -184,7 +187,7 @@ const ProfessionalInformation = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Ishlamoqchi bo'lgan formatingiz"
+                labelName={t("theFormatYouWantToWorkWith")}
                 labelFor="jobDirection"
                 req={true}
                 input={
@@ -209,7 +212,7 @@ const ProfessionalInformation = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Ishlamoqchi bo'lgan ish turingiz"
+                labelName={t("theTypeOfWorkYouWantToDo")}
                 labelFor="jobType"
                 req={true}
                 input={
@@ -234,14 +237,14 @@ const ProfessionalInformation = ({ props }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Olmoqchi bo’lgan ish haqingiz"
+                labelName={t("theSalaryYouWantToReceive")}
                 labelFor="salary"
                 input={<Input size="large" />}
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Ta'lim muassasasini kiriting"
+                labelName={t("enterTheEducationalInstitution")}
                 labelFor="education"
                 input={studyValues?.map((item) => (
                   <div key={item?.id} className="field__resume">
@@ -309,7 +312,7 @@ const ProfessionalInformation = ({ props }) => {
                           gap: "12px",
                         }}
                       >
-                        Qo'shish
+                        {t("add")}
                       </Button>
                     }
                   />
@@ -337,7 +340,7 @@ const ProfessionalInformation = ({ props }) => {
           </Row>
           <div className="footer__resume">
             <Button size="large" onClick={() => prev(1)}>
-              Orqaga
+              {t("back")}
             </Button>
             <button
               size="large"
@@ -345,7 +348,7 @@ const ProfessionalInformation = ({ props }) => {
               type="submit"
               style={{ marginLeft: "auto" }}
             >
-              Davom etish
+              {t("continue")}
             </button>
           </div>
         </Form>

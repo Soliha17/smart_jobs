@@ -4,6 +4,7 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import AddCircle from "../../../assets/images/add-circle.svg";
 import ExtraExtraExperience from "./ExtraExtraExperience";
+import { useTranslation } from "react-i18next";
 
 const ExtraExperience = ({ open, setOpen }) => {
   const [form] = Form.useForm();
@@ -18,6 +19,8 @@ const ExtraExperience = ({ open, setOpen }) => {
   const onChildrenDriwerFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -41,12 +44,12 @@ const ExtraExperience = ({ open, setOpen }) => {
         <Row gutter={[24, 0]} style={{ marginTop: "40px" }}>
           <Col xs={24} sm={24}>
             <h3 className="title__job-drawer">
-              Kompaniyada qo'shimcha tajriba
+              {t("additionalExperienceInTheCompany")}
             </h3>
           </Col>
           <Col xs={24} sm={24}>
             <LabeledInput
-              labelName="Qaysi lavozimda ishlagansiz?"
+              labelName={t("whatPositionDidYouWorkIn")}
               labelFor="positionOfThatCompany"
               req={true}
               input={<Input size="large" />}
@@ -54,13 +57,13 @@ const ExtraExperience = ({ open, setOpen }) => {
           </Col>
           <Col xs={24} sm={24}>
             <LabeledInput
-              labelName="Bandlik Turi"
+              labelName={t("typeOfEmployment")}
               labelFor="busyTypeOfThatCompany"
               req={true}
               input={
                 <Select
                   // defaultValue="full"
-                  placeholder="Tanlang"
+                  placeholder={t("choose")}
                   size="large"
                   // onChange={onChange}
                   options={[
@@ -79,13 +82,13 @@ const ExtraExperience = ({ open, setOpen }) => {
           </Col>
           <Col xs={24} sm={24}>
             <LabeledInput
-              labelName="Joylashuv"
+              labelName={t("location")}
               labelFor="locationOfThatCompany"
               req={true}
               input={
                 <Select
                   // defaultValue="buxoro"
-                  placeholder="Tanlang"
+                  placeholder={t("choose")}
                   size="large"
                   // onChange={onChange}
                   options={[
@@ -108,13 +111,13 @@ const ExtraExperience = ({ open, setOpen }) => {
           </Col>
           <Col xs={24} sm={24}>
             <LabeledInput
-              labelName="Format"
+              labelName={t("format")}
               labelFor="formatOfThatCompany"
               req={true}
               input={
                 <Select
                   // defaultValue="masofadan"
-                  placeholder="Tanlang"
+                  placeholder={t("choose")}
                   size="large"
                   // onChange={onChange}
                   options={[
@@ -133,21 +136,21 @@ const ExtraExperience = ({ open, setOpen }) => {
           </Col>
           <Col xs={24} sm={24}>
             <LabeledInput
-              labelName="Ishdagi yutuqlaringiz haqida yozing"
+              labelName={t("writeAboutYourAchievementsAtWork")}
               labelFor="aboutAwardsOfThatCompany"
               input={<TextArea rows={4} />}
             />
           </Col>
           <Col xs={24} sm={12}>
             <LabeledInput
-              labelName="Boshlash vaqti"
+              labelName={t("startTime")}
               labelFor="beginsOfThatCompany"
               input={
                 <Row gutter={[12, 5]}>
                   <Col xs={12}>
                     <Select
                       // defaultValue="oy"
-                      placeholder="Oy"
+                      placeholder={t("month")}
                       size="large"
                       // onChange={onChange}
                       options={[
@@ -177,7 +180,7 @@ const ExtraExperience = ({ open, setOpen }) => {
                   <Col xs={12}>
                     <Select
                       // defaultValue="uzbek"
-                      placeholder="Yil"
+                      placeholder={t("year")}
                       size="large"
                       // onChange={onChange}
                       options={[
@@ -208,7 +211,7 @@ const ExtraExperience = ({ open, setOpen }) => {
             <LabeledInput
               labelName="Tugash vaqti"
               labelFor="finishOfThatCompany"
-              input={<Checkbox checked={true}>Hozirgacha</Checkbox>}
+              input={<Checkbox checked={true}>{t("untilNow")}</Checkbox>}
             />
           </Col>
           <Col xs={24} sm={24}>
@@ -226,7 +229,7 @@ const ExtraExperience = ({ open, setOpen }) => {
                 gap: "12px",
               }}
             >
-              Qo'shish
+              {t("add")}
             </Button>
           </Col>
         </Row>

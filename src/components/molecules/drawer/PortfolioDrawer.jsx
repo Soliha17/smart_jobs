@@ -7,6 +7,7 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const PortfolioDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
@@ -56,10 +57,12 @@ const PortfolioDrawer = ({ open, setOpen }) => {
     },
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Drawer
-        title="Portfolio"
+        title={t("portfolio")}
         size="large"
         closable={false}
         onClose={onClose}
@@ -91,7 +94,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
             <Row gutter={[24, 34]}>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Portfolio nomi"
+                  labelName={t("portfolioName")}
                   labelFor="portfolioName"
                   req={true}
                   input={<Input size="large" />}
@@ -99,7 +102,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Portfolio tavsifi"
+                  labelName={t("portfolioDesc")}
                   labelFor="portfolioDesc"
                   req={true}
                   input={<TextArea rows={4} />}
@@ -107,7 +110,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Portfolio"
+                  labelName={t("portfolio")}
                   labelFor="portfolioFile"
                   // req={true}
                   getValueFromEvent={normFile}
@@ -123,7 +126,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
                         icon={<img src={UploadIcon} alt="" />}
                         size="large"
                       >
-                        Portfolio yuklash (ihtiyoriy)
+                        {t("uploadPortfolio")}
                       </Button>
                     </Upload>
                   }
@@ -135,7 +138,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
               style={{ marginTop: "32px" }}
               className="primary-btn"
             >
-              Saqlash
+              {t("save")}
             </button>
           </Form>
         </div>

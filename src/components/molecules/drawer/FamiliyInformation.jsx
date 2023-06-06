@@ -9,6 +9,7 @@ import AddCircle from "../../../assets/images/add-circle.svg";
 import Trash from "../../../assets/images/trash-icon.svg";
 import Edit from "../../../assets/images/edit-icon.svg";
 import FamiliarInsideDrawer from "./FamiliarInsideDrawer";
+import { useTranslation } from "react-i18next";
 
 const FamilyInformationDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
@@ -70,10 +71,12 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
     }
   }
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Drawer
-        title="Oila ma'lumotlari"
+        title={t("familyInformation")}
         // width={818}
         size="large"
         closable={false}
@@ -106,7 +109,7 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
             <Row gutter={[24, 34]}>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Oilaviy holati"
+                  labelName={t("familyCondition")}
                   labelFor="familyCondition"
                   req={true}
                   input={
@@ -130,7 +133,7 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Farzanlar borligi"
+                  labelName={t("hasChildren")}
                   labelFor="hasChildren"
                   req={true}
                   input={
@@ -154,7 +157,7 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Oila a'zosi haqida ma'lumot qo'shish"
+                  labelName={t("addInformationAboutAFamilyMember")}
                   labelFor="extraInfoAboutFamilier"
                   input={familyValues?.map((item) => (
                     <div key={item?.id} className="field__resume">
@@ -222,7 +225,7 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
                             gap: "12px",
                           }}
                         >
-                          Qo'shish
+                          {t("add")}
                         </Button>
                       }
                     />
@@ -252,7 +255,7 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
               style={{ marginTop: "32px" }}
               className="primary-btn"
             >
-              Saqlash
+              {t("save")}
             </button>
           </Form>
         </div>

@@ -6,6 +6,7 @@ import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const AcademicResultDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
@@ -65,10 +66,12 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
     },
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Drawer
-        title="Akademik natijalar"
+        title={t("academicResults")}
         size="large"
         closable={false}
         onClose={onClose}
@@ -100,7 +103,7 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
             <Row gutter={[24, 34]}>
               <Col xs={24} sm={12}>
                 <LabeledInput
-                  labelName="Test nomi"
+                  labelName={t("testName")}
                   labelFor="testName"
                   req={true}
                   input={<Input size="large" placeholder="Masalan, SAT" />}
@@ -108,7 +111,7 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={12}>
                 <LabeledInput
-                  labelName="Toplangan bal"
+                  labelName={t("accumulatedPoints")}
                   labelFor="facultyName"
                   req={true}
                   input={
@@ -118,7 +121,7 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Ushbu natijani bergan tashkilot"
+                  labelName={t("theOrganizationThatGaveThisResult")}
                   labelFor="organization"
                   req={true}
                   input={<Input size="large" />}
@@ -126,7 +129,7 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Tasdiqlovchi hujjat"
+                  labelName={t("confirmationDocument")}
                   labelFor="document"
                   // req={true}
                   // valuePropName="fileList"
@@ -143,7 +146,7 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
                         icon={<img src={UploadIcon} alt="" />}
                         size="large"
                       >
-                        Hujjatni yuklash (ihtiyoriy)
+                        {t("uploadDocument")}
                       </Button>
                     </Upload>
                   }
@@ -155,7 +158,7 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
               style={{ marginTop: "32px" }}
               className="primary-btn"
             >
-              Saqlash
+              {t("save")}
             </button>
           </Form>
         </div>

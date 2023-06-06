@@ -7,6 +7,7 @@ import CloseIcon from "../../../assets/images/Exit.svg";
 
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
+import { useTranslation } from "react-i18next";
 
 const StudyDrawer = ({
   open,
@@ -44,7 +45,7 @@ const StudyDrawer = ({
     setOpen(false);
 
     getStudyFunction();
-    
+
     if (isStudyEditValues !== null) {
       const index = studyValues.findIndex(
         (item) => item.id === isStudyEditValues.id
@@ -81,6 +82,8 @@ const StudyDrawer = ({
     },
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Drawer
@@ -116,7 +119,7 @@ const StudyDrawer = ({
             <Row gutter={[24, 0]}>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Ta’lim muassasasi"
+                  labelName={t("educationalInstitution")}
                   labelFor="studySchool"
                   req={true}
                   input={<Input size="large" placeholder="Masalan, Harvard" />}
@@ -124,7 +127,7 @@ const StudyDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Fakultet nomi"
+                  labelName={t("facultyName")}
                   labelFor="facultyName"
                   req={true}
                   input={
@@ -134,13 +137,13 @@ const StudyDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Ta'lim darajasi"
+                  labelName={t("educationLevel")}
                   labelFor="studyLevel"
                   req={true}
                   input={
                     <Select
                       // defaultValue="full"
-                      placeholder="Tanlang"
+                      placeholder={t("choose")}
                       size="large"
                       // onChange={onChange}
                       options={[
@@ -162,12 +165,12 @@ const StudyDrawer = ({
                 <Row gutter={[12, 5]}>
                   <Col xs={12}>
                     <LabeledInput
-                      labelName="Boshlash vaqti"
+                      labelName={t("startTime")}
                       labelFor="beginsMonthOfStudy"
                       input={
                         <Select
                           // defaultValue="oy"
-                          placeholder="Oy"
+                          placeholder={t("month")}
                           size="large"
                           // onChange={onChange}
                           options={[
@@ -203,7 +206,7 @@ const StudyDrawer = ({
                       input={
                         <Select
                           // defaultValue="oy"
-                          placeholder="Yil"
+                          placeholder={t("year")}
                           size="large"
                           // onChange={onChange}
                           options={[
@@ -235,12 +238,12 @@ const StudyDrawer = ({
                 <Row gutter={[12, 5]}>
                   <Col xs={12}>
                     <LabeledInput
-                      labelName="Tugash vaqti"
+                      labelName={t("endTime")}
                       labelFor="finishMonthOfStudy"
                       input={
                         <Select
                           // defaultValue="oy"
-                          placeholder="Oy"
+                          placeholder={t("month")}
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
@@ -277,7 +280,7 @@ const StudyDrawer = ({
                       input={
                         <Select
                           // defaultValue="oy"
-                          placeholder="Yil"
+                          placeholder={t("year")}
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
@@ -310,7 +313,7 @@ const StudyDrawer = ({
                       labelFor="studyingUntilNow"
                       input={
                         <Checkbox checked={isChecked} onChange={onChange}>
-                          Hozirgacha
+                          {t("untilNow")}
                         </Checkbox>
                       }
                     />
@@ -323,7 +326,7 @@ const StudyDrawer = ({
               style={{ marginTop: "32px" }}
               className="primary-btn"
             >
-              Saqlash
+              {t("save")}
             </button>
           </Form>
         </div>

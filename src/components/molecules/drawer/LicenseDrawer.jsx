@@ -7,6 +7,7 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const LicenseDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
@@ -57,10 +58,12 @@ const LicenseDrawer = ({ open, setOpen }) => {
     },
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Drawer
-        title="Litsenziya va sertifikat"
+        title={t("licenseAndCertificate")}
         size="large"
         closable={false}
         onClose={onClose}
@@ -92,7 +95,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
             <Row gutter={[24, 34]}>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Sertifikat nomi"
+                  labelName={t("sertificateName")}
                   labelFor="sertificateName"
                   req={true}
                   input={
@@ -105,7 +108,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Sertifikat bergan muassasa"
+                  labelName={t("sertificateFrom")}
                   labelFor="sertificateFrom"
                   req={true}
                   input={<Input size="large" placeholder="Masalan, Google" />}
@@ -113,7 +116,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Sertifikatni tasdiqlovchi hujjat"
+                  labelName={t("documentConfirmingTheCertificate")}
                   labelFor="sertificateFile"
                   // req={true}
                   getValueFromEvent={normFile}
@@ -129,7 +132,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
                         icon={<img src={UploadIcon} alt="" />}
                         size="large"
                       >
-                        Hujjatni yuklash (ihtiyoriy)
+                        {t("uploadDocument")}
                       </Button>
                     </Upload>
                   }
@@ -141,7 +144,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
               style={{ marginTop: "32px" }}
               className="primary-btn"
             >
-              Saqlash
+              {t("save")}
             </button>
           </Form>
         </div>

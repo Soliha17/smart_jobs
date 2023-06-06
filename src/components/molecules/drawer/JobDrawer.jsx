@@ -20,6 +20,7 @@ import AddCircle from "../../../assets/images/add-circle.svg";
 import JobInsideDrawer from "./JobInsideDrawer";
 import { v4 as uuidv4 } from "uuid";
 import ExtraExperience from "./ExtraExperience";
+import { useTranslation } from "react-i18next";
 const JobDrawer = ({
   open,
   setOpen,
@@ -101,10 +102,12 @@ const JobDrawer = ({
     },
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Drawer
-        title="Ish tajribangiz"
+        title={t("yourWorkExperience")}
         // width={818}
         size="large"
         closable={false}
@@ -137,7 +140,7 @@ const JobDrawer = ({
             <Row gutter={[24, 0]}>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Qaysi kompaniyada ishlagansiz?"
+                  labelName={t("whatCompanyDidYouWorkFor")}
                   labelFor="workedCompany"
                   req={true}
                   input={<Input size="large" maxLength={9} />}
@@ -145,7 +148,7 @@ const JobDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Qaysi lavozimda ishlagansiz?"
+                  labelName={t("whatPositionDidYouWorkIn")}
                   labelFor="workedLevel"
                   req={true}
                   input={<Input size="large" maxLength={9} />}
@@ -153,13 +156,13 @@ const JobDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Bandlik turi"
+                  labelName={t("typeOfEmployment")}
                   labelFor="workedType"
                   req={true}
                   input={
                     <Select
                       // defaultValue="full"
-                      placeholder="Bandlik turini tanlang"
+                      placeholder={t("selectTheTypeOfEmployment")}
                       size="large"
                       // onChange={onChange}
                       options={[
@@ -178,13 +181,13 @@ const JobDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Joylashuv"
+                  labelName={t("location")}
                   labelFor="location"
                   req={true}
                   input={
                     <Select
                       // defaultValue="full"
-                      placeholder="Tanlang"
+                      placeholder={t("choose")}
                       size="large"
                       // onChange={onChange}
                       options={[
@@ -203,13 +206,13 @@ const JobDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Format"
+                  labelName={t("format")}
                   labelFor="format"
                   req={true}
                   input={
                     <Select
                       // defaultValue="masofadan"
-                      placeholder="Tanlang"
+                      placeholder={t("choose")}
                       size="large"
                       // onChange={onChange}
                       options={[
@@ -228,7 +231,7 @@ const JobDrawer = ({
               </Col>
               <Col xs={24} sm={24}>
                 <LabeledInput
-                  labelName="Ishdagi yutuqlaringiz haqida yozing"
+                  labelName={t("writeAboutYourAchievementsAtWork")}
                   labelFor="aboutAwardsOfJob"
                   input={<TextArea rows={4} />}
                 />
@@ -237,7 +240,7 @@ const JobDrawer = ({
                 <Row gutter={[12, 5]}>
                   <Col xs={12}>
                     <LabeledInput
-                      labelName="Boshlash vaqti"
+                      labelName={t("startTime")}
                       labelFor="beginsMonthOfJob"
                       input={
                         <Select
@@ -310,7 +313,7 @@ const JobDrawer = ({
                 <Row gutter={[12, 5]}>
                   <Col xs={12}>
                     <LabeledInput
-                      labelName="Tugash vaqti"
+                      labelName={t("endTime")}
                       labelFor="finishMonthOfJob"
                       input={
                         <Select
@@ -385,7 +388,7 @@ const JobDrawer = ({
                       labelFor="workingUntilNow"
                       input={
                         <Checkbox checked={isChecked} onChange={onChange}>
-                          Hozirgacha
+                          {t("untilNow")}
                         </Checkbox>
                       }
                     />
@@ -414,7 +417,7 @@ const JobDrawer = ({
                     gap: "12px",
                   }}
                 >
-                  Qo'shish
+                  {t("add")}
                 </Button>
               </Col>
             </Row>
@@ -431,7 +434,7 @@ const JobDrawer = ({
               style={{ marginTop: "32px" }}
               className="primary-btn"
             >
-              Saqlash
+              {t("save")}
             </button>
           </Form>
         </div>

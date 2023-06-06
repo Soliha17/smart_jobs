@@ -4,6 +4,7 @@ import "./basicInfoResume.css";
 import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
 import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
+import { useTranslation } from "react-i18next";
 
 const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
@@ -41,32 +42,32 @@ const BasicInfoResume = ({ props }) => {
     console.log(date, dateString);
   };
 
-   const handleKeyDown = (e) => {
-     if (
-       e.key === "*" ||
-       e.key === "/" ||
-       e.key === "+" ||
-       e.key === "-" ||
-       e.key === "_" ||
-       e.key === "(" ||
-       e.key === ")" ||
-       e.key === "&" ||
-       e.key === "%" ||
-       e.key === "$" ||
-       e.key === "@" ||
-       e.key === "!" ||
-       e.key === "^" ||
-       e.key === "~" ||
-       e.key === "#" ||
-       e.key === "." ||
-       e.key === "," ||
-       e.key === "Shift" ||
-       e.key === " " ||
-       e.key === "Alt"
-     ) {
-       e.preventDefault();
-     }
-   };
+  const handleKeyDown = (e) => {
+    if (
+      e.key === "*" ||
+      e.key === "/" ||
+      e.key === "+" ||
+      e.key === "-" ||
+      e.key === "_" ||
+      e.key === "(" ||
+      e.key === ")" ||
+      e.key === "&" ||
+      e.key === "%" ||
+      e.key === "$" ||
+      e.key === "@" ||
+      e.key === "!" ||
+      e.key === "^" ||
+      e.key === "~" ||
+      e.key === "#" ||
+      e.key === "." ||
+      e.key === "," ||
+      e.key === "Shift" ||
+      e.key === " " ||
+      e.key === "Alt"
+    ) {
+      e.preventDefault();
+    }
+  };
 
   const validateMessages = {
     required: "Iltimos, ${label}ni kiriting!",
@@ -89,11 +90,13 @@ const BasicInfoResume = ({ props }) => {
     </Form.Item>
   );
 
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="header__resume">
-        <h3>Asosiy ma’lumotlar</h3>
-        <p>O’zingiz haqingizda asosiy ma’lumotlani kiriting</p>
+        <h3>{t("basicInformation")}</h3>
+        <p>{t("enterYourBasicInformation")}</p>
       </div>
       <div className="content__resume">
         <Form
@@ -117,7 +120,7 @@ const BasicInfoResume = ({ props }) => {
           <Row gutter={[24, 8]}>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Ism"
+                labelName={t("name")}
                 labelFor="name"
                 req={true}
                 input={<Input size="large" maxLength={32} />}
@@ -125,7 +128,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Familiya"
+                labelName={t("surname")}
                 labelFor="surname"
                 req={true}
                 input={<Input size="large" maxLength={32} />}
@@ -133,7 +136,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Tug'ilgan sana"
+                labelName={t("birthday")}
                 labelFor="birthday"
                 req={true}
                 input={
@@ -148,7 +151,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Jins"
+                labelName={t("gender")}
                 labelFor="gender"
                 req={true}
                 input={
@@ -165,7 +168,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Mamlakat"
+                labelName={t("country")}
                 labelFor="country"
                 req={true}
                 input={
@@ -194,7 +197,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Shahar"
+                labelName={t("city")}
                 labelFor="city"
                 req={true}
                 input={
@@ -223,7 +226,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Fuqaroligi"
+                labelName={t("citizenship")}
                 labelFor="citizenship"
                 input={
                   <Select
@@ -251,7 +254,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="O'zingizni tavsiflang"
+                labelName={t("describeYourself")}
                 labelFor="desc"
                 input={<TextArea rows={4} />}
               />
@@ -259,7 +262,7 @@ const BasicInfoResume = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 className={"phone-input"}
-                labelName="Telefon raqamingiz"
+                labelName={t("phoneNumber")}
                 labelFor="number"
                 req={true}
                 input={
@@ -276,7 +279,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="E-mail"
+                labelName={t("email")}
                 labelFor="email"
                 req={true}
                 input={<Input size="large" />}
@@ -284,7 +287,7 @@ const BasicInfoResume = ({ props }) => {
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName="Havolalar qo’shish"
+                labelName={t("addLinks")}
                 labelFor="links"
                 input={
                   <Select
@@ -321,7 +324,7 @@ const BasicInfoResume = ({ props }) => {
               type="submit"
               style={{ marginLeft: "auto" }}
             >
-              Davom etish
+              {t("continue")}
             </button>
           </div>
         </Form>
