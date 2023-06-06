@@ -12,7 +12,7 @@ import {
 import "./modal.css";
 
 import LabeledInput from "../labeled-input/LabeledInput";
-import BackIcon from "../../../assets/images/back-icon-modal.svg";
+import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 
 const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
   const [form] = Form.useForm();
@@ -34,7 +34,9 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
 
   return (
     <div className="body__login-modal full-infos-modal">
-      <img src={BackIcon} alt="BackIcon" onClick={handleBack} />
+      <span className="back-icon__modal">
+        <img src={BackIcon} onClick={handleBack} alt="BackIcon" />
+      </span>
       <h3>Ma’lumotlaringizni kiriting</h3>
       <p className="info__modal">Ro’yxatdan o’tish uchun quyidagilar talab</p>
       <div className="content__login-modal">

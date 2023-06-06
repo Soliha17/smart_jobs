@@ -7,6 +7,31 @@
   top: 73px;
 }
 
+.modals {
+  position: relative;
+}
+
+.back-icon__modal {
+  position: absolute;
+  top: 15px;
+  left: 200px;
+  background: var(--white);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ant-modal-close {
+  background: var(--white) !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+}
+
 .stepper-none {
   display: none;
 }
@@ -131,14 +156,13 @@
 .code-group__modal {
   margin-bottom: 130px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   gap: 16px;
 }
 
 .code-input__modal {
-  width: 59px;
-  height: 56px;
+  /* width: 59px; */
+  height: 50px;
   color: var(--black-100) !important;
   background: var(--white-50) !important;
   border: 0.5px solid var(--black-50) !important;
@@ -150,10 +174,24 @@
   outline: none;
 }
 
+.code-group__modal .error-text {
+  font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+  .back-icon__modal {
+    left: 50px;
+  }
+}
+
 @media (max-width: 900px) {
   .login-modal.ant-modal {
     width: 90% !important;
     top: 50px;
+  }
+
+  .back-icon__modal {
+    left: 0px;
   }
 }
 

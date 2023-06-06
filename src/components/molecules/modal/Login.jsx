@@ -4,7 +4,7 @@ import "./modal.css";
 
 import PrivacyIcon from "../../../assets/images/privacy-icon.svg";
 import LabeledInput from "../labeled-input/LabeledInput";
-import BackIcon from "../../../assets/images/back-icon-modal.svg";
+import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 
 const Login = ({ next, prev }) => {
   const [form] = Form.useForm();
@@ -26,7 +26,10 @@ const Login = ({ next, prev }) => {
 
   return (
     <div className="signin-modal">
-      <img src={BackIcon} onClick={handleBack} alt="BackIcon" />
+      <span className="back-icon__modal">
+        <img src={BackIcon} onClick={handleBack} alt="BackIcon" />
+      </span>
+
       <h3 className="header__modal">Kirish</h3>
       <div className="content__login-modal">
         <Form

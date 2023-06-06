@@ -266,7 +266,7 @@ const BasicInfoResume = ({ props }) => {
                   <Input
                     addonBefore={prefixSelector}
                     size="large"
-                    // type="number"
+                    type="number"
                     value={value}
                     onKeyDown={handleKeyDown}
                     maxLength={9}

@@ -1,34 +1,40 @@
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "antd";
 
 const OTPInput = () => {
-  const inputRefs = useRef([]);
+  const [inputValue, setInputValue] = useState("");
+  const [errorText, setErrorText] = useState(false);
 
-  const handleOTPChange = (e, index) => {
+  const onInputValueChange = (e) => {
     const value = e.target.value;
-    if (value && index < inputRefs.current.length - 1) {
-      inputRefs.current[index + 1].focus();
+
+    if (value.length <= 4) {
+      setInputValue(value);
+    }
+
+    if (value.length > 1 && value.length < 4) {
+      setErrorText(true);
+    } else {
+      setErrorText(false);
     }
   };
-  
-  const handleKeyDown = (e, index) => {
-    if (e.key === "Backspace" && index > 0 && !inputRefs.current[index].value) {
-      inputRefs.current[index - 1].focus();
-    }
-  };
+
+  useEffect(() => {
+    setErrorText(inputValue.length > 1 || inputValue.length >= 4);
+  }, [inputValue]);
 
   return (
     <div className="code-group__modal">
-      {Array.from({ length: 4 }, (_, index) => (
-        <Input
-          className="code-input__modal"
-          key={index}
-          maxLength={1}
-          onChange={(e) => handleOTPChange(e, index)}
-          onKeyDown={(e) => handleKeyDown(e, index)}
-          ref={(ref) => (inputRefs.current[index] = ref)}
-        />
-      ))}
+      <Input
+        className="code-input__modal"
+        type="number"
+        maxLength={4}
+        value={inputValue}
+        onChange={onInputValueChange}
+      />
+      {errorText && (
+        <span className="error-text">4 ta raqamga teng bo'lishi kerak.</span>
+      )}
     </div>
   );
 };
