@@ -66,16 +66,16 @@ const ProfessionalInformation = ({ props }) => {
     console.log("Failed:", errorInfo);
   };
 
-  const validateMessages = {
-    required: "Iltimos, ${label}ni kiriting!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${0} and ${10}",
-    },
-  };
+  // const validateMessages = {
+  //   required: "Iltimos, ${label}ni kiriting!",
+  //   types: {
+  //     email: "${label} is not a valid email!",
+  //     number: "${label} is not a valid number!",
+  //   },
+  //   number: {
+  //     range: "${label} must be between ${0} and ${10}",
+  //   },
+  // };
 
   const { t } = useTranslation();
 
@@ -90,7 +90,7 @@ const ProfessionalInformation = ({ props }) => {
           form={form}
           layout="vertical"
           initialValues={{ experience: jobValues.workedCompany }}
-          validateMessages={validateMessages}
+          // validateMessages={validateMessages}
           name="basic"
           onFinish={onFinish}
           // onValuesChange={onRequiredTypeChange}

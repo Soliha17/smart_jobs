@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
 
 import EyeIcon from "../../assets/images/eye-icon-profile.svg";
@@ -9,7 +9,7 @@ import LabeledInput from "../../components/molecules/labeled-input/LabeledInput"
 const Information = () => {
   const [form] = Form.useForm();
 
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
 
   const handleKeyDown = (e) => {
     if (
@@ -51,16 +51,16 @@ const Information = () => {
     console.log(date, dateString);
   };
 
-  const validateMessages = {
-    required: "Iltimos, ${label}ni kiriting!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${0} and ${10}",
-    },
-  };
+  // const validateMessages = {
+  //   required: "Iltimos, ${label}ni kiriting!",
+  //   types: {
+  //     email: "${label} is not a valid email!",
+  //     number: "${label} is not a valid number!",
+  //   },
+  //   number: {
+  //     range: "${label} must be between ${0} and ${10}",
+  //   },
+  // };
 
   const { Option } = Select;
 
@@ -88,7 +88,7 @@ const Information = () => {
           <Form
             form={form}
             layout="vertical"
-            validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             name="basic"
             initialValues={
               {
@@ -221,7 +221,7 @@ const Information = () => {
                       addonBefore={prefixSelector}
                       size="large"
                       type="number"
-                      value={value}
+                      // value={value}
                       onKeyDown={handleKeyDown}
                       maxLength={9}
                     />

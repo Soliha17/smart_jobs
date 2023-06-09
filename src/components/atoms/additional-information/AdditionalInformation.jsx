@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
 import "./additionalInformation.css";
-import { Button, Col, Form, Input, Row, Select, Space, message } from "antd";
+import { Button, Col, Form, Row, Select, message } from "antd";
 import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 
-import Trash from "../../../assets/images/trash-icon.svg";
 import AddCircle from "../../../assets/images/add-circle.svg";
 import AcademicResultDrawer from "../../molecules/drawer/AcademicResult";
 import FamilyInformationDrawer from "../../molecules/drawer/FamiliyInformation";
@@ -50,9 +49,9 @@ const AdditionalInformation = ({ props }) => {
     setLevel(date);
   };
 
-  const onChange = (date, dateString) => {
-    console.log(date, dateString);
-  };
+  // const onChange = (date, dateString) => {
+  //   console.log(date, dateString);
+  // };
 
   const onFinish = (datas) => {
     console.log("Success:", datas);

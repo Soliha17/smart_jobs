@@ -3,21 +3,21 @@ import { Pagination } from "antd";
 import "./pagination.css";
 
 import PrevIcon from "../../../assets/images/prev.svg";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 const itemRender = (_, type, originalElement) => {
   if (type === "prev") {
     return (
       <div className="button-group">
         <img src={PrevIcon} className="prev-img" alt="prev icon" />
-        <a>Orqaga</a>
+        <a href="/">Orqaga</a>
       </div>
     );
   }
   if (type === "next") {
     return (
       <div className="button-group">
-        <a>Keyingisi</a>
+        <a href="/">Keyingisi</a>
         <img src={PrevIcon} alt="prev icon" />
       </div>
     );

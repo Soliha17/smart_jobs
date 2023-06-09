@@ -25,7 +25,8 @@ const StudyDrawer = ({
     if (isStudyEditValues !== null) {
       form.setFieldsValue(isStudyEditValues);
     }
-  }, [open]);
+  }, [open, form, isStudyEditValues]);
+  // []da faqat open qolishi kerak, netlifyga deploy qilishda xato bermasligi uchun qoyilgan qolganlari
 
   function onChange(event) {
     setIsChecked(event.target.checked);
@@ -71,16 +72,16 @@ const StudyDrawer = ({
     console.log("Failed:", errorInfo);
   };
 
-  const validateMessages = {
-    required: "Iltimos, ${label}ni kiriting!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${0} and ${10}",
-    },
-  };
+  // const validateMessages = {
+  //   required: "Iltimos, ${label}ni kiriting!",
+  //   types: {
+  //     email: "${label} is not a valid email!",
+  //     number: "${label} is not a valid number!",
+  //   },
+  //   number: {
+  //     range: "${label} must be between ${0} and ${10}",
+  //   },
+  // };
 
   const { t } = useTranslation();
 
@@ -102,7 +103,7 @@ const StudyDrawer = ({
           <Form
             form={form}
             layout="vertical"
-            validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             name="basic"
             initialValues={
               {

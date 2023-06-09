@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, message, Steps, theme } from "antd";
+import { Steps } from "antd";
 
 import "./BuildResume.css";
 import BasicInfoResume from "../../components/atoms/basic-info-resume/BasicInfoResume";
@@ -22,7 +22,7 @@ const steps = [
 ];
 
 const BuildResume = () => {
-  const { token } = theme.useToken();
+  // const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
 
   const next = (stepNumber) => {

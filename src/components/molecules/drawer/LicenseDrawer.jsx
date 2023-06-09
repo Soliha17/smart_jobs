@@ -5,7 +5,6 @@ import CloseIcon from "../../../assets/images/Exit.svg";
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
-import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -47,16 +46,16 @@ const LicenseDrawer = ({ open, setOpen }) => {
     console.log("Failed:", errorInfo);
   };
 
-  const validateMessages = {
-    required: "Iltimos, ${label}ni kiriting!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${0} and ${10}",
-    },
-  };
+  // const validateMessages = {
+  //   required: "Iltimos, ${label}ni kiriting!",
+  //   types: {
+  //     email: "${label} is not a valid email!",
+  //     number: "${label} is not a valid number!",
+  //   },
+  //   number: {
+  //     range: "${label} must be between ${0} and ${10}",
+  //   },
+  // };
 
   const { t } = useTranslation();
 
@@ -78,7 +77,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
           <Form
             form={form}
             layout="vertical"
-            validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             name="basic"
             initialValues={
               {

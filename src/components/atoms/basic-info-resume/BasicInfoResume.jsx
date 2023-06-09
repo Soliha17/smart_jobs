@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./basicInfoResume.css";
 import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
@@ -13,18 +13,18 @@ const BasicInfoResume = ({ props }) => {
   //   setRequiredMarkType(requiredMarkValue);
   // };
 
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
 
-  const handleChange = (e) => {
-    const inputValue = e.target.value;
-    const digitsOnly = inputValue.replace(/\D/g, ""); // Remove non-digit characters
+  // const handleChange = (e) => {
+  //   const inputValue = e.target.value;
+  //   const digitsOnly = inputValue.replace(/\D/g, ""); // Remove non-digit characters
 
-    if (digitsOnly.length <= 9) {
-      setValue(digitsOnly);
-    } else {
-      setValue(0);
-    }
-  };
+  //   if (digitsOnly.length <= 9) {
+  //     setValue(digitsOnly);
+  //   } else {
+  //     setValue(0);
+  //   }
+  // };
 
   const next = props.next;
   // console.log(next);
@@ -69,16 +69,16 @@ const BasicInfoResume = ({ props }) => {
     }
   };
 
-  const validateMessages = {
-    required: "Iltimos, ${label}ni kiriting!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${0} and ${10}",
-    },
-  };
+  // const validateMessages = {
+  //   required: "Iltimos, ${label}ni kiriting!",
+  //   types: {
+  //     email: "${label} is not a valid email!",
+  //     number: "${label} is not a valid number!",
+  //   },
+  //   number: {
+  //     range: "${label} must be between ${0} and ${10}",
+  //   },
+  // };
   const { Option } = Select;
 
   const prefixSelector = (
@@ -102,7 +102,7 @@ const BasicInfoResume = ({ props }) => {
         <Form
           form={form}
           layout="vertical"
-          validateMessages={validateMessages}
+          // validateMessages={validateMessages}
           name="basic"
           initialValues={
             {
@@ -270,7 +270,7 @@ const BasicInfoResume = ({ props }) => {
                     addonBefore={prefixSelector}
                     size="large"
                     type="number"
-                    value={value}
+                    // value={value}
                     onKeyDown={handleKeyDown}
                     maxLength={9}
                   />

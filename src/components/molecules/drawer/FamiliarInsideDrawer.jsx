@@ -22,7 +22,8 @@ const FamiliarInsideDrawer = ({
     if (isFamilyEditValues !== null) {
       form.setFieldValue(isFamilyEditValues);
     }
-  }, [open]);
+  }, [open, isFamilyEditValues, form]);
+  // []da faqat open qolishi kerak, netlifyga deploy qilishda xato bermasligi uchun qoyilgan qolganlari
 
   const onChildrenDriwerFinish = (data) => {
     console.log("Success:", data);

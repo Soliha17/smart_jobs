@@ -1,5 +1,5 @@
-import JobSeekerModal from "../components/molecules/modal/JobSeeker";
-import Login from "../components/molecules/modal/Login";
+// import JobSeekerModal from "../components/molecules/modal/JobSeeker";
+// import Login from "../components/molecules/modal/Login";
 import BuildResume from "../pages/build-resume/BuildResume";
 import Blog from "../pages/blog/Blog";
 import CompaniesFull from "../pages/companies-full/CompaniesFull";

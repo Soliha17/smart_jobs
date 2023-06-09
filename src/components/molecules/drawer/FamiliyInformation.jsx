@@ -1,4 +1,4 @@
-import { Button, Col, Drawer, Form, Input, Row, Select, Space } from "antd";
+import { Button, Col, Drawer, Form, Row, Select, Space } from "antd";
 import { useEffect, useState } from "react";
 
 import CloseIcon from "../../../assets/images/Exit.svg";
@@ -30,9 +30,9 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
   //   setOpen(false);
   // };
 
-  const showChildrenDrawer = () => {
-    setChildrenDrawer(true);
-  };
+  // const showChildrenDrawer = () => {
+  //   setChildrenDrawer(true);
+  // };
 
   const onChildrenDrawerClose = () => {
     setChildrenDrawer(false);

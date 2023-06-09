@@ -1,4 +1,3 @@
-import { PlusOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { Input, Space, Tag, Tooltip, theme } from "antd";
 import { useEffect, useRef, useState } from "react";
 
@@ -35,9 +34,9 @@ const AddTag = () => {
     setTags(newTags);
   };
 
-  const showInput = () => {
-    setInputVisible(true);
-  };
+  // const showInput = () => {
+  //   setInputVisible(true);
+  // };
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -68,10 +67,10 @@ const AddTag = () => {
     verticalAlign: "top",
   };
 
-  const tagPlusStyle = {
-    background: token.colorBgContainer,
-    borderStyle: "dashed",
-  };
+  // const tagPlusStyle = {
+  //   background: token.colorBgContainer,
+  //   borderStyle: "dashed",
+  // };
 
   return (
     <>

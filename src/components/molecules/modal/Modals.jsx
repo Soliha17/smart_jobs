@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Modal, Steps, theme } from "antd";
+import { Modal, Steps } from "antd";
 
 import JobSeekerModal from "./JobSeeker";
 import SignUp from "./SignUp";
-import Login from "./Login";
+// import Login from "./Login";
 import InfoFills from "./FillInfos";
 
 import SmartJobLogo from "../../../assets/images/smart-logo.svg";
@@ -25,7 +25,7 @@ const steps = [
 ];
 
 const Modals = ({ open, setOpen }) => {
-  const { token } = theme.useToken();
+  // const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const [selectedButton, setSelectedButton] = useState("btn1");
   const [data, setData] = useState("");

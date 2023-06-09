@@ -10,10 +10,6 @@ import ProfileImg from "../../../assets/images/profile-img.svg";
 
 import { DownOutlined } from "@ant-design/icons";
 import VacancyInput from "../../atoms/vacancy-input/VacancyInput";
-import JobSeekerModal from "../../molecules/modal/JobSeeker";
-import Login from "../../molecules/modal/Login";
-import SignUp from "../../molecules/modal/SignUp";
-import InfoFills from "../../molecules/modal/FillInfos";
 import Modals from "../../molecules/modal/Modals";
 import { useTranslation } from "react-i18next";
 

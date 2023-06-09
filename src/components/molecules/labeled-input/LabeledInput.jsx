@@ -13,7 +13,7 @@ const LabeledInput = ({
 }) => {
   const rules = [
     {
-      // required: req,
+      required: req,
       // max: 32,
 
       // message: validateMessages,
@@ -77,7 +77,7 @@ const LabeledInput = ({
     }));
   }
 
-  let jobDrawerValues = JSON.parse(localStorage.getItem("jobDrawerValues"));
+  // let jobDrawerValues = JSON.parse(localStorage.getItem("jobDrawerValues"));
 
   return (
     <Form.Item

@@ -46,16 +46,16 @@ const PortfolioDrawer = ({ open, setOpen }) => {
     console.log(files);
   };
 
-  const validateMessages = {
-    required: "Iltimos, ${label}ni kiriting!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${0} and ${10}",
-    },
-  };
+  // const validateMessages = {
+  //   required: "Iltimos, ${label}ni kiriting!",
+  //   types: {
+  //     email: "${label} is not a valid email!",
+  //     number: "${label} is not a valid number!",
+  //   },
+  //   number: {
+  //     range: "${label} must be between ${0} and ${10}",
+  //   },
+  // };
 
   const { t } = useTranslation();
 
@@ -77,7 +77,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
           <Form
             form={form}
             layout="vertical"
-            validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             name="basic"
             initialValues={
               {

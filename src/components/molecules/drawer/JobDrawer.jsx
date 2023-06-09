@@ -17,7 +17,6 @@ import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import AddCircle from "../../../assets/images/add-circle.svg";
-import JobInsideDrawer from "./JobInsideDrawer";
 import { v4 as uuidv4 } from "uuid";
 import ExtraExperience from "./ExtraExperience";
 import { useTranslation } from "react-i18next";
@@ -42,13 +41,13 @@ const JobDrawer = ({
   //   setOpen(true);
   // };
 
-  const showChildrenDrawer = () => {
-    setChildrenDrawer(true);
-  };
+  // const showChildrenDrawer = () => {
+  //   setChildrenDrawer(true);
+  // };
 
-  const onChildrenDrawerClose = () => {
-    setChildrenDrawer(false);
-  };
+  // const onChildrenDrawerClose = () => {
+  //   setChildrenDrawer(false);
+  // };
 
   let isJobEditValues = JSON.parse(localStorage.getItem("isJobEdit"));
 
@@ -56,7 +55,8 @@ const JobDrawer = ({
     if (isJobEditValues !== null) {
       form.setFieldsValue(isJobEditValues);
     }
-  }, [open]);
+  }, [open, form, isJobEditValues]);
+  // []da faqat open qolishi kerak, netlifyga deploy qilishda xato bermasligi uchun qoyilgan qolganlari
 
   const onFinish = (data) => {
     console.log("Success:", data);
@@ -91,16 +91,16 @@ const JobDrawer = ({
     console.log("Failed:", errorInfo);
   };
 
-  const validateMessages = {
-    required: "Iltimos, ${label}ni kiriting!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-    number: {
-      range: "${label} must be between ${0} and ${10}",
-    },
-  };
+  // const validateMessages = {
+  //   required: "Iltimos, ${label}ni kiriting!",
+  //   types: {
+  //     email: "${label} is not a valid email!",
+  //     number: "${label} is not a valid number!",
+  //   },
+  //   number: {
+  //     range: "${label} must be between ${0} and ${10}",
+  //   },
+  // };
 
   const { t } = useTranslation();
 

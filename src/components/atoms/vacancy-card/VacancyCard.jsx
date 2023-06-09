@@ -3,7 +3,6 @@ import React from "react";
 import "./vacancyCard.css";
 
 import ThreeDots from "../../../assets/images/three-dots.svg";
-import { Link } from "react-router-dom";
 import { Button, Dropdown } from "antd";
 import { useTranslation } from "react-i18next";
 

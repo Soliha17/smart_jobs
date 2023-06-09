@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./modal.css";
 import "./JobSeekerStyle.css";
 
-import InfoFills from "./FillInfos";
+// import InfoFills from "./FillInfos";
 
 import PrivacyIcon from "../../../assets/images/privacy-icon.svg";
 
