@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
 
 import EyeIcon from "../../assets/images/eye-icon-profile.svg";
