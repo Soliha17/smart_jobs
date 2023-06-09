@@ -1,4 +1,4 @@
-import { Input, Space, Tag, Tooltip, theme } from "antd";
+import { Input, Space, Tag, Tooltip } from "antd";
 import { useEffect, useRef, useState } from "react";
 
 import AddTagInput from "./AddTagInput";
@@ -6,7 +6,7 @@ import AddTagInput from "./AddTagInput";
 import "./addTag.css";
 
 const AddTag = () => {
-  const { token } = theme.useToken();
+  // const { token } = theme.useToken();
   const [tags, setTags] = useState([
     "Product managament",
     "Muzokara olib borish",
