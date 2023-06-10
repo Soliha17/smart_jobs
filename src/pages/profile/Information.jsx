@@ -5,8 +5,11 @@ import EyeIcon from "../../assets/images/eye-icon-profile.svg";
 import VerifyIcon from "../../assets/images/verified-icon.svg";
 import AvatarProfile from "../../assets/images/avatar-profile.svg";
 import LabeledInput from "../../components/molecules/labeled-input/LabeledInput";
+import { useTranslation } from "react-i18next";
 
 const Information = () => {
+  const { t } = useTranslation();
+
   const [form] = Form.useForm();
 
   // const [value, setValue] = useState("");
@@ -75,7 +78,7 @@ const Information = () => {
 
   return (
     <div className="info-profile container">
-      <p className="title">Shaxsiy ma'lumotlar</p>
+      <p className="title">{t("personalInformation")}</p>
       <Row
         gutter={[40, 40]}
         justify={"space-between"}
@@ -106,7 +109,7 @@ const Information = () => {
             <Row gutter={[24, 8]}>
               <Col xs={24} sm={24} md={12}>
                 <LabeledInput
-                  labelName="Ism"
+                  labelName={t("name")}
                   labelFor="name"
                   req={true}
                   input={<Input size="large" maxLength={32} />}
@@ -114,7 +117,7 @@ const Information = () => {
               </Col>
               <Col xs={24} sm={24} md={12}>
                 <LabeledInput
-                  labelName="Familiyasi"
+                  labelName={t("surname")}
                   labelFor="surname"
                   req={true}
                   input={<Input size="large" maxLength={32} />}
@@ -122,7 +125,7 @@ const Information = () => {
               </Col>
               <Col xs={24} sm={24} md={12}>
                 <LabeledInput
-                  labelName="Tug'ilgan sana"
+                  labelName={t("birthday")}
                   labelFor="birthday"
                   req={true}
                   input={
@@ -137,7 +140,7 @@ const Information = () => {
               </Col>
               <Col xs={24} sm={24} md={12}>
                 <LabeledInput
-                  labelName="Jinsi"
+                  labelName={t("gender")}
                   labelFor="gender"
                   req={true}
                   input={
@@ -146,21 +149,21 @@ const Information = () => {
                       // defaultValue="male"
                       size="large"
                     >
-                      <Radio.Button value="male">Erkak</Radio.Button>
-                      <Radio.Button value="female">Ayol</Radio.Button>
+                      <Radio.Button value="male">{t("male")}</Radio.Button>
+                      <Radio.Button value="female">{t("female")}</Radio.Button>
                     </Radio.Group>
                   }
                 />
               </Col>
               <Col xs={24} sm={24} md={12}>
                 <LabeledInput
-                  labelName="Mamlakat"
+                  labelName={t("country")}
                   labelFor="country"
                   req={true}
                   input={
                     <Select
                       // defaultValue="uzbekistan"
-                      placeholder="Tanlang"
+                      placeholder={t("choose")}
                       size="large"
                       onChange={onChange}
                       options={[
@@ -183,13 +186,13 @@ const Information = () => {
               </Col>
               <Col xs={24} sm={24} md={12}>
                 <LabeledInput
-                  labelName="Shahar"
+                  labelName={t("city")}
                   labelFor="city"
                   req={true}
                   input={
                     <Select
                       // defaultValue="buxoro"
-                      placeholder="Tanlang"
+                      placeholder={t("choose")}
                       size="large"
                       onChange={onChange}
                       options={[
@@ -213,7 +216,7 @@ const Information = () => {
               <Col xs={24} sm={24} md={12}>
                 <LabeledInput
                   className={"phone-input"}
-                  labelName="Telefon raqamingiz"
+                  labelName={t("phoneNumber")}
                   labelFor="number"
                   req={true}
                   input={
@@ -230,7 +233,7 @@ const Information = () => {
               </Col>
               <Col xs={24} sm={24} md={12}>
                 <LabeledInput
-                  labelName="E-mail"
+                  labelName={t("email")}
                   labelFor="email"
                   req={true}
                   input={<Input size="large" />}
@@ -238,7 +241,7 @@ const Information = () => {
               </Col>
               <Col xs={24} sm={24} md={12}>
                 <button type="submit" className="primary-btn">
-                  Saqlash
+                  {t("save")}
                 </button>
               </Col>
             </Row>
@@ -246,26 +249,26 @@ const Information = () => {
         </Col>
         <Col xs={24} sm={24} md={12} xl={8}>
           <div className="right__info-profile info-card__profile">
-            <h4>Umumiy statistikalar</h4>
+            <h4>{t("generalStatistics")}</h4>
             <div className="wrapper__info-profile">
               <div className="header__info-profile">
                 <span>
                   <h6>0</h6>
-                  <p>Ko'ruvlar</p>
+                  <p>{t("views")}</p>
                 </span>
                 <span>
                   <h6>0</h6>
-                  <p>Arizalar</p>
+                  <p>{t("applications")}</p>
                 </span>
                 <span>
                   <h6>0</h6>
-                  <p>Vakansiyalar</p>
+                  <p>{t("vacancies")}</p>
                 </span>
               </div>
               <div className="content__info-card">
-                <h5>Rezyumarlarim</h5>
+                <h5>{t("myResumes")}</h5>
                 <div className="row__info-card">
-                  <h6>Produc design</h6>
+                  <h6>Product design</h6>
                   <div>
                     <span>
                       <img src={EyeIcon} alt="EyeIcon" />
@@ -291,7 +294,7 @@ const Information = () => {
                   </div>
                 </div>
               </div>
-              <button className="primary-btn">Rezyumelarim</button>
+              <button className="primary-btn">{t("myResumes")}</button>
             </div>
           </div>
         </Col>

@@ -13,6 +13,7 @@ import "./modal.css";
 
 import LabeledInput from "../labeled-input/LabeledInput";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
+import { useTranslation } from "react-i18next";
 
 const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
   const [form] = Form.useForm();
@@ -32,13 +33,17 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
 
   console.log(selectedButton);
 
+  const { t } = useTranslation();
+
   return (
     <div className="body__login-modal full-infos-modal">
       <span className="back-icon__modal">
         <img src={BackIcon} onClick={handleBack} alt="BackIcon" />
       </span>
-      <h3>Ma’lumotlaringizni kiriting</h3>
-      <p className="info__modal">Ro’yxatdan o’tish uchun quyidagilar talab</p>
+      <h3>{t("enterYourInformation")}</h3>
+      <p className="info__modal">
+        {t("theFollowingAreRequiredForRegistration")}
+      </p>
       <div className="content__login-modal">
         <Form
           form={form}
@@ -62,7 +67,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
               <>
                 <Col xs={24} sm={24}>
                   <LabeledInput
-                    labelName="Kompaniyangiz nomini kiriting"
+                    labelName={t("enterYourCompanyName")}
                     labelFor="nameOfCompanyInfo"
                     req={true}
                     input={<Input maxLength={32} size="large" />}
@@ -70,13 +75,13 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
                 </Col>
                 <Col xs={24} sm={24}>
                   <LabeledInput
-                    labelName="Hodimlar soni"
+                    labelName={t("numberOfEmployees")}
                     labelFor="amountOfCompanyInfo"
                     req={true}
                     input={
                       <Select
                         // defaultValue="full"
-                        placeholder="Tanlang"
+                        placeholder={t("choose")}
                         size="large"
                         // onChange={onChange}
                         options={[
@@ -130,7 +135,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
 
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Ismingizni kiriting"
+                labelName={t("enterYourName")}
                 labelFor="nameOfInfo"
                 req={true}
                 input={
@@ -140,7 +145,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Familiyaningizni kiriting"
+                labelName={t("enterYourLastName")}
                 labelFor="surnameOfInfo"
                 req={true}
                 input={
@@ -150,7 +155,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Tug'ilgan sana"
+                labelName={t("birthday")}
                 labelFor="birthdayOfInfo"
                 req={true}
                 input={
@@ -165,7 +170,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Jinsi"
+                labelName={t("gender")}
                 labelFor="genderOfInfo"
                 req={true}
                 input={
@@ -174,21 +179,21 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
                     // defaultValue="male"
                     size="large"
                   >
-                    <Radio.Button value="male">Erkak</Radio.Button>
-                    <Radio.Button value="female">Ayol</Radio.Button>
+                    <Radio.Button value="male">{t("male")}</Radio.Button>
+                    <Radio.Button value="female">{t("female")}</Radio.Button>
                   </Radio.Group>
                 }
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Mamlakat"
+                labelName={t("country")}
                 labelFor="countryOfInfo"
                 req={true}
                 input={
                   <Select
                     // defaultValue="uzbekistan"
-                    placeholder="Tanlang"
+                    placeholder={t("choose")}
                     size="large"
                     // onChange={onChange}
                     options={[
@@ -211,13 +216,13 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Shahar"
+                labelName={t("city")}
                 labelFor="cityOfInfo"
                 req={true}
                 input={
                   <Select
                     // defaultValue="buxoro"
-                    placeholder="Tanlang"
+                    placeholder={t("choose")}
                     size="large"
                     // onChange={onChange}
                     options={[
@@ -240,7 +245,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="E-mail"
+                labelName={t("email")}
                 labelFor="emailOfInfo"
                 req={true}
                 input={<Input size="large" />}
@@ -248,7 +253,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Parol o'ylab toping"
+                labelName={t("comeUpWithAPassword")}
                 labelFor="parolOfInfo"
                 req={true}
                 input={<Input.Password size="large" />}
@@ -256,7 +261,7 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Parolni qayta kiriting"
+                labelName={t("enterThePasswordAgain")}
                 labelFor="confirmParolOfInfo"
                 req={true}
                 input={<Input.Password size="large" />}
@@ -269,15 +274,15 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
                 valuePropName="checked"
                 input={
                   <Checkbox>
-                    Davom etish orqali <a href="/">Universal shartnoma</a> bilan
-                    tanishganimni va uni qabul qilganimni tasdiqlayman{" "}
+                    {t("byContinuing")} <a href="/">{t("universalContract")}</a>{" "}
+                    {t("iConfirmThatIHaveReadAndAcceptedIt")}
                   </Checkbox>
                 }
               />
             </Col>
             <Col xs={24} sm={24}>
               <button type="submit" className="primary-btn">
-                Ro'yxatdan o'tish
+                {t("signUp")}
               </button>
             </Col>
           </Row>

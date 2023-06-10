@@ -10,6 +10,7 @@ import Vacancies from "../pages/vacancies/Vacancies";
 import VacancyFull from "../pages/vacancy-full/VacancyFull";
 import BlogFull from "../pages/blog-full/BlogFull";
 import About from "../pages/about/About";
+import TakeTest from "../pages/take-test/TakeTest";
 
 export const routesDatas = [
   {
@@ -71,5 +72,11 @@ export const routesDatas = [
     title: "About Us Page",
     path: "/about",
     element: About,
+  },
+  {
+    id: 11,
+    title: "Take Test Page",
+    path: "/test",
+    element: TakeTest,
   },
 ];

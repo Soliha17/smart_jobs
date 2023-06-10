@@ -8,35 +8,39 @@ import SavedProfile from "./SavedProfile";
 import SettingsProfile from "./SettingsProfile";
 import Footer from "../../components/layout/footer/Footer";
 import Information from "./Information";
+import { useTranslation } from "react-i18next";
 
 const Profile = () => {
   const onChange = (key) => {
     console.log(key);
   };
+
+  const { t } = useTranslation();
+
   const items = [
     {
       key: "1",
-      label: `Profil`,
+      label: t("profile"),
       children: <Information />,
     },
     {
       key: "2",
-      label: `Arizalarim`,
+      label: t("myApplications"),
       children: `Content of Tab Pane 2`,
     },
     {
       key: "3",
-      label: `Rezyumelarim`,
+      label: t("myResumes"),
       children: `Content of Tab Pane 3`,
     },
     {
       key: "4",
-      label: `Saqlanganlar`,
+      label: t("saved"),
       children: <SavedProfile />,
     },
     {
       key: "5",
-      label: `Sozlamalar`,
+      label: t("settings"),
       children: <SettingsProfile />,
     },
   ];

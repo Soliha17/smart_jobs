@@ -70,13 +70,14 @@
   justify-content: space-between;
   align-items: flex-end;
 }
-.header-bottom__vacancy-full .ant-btn {
-  background: var(--primary-100);
-}
 
 .actions-group__vacancy-full {
   display: flex;
   gap: 24px;
+}
+
+.actions-group__vacancy-full .three-dots .ant-btn-default {
+  padding: 4px 0;
 }
 
 .actions-group__vacancy-full img {
@@ -174,7 +175,7 @@
   transition: all 0.3s ease;
 }
 
-.circle-text__vacancy-full:hover{
+.circle-text__vacancy-full:hover {
   background-color: var(--black-100);
   color: var(--white);
 }

@@ -1,11 +1,15 @@
 import React from "react";
-import VacancyCard from "../../components/atoms/vacancy-card/VacancyCard";
 import { Col, Row } from "antd";
+import { useTranslation } from "react-i18next";
+
+import VacancyCard from "../../components/atoms/vacancy-card/VacancyCard";
 
 const SavedProfile = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="saved-profile container">
-      <p className="title">Saqlangalar</p>
+      <p className="title">{t("saved")}</p>
       <Row gutter={[24, 24]}>
         <Col xs={24} sm={24} md={12} lg={12}>
           <VacancyCard

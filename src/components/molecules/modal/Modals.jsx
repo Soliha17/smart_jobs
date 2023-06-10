@@ -3,7 +3,7 @@ import { Modal, Steps } from "antd";
 
 import JobSeekerModal from "./JobSeeker";
 import SignUp from "./SignUp";
-// import Login from "./Login";
+import Login from "./Login";
 import InfoFills from "./FillInfos";
 
 import SmartJobLogo from "../../../assets/images/smart-logo.svg";
@@ -16,7 +16,7 @@ const steps = [
   },
   {
     title: "Second",
-    content: <SignUp />,
+    content: <Login />,
   },
   {
     title: "Last",
@@ -78,7 +78,7 @@ const Modals = ({ open, setOpen }) => {
               dataHandler={{ data, setData }}
             />
           ) : current === 1 ? (
-            <SignUp next={next} prev={prev} data={data} />
+            <Login next={next} prev={prev} data={data} />
           ) : (
             <InfoFills
               selectedButton={selectedButton}

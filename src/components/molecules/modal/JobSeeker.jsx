@@ -6,6 +6,7 @@ import "./JobSeekerStyle.css";
 // import InfoFills from "./FillInfos";
 
 import PrivacyIcon from "../../../assets/images/privacy-icon.svg";
+import { useTranslation } from "react-i18next";
 
 // import { Form, Input } from 'antd'
 
@@ -20,6 +21,8 @@ const JobSeekerModal = ({
   const [errorText, setErrorText] = useState("");
 
   const { data, setData } = dataHandler;
+
+  const { t } = useTranslation();
 
   const selectButton = (btn) => {
     setSelectedButton(btn);
@@ -117,7 +120,7 @@ const JobSeekerModal = ({
           }`}
           onClick={() => selectButton("btn1")}
         >
-          Ish Izlash
+          {t("theApplicant")}
         </button>
         <button
           className={` ${
@@ -125,10 +128,10 @@ const JobSeekerModal = ({
           }`}
           onClick={() => selectButton("btn2")}
         >
-          Hodim Izlash
+          {t("employer")}
         </button>
       </div>
-      <h3>Kirish va registratsiya</h3>
+      <h3>{t("loginAndRegistration")}</h3>
       <div className="content__login-modal">
         <form
           onSubmit={(e) => e.preventDefault()}
@@ -137,7 +140,7 @@ const JobSeekerModal = ({
           }
         >
           <label htmlFor="input" className="input_label">
-            Telefon yoki E-maingizni kiriting
+            {t("enterYourPhoneOrEmail")}
           </label>{" "}
           <br />
           {inputValue.slice(0, 1) !== "+" ? (
@@ -162,7 +165,7 @@ const JobSeekerModal = ({
           )}
           {errorText && <span className="error-text">{errorText}</span>}
           <br />
-          <input type="submit" value="Davom etish" onClick={onSubmit} />
+          <input type="submit" value={t("continue")} onClick={onSubmit} />
         </form>
         {/* <Form
               form={form}
@@ -199,7 +202,7 @@ const JobSeekerModal = ({
             </Form> */}
         <span className="text__login-modal">
           <img src={PrivacyIcon} alt="privacy-icon" />
-          <p>Barcha ma'lumotlaringiz himoyalangan</p>
+          <p>{t("allYourInformationIsProtected")}</p>
         </span>
       </div>
     </div>

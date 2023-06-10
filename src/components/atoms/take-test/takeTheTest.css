@@ -1,0 +1,85 @@
+.take-test {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.take-test h2,
+.take-test p {
+  text-align: center;
+}
+
+.take-test h2 {
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 39px;
+  line-height: 47px;
+  color: var(--black-100);
+}
+
+.take-test p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black-75);
+}
+
+.ant-modal-root:has(.test-modal) .ant-modal-mask {
+  background: rgba(28, 25, 23, 0.56) !important;
+}
+
+.ant-modal-root:has(.test-modal) .ant-modal-body {
+  width: 80% !important;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.take-test .primary-btn {
+  width: 90%;
+}
+
+@media (max-width: 900px) {
+  .ant-modal-root:has(.report-modal) .ant-modal-body {
+    max-width: 100% !important;
+  }
+
+  .ant-modal-root:has(.test-modal) .ant-modal-body {
+    width: 90% !important;
+  }
+
+  .take-test h2 {
+    font-size: 35px;
+    line-height: 42px;
+  }
+
+  .take-test {
+    gap: 30px;
+  }
+
+  .take-test img {
+    max-width: 290px;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .ant-modal-root:has(.test-modal) .ant-modal-body {
+    width: 100% !important;
+  }
+
+  .take-test h2 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .take-test .primary-btn {
+    width: 100%;
+  }
+
+  .take-test img {
+    max-width: 230px;
+    height: auto;
+  }
+}

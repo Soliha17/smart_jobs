@@ -14,6 +14,24 @@
   overflow-y: auto;
 }
 
+.ant-dropdown-menu-item:hover {
+  background-color: var(--primary-12) !important;
+}
+
+.dropdown-item__vacancy-full {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.dropdown-item__vacancy-full {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--black-75);
+}
+
 .vacancy-full-wrapper .header__vacancy-full {
   padding-left: 48px;
   padding-right: 48px;
@@ -155,11 +173,6 @@
 /* ----- SAME VACANCIES SECTION ----- */
 .same-vacancies {
   margin-top: 76px;
-}
-
-.same-vacancies .title__vacancy-card {
-  margin-bottom: 32px;
-  font-weight: 700;
 }
 
 @media (max-width: 1300px) {

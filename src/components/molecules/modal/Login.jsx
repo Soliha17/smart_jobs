@@ -5,6 +5,7 @@ import "./modal.css";
 import PrivacyIcon from "../../../assets/images/privacy-icon.svg";
 import LabeledInput from "../labeled-input/LabeledInput";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
+import { useTranslation } from "react-i18next";
 
 const Login = ({ next, prev }) => {
   const [form] = Form.useForm();
@@ -24,13 +25,15 @@ const Login = ({ next, prev }) => {
     prev(1);
   }
 
+  const { t } = useTranslation();
+
   return (
     <div className="signin-modal">
       <span className="back-icon__modal">
         <img src={BackIcon} onClick={handleBack} alt="BackIcon" />
       </span>
 
-      <h3 className="header__modal">Kirish</h3>
+      <h3 className="header__modal">{t("entrance")}</h3>
       <div className="content__login-modal">
         <Form
           form={form}
@@ -52,7 +55,7 @@ const Login = ({ next, prev }) => {
           <Row gutter={[24, 24]}>
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Parolingizni kiriting"
+                labelName={t("enterYourPassword")}
                 labelFor="parolOfLogin"
                 className={"parol-input__modal"}
                 req={true}
@@ -60,13 +63,13 @@ const Login = ({ next, prev }) => {
               />
             </Col>
             <Col xs={24} sm={24}>
-              <button className="primary-btn">Davom etish</button>
+              <button className="primary-btn">{t("continue")}</button>
             </Col>
           </Row>
         </Form>
         <span className="text__login-modal">
           <img src={PrivacyIcon} alt="privacy-icon" />
-          <p>Barcha ma'lumotlaringiz himoyalangan</p>
+          <p>{t("allYourInformationIsProtected")}</p>
         </span>
       </div>
     </div>

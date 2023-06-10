@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Col, Row, Form } from "antd";
+
 import "./modal.css";
+
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
+import ResendIcon from "../../../assets/images/resend-icon.svg";
 import OTPInput from "../../atoms/OTPInput";
 
 const SignUp = ({ next, prev, data }) => {
@@ -46,13 +50,20 @@ const SignUp = ({ next, prev, data }) => {
     setIsTimerFinished(false);
   }
 
+  const { t, i18n } = useTranslation();
+
+  const isLanguageEnglish = i18n.language === "en";
+  const isLanguageRussian = i18n.language === "ru";
+
   return (
     <div className="body__login-modal">
       <span className="back-icon__modal">
         <img src={BackIcon} onClick={handleBack} alt="BackIcon" />
       </span>
-      <h3 className="header__modal">Tekshirish kodi</h3>
-      <p className="info__modal">Tasdiqlash kodi {data} raqamiga yuborildi</p>
+      <h3 className="header__modal">{t("verificationCode")}</h3>
+      <p className="info__modal">
+        {t("verificationCode")} {data} {t("sentToTheNumber")}
+      </p>
       <div className="content__login-modal">
         <Form
           form={form}
@@ -70,17 +81,23 @@ const SignUp = ({ next, prev, data }) => {
         </Form>
         {isTimerFinished ? (
           <span className="text__login-modal" onClick={handleTimerReset}>
-            <p
-              style={{ width: "85%", textAlign: "center", fontWeight: "bold" }}
-            >
-              Qayta yuborish
-            </p>
+            <img src={ResendIcon} alt="ResendIcon" />
+            <p className="resend-text__modal">{t("resend")}</p>
           </span>
         ) : (
           <span className="text__login-modal">
-            <p style={{ width: "85%", textAlign: "center" }}>
-              Kod kelmasa {seconds} soniyadan keyin yangisini olishingiz mumkin
-            </p>
+            {isLanguageEnglish || isLanguageRussian ? (
+              <p>
+                {t("ifTheCodeDoesNotCome")}
+                {t("youCanGetANewOneInSeconds")} {seconds}
+                {t("seconds")}
+              </p>
+            ) : (
+              <p>
+                {t("ifTheCodeDoesNotCome")} {seconds}{" "}
+                {t("youCanGetANewOneInSeconds")}
+              </p>
+            )}
           </span>
         )}
       </div>

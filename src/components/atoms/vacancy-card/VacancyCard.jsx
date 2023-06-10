@@ -3,6 +3,8 @@ import React from "react";
 import "./vacancyCard.css";
 
 import ThreeDots from "../../../assets/images/three-dots.svg";
+import ExpressLogo from "../../../assets/images/express-24-logo.png";
+import LocationIcon from "../../../assets/images/small-location-icon.svg";
 import { Button, Dropdown } from "antd";
 import { useTranslation } from "react-i18next";
 
@@ -15,6 +17,9 @@ const VacancyCard = ({
   jobType,
   jobTime,
   button,
+  experience,
+  salary,
+  location,
 }) => {
   const { t } = useTranslation();
 
@@ -61,10 +66,13 @@ const VacancyCard = ({
     <div className={className}>
       <div className="info__vacancy-card">
         <div className="top__vacancy-card">
-          <span>
-            <p className="title__vacancy-card">{title}</p>
-            <p className="company__vacancy-card">{company}</p>
-          </span>
+          <div>
+            <img src={ExpressLogo} alt="ExpressLogo" />
+            <span>
+              <p className="title__vacancy-card">{title}</p>
+              <p className="company__vacancy-card">{company}</p>
+            </span>
+          </div>
           <span className="three-dots">
             <Dropdown
               menu={{
@@ -80,30 +88,20 @@ const VacancyCard = ({
             </Dropdown>
           </span>
         </div>
-        <div className="bottom__vacancy-card">
-          <p>{jobType}</p>
-          <p>{jobTime}</p>
+        <div className="salary__vacancy-card">
+          <p>{salary || "5 000 000 - 12 000 000 so'm"}</p>
         </div>
       </div>
-      <p className="text__vacancy-card" style={{ whiteSpace: "pre-line" }}>
-        {text}
-      </p>
-      {button ? (
-        <span className="footer__vacancy-card">
-          <p className="date__vacancy-card">{date}</p>
-          <Button
-            type="primary"
-            size="large"
-            style={{ backgroundColor: "var(--primary-100)" }}
-          >
-            {t(button)}
-          </Button>
-        </span>
-      ) : (
-        <p className="date__vacancy-card">
-          {t("dateOfPublication")} {date}
-        </p>
-      )}
+      <span className="location__vacancy-card">
+        <img src={LocationIcon} alt="LocationIcon" />
+        {location || "O'zbeksiton, Toshkent"}
+      </span>
+      <span className="footer__vacancy-card">
+        <p className="date__vacancy-card">{jobType}</p>
+        <p className="date__vacancy-card">{jobTime}</p>
+        <p className="date__vacancy-card">{experience || "1-3 yil"}</p>
+        <p className="date__vacancy-card">{date}</p>
+      </span>
     </div>
   );
 };

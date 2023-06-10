@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./vacancyFullCard.css";
-import { Button, Modal } from "antd";
+import { Button, Dropdown, Modal, message } from "antd";
 
 import ShareIcon from "../../../assets/images/share-icon.svg";
 import ReportIcon from "../../../assets/images/report-icon.svg";
@@ -15,13 +15,23 @@ import MapIcon from "../../../assets/images/show-map-icon.svg";
 import CalendarIcon from "../../../assets/images/calendar-icon.svg";
 import TimeplaceIcon from "../../../assets/images/timeplace-icon.svg";
 import PendingActionIcon from "../../../assets/images/pending-actions.svg";
+import LinkedIn from "../../../assets/images/Linkedin.svg";
+import Telegram from "../../../assets/images/Telegram-dropdown.svg";
+import Twitter from "../../../assets/images/Twitter.svg";
+import ShareLinkIcon from "../../../assets/images/share-link-icon.svg";
+
 import YmapsComponent from "../../molecules/yandex-map/YmapsComponent";
 import YandexCard from "../../molecules/yandex-card/YandexCard";
 
 import { useTranslation } from "react-i18next";
+import ReportModal from "../../molecules/modal/ReportModal";
+import TakeTheTest from "../take-test/TakeTheTest";
 
 const VacancyFullCard = ({ style }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [isTakeTheTestModalOpen, setIsTakeTheTestModalOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const showModal = () => {
@@ -40,7 +50,82 @@ const VacancyFullCard = ({ style }) => {
     navigate("/full");
   }
 
+  function openReportModal() {
+    setIsReportModalOpen(true);
+  }
+
+  function openTakeTestModal() {
+    setIsTakeTheTestModalOpen(true);
+  }
+
+  const handleClick = () => {
+    const currentURL = window.location.href;
+
+    navigator.clipboard
+      .writeText(currentURL)
+      .then(() => {
+        message.success("URL copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy URL: ", error);
+      });
+  };
+
   const { t } = useTranslation();
+
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+          className="dropdown-item__vacancy-full"
+        >
+          <img src={LinkedIn} alt="LinkedIn" />
+          {t("linkedin")}
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          className="dropdown-item__vacancy-full"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          <img src={Telegram} alt="LinkedIn" />
+          {t("telegram")}
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          className="dropdown-item__vacancy-full"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          <img src={Twitter} alt="LinkedIn" />
+          {t("twitter")}
+        </a>
+      ),
+    },
+    {
+      key: "4",
+      label: (
+        <p className="dropdown-item__vacancy-full" onClick={handleClick}>
+          <img src={ShareLinkIcon} alt="LinShareLinkIconkedIn" />
+          {t("copyTheLink")}
+        </p>
+      ),
+    },
+  ];
 
   return (
     <div className="vacancy-full" style={style}>
@@ -52,19 +137,31 @@ const VacancyFullCard = ({ style }) => {
           <p className="company__vacancy-full">Pro tach</p>
         </div>
         <div className="header-bottom__vacancy-full">
-          <Button type="primary" size="large">
+          <Button type="primary" onClick={openTakeTestModal} size="large">
             {t("submitToWork")}
           </Button>
           <div className="actions-group__vacancy-full">
-            <img src={ShareIcon} alt="ShareIcon" />
-            <img src={ReportIcon} alt="ReportIcon" />
+            <span className="three-dots">
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottomRight"
+                arrow
+                trigger={["click"]}
+              >
+                <Button>
+                  <img src={ShareIcon} alt="ShareIcon" />
+                </Button>
+              </Dropdown>
+            </span>
+            <img src={ReportIcon} onClick={openReportModal} alt="ReportIcon" />
             <img src={SaveIcon} alt="SaveIcon" />
           </div>
         </div>
       </div>
       <div className="content__vacancy-full">
         <p className="date__vacancy-full">
-          {" "}
           {t("dateOfPublication")} 13-mart, 2023
         </p>
 
@@ -92,7 +189,7 @@ const VacancyFullCard = ({ style }) => {
                 <img src={TimeplaceIcon} alt="TimeplaceIcon" />
                 <p>{t("typeOfWork")}</p>
               </div>
-              <span>To’liq stavka</span>
+              <span>To'liq stavka</span>
             </div>
             <div className="inner-content__vacancy-full">
               <div>
@@ -213,11 +310,29 @@ const VacancyFullCard = ({ style }) => {
           {t("submitToWork")}
         </Button>
         <div className="actions-group__vacancy-full">
-          <img src={ShareIcon} alt="ShareIcon" />
-          <img src={ReportIcon} alt="ReportIcon" />
+          <span className="three-dots">
+            <Dropdown
+              menu={{
+                items,
+              }}
+              placement="bottomRight"
+              arrow
+              trigger={["click"]}
+            >
+              <Button>
+                <img src={ShareIcon} alt="ShareIcon" />
+              </Button>
+            </Dropdown>
+          </span>
+          <img src={ReportIcon} onClick={openReportModal} alt="ReportIcon" />
           <img src={SaveIcon} alt="SaveIcon" />
         </div>
       </div>
+      <ReportModal open={isReportModalOpen} setOpen={setIsReportModalOpen} />
+      <TakeTheTest
+        open={isTakeTheTestModalOpen}
+        setOpen={setIsTakeTheTestModalOpen}
+      />
     </div>
   );
 };

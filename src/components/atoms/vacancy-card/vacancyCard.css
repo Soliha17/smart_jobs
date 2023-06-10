@@ -1,5 +1,5 @@
 .vacancy-card {
-  padding: 24px;
+  padding: 16px;
   background: var(--white);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.04);
   border-radius: 12px;
@@ -12,48 +12,62 @@
 }
 
 .info__vacancy-card {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .top__vacancy-card {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
+.top__vacancy-card div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.top__vacancy-card img {
+  cursor: pointer;
+}
+
 .title__vacancy-card {
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   font-weight: 600;
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 24px;
   color: var(--black-100);
 }
 
 .company__vacancy-card {
   font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
-  color: var(--gray);
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--black-75);
 }
 
-.bottom__vacancy-card {
+.salary__vacancy-card {
+  margin-bottom: 16px;
+}
+
+.salary__vacancy-card p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--black-75);
+}
+
+.location__vacancy-card {
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 5px;
 }
 
-.bottom__vacancy-card p {
-  padding: 4px 12px;
-  border: 1px solid var(--lightgray);
-  border-radius: 12px;
-}
-
-.text__vacancy-card {
-  margin-bottom: 24px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
+.location__vacancy-card p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
   color: var(--black-75);
 }
 
@@ -71,8 +85,8 @@
 
 .footer__vacancy-card {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 16px;
 }
 
 @media (max-width: 900px) {
@@ -95,5 +109,9 @@
 
   .title__vacancy-card {
     font-size: 22px;
+  }
+
+  .footer__vacancy-card {
+    gap: 10px;
   }
 }

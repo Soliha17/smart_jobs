@@ -2,6 +2,40 @@
   background: var(--white-100) !important;
 }
 
+.ant-modal-root:has(.report-modal) .ant-modal-mask {
+  background: rgba(28, 25, 23, 0.56) !important;
+}
+
+.radio-group__report-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.radio-group__report-modal .ant-radio-wrapper span {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--black-75);
+}
+
+.ant-modal-root:has(.report-modal) .ant-modal-title {
+  margin: 20px 0;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  color: var(--black-100);
+}
+
+.ant-modal-root:has(.report-modal) .ant-modal-content {
+  max-width: 608px !important;
+  padding: 30px 40px;
+}
+
+.ant-modal-root:has(.report-modal) .ant-modal-body {
+  width: 100% !important;
+}
+
 .login-modal.ant-modal {
   width: 70% !important;
   top: 73px;
@@ -147,6 +181,8 @@
 }
 
 .text__login-modal p {
+  max-width: 85%;
+  text-align: center;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
@@ -192,6 +228,10 @@
 
   .back-icon__modal {
     left: 0px;
+  }
+
+  .ant-modal-root:has(.report-modal) .ant-modal-body {
+    max-width: 100% !important;
   }
 }
 
