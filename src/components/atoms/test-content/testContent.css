@@ -1,0 +1,61 @@
+.card__take-test .card-img__take-test {
+  margin: 17px 0;
+}
+
+.card__take-test h2 {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--black-100);
+}
+
+.card__take-test .ant-radio {
+  order: 11 !important;
+  margin-left: auto;
+}
+
+.card__take-test .ant-radio-wrapper span:nth-child(2) {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+@media (max-width: 800px) {
+  .card-img__take-test {
+    width: 100%;
+    max-width: 611px;
+    height: auto;
+  }
+
+  .take-test .ant-steps-vertical {
+    display: flex;
+    min-width: 100%;
+    flex-direction: row !important;
+    overflow-x: scroll;
+  }
+
+  .content__take-test .ant-steps {
+    justify-content: initial;
+  }
+}
+
+@media (max-width: 500px) {
+  .take-test .ant-steps-item .ant-steps-item-icon {
+    margin-inline-end: 0 !important;
+  }
+
+  .card__take-test .card-img__take-test {
+    margin: 0;
+  }
+
+  .card__take-test h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .take-test {
+    margin-top: 30px;
+  }
+}

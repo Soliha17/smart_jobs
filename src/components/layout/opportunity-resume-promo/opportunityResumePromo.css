@@ -1,0 +1,92 @@
+.opportunity___resume-promo {
+  padding: 98px 0;
+}
+
+.opportunity___resume-promo h2:first-child {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 39px;
+  line-height: 47px;
+  color: var(--black-100);
+  text-align: center;
+}
+
+.opportunity___resume-promo .opportunity-subtitle {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  color: var(--black-75);
+}
+
+.opportunity-container__resume-promo {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.opportunity-card__resume-promo {
+  padding: 20px;
+  border: 1px solid var(--lightgray);
+  border-radius: 16px;
+}
+
+.opportunity-card__resume-promo h3 {
+  margin: 24px 0 12px 0;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  color: var(--black-100);
+}
+
+.opportunity-card__resume-promo p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+@media (max-width: 900px) {
+  .opportunity-card__resume-promo h3 {
+    margin: 12px 0;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .opportunity-card__resume-promo p {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .opportunity___resume-promo .opportunity-subtitle {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .opportunity-container__resume-promo {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .opportunity-card__resume-promo {
+    width: 48%;
+  }
+
+  .opportunity___resume-promo {
+    margin: 76px 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .opportunity-card__resume-promo {
+    width: 100%;
+  }
+
+  .opportunity___resume-promo {
+    margin: 64px 0;
+  }
+}

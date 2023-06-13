@@ -1,0 +1,87 @@
+.aside__resume-promo {
+  margin-top: 96px;
+  background: var(--black-100);
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.aside__resume-promo div {
+  margin-left: 64px;
+}
+
+.aside__resume-promo h2 {
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 39px;
+  line-height: 47px;
+  color: var(--white);
+}
+
+.aside__resume-promo p {
+  margin-bottom: 84px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  color: var(--white);
+}
+
+.aside__resume-promo .primary-btn {
+  margin-right: 24px;
+  width: 205px;
+  height: 56px;
+  background: var(--primary-100);
+  border-radius: 12px;
+}
+
+.aside__resume-promo .default-btn {
+  width: 161px;
+  height: 56px;
+  background: transparent;
+  border: 1px solid var(--white);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--white);
+}
+
+.aside__resume-promo img {
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .aside__resume-promo {
+    flex-direction: column-reverse;
+  }
+
+  .aside__resume-promo img {
+    width: 100%;
+  }
+
+  .aside__resume-promo div {
+    margin-bottom: 64px;
+    margin-right: 64px;
+  }
+}
+
+@media (max-width: 500px) {
+  .aside__resume-promo div {
+    margin-bottom: 32px;
+    margin-right: 32px;
+    margin-left: 32px;
+  }
+
+  .aside__resume-promo button {
+    width: 100% !important;
+  }
+
+  .aside__resume-promo .primary-btn {
+    margin-right: 0;
+    margin-bottom: 18px;
+  }
+
+  .aside__resume-promo p {
+    margin-bottom: 32px;
+  }
+}

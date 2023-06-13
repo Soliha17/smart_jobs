@@ -1,0 +1,86 @@
+.modal__take-test {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.modal__take-test h2,
+.modal__take-test p {
+  text-align: center;
+}
+
+.modal__take-test h2 {
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 39px;
+  line-height: 47px;
+  color: var(--black-100);
+}
+
+.modal__take-test p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black-75);
+}
+
+.ant-modal-root:has(.test-modal) .ant-modal-mask {
+  background: rgba(28, 25, 23, 0.56) !important;
+}
+
+.ant-modal-root:has(.test-modal) .ant-modal-body {
+  width: 80% !important;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.modal__take-test .primary-btn {
+  width: 90%;
+}
+
+@media (max-width: 900px) {
+  .ant-modal-root:has(.test-modal) .ant-modal-body {
+    max-width: 100% !important;
+  }
+
+  .ant-modal-root:has(.test-modal) .ant-modal-body {
+    width: 90% !important;
+  }
+
+  .modal__take-test h2 {
+    font-size: 35px;
+    line-height: 42px;
+  }
+
+  .modal__take-test {
+    gap: 30px;
+  }
+
+  .modal__take-test img {
+    max-width: 290px;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .ant-modal-root:has(.test-modal) .ant-modal-body {
+    width: 100% !important;
+  }
+
+  .modal__take-test h2 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .modal__take-test .primary-btn,
+  .modal__take-test .default-btn {
+    width: 100%;
+  }
+
+  .modal__take-test img {
+    max-width: 230px;
+    height: auto;
+  }
+}

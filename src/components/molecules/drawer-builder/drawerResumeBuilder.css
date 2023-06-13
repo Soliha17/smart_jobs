@@ -1,0 +1,22 @@
+.title__job-drawer {
+  margin-bottom: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--light);
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  color: var(--black-75);
+}
+
+@media (max-width: 900px) {
+  .ant-drawer-content-wrapper {
+    width: 85% !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .ant-drawer-content-wrapper {
+    top: 100px !important;
+    width: 100% !important;
+  }
+}

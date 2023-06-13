@@ -25,7 +25,7 @@ import YandexCard from "../../molecules/yandex-card/YandexCard";
 
 import { useTranslation } from "react-i18next";
 import ReportModal from "../../molecules/modal/ReportModal";
-import TakeTheTest from "../take-test/TakeTheTest";
+import TakeTestModal from "../take-test-modal/TakeTestModal";
 
 const VacancyFullCard = ({ style }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -329,7 +329,7 @@ const VacancyFullCard = ({ style }) => {
         </div>
       </div>
       <ReportModal open={isReportModalOpen} setOpen={setIsReportModalOpen} />
-      <TakeTheTest
+      <TakeTestModal
         open={isTakeTheTestModalOpen}
         setOpen={setIsTakeTheTestModalOpen}
       />

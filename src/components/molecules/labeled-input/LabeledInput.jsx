@@ -13,7 +13,7 @@ const LabeledInput = ({
 }) => {
   const rules = [
     {
-      required: req,
+      // required: req,
       // max: 32,
 
       // message: validateMessages,

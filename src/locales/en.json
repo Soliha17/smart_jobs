@@ -249,5 +249,19 @@
   "linkedin": "LinkedIn",
   "telegram": "Telegram",
   "twitter": "Twitter",
-  "copyTheLink": "Copy the link"
+  "copyTheLink": "Copy the link",
+
+  "youNeedToFindAShortTestToApplyForThisVacancy": "You need to find a short test to apply for this vacancy.",
+  "testSubtitle": "It is mandatory for the employer to pass the test when accepting the application. Start the test to make your resume visible to the employer.",
+  "takeTheTest": "Take the test",
+  "questionOfTest": "Which of the following is not one of the tasks performed by a UX designer?",
+  "answerATest": "A) User research",
+  "answerBTest": "B) Making design changes to simplify product usage",
+  "answerCTest": "C) Providing aesthetic design recommendations",
+  "answerDTest": "D) Designing to decrease the product price",
+  "done": "Done",
+
+  "congratulationsYouGotTheJob": "Congratulations, you got the job.",
+  "applyToMultipleJobOpeningsToHelpYouGetHiredFaster": "Apply to multiple job openings to help you get hired faster.",
+  "otherVacancies": "Other Vacancies"
 }

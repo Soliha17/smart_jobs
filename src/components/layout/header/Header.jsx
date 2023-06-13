@@ -31,7 +31,11 @@ function Header() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.pathname === "/vacancy" || location.pathname === "/full") {
+    if (
+      location.pathname === "/vacancy" ||
+      location.pathname === "/full" ||
+      location.pathname === "/builder"
+    ) {
       setIsUser(true);
     } else {
       setIsUser(false);

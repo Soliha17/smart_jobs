@@ -11,6 +11,8 @@ import VacancyFull from "../pages/vacancy-full/VacancyFull";
 import BlogFull from "../pages/blog-full/BlogFull";
 import About from "../pages/about/About";
 import TakeTest from "../pages/take-test/TakeTest";
+import ResumePromo from "../pages/resume-promo/ResumePromo";
+import ResumeBuilder from "../pages/resume-builder/ResumeBuilder";
 
 export const routesDatas = [
   {
@@ -78,5 +80,17 @@ export const routesDatas = [
     title: "Take Test Page",
     path: "/test",
     element: TakeTest,
+  },
+  {
+    id: 12,
+    title: " Page",
+    path: "/builder",
+    element: ResumePromo,
+  },
+  {
+    id: 13,
+    title: "Resume Builder Page",
+    path: "/build",
+    element: ResumeBuilder,
   },
 ];

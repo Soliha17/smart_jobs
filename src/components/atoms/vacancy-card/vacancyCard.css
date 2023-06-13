@@ -81,6 +81,7 @@
 .three-dots .ant-btn-default {
   border: none;
   padding: 0;
+  /* background: #000; */
 }
 
 .footer__vacancy-card {

@@ -1,0 +1,195 @@
+.templates__resume-promo {
+  background: var(--white-100);
+  padding-top: 76px;
+  padding-bottom: 96px;
+}
+
+.templates__resume-promo h2:first-child {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 39px;
+  line-height: 47px;
+  color: var(--black-100);
+  text-align: center;
+}
+
+.templates__resume-promo .templates-subtitle {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 38px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  color: var(--black-75);
+}
+
+.card-templates__resume-promo {
+  position: relative;
+  width: 397px;
+  height: 562px;
+  border-radius: 16px;
+  border: 3px solid var(--primary-100);
+  border-color: transparent;
+  transition: all 0.3s ease-in;
+}
+
+.card-templates__resume-promo:hover {
+  border-color: var(--primary-100);
+}
+
+.card-templates__resume-promo:hover .rectangle__resume-promo img {
+  filter: brightness(0) saturate(100%) invert(37%) sepia(90%) saturate(2859%)
+    hue-rotate(190deg) brightness(104%) contrast(108%);
+}
+
+.card-templates__resume-promo:hover .primary-btn {
+  display: block;
+}
+
+.card-templates__resume-promo:hover .footer-templates__resume-promo span,
+.card-templates__resume-promo:hover .footer-templates__resume-promo h6 {
+  color: var(--white);
+}
+
+.card-templates__resume-promo:hover .footer-templates__resume-promo span {
+  border-color: var(--white);
+}
+
+.card-templates__resume-promo .primary-btn {
+  display: none;
+  position: absolute;
+  top: 307px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 229px;
+  height: 48px;
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  z-index: 10;
+}
+
+.template-img__resume-promo {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.template-img__resume-promo img {
+  width: 100%;
+  max-width: 397px;
+  height: auto;
+}
+
+.resume-template__resume-promo {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+}
+
+.rectangle__resume-promo {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.rectangle__resume-promo img {
+  width: 100%;
+  max-width: 397px;
+  height: auto;
+}
+
+.footer-templates__resume-promo {
+  position: absolute;
+  width: 100%;
+  bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-templates__resume-promo span {
+  margin: 24px 0 12px 0;
+  text-align: center;
+  padding: 4px 12px;
+  border: 1px solid var(--black-50);
+  border-radius: 24px;
+}
+
+.footer-templates__resume-promo h6 {
+  text-align: center;
+  width: 100%;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--black-100);
+}
+
+.templates__resume-promo .see-all__btn {
+  background: transparent;
+  display: none;
+  color: var(--primary-100);
+}
+
+@media (max-width: 1300px) {
+  .card-templates__resume-promo {
+    width: 367px;
+    height: 520px;
+  }
+
+  .template-img__resume-promo img {
+    max-width: 367px;
+  }
+
+  .resume-template__resume-promo {
+    top: 36px;
+    width: 100%;
+    max-width: 295px;
+    height: auto;
+  }
+
+  .footer-templates__resume-promo {
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .templates__resume-promo .templates-subtitle {
+    width: 100%;
+  }
+
+  .card-templates__resume-promo {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .templates__resume-promo .see-all__btn {
+    display: block;
+  }
+
+  .card-templates__resume-promo {
+    width: 337px;
+    height: 520px;
+  }
+
+  .template-img__resume-promo img {
+    max-width: 367px;
+  }
+
+  .resume-template__resume-promo {
+    top: 30px;
+    width: 100%;
+    max-width: 273px;
+    height: auto;
+  }
+
+  .footer-templates__resume-promo {
+    bottom: 30px;
+  }
+}

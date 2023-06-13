@@ -1,0 +1,125 @@
+.hero__resume-promo {
+  padding-top: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.hero-info__resume-promo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-info__resume-promo h2 {
+  font-weight: 600;
+  font-size: 49px;
+  line-height: 59px;
+  color: var(--black-100);
+}
+
+.hero-info__resume-promo p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+.hero-info__resume-promo .primary-btn {
+  margin-top: 12px;
+  width: 205px;
+  height: 56px;
+}
+
+.hero-carousel__resume-promo {
+  width: 608px;
+}
+
+.hero-carousel__resume-promo img {
+  width: 100%;
+  max-width: 608px;
+  height: auto;
+}
+
+/* HERO CAROUSEL'S DOTS STYLES */
+
+.hero-carousel__resume-promo .slick-dots li {
+  background: var(--black-100);
+  width: 104px !important;
+  opacity: 0.32;
+}
+
+.hero-carousel__resume-promo .ant-carousel .slick-dots li.slick-active {
+  background: var(--black-100) !important;
+  opacity: 1 !important;
+}
+
+.hero-carousel__resume-promo .slick-dots-bottom {
+  bottom: -32px !important;
+}
+
+@media (max-width: 1000px) {
+  .hero-carousel__resume-promo {
+    width: 408px;
+  }
+
+  .hero-carousel__resume-promo img {
+    max-width: 408px;
+  }
+
+  .hero-info__resume-promo h2 {
+    font-size: 35px;
+    line-height: 42px;
+  }
+
+  .hero-info__resume-promo p {
+    line-height: 24px;
+  }
+
+  .hero-carousel__resume-promo .slick-dots li {
+    width: 83px !important;
+  }
+
+  .hero-carousel__resume-promo .slick-dots-bottom {
+    bottom: -20px !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .hero-carousel__resume-promo {
+    width: 50%;
+  }
+
+  .hero-carousel__resume-promo img {
+    max-width: 350px;
+  }
+
+  .hero-carousel__resume-promo .slick-dots li {
+    width: 70px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__resume-promo {
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+
+  .hero-carousel__resume-promo {
+    width: 100%;
+  }
+
+  .hero-carousel__resume-promo img {
+    max-width: 335px;
+  }
+
+  .hero-info__resume-promo h2 {
+    font-size: 32px;
+    line-height: 39px;
+  }
+
+  .hero-carousel__resume-promo .slick-dots li {
+    width: 70px !important;
+  }
+}

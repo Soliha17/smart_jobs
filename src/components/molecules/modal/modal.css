@@ -36,6 +36,48 @@
   width: 100% !important;
 }
 
+/* RESUME PROMO MODAL */
+
+.ant-modal-root:has(.resume-promo-modal) .ant-modal-content {
+  width: 800px !important;
+  padding: 50px 40px;
+  margin: 0 auto;
+}
+
+.resume-promo-modal .ant-modal {
+  width: 100% !important;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.ant-modal-root:has(.resume-promo-modal) .ant-modal-mask {
+  background: rgba(28, 25, 23, 0.56) !important;
+}
+
+/* RESUME  MODAL */
+
+.ant-modal-root:has(.resume-modal) .ant-modal-content {
+  width: 503px !important;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 16px;
+}
+
+.resume-modal .ant-modal {
+  width: 100% !important;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.ant-modal-root:has(.resume-modal) .ant-modal-mask {
+  background: rgba(28, 25, 23, 0.56) !important;
+}
+
+.ant-modal-root:has(.resume-modal) .ant-modal-close {
+  top: -50px;
+  right: -5px;
+}
+
 .login-modal.ant-modal {
   width: 70% !important;
   top: 73px;
@@ -274,11 +316,22 @@
     font-size: 14px;
     line-height: 17px;
   }
+
+  .ant-modal-root:has(.resume-modal) .ant-modal-content {
+    width: 100% !important;
+    max-width: 335px;
+  }
 }
 
 @media (max-width: 400px) {
   .login-modal .ant-modal-body {
     max-width: 350px;
+  }
+}
+
+@media (max-width: 380px) {
+  .ant-modal-root:has(.resume-modal) .ant-modal-content {
+    max-width: 310px;
   }
 }
 

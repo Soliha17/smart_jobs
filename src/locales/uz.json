@@ -248,5 +248,19 @@
   "linkedin": "Linkedin",
   "telegram": "Telegram",
   "twitter": "Twitter",
-  "copyTheLink": "Havolani nusxalash"
+  "copyTheLink": "Havolani nusxalash",
+
+  "youNeedToFindAShortTestToApplyForThisVacancy": "Usbu vakasiga topshirish uchun qisqa test topshishingiz kerak.",
+  "testSubtitle": "Ish beruvchi tomonidan ariza qabul qilishda test topshirish majburiy qilingan. Sizni rezyumengiz ish beruvchiga ko'rinishi uchun testni boshlang.",
+  "takeTheTest": "Test topshirish",
+  "questionOfTest": "Qaysi narsa UX dizaynerining bajarishi lozim bo'lgan ishlardan biri emas?",
+  "answerATest": "A) Foydalanuvchilarni ko'rib chiqish",
+  "answerBTest": "B) Mahsulotni foydalanishni osonlash uchun dizayn o'zgartirishlari qilish",
+  "answerCTest": " C) Estetik dizayn taklif qilish",
+  "answerDTest": " D) Mahsulot narxini pastga tushirish uchun dizayn",
+  "done": "Tugadi",
+
+  "congratulationsYouGotTheJob": "Tabriklaymiz ishga topshirdingiz",
+  "applyToMultipleJobOpeningsToHelpYouGetHiredFaster": "Ko'plab vakansiyalarga ishga topshiring,  bu sizga ishga tezroq kirishga yordam beradi",
+  "otherVacancies": "Boshqa vakansiyalar"
 }
