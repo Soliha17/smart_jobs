@@ -9,6 +9,8 @@ import SettingsProfile from "./SettingsProfile";
 import Footer from "../../components/layout/footer/Footer";
 import Information from "./Information";
 import { useTranslation } from "react-i18next";
+import MyResumes from "./MyResumes";
+import MyApplications from "./MyApplications";
 
 const Profile = () => {
   const onChange = (key) => {
@@ -26,12 +28,12 @@ const Profile = () => {
     {
       key: "2",
       label: t("myApplications"),
-      children: `Content of Tab Pane 2`,
+      children: <MyApplications />,
     },
     {
       key: "3",
       label: t("myResumes"),
-      children: `Content of Tab Pane 3`,
+      children: <MyResumes />,
     },
     {
       key: "4",

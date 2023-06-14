@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./vacancyFullCard.css";
-import { Button, Dropdown, Modal, message } from "antd";
+import { Button, Dropdown, Modal, Space, message } from "antd";
 
 import ShareIcon from "../../../assets/images/share-icon.svg";
 import ReportIcon from "../../../assets/images/report-icon.svg";

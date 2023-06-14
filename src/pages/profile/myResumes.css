@@ -1,0 +1,271 @@
+.my-resumes {
+  margin-top: 32px;
+}
+
+.header__my-resumes {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__my-resumes h2 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  color: var(--black-100);
+}
+
+.header__my-resumes button {
+  width: 183px;
+  height: 44px;
+}
+
+.resume-card {
+  padding: 16px;
+  width: 397px;
+  background: var(--white);
+  border: 1px solid var(--light);
+  border-radius: 12px;
+}
+
+.content__my-resumes {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.resume-card:hover {
+  border-color: var(--primary-100);
+}
+
+.top__resume-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top__resume-card div:first-child {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.top__resume-card h2 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-100);
+}
+
+.top__resume-card span {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.top__resume-card span p {
+  font-weight: 300;
+  font-size: 12px !important;
+  line-height: 25px !important;
+  color: var(--black-75) !important;
+}
+
+.top__resume-card .badge__resume-card {
+  padding: 0 6px;
+  width: 140px;
+  height: 20px;
+  background: var(--orange);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.top__resume-card .badge__resume-card p {
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 20px;
+  color: var(--white);
+}
+
+.status__resume-card {
+  padding: 0 12px;
+  position: relative;
+  margin-top: 19px;
+  border-radius: 12px;
+  width: 100%;
+  background: var(--white-50);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.status__resume-card .ant-progress-outer {
+  transform: translateY(30px);
+}
+
+.status__resume-card .ant-progress-text {
+  transform: translate(72px, -8px);
+  background: transparent;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  font-size: 12px !important;
+  line-height: 25px !important;
+  color: var(--black-75) !important;
+}
+
+.status__resume-card p {
+  position: absolute;
+  bottom: 17px;
+  left: 12px;
+  font-weight: 300;
+  font-size: 12px !important;
+  line-height: 25px !important;
+  color: var(--black-75) !important;
+}
+
+.status__resume-card button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--primary-75);
+  text-align: right;
+  letter-spacing: -0.25px;
+  border: none;
+}
+
+.counts__resume-card {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.counts__resume-card span {
+  padding: 8px;
+  width: 115px;
+  height: 59px;
+  border-radius: 8px;
+  background: var(--white-50);
+}
+
+.counts__resume-card h4 {
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--primary-75);
+}
+
+.counts__resume-card p {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--black-75);
+}
+
+.vacancies__resume-card {
+  margin-top: 16px;
+  padding: 12px 0;
+  width: 100%;
+  text-align: center;
+  background: var(--white-50);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--primary-75);
+}
+
+.buttons__resume-card {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.buttons__resume-card button {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+  letter-spacing: -0.25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.buttons__resume-card button:hover {
+  color: var(--primary-75);
+}
+
+.buttons__resume-card button:hover img {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+}
+
+.footer__resume-card {
+  margin-top: 20px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--black-75);
+}
+
+@media (max-width: 1300px) {
+  .content__my-resumes {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1000px) {
+  .resume-card {
+    max-width: 367px;
+  }
+}
+
+@media (max-width: 800px) {
+  .content__my-resumes {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .header__my-resumes {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 450px) {
+  .resume-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .header__my-resumes button {
+    width: 100%;
+  }
+
+  .status__resume-card .ant-progress-outer {
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .status__resume-card .ant-progress-outer {
+    width: 270px !important;
+  }
+}

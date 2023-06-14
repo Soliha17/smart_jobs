@@ -1,0 +1,11 @@
+.my-applications {
+  padding-top: 20px;
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.my-applications-wrapper {
+  background: var(--white-50);
+}

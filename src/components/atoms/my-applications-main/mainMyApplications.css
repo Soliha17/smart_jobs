@@ -1,0 +1,213 @@
+.main__my-applications {
+  width: 819px;
+  background: var(--white);
+  border-radius: 16px;
+}
+
+.main-header__my-applications {
+  padding: 24px 32px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.main-header__my-applications div {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.main-header__my-applications h3 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--black-100);
+}
+
+.main-header__my-applications .ant-scroll-number {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--black-75);
+}
+
+.main-vacancy__my-applications {
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-vacancy__my-applications p {
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--black-75);
+}
+
+.main-vacancy__my-applications h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+.main-line__my-applications {
+  padding: 15px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-line__my-applications span {
+  width: 337px;
+  border: 1px solid var(--lightgray);
+}
+
+.main-line__my-applications h3 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+.main-content__my-applications {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.right-content__my-applications {
+  align-self: flex-end;
+}
+
+.left-content__my-applications {
+  align-self: flex-start;
+}
+
+.left-content__my-applications .profile-main__my-applications {
+  flex-direction: row-reverse;
+}
+
+.profile-main__my-applications {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.profile-main__my-applications h2 {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--black-75);
+}
+
+.profile-main__my-applications p {
+  margin-bottom: 5px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--black-75);
+}
+
+.card-main__my-applications {
+  margin-top: 5px;
+  padding: 6px 16px;
+  width: 200px;
+  height: 104px;
+  background: var(--primary-12);
+  border-radius: 16px 16px 0px 16px;
+}
+
+.card-main__my-applications div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-main__my-applications p {
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--black-75);
+}
+
+.card-main__my-applications h3 {
+  margin-bottom: 9px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+.line__my-applications {
+  margin-bottom: 12px;
+  width: 100%;
+  border: 1px solid var(--primary-100);
+}
+
+.card-main__my-applications button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--primary-100);
+}
+
+.read__my-applications {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.read__my-applications p {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--black);
+}
+
+.left-content__my-applications .card-main__my-applications {
+  border-radius: 16px 16px 16px 0;
+  width: 252px;
+}
+
+.left-content__my-applications .card-main__my-applications p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--black-75);
+}
+
+.main-footer__my-applications {
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-footer__my-applications div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.main-footer__my-applications .ant-input {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}

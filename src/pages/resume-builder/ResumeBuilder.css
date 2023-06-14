@@ -116,11 +116,11 @@
   height: auto;
 }
 
-.ant-progress-outer {
+.resume-builder .ant-progress-outer {
   transform: translateY(30px);
 }
 
-.ant-progress-text {
+.resume-builder .ant-progress-text {
   transform: translateY(-20px);
   width: 33px !important;
   height: 28px !important;
