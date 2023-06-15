@@ -17,6 +17,16 @@
   gap: 22px;
 }
 
+.main-header__my-applications span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.main-header__my-applications .back__my-applications {
+  display: none;
+}
+
 .main-header__my-applications h3 {
   margin-bottom: 12px;
   font-weight: 600;
@@ -210,4 +220,66 @@
   font-size: 16px;
   line-height: 19px;
   color: var(--black-75);
+}
+
+@media (max-width: 1400px) {
+  .main__my-applications {
+    width: 70%;
+  }
+
+  .main-line__my-applications span {
+    width: 42%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .main__my-applications {
+    width: 60%;
+  }
+
+  .main-header__my-applications {
+    padding: 12px;
+  }
+
+  .main-line__my-applications {
+    padding: 15px 12px;
+  }
+
+  .main-vacancy__my-applications {
+    padding: 8px 12px;
+  }
+
+  .main-content__my-applications {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-line__my-applications span {
+    width: 40%;
+  }
+}
+
+@media (max-width: 800px) {
+  .main__my-applications {
+    width: 100%;
+  }
+
+  .main-header__my-applications .back__my-applications {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-line__my-applications span {
+    width: 35%;
+  }
+
+  .main-content__my-applications {
+    gap: 30px;
+  }
+
+  .main-header__my-applications div {
+    gap: 10px;
+  }
 }

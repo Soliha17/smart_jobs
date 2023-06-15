@@ -106,3 +106,21 @@
   line-height: 12px;
   color: var(--black-75);
 }
+
+@media (max-width: 1400px) {
+  .applications-sidebar {
+    width: 30%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .applications-sidebar {
+    width: 40%;
+  }
+}
+
+@media (max-width: 800px) {
+  .applications-sidebar {
+    display: none;
+  }
+}

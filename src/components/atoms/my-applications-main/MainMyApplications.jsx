@@ -16,9 +16,17 @@ import AddCircle from "../../../assets/images/add-circle-blue.svg";
 import Read from "../../../assets/images/2-check-icon.svg";
 import AttachFile from "../../../assets/images/attach-file-icon.svg";
 import Send from "../../../assets/images/send-icon-chat.svg";
+import BackIcon from "../../../assets/images/back-icon-chat.svg";
+import ChatParticipants from "../../molecules/modal/ChatParticipants";
 
 const MainMyApplications = () => {
   const [show, setShow] = useState(true);
+
+  const [openChatParticipants, setOpenChatParticipants] = useState(false);
+
+  function openChatParticipantsModal() {
+    setOpenChatParticipants(true);
+  }
 
   const items = [
     {
@@ -38,15 +46,13 @@ const MainMyApplications = () => {
     {
       key: "2",
       label: (
-        <a
+        <span
           className="dropdown-item__vacancy-full"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
+          onClick={openChatParticipantsModal}
         >
           <img src={People} alt="People" />
           Chat ishtirokchilari
-        </a>
+        </span>
       ),
     },
     {
@@ -78,7 +84,14 @@ const MainMyApplications = () => {
     <div className="main__my-applications">
       <div className="main-header__my-applications">
         <div>
-          <img src={ExpressLogo} alt="ExpressLogo" />
+          <span>
+            <img
+              src={BackIcon}
+              className="back__my-applications"
+              alt="BackIcon"
+            />
+            <img src={ExpressLogo} alt="ExpressLogo" />
+          </span>
           <span>
             <h3>Worko</h3>
             <Badge count={show ? "Topshirilgan" : 0} color="#E0F1FF" />
@@ -162,6 +175,12 @@ const MainMyApplications = () => {
         </div>
         <img src={Send} alt="send icon" />
       </div>
+      {
+        <ChatParticipants
+          open={openChatParticipants}
+          setOpen={setOpenChatParticipants}
+        />
+      }
     </div>
   );
 };

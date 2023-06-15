@@ -1,0 +1,104 @@
+.ant-modal-root:has(.chat-participiants-modal) .ant-modal-content {
+  width: 608px !important;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 16px;
+}
+
+.chat-participiants-modal .ant-modal {
+  width: 100% !important;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.ant-modal-root:has(.chat-participiants-modal) .ant-modal-mask {
+  background: rgba(28, 25, 23, 0.56) !important;
+}
+
+.chat-participiants-modal .ant-modal-body {
+  width: 100%;
+}
+
+.chat-participiants-wrapper {
+  padding: 48px;
+  width: 100%;
+}
+
+.chat-participiants-wrapper h2 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  color: var(--black-100);
+}
+
+.chat-participiants-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.chat-participiants-container h4 {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black);
+}
+
+.profile__chat-participiants {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--white-100);
+  border-radius: 12px;
+}
+
+.profile__chat-participiants h2 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--black-100);
+}
+
+.profile__chat-participiants p {
+  margin-bottom: 5px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--black-75);
+}
+
+@media (max-width: 800px) {
+  .ant-modal-root:has(.chat-participiants-modal) .ant-modal-content {
+    width: 508px !important;
+  }
+
+  .chat-participiants-wrapper {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ant-modal-root:has(.chat-participiants-modal) .ant-modal-content {
+    width: 85% !important;
+  }
+
+  .chat-participiants-wrapper {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .ant-modal-root:has(.chat-participiants-modal) .ant-modal-content {
+    width: 100% !important;
+  }
+
+  .chat-participiants-wrapper h2:first-child {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
