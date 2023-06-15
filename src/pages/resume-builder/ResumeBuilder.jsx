@@ -10,6 +10,7 @@ import AdditionalInformationBuilder from "../../components/atoms/additional-info
 import TemplateBg1 from "../../assets/images/temp-img-resume-builder.png";
 import ResumeTemplate from "../../assets/images/res-temp-resume-builder.png";
 import Rectangle from "../../assets/images/rec-resume-builder.png";
+import { useTranslation } from "react-i18next";
 
 const steps = [
   {
@@ -42,6 +43,8 @@ const ResumeBuilder = () => {
     key: item.title,
     title: item.title,
   }));
+
+  const { t } = useTranslation();
 
   return (
     <div className="build-resume resume-builder container">
@@ -83,7 +86,9 @@ const ResumeBuilder = () => {
                 strokeColor={"#40AAFF"}
               />
             </div>
-            <button className="choose-template-btn">Shablon tanlash</button>
+            <button className="choose-template-btn">
+              {t("chooseATemplate")}
+            </button>
           </div>
         </div>
       </div>

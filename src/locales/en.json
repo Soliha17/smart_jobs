@@ -263,5 +263,53 @@
 
   "congratulationsYouGotTheJob": "Congratulations, you got the job.",
   "applyToMultipleJobOpeningsToHelpYouGetHiredFaster": "Apply to multiple job openings to help you get hired faster.",
-  "otherVacancies": "Other Vacancies"
+  "otherVacancies": "Other Vacancies",
+
+  "freeResumeBuilderForJobSeekers": "Free Resume Builder for Job Seekers",
+  "byApplyingBestPracticesAndInnovativeTechnologiesYouWillIncreaseYourChancesOfGettingABetterJobCompletelyFreeOfCharge": "By Applying Best Practices and Innovative Technologies, You Will Increase Your Chances of Getting a Better Job Completely Free of Charge",
+  "createAResume": "Create a Resume",
+
+  "opportunities": "Opportunities",
+  "smartjobHasGotYouCoveredWithAllTheToolsYouNeedToCreateThePerfectResumeCompletelyFreeToGetStartedChooseTheResumeTemplateThatWorksBestForYou": "Smartjob has got you covered with all the tools you need to create the perfect resume - completely free. To get started, choose the resume template that works best for you.",
+  "convenientDesignOptions": "Convenient design options",
+  "theCandidateWillImmediatelyReceiveANotificationOfYourMessageByMailAndCanRespondToYouQuickly": "The candidate will immediately receive a notification of your message by mail and can respond to you quickly.",
+  "createAResumeBasedOnDifferentTemplates": "Create a resume based on different templates",
+  "formingANewOneBasedOnResumeSamples": "Forming a new one based on resume samples",
+
+  "resumeTemplates": "Resume Templates",
+  "smartjobHasGotYouCoveredWithAllTheToolsYouNeedToCreateThePerfectResumeCompletelyFreeToGetStartedChooseTheResumeTemplateThatSuitsYouBestFromMoreProfessionalAndATSFriendlyToMoreModernOrCreative": "Smartjob has got you covered with all the tools you need to create the perfect resume - completely free. To get started, choose the resume template that suits you best: from more professional and ATS-friendly to more modern or creative.",
+  "usingATemplate": "Using a Template",
+  "resumeTemplate": "Resume Template",
+  "classic": "Classic",
+
+  "youCanCreatePriorityCVsWhenApplyingForJobs": "You can create priority CVs when applying for jobs",
+  "quickAccessToAnyNecessaryInformationAndEasyTransitionBetweenTasksWeAreConstantlyImprovingTheInterfaceThanksToTheRecommendationsAndWishesOfHRPractitionersAndHiringManagers": "Quick access to any necessary information and easy transition between tasks. We are constantly improving the interface thanks to the recommendations and wishes of HR practitioners and hiring managers.",
+  "creatingAResume": "Creating a resume",
+  "getHelp": "Get help",
+
+  "chooseATemplate": "Choose a Template",
+  "view": "View",
+  "myResume": "My Resumes",
+  "inTheOffice": "In the Office",
+  "filled": "Filled",
+  "filling": "Filling",
+  "suggestions": "Suggestions",
+  "theResumeIsOpenToEveryone": "The Resume is Open to Everyone",
+  "latestUpdate": "Latest Update",
+
+  "filter": "Filter",
+  "aboutVacancy": "About Vacancy",
+  "chatParticipants": "Chat Participants",
+  "complaintsAboutTheApplication": "Complaints About the Application",
+  "deleteTheApplication": "Delete the Application",
+  "vacancyName": "Vacancy Name",
+  "resumeType": "Resume Type",
+  "coverLetter": "Cover Letter",
+  "writeAMessage": "Write a Message...",
+
+  "jobSeeker": "Job Seeker",
+  "selectStatus": "Select Status",
+  "openToAll": "Open to All",
+  "enterFileOrLink": "Enter file or link",
+  "chooseLinkOrImage": "Select a link or image"
 }

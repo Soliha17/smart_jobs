@@ -264,5 +264,53 @@
 
   "congratulationsYouGotTheJob": "Поздравляем, вы получили работу.",
   "applyToMultipleJobOpeningsToHelpYouGetHiredFaster": "Подавайте заявки на несколько вакансий, чтобы увеличить шансы на более быстрое трудоустройство.",
-  "otherVacancies": "Другие вакансии"
+  "otherVacancies": "Другие вакансии",
+
+  "freeResumeBuilderForJobSeekers": "Бесплатный конструктор резюме для соискателей работы",
+  "byApplyingBestPracticesAndInnovativeTechnologiesYouWillIncreaseYourChancesOfGettingABetterJobCompletelyFreeOfCharge": "Применяя лучшие практики и инновационные технологии, вы повысите свои шансы на получение лучшей работы полностью бесплатно",
+  "createAResume": "Создать резюме",
+
+  "opportunities": "Возможности",
+  "smartjobHasGotYouCoveredWithAllTheToolsYouNeedToCreateThePerfectResumeCompletelyFreeToGetStartedChooseTheResumeTemplateThatWorksBestForYou": "Smartjob предлагает вам все необходимые инструменты для создания идеального резюме - полностью бесплатно. Чтобы начать, выберите шаблон резюме, который вам подходит лучше всего.",
+  "convenientDesignOptions": "Удобные варианты дизайна",
+  "theCandidateWillImmediatelyReceiveANotificationOfYourMessageByMailAndCanRespondToYouQuickly": "Кандидат мгновенно получит уведомление о вашем сообщении по электронной почте и сможет быстро на него ответить.",
+  "createAResumeBasedOnDifferentTemplates": "Создать резюме на основе разных шаблонов",
+  "formingANewOneBasedOnResumeSamples": "Создание нового резюме на основе образцов резюме",
+
+  "resumeTemplates": "Шаблоны резюме",
+  "smartjobHasGotYouCoveredWithAllTheToolsYouNeedToCreateThePerfectResumeCompletelyFreeToGetStartedChooseTheResumeTemplateThatSuitsYouBestFromMoreProfessionalAndATSFriendlyToMoreModernOrCreative": "Smartjob предлагает вам все необходимые инструменты для создания идеального резюме - полностью бесплатно. Чтобы начать, выберите шаблон резюме, который вам подходит лучше всего: от более профессиональных и удобных для ATS до более современных или креативных.",
+  "usingATemplate": "Использование шаблона",
+  "resumeTemplate": "Шаблон резюме",
+  "classic": "Классический",
+
+  "youCanCreatePriorityCVsWhenApplyingForJobs": "Вы можете создавать приоритетные резюме при подаче заявок на работу",
+  "quickAccessToAnyNecessaryInformationAndEasyTransitionBetweenTasksWeAreConstantlyImprovingTheInterfaceThanksToTheRecommendationsAndWishesOfHRPractitionersAndHiringManagers": "Быстрый доступ к любой необходимой информации и легкий переход между задачами. Мы постоянно совершенствуем интерфейс благодаря рекомендациям и пожеланиям практикующих специалистов по кадровым вопросам и менеджеров по найму.",
+  "creatingAResume": "Создание резюме",
+  "getHelp": "Получить помощь",
+
+  "chooseATemplate": "Выбрать шаблон",
+  "view": "Просмотр",
+  "myResume": "Мои резюме",
+  "inTheOffice": "В офисе",
+  "filled": "Заполнено",
+  "filling": "Заполнение",
+  "suggestions": "Предложения",
+  "theResumeIsOpenToEveryone": "Резюме открыто для всех",
+  "latestUpdate": "Последнее обновление",
+
+  "filter": "Фильтр",
+  "aboutVacancy": "О вакансии",
+  "chatParticipants": "Участники чата",
+  "complaintsAboutTheApplication": "Жалобы на заявку",
+  "deleteTheApplication": "Удалить заявку",
+  "vacancyName": "Название вакансии",
+  "resumeType": "Тип резюме",
+  "coverLetter": "Сопроводительное письмо",
+  "writeAMessage": "Написать сообщение...",
+
+  "jobSeeker": "Ищущий работу",
+  "selectStatus": "Выберите статус",
+  "openToAll": "Открыто для всех",
+  "enterFileOrLink": "Введите файл или ссылку",
+  "chooseLinkOrImage": "Выберите ссылку или изображение"
 }

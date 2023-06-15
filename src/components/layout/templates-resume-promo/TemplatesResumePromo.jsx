@@ -10,6 +10,7 @@ import TemplateBg2 from "../../../assets/images/templates-bg-2.png";
 import TemplateBg3 from "../../../assets/images/templates-bg-3.png";
 import TemplateBg4 from "../../../assets/images/templates-bg-4.png";
 import TemplateBg6 from "../../../assets/images/templates-bg-6.png";
+import { useTranslation } from "react-i18next";
 
 const TemplatesResumePromo = () => {
   const [isScreenSmall, setIsScreenSmall] = useState(0);
@@ -18,15 +19,16 @@ const TemplatesResumePromo = () => {
     setIsScreenSmall(24);
   }
 
+  const { t } = useTranslation();
+
   return (
     <div className="templates__resume-promo">
       <div className="container">
-        <h2>Rezyume shablonlari</h2>
+        <h2>{t("resumeTemplates")}</h2>
         <p className="templates-subtitle">
-          Smartjob sizni mukammal rezyume yaratish uchun barcha kerakli
-          vositalar bilan qamrab oldi - butunlay bepul. Boshlash uchun sizga eng
-          mos keladigan rezyume shablonini tanlang: professional va ATS uchun
-          qulayroqdan zamonaviyroq yoki ijodiygacha.
+          {t(
+            "smartjobHasGotYouCoveredWithAllTheToolsYouNeedToCreateThePerfectResumeCompletelyFreeToGetStartedChooseTheResumeTemplateThatSuitsYouBestFromMoreProfessionalAndATSFriendlyToMoreModernOrCreative"
+          )}
         </p>
         <Row gutter={[20, 32]} wrap="wrap">
           <Col xs={24} sm={24} md={12} xl={8}>
@@ -39,13 +41,13 @@ const TemplatesResumePromo = () => {
                 className="resume-template__resume-promo"
                 alt="ResumeTemplate"
               />
-              <button className="primary-btn">Shablondan foydalanish</button>
+              <button className="primary-btn">{t("usingATemplate")}</button>
               <div className="rectangle__resume-promo">
                 <img src={Rectangle} alt="Rectangle" />
               </div>
               <div className="footer-templates__resume-promo">
-                <span>Classic</span>
-                <h6>Rezyume shablon 1</h6>
+                <span>{t("classic")}</span>
+                <h6>{t("resumeTemplate")} 1</h6>
               </div>
             </div>
           </Col>
@@ -59,13 +61,13 @@ const TemplatesResumePromo = () => {
                 className="resume-template__resume-promo"
                 alt="ResumeTemplate"
               />
-              <button className="primary-btn">Shablondan foydalanish</button>
+              <button className="primary-btn">{t("usingATemplate")}</button>
               <div className="rectangle__resume-promo">
                 <img src={Rectangle} alt="Rectangle" />
               </div>
               <div className="footer-templates__resume-promo">
-                <span>Classic</span>
-                <h6>Rezyume shablon 1</h6>
+                <span>{t("classic")}</span>
+                <h6>{t("resumeTemplate")} 2</h6>
               </div>
             </div>
           </Col>
@@ -79,13 +81,13 @@ const TemplatesResumePromo = () => {
                 className="resume-template__resume-promo"
                 alt="ResumeTemplate"
               />
-              <button className="primary-btn">Shablondan foydalanish</button>
+              <button className="primary-btn">{t("usingATemplate")}</button>
               <div className="rectangle__resume-promo">
                 <img src={Rectangle} alt="Rectangle" />
               </div>
               <div className="footer-templates__resume-promo">
-                <span>Classic</span>
-                <h6>Rezyume shablon 1</h6>
+                <span>{t("classic")}</span>
+                <h6>{t("resumeTemplate")} 3</h6>
               </div>
             </div>
           </Col>
@@ -99,13 +101,13 @@ const TemplatesResumePromo = () => {
                 className="resume-template__resume-promo"
                 alt="ResumeTemplate"
               />
-              <button className="primary-btn">Shablondan foydalanish</button>
+              <button className="primary-btn">{t("usingATemplate")}</button>
               <div className="rectangle__resume-promo">
                 <img src={Rectangle} alt="Rectangle" />
               </div>
               <div className="footer-templates__resume-promo">
-                <span>Classic</span>
-                <h6>Rezyume shablon 1</h6>
+                <span>{t("classic")}</span>
+                <h6>{t("resumeTemplate")} 4</h6>
               </div>
             </div>
           </Col>
@@ -119,13 +121,13 @@ const TemplatesResumePromo = () => {
                 className="resume-template__resume-promo"
                 alt="ResumeTemplate"
               />
-              <button className="primary-btn">Shablondan foydalanish</button>
+              <button className="primary-btn">{t("usingATemplate")}</button>
               <div className="rectangle__resume-promo">
                 <img src={Rectangle} alt="Rectangle" />
               </div>
               <div className="footer-templates__resume-promo">
-                <span>Classic</span>
-                <h6>Rezyume shablon 1</h6>
+                <span>{t("classic")}</span>
+                <h6>{t("resumeTemplate")} 5</h6>
               </div>
             </div>
           </Col>
@@ -139,18 +141,18 @@ const TemplatesResumePromo = () => {
                 className="resume-template__resume-promo"
                 alt="ResumeTemplate"
               />
-              <button className="primary-btn">Shablondan foydalanish</button>
+              <button className="primary-btn">{t("usingATemplate")}</button>
               <div className="rectangle__resume-promo">
                 <img src={Rectangle} alt="Rectangle" />
               </div>
               <div className="footer-templates__resume-promo">
-                <span>Classic</span>
-                <h6>Rezyume shablon 1</h6>
+                <span>{t("classic")}</span>
+                <h6>{t("resumeTemplate")} 6</h6>
               </div>
             </div>
           </Col>
           <button className="see-all__btn" onClick={handleResize}>
-            Yana ko'rsatish
+            {t("showMore")}
           </button>
         </Row>
       </div>

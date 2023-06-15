@@ -6,11 +6,14 @@ import "./chatParticipants.css";
 import Girl from "../../../assets/images/hr-girl.png";
 import Man from "../../../assets/images/hr-man.png";
 import Boy from "../../../assets/images/designer-boy.png";
+import { useTranslation } from "react-i18next";
 
 const ChatParticipants = ({ open, setOpen }) => {
   const handleCancel = () => {
     setOpen(false);
   };
+
+  const { t } = useTranslation();
 
   return (
     <Modal
@@ -20,10 +23,10 @@ const ChatParticipants = ({ open, setOpen }) => {
       footer={null}
     >
       <div className="chat-participiants-wrapper">
-        <h2>Chat ishtirokchilari</h2>
+        <h2>{t("chatParticipants")}</h2>
         <div className="chat-participiants-container">
           <div className="top__chat-participiants">
-            <h4>Ish beruvchi</h4>
+            <h4>{t("employer")}</h4>
             <div className="profile__chat-participiants">
               <img src={Girl} alt="profile" />
               <span>
@@ -40,7 +43,7 @@ const ChatParticipants = ({ open, setOpen }) => {
             </div>
           </div>
           <div className="bottom__chat-participiants">
-            <h4>Ish izlovchi</h4>
+            <h4>{t("jobSeeker")}</h4>
             <div className="profile__chat-participiants">
               <img src={Boy} alt="Boy" />
               <span>

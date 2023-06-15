@@ -262,5 +262,58 @@
 
   "congratulationsYouGotTheJob": "Tabriklaymiz ishga topshirdingiz",
   "applyToMultipleJobOpeningsToHelpYouGetHiredFaster": "Ko'plab vakansiyalarga ishga topshiring,  bu sizga ishga tezroq kirishga yordam beradi",
-  "otherVacancies": "Boshqa vakansiyalar"
+  "otherVacancies": "Boshqa vakansiyalar",
+
+  "freeResumeBuilderForJobSeekers": "Ish izlovchilar uchun bepul rezyume yaratuvchisi",
+  "byApplyingBestPracticesAndInnovativeTechnologiesYouWillIncreaseYourChancesOfGettingABetterJobCompletelyFreeOfCharge": "Eng yaxshi tajribalar va innovatsion texnologiyalarni qo'llash orqali sizning yaxshiroq ishga joylashish imkoniyatingizni butunlay bepul oshiradi.",
+  "createAResume": " Rezyume yaratish",
+
+  "opportunities": "Imkoniyatlar",
+  "smartjobHasGotYouCoveredWithAllTheToolsYouNeedToCreateThePerfectResumeCompletelyFreeToGetStartedChooseTheResumeTemplateThatWorksBestForYou": "Smartjob sizni mukammal rezyume yaratish uchun barcha kerakli vositalar bilan qamrab oldi - butunlay bepul. Boshlash uchun sizga eng mos keladigan rezyume shablonini tanlang",
+  "convenientDesignOptions": "Qulay konntruktor imkoniyatlari",
+  "theCandidateWillImmediatelyReceiveANotificationOfYourMessageByMailAndCanRespondToYouQuickly": "Nomzod darhol pochta orqali xabaringiz haqida xabar oladi va sizga tezda javob berishi mumkin.",
+  "createAResumeBasedOnDifferentTemplates": "Turli shablonlar asosida rezyume yaratish",
+  "formingANewOneBasedOnResumeSamples": "Rezyume namunalari asosida yangisini shakllantirish",
+
+  "resumeTemplates": "Rezyume shablonlari",
+  "smartjobHasGotYouCoveredWithAllTheToolsYouNeedToCreateThePerfectResumeCompletelyFreeToGetStartedChooseTheResumeTemplateThatSuitsYouBestFromMoreProfessionalAndATSFriendlyToMoreModernOrCreative": "Smartjob sizni mukammal rezyume yaratish uchun barcha kerakli vositalar bilan qamrab oldi - butunlay bepul. Boshlash uchun sizga eng mos keladigan rezyume shablonini tanlang: professional va ATS uchun qulayroqdan zamonaviyroq yoki ijodiygacha.",
+  "usingATemplate": "Shablondan foydalanish",
+  "resumeTemplate": "Rezyume shablon",
+  "classic": "Classic",
+
+  "youCanCreatePriorityCVsWhenApplyingForJobs": "Ishga topshirishda ustuvor CVlar yarata olasiz",
+  "quickAccessToAnyNecessaryInformationAndEasyTransitionBetweenTasksWeAreConstantlyImprovingTheInterfaceThanksToTheRecommendationsAndWishesOfHRPractitionersAndHiringManagers": " Har qanday kerakli ma'lumotlarga tezkor kirish va vazifalar o'rtasida oson o'tish. Biz HR bo'yicha amaliyotchi va ishga qabul qilish bo'yicha menejerlarning tavsiyalari va istaklari tufayli interfeysini doimiy ravishda takomillashtirib boramiz.",
+  "creatingAResume": "Rezyumer yaratish",
+  "getHelp": "Yordam olish",
+
+  "chooseATemplate": "Shablon tanlash",
+  "view": "Ko'rish",
+  "myResume": "Mening rezyumelarim",
+  "inTheOffice": "Ofisda",
+  "filled": "To'ldirilganligi",
+  "filling": "To'ldirish",
+  "suggestions": "Takliflar",
+  "theResumeIsOpenToEveryone": "Rezyume hammaga ochiq",
+  "latestUpdate": "Oxirgi yangilanish",
+
+  "filter": "Filtr",
+  "aboutVacancy": "Vakansiya haqida",
+  "chatParticipants": "Chat ishtirokchilari",
+  "complaintsAboutTheApplication": "Ariza bo'yicha shikokayatlar",
+  "deleteTheApplication": "Arizani o'chirish",
+  "vacancyName": "Vakansiya nomi",
+  "resumeType": "Rezyume turi",
+  "coverLetter": "Qo'shima xat",
+  "writeAMessage": "Xabar yozing...",
+
+  "jobSeeker": "Ish izlovchi",
+  "selectStatus": "Statusni tanlash",
+  "openToAll": "Hammaga ochiq",
+  "enterFileOrLink": "Fayl yoki havolani kiriting",
+  "chooseLinkOrImage": "Link yoki rasmni tanlang",
+  "": "",
+  "": "",
+  "": "",
+  "": "",
+  "": ""
 }

@@ -41,7 +41,38 @@
   cursor: pointer;
 }
 
-.btn-group__footer{
+.btn-group__footer {
   display: flex;
   gap: 24px;
+}
+
+@media (max-width: 700px) {
+  .footer__resume {
+    position: relative;
+    min-height: 120px;
+  }
+
+  .footer__resume .default-btn--first {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .btn-group__footer {
+    order: -1;
+  }
+
+  .btn-group__footer .primary-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .btn-group__footer .default-btn {
+    order: -5;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }

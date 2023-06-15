@@ -18,6 +18,7 @@ import AttachFile from "../../../assets/images/attach-file-icon.svg";
 import Send from "../../../assets/images/send-icon-chat.svg";
 import BackIcon from "../../../assets/images/back-icon-chat.svg";
 import ChatParticipants from "../../molecules/modal/ChatParticipants";
+import { useTranslation } from "react-i18next";
 
 const MainMyApplications = () => {
   const [show, setShow] = useState(true);
@@ -27,6 +28,8 @@ const MainMyApplications = () => {
   function openChatParticipantsModal() {
     setOpenChatParticipants(true);
   }
+
+  const { t } = useTranslation();
 
   const items = [
     {
@@ -39,7 +42,7 @@ const MainMyApplications = () => {
           className="dropdown-item__vacancy-full"
         >
           <img src={Description} alt="Description" />
-          Vakansiya haqida
+          {t("aboutVacancy")}
         </a>
       ),
     },
@@ -51,7 +54,7 @@ const MainMyApplications = () => {
           onClick={openChatParticipantsModal}
         >
           <img src={People} alt="People" />
-          Chat ishtirokchilari
+          {t("chatParticipants")}
         </span>
       ),
     },
@@ -65,7 +68,7 @@ const MainMyApplications = () => {
           href="https://www.antgroup.com"
         >
           <img src={Report} alt="Report" />
-          Ariza bo'yicha shikokayatlar
+          {t("complaintsAboutTheApplication")}
         </a>
       ),
     },
@@ -74,7 +77,7 @@ const MainMyApplications = () => {
       label: (
         <p className="dropdown-item__vacancy-full">
           <img src={Delete} alt="Delete" />
-          Arizani o'chirish
+          {t("deleteTheApplication")}
         </p>
       ),
     },
@@ -114,7 +117,7 @@ const MainMyApplications = () => {
       </div>
       <div className="main-vacancy__my-applications">
         <span>
-          <p>Vakansiya nomi:</p>
+          <p>{t("vacancyName")}:</p>
           <h3>Product designer</h3>
         </span>
         <img src={RightArrow} alt="RightArrow" />
@@ -151,7 +154,7 @@ const MainMyApplications = () => {
           <div className="card-main__my-applications">
             <div>
               <span>
-                <p>Rezyume turi</p>
+                <p>{t("resumeType")}</p>
                 <h3>UX/UI dizayner</h3>
               </span>
               <img src={RightArrow} alt="RightArrow" />
@@ -159,7 +162,7 @@ const MainMyApplications = () => {
             <div className="line__my-applications"></div>
             <button>
               <img src={AddCircle} alt="AddCircle" />
-              Qo'shima xat{" "}
+              {t("coverLetter")}
             </button>
           </div>
           <div className="read__my-applications">
@@ -171,7 +174,7 @@ const MainMyApplications = () => {
       <div className="main-footer__my-applications">
         <div>
           <img src={AttachFile} alt="AttachFile" />
-          <Input placeholder="Xabar yozing...." bordered={false} />
+          <Input placeholder={t("writeAMessage")} bordered={false} />
         </div>
         <img src={Send} alt="send icon" />
       </div>

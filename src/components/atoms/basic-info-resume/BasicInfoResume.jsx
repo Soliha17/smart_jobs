@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./basicInfoResume.css";
-import { Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
+import { Button, Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
 import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import { useTranslation } from "react-i18next";
+import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 
 const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
@@ -31,6 +32,7 @@ const BasicInfoResume = ({ props }) => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
+
     next(1);
   };
 
@@ -91,6 +93,29 @@ const BasicInfoResume = ({ props }) => {
   );
 
   const { t } = useTranslation();
+
+  const [files, setFiles] = useState([]);
+  const [selectedFileType, setSelectedFileType] = useState("");
+  const [fileValue, setFileValue] = useState("");
+
+  const handleAdd = (add) => {
+    add();
+    form.validateFields().then((values) => {
+      const newFile = { type: selectedFileType, value: fileValue };
+      setFiles([...files, newFile]);
+      setSelectedFileType("");
+      setFileValue("");
+      form.resetFields(["fileType", "fileValue"]);
+    });
+  };
+
+  const handleFileTypeChange = (value) => {
+    setSelectedFileType(value);
+  };
+
+  const handleFileValueChange = (e) => {
+    setFileValue(e.target.value);
+  };
 
   return (
     <>
@@ -285,37 +310,108 @@ const BasicInfoResume = ({ props }) => {
                 input={<Input size="large" />}
               />
             </Col>
-            <Col xs={24} sm={12}>
-              <LabeledInput
-                labelName={t("addLinks")}
-                labelFor="links"
-                input={
-                  <Select
-                    placeholder="Havola turini tanglang"
-                    // defaultValue="link"
-                    size="large"
-                    onChange={onChange}
-                    options={[
-                      {
-                        value: "link",
-                        label: "Link",
-                      },
-                      {
-                        value: "rasm",
-                        label: "Rasm",
-                      },
-                    ]}
-                  />
-                }
-              />
+            {/* start */}
+            <Col xs={24}>
+              <p className="language-label">{t("addLinks")}</p>
+
+              <Form.List name="files" initialValue={files}>
+                {(fields, { add, remove }) => (
+                  <>
+                    <Row gutter={[15, 12]} className="main-lan-row__resume">
+                      <Col xs={24} sm={11}>
+                        <Form.Item>
+                          <Select
+                            value={selectedFileType || undefined}
+                            placeholder={t("chooseLinkOrImage")}
+                            size="large"
+                            onChange={handleFileTypeChange}
+                            options={[
+                              { value: "image", label: "Image" },
+                              { value: "link", label: "Link" },
+                            ]}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col sm={11} xs={24}>
+                        <Form.Item>
+                          <Input
+                            value={fileValue}
+                            placeholder={t("enterFileOrLink")}
+                            size="large"
+                            onChange={handleFileValueChange}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col xs={24} sm={2}>
+                        <Form.Item>
+                          <Button
+                            className="action-btn__lan-resume"
+                            size="large"
+                            type="dashed"
+                            onClick={() => handleAdd(add)}
+                            block
+                          >
+                            <span className="hidden-text__lan-resume">
+                              {t("add")}
+                            </span>
+                            <PlusOutlined />
+                          </Button>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                    {fields.map((field, index) => (
+                      <Row gutter={[15, 12]} key={field.key}>
+                        <Col xs={24} sm={11}>
+                          <Form.Item
+                            {...field}
+                            name={[field.name, "type"]}
+                            fieldKey={[field.fieldKey, "type"]}
+                          >
+                            <Select
+                              defaultValue={selectedFileType}
+                              placeholder="Choose Link or Image"
+                              size="large"
+                              options={[
+                                { value: "image", label: "Image" },
+                                { value: "link", label: "Link" },
+                              ]}
+                            />
+                          </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={11}>
+                          <Form.Item
+                            {...field}
+                            name={[field.name, "value"]}
+                            fieldKey={[field.fieldKey, "value"]}
+                          >
+                            <Input
+                              defaultValue={fileValue}
+                              placeholder="Enter File or Link"
+                              size="large"
+                            />
+                          </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={2}>
+                          <Button
+                            type="dashed"
+                            size="large"
+                            className="action-btn__lan-resume"
+                            onClick={() => remove(field.name)}
+                            block
+                          >
+                            <span className="hidden-text__lan-resume">
+                              {t("turnOff")}
+                            </span>
+                            <DeleteOutlined />
+                          </Button>
+                        </Col>
+                      </Row>
+                    ))}
+                  </>
+                )}
+              </Form.List>
             </Col>
-            <Col xs={24} sm={12}>
-              <LabeledInput
-                labelName="&nbsp;"
-                labelFor="link"
-                input={<Input size="large" />}
-              />
-            </Col>
+            {/* end */}
           </Row>
           <div className="footer__resume">
             <button
@@ -323,6 +419,7 @@ const BasicInfoResume = ({ props }) => {
               className="primary-btn"
               type="submit"
               style={{ marginLeft: "auto" }}
+              // onClick={handleAddFile}
             >
               {t("continue")}
             </button>

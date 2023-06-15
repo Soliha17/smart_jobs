@@ -4,38 +4,45 @@ import "./opportunityResumePromo.css";
 import BlueIcon from "../../../assets/images/opportunuty-blue-icon.svg";
 import GreenIcon from "../../../assets/images/opportunity-green-icon.svg";
 import RedIcon from "../../../assets/images/opportunity-red-icon.svg";
+import { useTranslation } from "react-i18next";
 
 const OpportunityResumePromo = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="opportunity___resume-promo">
-      <h2>Imkoniyatlar</h2>
+      <h2> {t("opportunities")} </h2>
       <p className="opportunity-subtitle">
-        Smartjob sizni mukammal rezyume yaratish uchun barcha kerakli vositalar
-        bilan qamrab oldi - butunlay bepul. Boshlash uchun sizga eng mos
-        keladigan rezyume shablonini tanlang
+        {t(
+          "smartjobHasGotYouCoveredWithAllTheToolsYouNeedToCreateThePerfectResumeCompletelyFreeToGetStartedChooseTheResumeTemplateThatWorksBestForYou"
+        )}
       </p>
       <div className="opportunity-container__resume-promo">
         <div className="opportunity-card__resume-promo">
           <img src={BlueIcon} alt="BlueIcon" />
-          <h3>Qulay konntruktor imkoniyatlari</h3>
+          <h3> {t("convenientDesignOptions")} </h3>
           <p>
-            Nomzod darhol pochta orqali xabaringiz haqida xabar oladi va sizga tezda javob berishi mumkin.
+            {t(
+              "theCandidateWillImmediatelyReceiveANotificationOfYourMessageByMailAndCanRespondToYouQuickly"
+            )}
           </p>
         </div>
         <div className="opportunity-card__resume-promo">
           <img src={GreenIcon} alt="BlueIcon" />
-          <h3>Turli shablonlar asosida rezyume yaratish</h3>
+          <h3> {t("createAResumeBasedOnDifferentTemplates")}</h3>
           <p>
-            Nomzod darhol pochta orqali xabaringiz haqida xabar oladi va sizga
-            tezda javob berishi mumkin.
+            {t(
+              "theCandidateWillImmediatelyReceiveANotificationOfYourMessageByMailAndCanRespondToYouQuickly"
+            )}
           </p>
         </div>
         <div className="opportunity-card__resume-promo">
           <img src={RedIcon} alt="BlueIcon" />
-          <h3>Rezyume namunalari asosida yangisini shakllantirish</h3>
+          <h3>{t("formingANewOneBasedOnResumeSamples")}</h3>
           <p>
-            Nomzod darhol pochta orqali xabaringiz haqida xabar oladi va sizga
-            tezda javob berishi mumkin.
+            {t(
+              "theCandidateWillImmediatelyReceiveANotificationOfYourMessageByMailAndCanRespondToYouQuickly"
+            )}
           </p>
         </div>
       </div>

@@ -39,16 +39,25 @@ const AdditionalInformationBuilder = ({ props }) => {
   const next = props.next;
   const prev = props.prev;
 
-  const onChangeLanguage = (date, dateString) => {
-    console.log(date, dateString);
-    console.log(date);
-    setLanguage(date);
+  const [files, setFiles] = useState([]);
+
+  const handleAdd = (add) => {
+    add();
+    form.validateFields().then((values) => {
+      const newFile = { language: language, level: level };
+      setFiles([...files, newFile]);
+      setLanguage("");
+      setLevel("");
+      form.resetFields(["language", "level"]);
+    });
   };
 
-  const onChangeLevel = (date, dateString) => {
-    console.log(date, dateString);
-    console.log(date);
-    setLevel(date);
+  const onChangeLanguage = (value) => {
+    setLanguage(value);
+  };
+
+  const onChangeLevel = (value) => {
+    setLevel(value);
   };
 
   // const onChange = (date, dateString) => {
@@ -100,15 +109,80 @@ const AdditionalInformationBuilder = ({ props }) => {
           <Row gutter={[24, 8]}>
             <Col xs={24}>
               <p className="language-label">{t("enterTheLanguagesYouKnow")}</p>
-              <Form.List name="users">
+              <Form.List name="files" initialValue={files}>
                 {(fields, { add, remove }) => (
                   <>
-                    {fields.map(({ key, name, ...restField }) => (
+                    <Row gutter={[15, 12]} className="main-lan-row__resume">
+                      <Col xs={24} sm={11}>
+                        <Form.Item>
+                          <Select
+                            // defaultValue={"uzb"}
+                            value={language || undefined}
+                            placeholder={t("chooseALanguage")}
+                            size="large"
+                            onChange={onChangeLanguage}
+                            options={[
+                              {
+                                value: "uzb",
+                                label: "O'zbek tili",
+                              },
+                              {
+                                value: "russian",
+                                label: "Rus tili",
+                              },
+                              {
+                                value: "english",
+                                label: "Ingliz tili",
+                              },
+                            ]}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col sm={11} xs={24}>
+                        <Form.Item>
+                          <Select
+                            value={level || undefined}
+                            // defaultValue={"b1"}
+                            placeholder={t("selectALevel")}
+                            size="large"
+                            onChange={onChangeLevel}
+                            options={[
+                              {
+                                value: "b1",
+                                label: "B1",
+                              },
+                              {
+                                value: "a2",
+                                label: "A2",
+                              },
+                            ]}
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col xs={24} sm={2}>
+                        <Form.Item>
+                          <Button
+                            className="action-btn__lan-resume"
+                            size="large"
+                            type="dashed"
+                            onClick={() => handleAdd(add)}
+                            block
+                          >
+                            <span className="hidden-text__lan-resume">
+                              {t("add")}
+                            </span>
+                            <PlusOutlined />
+                          </Button>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                    {fields.map((field, index) => (
                       <Row gutter={[15, 12]}>
                         <Col xs={24} sm={11}>
                           <Form.Item
-                            {...restField}
-                            name={[name, "first"]}
+                            {...field}
+                            name={[field.name, "language"]}
+                            fieldKey={[field.fieldKey, "language"]}
                             // rules={[
                             //   {
                             //     required: true,
@@ -141,8 +215,9 @@ const AdditionalInformationBuilder = ({ props }) => {
                         </Col>
                         <Col xs={24} sm={11}>
                           <Form.Item
-                            {...restField}
-                            name={[name, "last"]}
+                            {...field}
+                            name={[field.name, "level"]}
+                            fieldKey={[field.fieldKey, "level"]}
                             // rules={[
                             //   {
                             //     required: true,
@@ -173,7 +248,7 @@ const AdditionalInformationBuilder = ({ props }) => {
                             type="dashed"
                             size="large"
                             className="action-btn__lan-resume"
-                            onClick={() => remove(name)}
+                            onClick={() => remove(field.name)}
                             block
                           >
                             <span className="hidden-text__lan-resume">
@@ -184,68 +259,6 @@ const AdditionalInformationBuilder = ({ props }) => {
                         </Col>
                       </Row>
                     ))}
-                    <Row gutter={[15, 12]} className="main-lan-row__resume">
-                      <Col xs={24} sm={11}>
-                        <Form.Item>
-                          <Select
-                            // defaultValue={"uzb"}
-                            placeholder={t("chooseALanguage")}
-                            size="large"
-                            onChange={onChangeLanguage}
-                            options={[
-                              {
-                                value: "uzb",
-                                label: "O'zbek tili",
-                              },
-                              {
-                                value: "russian",
-                                label: "Rus tili",
-                              },
-                              {
-                                value: "english",
-                                label: "Ingliz tili",
-                              },
-                            ]}
-                          />
-                        </Form.Item>
-                      </Col>
-                      <Col sm={11} xs={24}>
-                        <Form.Item>
-                          <Select
-                            // defaultValue={"b1"}
-                            placeholder={t("selectALevel")}
-                            size="large"
-                            onChange={onChangeLevel}
-                            options={[
-                              {
-                                value: "b1",
-                                label: "B1",
-                              },
-                              {
-                                value: "a2",
-                                label: "A2",
-                              },
-                            ]}
-                          />
-                        </Form.Item>
-                      </Col>
-                      <Col xs={24} sm={2}>
-                        <Form.Item>
-                          <Button
-                            className="action-btn__lan-resume"
-                            size="large"
-                            type="dashed"
-                            onClick={() => add()}
-                            block
-                          >
-                            <span className="hidden-text__lan-resume">
-                              {t("add")}
-                            </span>
-                            <PlusOutlined />
-                          </Button>
-                        </Form.Item>
-                      </Col>
-                    </Row>
                   </>
                 )}
               </Form.List>
@@ -340,9 +353,12 @@ const AdditionalInformationBuilder = ({ props }) => {
             </Col>
           </Row>
           <div className="footer__resume">
-            <Button size="large" onClick={() => prev(2)}>
+            <button
+              className="default-btn default-btn--first"
+              onClick={() => prev(2)}
+            >
               {t("back")}
-            </Button>
+            </button>
             <div className="btn-group__footer">
               <button
                 className="default-btn"

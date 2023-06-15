@@ -62,8 +62,8 @@ const MyResumes = () => {
   return (
     <div className="my-resumes container">
       <div className="header__my-resumes">
-        <h2>Mening rezyumelarim</h2>
-        <button className="primary-btn">Rezyume yaratish</button>
+        <h2> {t("myResume")} </h2>
+        <button className="primary-btn"> {t("createAResume")} </button>
       </div>
       <div className="content__my-resumes">
         <div className="card__my-resumes resume-card">
@@ -74,11 +74,11 @@ const MyResumes = () => {
                 alt="profile icon"
               />
               <div>
-                <h2>Mahsulot menejeri</h2>
+                <h2>{t("productManager")}</h2>
                 <span>
-                  <p>Ofisda</p>
-                  <p>To'liq stavka</p>
-                  <p>1-3 yil</p>
+                  <p>{t("inTheOffice")}</p>
+                  <p>{t("fullTime")}</p>
+                  <p>1-3 {t("year")}</p>
                 </span>
               </div>
             </div>
@@ -99,7 +99,7 @@ const MyResumes = () => {
           </div>
           <div className="status__resume-card">
             <div>
-              <p>To'ldirilganligi</p>
+              <p>{t("filled")}</p>
               <Progress
                 percent={48}
                 size={[370, 4]}
@@ -108,37 +108,38 @@ const MyResumes = () => {
               />
             </div>
             <button>
-              To'ldirish
+              {t("filling")}
               <img src={RightArrow} alt="right arrow" />
             </button>
           </div>
           <div className="counts__resume-card">
             <span>
               <h4>500</h4>
-              <p>Ko'ruvlar</p>
+              <p> {t("views")}</p>
             </span>
             <span>
               <h4>58</h4>
-              <p>Arizalar</p>
+              <p>{t("applications")}</p>
             </span>
             <span>
               <h4>4</h4>
-              <p>Takliflar</p>
+              <p>{t("suggestions")}</p>
             </span>
           </div>
-          <p className="vacancies__resume-card">Vakansiyalar +256</p>
+          <p className="vacancies__resume-card">{t("vacancies")} +256</p>
           <div className="buttons__resume-card">
             <button onClick={openMyResumeModal}>
-              Rezyume hammaga ochiq
+              {t("theResumeIsOpenToEveryone")}
               <img src={RightBlackArrow} alt="right arrow" />
             </button>
             <button>
-              Rezyume hammaga ochiq
+              {t("theResumeIsOpenToEveryone")}
+
               <img src={RightBlackArrow} alt="right arrow" />
             </button>
           </div>
           <p className="footer__resume-card">
-            Oxirgi yangilanish: 10:00 20.05.2023
+            {t("latestUpdate")}: 10:00 20.05.2023
           </p>
         </div>
         <div className="card__my-resumes resume-card">
@@ -149,11 +150,11 @@ const MyResumes = () => {
                 alt="profile icon"
               />
               <div>
-                <h2>Mahsulot menejeri</h2>
+                <h2>{t("productManager")}</h2>
                 <span>
-                  <p>Ofisda</p>
-                  <p>To'liq stavka</p>
-                  <p>1-3 yil</p>
+                  <p>{t("inTheOffice")}</p>
+                  <p>{t("fullTime")}</p>
+                  <p>1-3 {t("year")}</p>
                 </span>
               </div>
             </div>
@@ -174,7 +175,7 @@ const MyResumes = () => {
           </div>
           <div className="status__resume-card">
             <div>
-              <p>To'ldirilganligi</p>
+              <p>{t("filled")}</p>
               <Progress
                 percent={48}
                 size={[370, 4]}
@@ -183,37 +184,38 @@ const MyResumes = () => {
               />
             </div>
             <button>
-              To'ldirish
+              {t("filling")}
               <img src={RightArrow} alt="right arrow" />
             </button>
           </div>
           <div className="counts__resume-card">
             <span>
               <h4>500</h4>
-              <p>Ko'ruvlar</p>
+              <p> {t("views")}</p>
             </span>
             <span>
               <h4>58</h4>
-              <p>Arizalar</p>
+              <p>{t("applications")}</p>
             </span>
             <span>
               <h4>4</h4>
-              <p>Takliflar</p>
+              <p>{t("suggestions")}</p>
             </span>
           </div>
-          <p className="vacancies__resume-card">Vakansiyalar +256</p>
+          <p className="vacancies__resume-card">{t("vacancies")} +256</p>
           <div className="buttons__resume-card">
-            <button>
-              Rezyume hammaga ochiq
+            <button onClick={openMyResumeModal}>
+              {t("theResumeIsOpenToEveryone")}
               <img src={RightBlackArrow} alt="right arrow" />
             </button>
             <button>
-              Rezyume hammaga ochiq
+              {t("theResumeIsOpenToEveryone")}
+
               <img src={RightBlackArrow} alt="right arrow" />
             </button>
           </div>
           <p className="footer__resume-card">
-            Oxirgi yangilanish: 10:00 20.05.2023
+            {t("latestUpdate")}: 10:00 20.05.2023
           </p>
         </div>
         <div className="card__my-resumes resume-card">
@@ -224,11 +226,11 @@ const MyResumes = () => {
                 alt="profile icon"
               />
               <div>
-                <h2>Mahsulot menejeri</h2>
+                <h2>{t("productManager")}</h2>
                 <span>
-                  <p>Ofisda</p>
-                  <p>To'liq stavka</p>
-                  <p>1-3 yil</p>
+                  <p>{t("inTheOffice")}</p>
+                  <p>{t("fullTime")}</p>
+                  <p>1-3 {t("year")}</p>
                 </span>
                 <div className="badge__resume-card">
                   <p> Ilova tomonidan rad etilgan</p>
@@ -253,7 +255,7 @@ const MyResumes = () => {
           </div>
           <div className="status__resume-card">
             <div>
-              <p>To'ldirilganligi</p>
+              <p>{t("filled")}</p>
               <Progress
                 percent={48}
                 size={[370, 4]}
@@ -262,37 +264,38 @@ const MyResumes = () => {
               />
             </div>
             <button>
-              To'ldirish
+              {t("filling")}
               <img src={RightArrow} alt="right arrow" />
             </button>
           </div>
           <div className="counts__resume-card">
             <span>
               <h4>500</h4>
-              <p>Ko'ruvlar</p>
+              <p> {t("views")}</p>
             </span>
             <span>
               <h4>58</h4>
-              <p>Arizalar</p>
+              <p>{t("applications")}</p>
             </span>
             <span>
               <h4>4</h4>
-              <p>Takliflar</p>
+              <p>{t("suggestions")}</p>
             </span>
           </div>
-          <p className="vacancies__resume-card">Vakansiyalar +256</p>
+          <p className="vacancies__resume-card">{t("vacancies")} +256</p>
           <div className="buttons__resume-card">
-            <button>
-              Rezyume hammaga ochiq
+            <button onClick={openMyResumeModal}>
+              {t("theResumeIsOpenToEveryone")}
               <img src={RightBlackArrow} alt="right arrow" />
             </button>
             <button>
-              Rezyume hammaga ochiq
+              {t("theResumeIsOpenToEveryone")}
+
               <img src={RightBlackArrow} alt="right arrow" />
             </button>
           </div>
           <p className="footer__resume-card">
-            Oxirgi yangilanish: 10:00 20.05.2023
+            {t("latestUpdate")}: 10:00 20.05.2023
           </p>
         </div>
       </div>

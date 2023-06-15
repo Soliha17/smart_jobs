@@ -25,7 +25,7 @@ const MyResumeModal = ({ open, setOpen }) => {
 
   return (
     <Modal
-      title="Statusni tanlash"
+      title={t("selectStatus")}
       open={open}
       onCancel={handleCancel}
       maskStyle={{ background: " rgba(28, 25, 23, 0.56)" }}
@@ -59,7 +59,7 @@ const MyResumeModal = ({ open, setOpen }) => {
                   {t("wrongContactsAreGiven")}
                 </Radio>
                 <Radio value="noAnswer" size="large">
-                  {t("theyDidNotAnswer")}
+                  {t("openToAll")}
                 </Radio>
                 <Radio value="fakeCompany" size="large">
                   {t("scamNetworkMarketingCompany")}

@@ -348,9 +348,9 @@ const ProfessionalInformationBuilder = ({ props }) => {
             </Col>
           </Row>
           <div className="footer__resume">
-            <Button size="large" onClick={() => prev(1)}>
+            <button className="default-btn default-btn--first" onClick={() => prev(1)}>
               {t("back")}
-            </Button>
+            </button>
             <div className="btn-group__footer">
               <button
                 className="default-btn"
@@ -358,8 +358,8 @@ const ProfessionalInformationBuilder = ({ props }) => {
                 onClick={showResumeModal}
                 style={{ marginLeft: "auto" }}
               >
+                {t("view")}
                 <img src={EyeIcon} alt="eye icon" />
-                Ko'rish
               </button>
               <button
                 size="large"
