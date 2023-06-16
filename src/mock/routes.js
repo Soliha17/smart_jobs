@@ -13,6 +13,7 @@ import About from "../pages/about/About";
 import TakeTest from "../pages/take-test/TakeTest";
 import ResumePromo from "../pages/resume-promo/ResumePromo";
 import ResumeBuilder from "../pages/resume-builder/ResumeBuilder";
+import MockInterviews from "../pages/mock-interviews/MockInterviews";
 
 export const routesDatas = [
   {
@@ -92,5 +93,11 @@ export const routesDatas = [
     title: "Resume Builder Page",
     path: "/build",
     element: ResumeBuilder,
+  },
+  {
+    id: 14,
+    title: "Mock Intervies Page",
+    path: "/mock",
+    element: MockInterviews,
   },
 ];

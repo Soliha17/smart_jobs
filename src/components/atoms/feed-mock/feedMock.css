@@ -1,0 +1,31 @@
+.marquee-container__mock {
+  margin-top: 96px;
+  padding: 12px 0;
+  background: var(--primary-100);
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-text__mock {
+  white-space: nowrap;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  animation: marquee 10s linear infinite;
+}
+
+.marquee-text__mock p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--white);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
