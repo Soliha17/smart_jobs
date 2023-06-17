@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import TextArea from "antd/es/input/TextArea";
+import { useTransition } from "react";
 
 const SignupMock = () => {
   const [form] = Form.useForm();
@@ -44,7 +45,7 @@ const SignupMock = () => {
   return (
     <div className="sign-mock container">
       {" "}
-      <h2>Intervyuga ro’yxatdan o’tish</h2>
+      <h2> {t("registerForAnInterview")} </h2>
       <div className="sign-content__mock">
         <Form
           form={form}
@@ -65,7 +66,7 @@ const SignupMock = () => {
         >
           <Row gutter={[0, 5]}>
             <Col xs={24}>
-              <Form.Item name="chooseJob" label="Kasbni tanlang">
+              <Form.Item name="chooseJob" label={t("chooseAProfession")}>
                 <Select
                   placeholder={t("choose")}
                   size="large"
@@ -88,7 +89,7 @@ const SignupMock = () => {
               </Form.Item>
             </Col>
             <Col xs={24}>
-              <Form.Item name="enterDate" label="Vaqtini belgilang">
+              <Form.Item name="enterDate" label={t("setTheTime")}>
                 <DatePicker
                   // onChange={onChange}
                   size="large"
@@ -98,7 +99,7 @@ const SignupMock = () => {
               </Form.Item>
             </Col>
             <Col xs={24}>
-              <Form.Item name="selectLanguage" label="Intervu tili">
+              <Form.Item name="selectLanguage" label={t("interviewLanguage")}>
                 <Select
                   // value={language}
                   // onChange={()=>setLanguage(language)}
@@ -122,14 +123,14 @@ const SignupMock = () => {
               </Form.Item>
             </Col>
             <Col xs={24}>
-              <Form.Item name="addDesc" label="Qo’shimcha izoh">
+              <Form.Item name="addDesc" label={t("additionalComment")}>
                 <TextArea rows={4} />
               </Form.Item>
             </Col>
             <Col xs={24}>
               <Form.Item
                 name="phoneContactUs"
-                label="Qo’shimcha file yuklash (rezyume, cv...)"
+                label={t("uploadAnAdditionalFileResumeCV")}
                 getValueFromEvent={normFile}
               >
                 <Upload
@@ -147,7 +148,7 @@ const SignupMock = () => {
             </Col>
 
             <Col xs={24}>
-              <button className="primary-btn">Ro'yxatdan o'tish</button>
+              <button className="primary-btn">{t("signUp")}</button>
             </Col>
           </Row>
         </Form>

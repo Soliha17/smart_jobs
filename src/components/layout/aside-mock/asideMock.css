@@ -1,4 +1,118 @@
-.aside-mock{
-
+.aside-mock {
+  margin-top: 96px;
+  padding: 64px 0 64px 64px;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  border-radius: 26px;
+  background: var(--white-100);
 }
 
+.left__aside-mock h2 {
+  margin-bottom: 36px;
+  font-weight: 400;
+  font-size: 49px;
+  line-height: 59px;
+  color: var(--black-100);
+}
+
+.left__aside-mock p {
+  margin-bottom: 35px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--black-75);
+}
+
+.left__aside-mock span {
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--black-75);
+}
+
+.left__aside-mock .primary-btn {
+  width: 205px;
+  height: 56px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--white);
+}
+
+.right__aside-mock {
+  position: relative;
+}
+
+.right__aside-mock img:nth-child(2) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1100px) {
+  .aside-mock {
+    margin-top: 83px;
+    padding: 40px 0 40px 40px;
+    gap: 30px;
+  }
+
+  .left__aside-mock h2 {
+    margin-bottom: 24px;
+    font-size: 35px;
+    line-height: 42px;
+  }
+
+  .left__aside-mock p {
+    margin-bottom: 25px;
+  }
+
+  .left__aside-mock span {
+    margin-bottom: 35px;
+  }
+
+  .right__aside-mock {
+    align-self: center;
+  }
+
+  .right__aside-mock img:nth-child(1) {
+    width: 365px;
+  }
+}
+
+@media (max-width: 800px) {
+  .aside-mock {
+    padding: 20px 0 20px 20px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .left__aside-mock {
+    padding-right: 20px;
+  }
+
+  .right__aside-mock {
+    align-self: flex-end;
+  }
+
+  .aside-mock .primary-btn {
+    width: 100%;
+  }
+
+  .left__aside-mock h2 {
+    font-size: 32px;
+    line-height: 39px;
+  }
+}
+
+@media (max-width: 500px) {
+  .right__aside-mock img:nth-child(1) {
+    width: 100%;
+    height: auto;
+  }
+}

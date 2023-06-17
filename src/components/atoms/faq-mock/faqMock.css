@@ -1,0 +1,40 @@
+.mock-faq {
+  margin-top: 96px;
+}
+
+.mock-faq .title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.mock-faq .ant-collapse-item {
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background: var(--white-50);
+}
+
+.mock-faq .ant-collapse-item:last-child {
+  border-radius: 16px;
+}
+
+.close-icon__antd {
+  transform: rotate(180deg);
+}
+
+.mock-faq .ant-collapse-header-text {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(black-100);
+}
+
+.mock-faq .ant-collapse-item-active {
+  background: var(--primary-12) !important;
+}
+
+.desc__mock-faq {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--black-75);
+}

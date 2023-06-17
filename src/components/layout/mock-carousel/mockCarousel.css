@@ -1,0 +1,35 @@
+.mock-carousel {
+  margin-top: 96px;
+}
+
+.mock-carousel h2 {
+  margin-bottom: 46px;
+  font-weight: 600;
+  font-size: 39px;
+  line-height: 47px;
+  color: var(--black-100);
+}
+
+/* MOCK CAROUSEL'S DOTS STYLES */
+
+.mock-carousel .slick-dots li {
+  background: var(--black-100);
+  width: 77px !important;
+  opacity: 0.32;
+}
+
+.mock-carousel .ant-carousel .slick-dots li.slick-active {
+  background: var(--black-100) !important;
+  opacity: 1 !important;
+}
+
+.mock-carousel .slick-dots-bottom {
+  bottom: -40px !important;
+}
+
+@media (max-width: 500px) {
+  .mock-carousel h2 {
+    font-size: 32px;
+    line-height: 39px;
+  }
+}

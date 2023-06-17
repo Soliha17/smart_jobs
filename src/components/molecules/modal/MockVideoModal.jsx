@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "antd";
 
-const ResumePromoModal = ({ open, setOpen }) => {
+const MockVideoModal = ({ open, setOpen }) => {
   const handleCancel = () => {
     setOpen(false);
   };
@@ -28,4 +28,4 @@ const ResumePromoModal = ({ open, setOpen }) => {
   );
 };
 
-export default ResumePromoModal;
+export default MockVideoModal;

@@ -39,7 +39,7 @@
 /* RESUME PROMO MODAL */
 
 .ant-modal-root:has(.resume-promo-modal) .ant-modal-content {
-  width: 800px !important;
+  max-width: 800px !important;
   padding: 50px 40px;
   margin: 0 auto;
 }
@@ -50,8 +50,27 @@
   vertical-align: middle;
 }
 
+.resume-promo-modal .ant-modal-body {
+  width: 100%;
+}
+
 .ant-modal-root:has(.resume-promo-modal) .ant-modal-mask {
   background: rgba(28, 25, 23, 0.56) !important;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* RESUME  MODAL */
@@ -320,6 +339,10 @@
   .ant-modal-root:has(.resume-modal) .ant-modal-content {
     width: 100% !important;
     max-width: 335px;
+  }
+
+  .ant-modal-root:has(.resume-promo-modal) .ant-modal-content {
+    padding: 60px 20px;
   }
 }
 

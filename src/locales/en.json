@@ -311,5 +311,27 @@
   "selectStatus": "Select Status",
   "openToAll": "Open to All",
   "enterFileOrLink": "Enter file or link",
-  "chooseLinkOrImage": "Select a link or image"
+  "chooseLinkOrImage": "Select a link or image",
+
+  "jobInterviews": "Job Interviews",
+  "takeItToTheNextLevelWithMockInterviews": "Take it to the next level with Mock Interviews",
+  "ourMockInterviewServiceIsDesignedToHelpYouInYourJobPreparation": "Our Mock Interview Service is designed to help you in your job preparation.",
+  "conductAnInterview": "Conduct an Interview",
+  "productDesign": "Product Design",
+  "frontendProgramming": "Frontend Programming",
+  "mobileProgramming": "Mobile Programming",
+  "backendProgramming": "Backend Programming",
+  "management": "Management",
+  "registerForAnInterview": "Register for an Interview",
+  "chooseAProfession": "Choose a Profession",
+  "setTheTime": "Set the Time",
+  "interviewLanguage": "Interview Language",
+  "additionalComment": "Additional Comment",
+  "uploadAnAdditionalFileResumeCV": "Upload an Additional File (Resume, CV...)",
+  "interviewingDevelopsYou": "Interviewing Develops You",
+  "ourServiceWillHelpYouToAchieveGoodResultsInTheProcessOfJobPreparationOurExpertsWillHelpYouWithYourContinuity": "Our service will help you achieve good results in the process of job preparation. Our experts will help you with your continuity.",
+  "strongProfessionals": "Strong Professionals",
+  "abilityToReceiveFeedback": "Ability to Receive Feedback",
+  "realQuestionsAndAnswers": "Real Questions and Answers",
+  "opinionsOfMockInterviewParticipants": "Opinions of Mock Interview Participants"
 }

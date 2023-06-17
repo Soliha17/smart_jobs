@@ -1,119 +1,155 @@
 /* ----- HEADER ----- */
 .header-wrapper {
+  background: transparent;
+}
+
+.login__header-wrapper {
   background: var(--primary-100);
-  height: auto;
+}
+
+.user__header-wrapper {
+  background: var(--white);
 }
 
 .header {
-  padding: 9px 0;
-  height: 80px;
+  padding: 23px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header__logo img {
+.logo__header img {
   width: 100%;
-  max-width: 183px;
+  max-width: 156px;
   height: auto;
 }
 
-.button__search-group {
-  border: none;
+.select__header {
+  width: 60px !important;
 }
 
-.select-btn-group__header {
-  padding: 4px;
-  width: 346px;
-  height: 45px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--lightblue);
-  border-radius: 26px;
+.select__header .ant-select-selector {
+  height: 48px !important;
+  padding: 8px 0px 0 20px !important;
+  color: var(--white) !important;
+  background: var(--lightblue) !important;
+  border-radius: 12px;
 }
 
-.select-btn-group__header button {
-  width: 169px;
-  height: 100%;
-  color: var(--white);
-  background: transparent;
-  border-radius: 24px;
-  transition: 0.3s all ease-in;
-}
-
-.selected-button__header {
-  background: var(--white) !important;
+.user__header-wrapper .select__header .ant-select-selector {
+  background: var(--white-50) !important;
   color: var(--black-75) !important;
 }
 
-.enter-btn__header {
-  width: 91px;
-  height: 43px;
-  background: var(--lightblue);
-  border-radius: 8px;
+.select__header .ant-select-arrow {
+  display: none;
 }
 
+.employer-btn__header {
+  width: 206px;
+  height: 48px;
+  color: var(--white);
+  background: var(--lightblue);
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.enter-btn__header {
+  width: 86px;
+  height: 48px;
+  background: var(--white);
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--black-100);
+  border: none;
+  cursor: pointer;
+}
+
+/*
 .enter-btn__header:hover {
   background: var(--white) !important;
   color: var(--black-100) !important;
+} */
+
+.reminder-btn__header {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--white-50);
+  border: none;
+  cursor: pointer;
 }
 
-.white-select .ant-select-selector {
-  color: var(--white) !important;
-}
-
-.white-select .ant-select-arrow {
-  color: var(--white) !important;
-}
+/* HEADER NAV STYLES */
 
 .header nav ul {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   align-items: center;
-  font-size: 16px;
-  line-height: 19px;
   font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
   list-style: none;
 }
 
 .header nav a {
-  color: var(--white);
+  position: relative;
   text-decoration: none;
   transition: all 0.3s ease-in;
 }
 
-.header nav a:hover,
-.header nav a.active,
-.ant-drawer nav a.active {
-  color: var(--black);
-}
-
-.ant-drawer nav ul {
-  list-style: none;
-}
-
-.ant-drawer nav li {
-  margin: 15px 0;
-}
-
-.ant-drawer nav a {
+.user__header-wrapper nav a {
   color: var(--black-75);
 }
 
-.header__actions {
-  display: flex;
-  gap: 24px;
-  align-items: center;
+.login__header-wrapper nav a {
+  color: var(--white);
 }
 
-.header__profile {
+.header nav a::after {
+  content: "";
+  display: block;
+  margin: auto;
+  height: 1px;
+  width: 0;
+  top: 6px;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.header nav a:hover::after,
+.header nav a.active::after {
+  width: 100%;
+  background: var(--primary-100);
+}
+
+.login__header-wrapper nav a:hover::after,
+.login__header-wrapper nav a.active::after {
+  background: var(--white);
+}
+
+.ant-drawer nav a.active {
+  color: var(--primary-100);
+}
+.actions__header {
   display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile__header {
+  display: flex;
+  align-items: center;
   gap: 12px;
-  align-items: center;
 }
 
-.header__profile button {
+.profile__header button {
   background: none;
   border: none;
 }
@@ -122,12 +158,11 @@
   font-weight: 300;
   font-size: 16px;
   line-height: 20px;
-  color: var(--white);
+  color: var(--black-75);
 }
 
-.header__hamburger-btn {
-  margin-left: 24px;
-  background: var(--lightblue);
+.hamburger-btn__header {
+  background: transparent;
 }
 
 .mobileVisible {
@@ -137,20 +172,75 @@
 .mobileHidden {
   display: block;
   margin-right: auto;
-  margin-left: 40px;
+  margin-left: 48px;
+}
+
+/* HEADER MOBILE DRAWER STYLES */
+
+.drawer__header nav ul {
+  list-style: none;
+}
+
+.drawer__header nav li {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.drawer__header nav a {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--black-100);
+}
+
+.drawer__header .ant-drawer-header-title {
+  flex: none !important;
+}
+
+.drawer-select__header {
+  display: none;
+  padding: 12px;
+  width: 100%;
+  background: var(--white-50);
+  border-radius: 12px;
+}
+
+.drawer-profile__header {
+  display: none;
+  margin-top: 16px;
+}
+
+.login-buttons__header {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-buttons__header .primary-btn {
+  width: 100%;
+}
+
+.login-buttons__header .job-seeker-btn__header {
+  width: 100%;
+  height: 48px;
+  background: var(--white-50);
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--black-75);
+  border: none;
+  cursor: pointer;
+}
+
+.login-buttons__header {
+  display: none;
 }
 
 /* ----- RESPONSIVE ----- */
 
-@media only screen and (max-width: 1000px) {
-  .header__logo img {
-    max-width: 140px;
-  }
-
-  .header__actions--auto {
-    margin-left: auto;
-  }
-
+@media only screen and (max-width: 1100px) {
   .mobileVisible {
     display: block;
   }
@@ -158,56 +248,40 @@
   .mobileHidden {
     display: none !important;
   }
-
-  .white-select--none {
-    display: none !important;
-  }
-
-  .header__hamburger-btn {
-    margin-left: 24px;
-  }
 }
 
-@media only screen and (max-width: 697px) {
-  .header__logo {
-    max-width: 120px;
+@media only screen and (max-width: 750px) {
+  .logo__header {
+    max-width: 128px;
   }
 
-  .header {
-    flex-wrap: wrap;
-    height: auto;
-  }
-
-  .header__actions {
-    gap: 10px;
-  }
-
-  .select-btn-group__header {
-    margin: 0 auto;
-    margin-top: 10px;
-    align-self: center;
-    order: 10;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  .header__profile--none {
+  .select__header,
+  .enter-btn__header,
+  .employer-btn__header,
+  .reminder-btn__header,
+  .profile__header {
     display: none;
   }
 
-  .header__hamburger-btn {
-    margin-left: 0px;
+  .drawer-select__header,
+  .drawer-profile__header {
+    display: block;
   }
 
-  .white-select {
-    display: none;
+  .login-buttons__header {
+    display: flex;
   }
+}
 
-  .select-btn-group__header {
-    max-width: 100% !important;
+@media (max-width: 900px) {
+  .ant-drawer-content-wrapper:has(.drawer__header) {
+    width: 55% !important;
   }
+}
 
-  .button__search-group {
-    width: 164px !important;
+@media (max-width: 550px) {
+  .ant-drawer-content-wrapper:has(.drawer__header) {
+    width: 90% !important;
+    top: 0 !important;
   }
 }

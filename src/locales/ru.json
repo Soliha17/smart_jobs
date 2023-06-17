@@ -312,5 +312,27 @@
   "selectStatus": "Выберите статус",
   "openToAll": "Открыто для всех",
   "enterFileOrLink": "Введите файл или ссылку",
-  "chooseLinkOrImage": "Выберите ссылку или изображение"
+  "chooseLinkOrImage": "Выберите ссылку или изображение",
+
+  "jobInterviews": "Собеседования по работе",
+  "takeItToTheNextLevelWithMockInterviews": "Поднимите свой уровень с помощью Мок-Интервью",
+  "ourMockInterviewServiceIsDesignedToHelpYouInYourJobPreparation": "Наша услуга Мок-Интервью разработана для помощи вам в подготовке к работе.",
+  "conductAnInterview": "Провести интервью",
+  "productDesign": "Дизайн продукта",
+  "frontendProgramming": "Фронтенд программирование",
+  "mobileProgramming": "Мобильное программирование",
+  "backendProgramming": "Бэкенд программирование",
+  "management": "Управление",
+  "registerForAnInterview": "Зарегистрироваться на собеседование",
+  "chooseAProfession": "Выбрать профессию",
+  "setTheTime": "Установить время",
+  "interviewLanguage": "Язык интервью",
+  "additionalComment": "Дополнительный комментарий",
+  "uploadAnAdditionalFileResumeCV": "Загрузить дополнительный файл (резюме, CV...)",
+  "interviewingDevelopsYou": "Интервьюирование развивает вас",
+  "ourServiceWillHelpYouToAchieveGoodResultsInTheProcessOfJobPreparationOurExpertsWillHelpYouWithYourContinuity": "Наша услуга поможет вам достичь хороших результатов в процессе подготовки к работе. Наши эксперты помогут вам в сохранении последовательности.",
+  "strongProfessionals": "Квалифицированные специалисты",
+  "abilityToReceiveFeedback": "Способность принимать обратную связь",
+  "realQuestionsAndAnswers": "Реальные вопросы и ответы",
+  "opinionsOfMockInterviewParticipants": "Мнения участников Мок-Интервью"
 }

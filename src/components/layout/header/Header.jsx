@@ -2,17 +2,23 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { Button, Drawer, Dropdown, Select, Space } from "antd";
-import { MenuOutlined, DownOutlined } from "@ant-design/icons";
+import { Drawer, Dropdown, Select, Space } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 
 import "./header.css";
 
-import Logo from "../../../assets/images/logo.svg";
-import ProfileImg from "../../../assets/images/profile-img.svg";
+import Logo from "../../../assets/images/new-header-logo.svg";
+import DrawerLogo from "../../../assets/images/drawer-smartjob-logo.svg";
+import BlackMenu from "../../../assets/images/black-menu-header.svg";
+import WhiteMenu from "../../../assets/images/white-menu-header.svg";
+import Bell from "../../../assets/images/bell-icon-header.svg";
+import LogoBlack from "../../../assets/images/logo-header-black.png";
+import ProfileImg from "../../../assets/images/profile-icon-header.svg";
 
 import VacancyInput from "../../atoms/vacancy-input/VacancyInput";
 import Modals from "../../molecules/modal/Modals";
 import TestHeader from "../test-header/TestHeader";
+import CloseIcon from "./CloseIcon";
 
 const languageOptions = [
   { value: "en", label: "En" },
@@ -21,14 +27,21 @@ const languageOptions = [
   // Add more language options as needed
 ];
 
+const drawerLanguageOptions = [
+  { value: "en", label: "English" },
+  { value: "ru", label: "Russian" },
+  { value: "uz", label: "Uzbek" },
+  // Add more language options as needed
+];
+
 function Header() {
   const [visible, setVisible] = useState(false);
-  const [selectedButton, setSelectedButton] = useState("btn1");
   const [isUser, setIsUser] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     if (
@@ -42,7 +55,6 @@ function Header() {
     }
   }, [location.pathname]);
 
-  const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const isTestPage = location.pathname === "/test";
 
@@ -58,11 +70,6 @@ function Header() {
     setVisible(false);
   };
 
-  const selectButton = (btn) => {
-    setSelectedButton(btn);
-    console.log(setIsUser);
-  };
-
   const items = [
     {
       label: <a href="https://www.antgroup.com">1st menu item</a>,
@@ -71,6 +78,24 @@ function Header() {
     {
       label: <a href="https://www.aliyun.com">2nd menu item</a>,
       key: "1",
+    },
+  ];
+
+  const menuItems = [
+    {
+      label: <a href="https://www.antgroup.com">1st menu item</a>,
+      key: "0",
+    },
+    {
+      label: <a href="https://www.aliyun.com">2nd menu item</a>,
+      key: "1",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: "3rd menu item",
+      key: "3",
     },
   ];
 
@@ -83,82 +108,72 @@ function Header() {
   return (
     <>
       {!isTestPage ? (
-        <div>
-          <div className="header-wrapper">
+        <div className="header-wrapper">
+          <div
+            className={
+              isUser ? "user__header-wrapper" : "login__header-wrapper"
+            }
+          >
             <header className="header container">
-              <div className="header__logo">
-                <img src={Logo} alt="Smart Jobs' Logo" onClick={goToHomePage} />
+              <div className="logo__header">
+                <img
+                  src={isUser ? LogoBlack : Logo}
+                  alt="Smart Jobs' Logo"
+                  onClick={goToHomePage}
+                />
               </div>
-              {isUser ? (
-                <nav className="mobileHidden">
-                  <ul>
-                    <li>
-                      <NavLink to="/vacancies">{t("vacancies")}</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/resume">{t("resumeConstructor")}</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/help">{t("help")}</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/addition">{t("supplements")}</NavLink>
-                    </li>
-                  </ul>
-                </nav>
-              ) : (
-                <div className="select-btn-group__header">
-                  <button
-                    className={`button__search-group ${
-                      selectedButton === "btn1" && "selected-button__header"
-                    }`}
-                    onClick={() => selectButton("btn1")}
-                  >
-                    {t("jobSearch")}
+              <nav className="mobileHidden">
+                <ul>
+                  <li>
+                    <NavLink to="/vacancy">{t("vacancies")}</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/resume">{t("resumeConstructor")}</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/help">{t("help")}</NavLink>
+                  </li>
+                  <li>
+                    <Dropdown
+                      menu={{
+                        items,
+                      }}
+                      trigger={["click"]}
+                    >
+                      <a onClick={(e) => e.preventDefault()}>
+                        <Space>
+                          {t("supplements")}
+                          <DownOutlined />
+                        </Space>
+                      </a>
+                    </Dropdown>
+                  </li>
+                </ul>
+              </nav>
+              <div className="actions__header">
+                {!isUser && (
+                  <button className="employer-btn__header">
+                    Ish beruvchilar uchun
                   </button>
-                  <button
-                    className={`button__search-group ${
-                      selectedButton === "btn2" && "selected-button__header"
-                    }`}
-                    onClick={() => selectButton("btn2")}
-                  >
-                    {t("employeeSearch")}
-                  </button>
-                </div>
-              )}
-              <div
-                className={`header__actions ${
-                  isUser && "header__actions--auto"
-                }`}
-              >
+                )}
+                <Select
+                  className="select__header"
+                  value={currentLanguage}
+                  onChange={handleLanguageChange}
+                  bordered={false}
+                >
+                  {languageOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Select.Option>
+                  ))}
+                </Select>
                 {isUser ? (
                   <>
-                    <Space
-                      wrap
-                      className={`white-select ${
-                        !isUser ? "mobileHidden" : ""
-                      }`}
-                    >
-                      <Select
-                        className="white-select"
-                        value={currentLanguage}
-                        onChange={handleLanguageChange}
-                        style={{
-                          width: 70,
-                        }}
-                        bordered={false}
-                      >
-                        {languageOptions.map((option) => (
-                          <Select.Option
-                            key={option.value}
-                            value={option.value}
-                          >
-                            {option.label}
-                          </Select.Option>
-                        ))}
-                      </Select>
-                    </Space>
-                    <div className="header__profile header__profile--none">
+                    <button className="reminder-btn__header">
+                      <img src={Bell} alt="bell icon" />
+                    </button>
+                    <div className="profile__header">
                       <Dropdown
                         menu={{
                           items,
@@ -176,83 +191,70 @@ function Header() {
                     </div>
                   </>
                 ) : (
-                  <>
-                    <Space
-                      wrap
-                      className={`white-select ${
-                        isUser ? "mobileHidden" : "white-select--none"
-                      }`}
-                    >
-                      <Select
-                        className="white-select"
-                        value={currentLanguage}
-                        onChange={handleLanguageChange}
-                        style={{
-                          width: 70,
-                        }}
-                        bordered={false}
-                      >
-                        {languageOptions.map((option) => (
-                          <Select.Option
-                            key={option.value}
-                            value={option.value}
-                          >
-                            {option.label}
-                          </Select.Option>
-                        ))}
-                      </Select>
-                    </Space>
-                    <Button
-                      type="primary"
-                      className="enter-btn__header"
-                      onClick={() => setIsModalOpen(true)}
-                    >
-                      {t("entrance")}
-                    </Button>
-                  </>
+                  <button className="enter-btn__header">{t("entrance")}</button>
                 )}
-              </div>
-              {isUser && (
                 <div className="mobileVisible">
-                  <Space
-                    wrap
-                    className={`white-select ${
-                      isUser ? "mobileHidden" : "white-select--none"
-                    }`}
+                  <img
+                    src={isUser ? BlackMenu : WhiteMenu}
+                    onClick={showDrawer}
+                    className="hamburger-btn__header"
+                    alt=""
+                  />
+                  <Drawer
+                    placement="right"
+                    onClose={onClose}
+                    open={visible}
+                    closeIcon={<CloseIcon />}
+                    headerStyle={{
+                      flexDirection: "row-reverse",
+                      justifyContent: "space-between",
+                    }}
+                    className="drawer__header"
+                    extra={<img src={DrawerLogo} alt="DrawerLogo" />}
                   >
                     <Select
-                      className="white-select"
+                      className="drawer-select__header"
                       value={currentLanguage}
                       onChange={handleLanguageChange}
-                      style={{
-                        width: 70,
-                      }}
                       bordered={false}
                     >
-                      {languageOptions.map((option) => (
+                      {drawerLanguageOptions.map((option) => (
                         <Select.Option key={option.value} value={option.value}>
                           {option.label}
                         </Select.Option>
                       ))}
                     </Select>
-                  </Space>
-                  <Button
-                    type="primary"
-                    onClick={showDrawer}
-                    className="header__hamburger-btn"
-                  >
-                    <MenuOutlined />
-                  </Button>
-                  <Drawer placement="right" onClose={onClose} visible={visible}>
+
+                    {isUser ? (
+                      <div className="profile__header drawer-profile__header">
+                        <Dropdown
+                          menu={{
+                            items,
+                          }}
+                          trigger={["click"]}
+                        >
+                          <button onClick={(e) => e.preventDefault()}>
+                            <Space className="profile__name">
+                              <img
+                                src={ProfileImg}
+                                alt="Pofile Img"
+                                width={43}
+                              />
+                              {t("nameOfUser")}
+                              <DownOutlined />
+                            </Space>
+                          </button>
+                        </Dropdown>
+                      </div>
+                    ) : (
+                      <div className="login-buttons__header">
+                        <button className="primary-btn">Kirish</button>
+                        <button className="job-seeker-btn__header">Ish qidiruvchilar uchun</button>
+                      </div>
+                    )}
+
                     <nav>
                       <ul>
-                        <li>
-                          <NavLink onClick={onClose} to="/">
-                            <div className="header__profile">
-                              <h6>{t("nameOfUser")}</h6>
-                            </div>
-                          </NavLink>
-                        </li>
                         <li>
                           <NavLink onClick={onClose} to="/">
                             Home
@@ -274,15 +276,25 @@ function Header() {
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink onClick={onClose} to="/contact">
-                            Contact
-                          </NavLink>
+                          <Dropdown
+                            menu={{
+                              items,
+                            }}
+                            trigger={["click"]}
+                          >
+                            <a onClick={(e) => e.preventDefault()}>
+                              <Space>
+                                {t("supplements")}
+                                <DownOutlined />
+                              </Space>
+                            </a>
+                          </Dropdown>
                         </li>
                       </ul>
                     </nav>
                   </Drawer>
                 </div>
-              )}
+              </div>
             </header>
             {location.pathname === "/vacancy" && <VacancyInput />}
           </div>
