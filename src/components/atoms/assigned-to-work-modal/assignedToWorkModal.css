@@ -1,0 +1,14 @@
+.container__assigned-work-modal .default-btn {
+  width: 90%;
+  height: 56px;
+}
+
+.container__assigned-work-modal {
+  padding: 48px;
+}
+
+@media (max-width: 500px) {
+  .container__assigned-work-modal {
+    padding: 18px;
+  }
+}

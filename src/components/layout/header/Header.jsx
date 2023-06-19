@@ -38,20 +38,20 @@ function Header() {
   const [visible, setVisible] = useState(false);
   const [isUser, setIsUser] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isHeroPage, setIsHeroPage] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
+
+  const { i18n, t } = useTranslation();
 
   useEffect(() => {
-    if (
-      location.pathname === "/vacancy" ||
-      location.pathname === "/full" ||
-      location.pathname === "/builder"
-    ) {
-      setIsUser(true);
-    } else {
+    if (location.pathname === "/") {
       setIsUser(false);
+      setIsHeroPage(true);
+    } else {
+      setIsUser(true);
+      setIsHeroPage(false);
     }
   }, [location.pathname]);
 
@@ -72,38 +72,34 @@ function Header() {
 
   const items = [
     {
-      label: <a href="https://www.antgroup.com">1st menu item</a>,
+      label: <a href="https://www.antgroup.com">{t("companies")}</a>,
       key: "0",
     },
     {
-      label: <a href="https://www.aliyun.com">2nd menu item</a>,
-      key: "1",
-    },
-  ];
-
-  const menuItems = [
-    {
-      label: <a href="https://www.antgroup.com">1st menu item</a>,
-      key: "0",
-    },
-    {
-      label: <a href="https://www.aliyun.com">2nd menu item</a>,
+      label: <a href="https://www.aliyun.com">{t("articles")}</a>,
       key: "1",
     },
     {
-      type: "divider",
+      label: <a href="https://www.aliyun.com">{t("professions")}</a>,
+      key: "2",
     },
     {
-      label: "3rd menu item",
+      label: <a href="https://www.aliyun.com">{t("areas")}</a>,
       key: "3",
+    },
+    {
+      label: <a href="https://www.aliyun.com">{t("aboutUs")}</a>,
+      key: "4",
+    },
+    {
+      label: <a href="https://www.aliyun.com">{t("help")}</a>,
+      key: "5",
     },
   ];
 
   function goToHomePage() {
     navigate("/");
   }
-
-  const { t } = useTranslation();
 
   return (
     <>
@@ -112,6 +108,9 @@ function Header() {
           <div
             className={
               isUser ? "user__header-wrapper" : "login__header-wrapper"
+            }
+            style={
+              isHeroPage ? { background: "#008DFF" } : { background: "white" }
             }
           >
             <header className="header container">
@@ -153,7 +152,7 @@ function Header() {
               <div className="actions__header">
                 {!isUser && (
                   <button className="employer-btn__header">
-                    Ish beruvchilar uchun
+                    {t("forEmployers")}
                   </button>
                 )}
                 <Select
@@ -249,7 +248,9 @@ function Header() {
                     ) : (
                       <div className="login-buttons__header">
                         <button className="primary-btn">Kirish</button>
-                        <button className="job-seeker-btn__header">Ish qidiruvchilar uchun</button>
+                        <button className="job-seeker-btn__header">
+                          Ish qidiruvchilar uchun
+                        </button>
                       </div>
                     )}
 
@@ -292,6 +293,11 @@ function Header() {
                         </li>
                       </ul>
                     </nav>
+                    {isUser && (
+                      <button className="default-btn default-btn--user">
+                        {t("exit")}
+                      </button>
+                    )}
                   </Drawer>
                 </div>
               </div>

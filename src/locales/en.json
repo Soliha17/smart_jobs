@@ -333,5 +333,14 @@
   "strongProfessionals": "Strong Professionals",
   "abilityToReceiveFeedback": "Ability to Receive Feedback",
   "realQuestionsAndAnswers": "Real Questions and Answers",
-  "opinionsOfMockInterviewParticipants": "Opinions of Mock Interview Participants"
+  "opinionsOfMockInterviewParticipants": "Opinions of Mock Interview Participants",
+
+  "selectYourResume": "Select your resume",
+  "change": "Change",
+  "coverLetter1": "Cover letter",
+  "getInformationAboutTheVacancy": "Get information about the vacancy",
+  "submitAnApplication": "Submit an application",
+  "commissioned": "Commissioned",
+  "aboutUs": "About Us",
+  "exit": "Exit"
 }

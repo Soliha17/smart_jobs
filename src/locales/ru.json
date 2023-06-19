@@ -334,5 +334,14 @@
   "strongProfessionals": "Квалифицированные специалисты",
   "abilityToReceiveFeedback": "Способность принимать обратную связь",
   "realQuestionsAndAnswers": "Реальные вопросы и ответы",
-  "opinionsOfMockInterviewParticipants": "Мнения участников Мок-Интервью"
+  "opinionsOfMockInterviewParticipants": "Мнения участников Мок-Интервью",
+
+  "selectYourResume": "Выберите ваше резюме",
+  "change": "Изменить",
+  "coverLetter1": "Сопроводительное письмо",
+  "getInformationAboutTheVacancy": "Получить информацию о вакансии",
+  "submitAnApplication": "Отправить заявку",
+  "commissioned": "Назначено",
+  "aboutUs": "О нас",
+  "exit": "Выход"
 }

@@ -30,10 +30,12 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ReportModal from "../../components/molecules/modal/ReportModal";
 import VacancyStepper from "../../components/atoms/vacancy-stepper/VacancyStepper";
+import ChooseResumeModal from "../../components/molecules/modal/ChooseResumeModal";
 
 const VacancyFull = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+  const [isChooseResumeModalOpen, setIsChooseResumeModalOpen] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -139,7 +141,11 @@ const VacancyFull = () => {
         <div className="vacancy-full">
           <div className="header__vacancy-full">
             <div className="header-bottom__vacancy-full">
-              <Button type="primary" size="large">
+              <Button
+                type="primary"
+                onClick={() => setIsChooseResumeModalOpen(true)}
+                size="large"
+              >
                 {t("submitToWork")}
               </Button>
               <div className="actions-group__vacancy-full">
@@ -569,6 +575,10 @@ const VacancyFull = () => {
       </div>
       <Footer />
       <ReportModal open={isReportModalOpen} setOpen={setIsReportModalOpen} />
+      <ChooseResumeModal
+        open={isChooseResumeModalOpen}
+        setOpen={setIsChooseResumeModalOpen}
+      />
     </>
   );
 };

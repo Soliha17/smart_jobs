@@ -1,7 +1,7 @@
 .vacancy-input {
   padding-top: 12px;
   padding-bottom: 12px;
-  background: var(--primary-100);
+  background: var(--white);
 }
 
 .vacancy-input .action__hero-home {
@@ -11,10 +11,10 @@
 }
 
 .vacancy-input .input-group__hero-home {
-  width: 90%;
-  max-width: 1168px;
+  width: 93%;
+  max-width: 1172px;
   height: 56px;
-  background: var(--white);
+  background: var(--white-50);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +35,7 @@
   border-radius: 16px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  background: var(--white);
+  background: var(--white-50);
 }
 
 .vacancy-input .location-group__hero-home {
@@ -57,7 +57,7 @@
 }
 
 .vacancy-input .search-btn__hero-home {
-  padding: 16px 32px;
+  padding: 16px;
   background: transparent;
   height: 56px;
   max-width: 149px;
@@ -65,7 +65,7 @@
   font-size: 16px;
   line-height: 24px;
   color: var(--white);
-  border: 1px solid var(--white);
+  background: var(--white-50);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -92,7 +92,7 @@
   }
 
   .vacancy-input .input-group__hero-home {
-    max-width: 85%;
+    max-width: 90%;
   }
 }
 
@@ -134,12 +134,13 @@
     border-radius: 12px;
     height: 56px;
     width: 400px;
+    background: var(--white-100);
   }
 
   .vacancy-input .location-group__hero-home {
     width: 400px;
     height: 56px;
-    background: var(--white);
+    background: var(--white-100);
     margin-left: 0;
     border-radius: 12px;
   }
@@ -147,6 +148,12 @@
   .vacancy-input .search-btn__hero-home {
     width: 100%;
     min-width: 400px !important;
+    background: var(--primary-75);
+  }
+
+  .search-btn__hero-home img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
+      hue-rotate(337deg) brightness(101%) contrast(101%);
   }
 
   .search-text {

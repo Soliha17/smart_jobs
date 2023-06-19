@@ -3,10 +3,11 @@ import React from "react";
 import "./vacancyInput.css";
 import { AutoComplete, Input, Select } from "antd";
 
-import SearchIcon from "../../../assets/images/hero-search-icon.svg";
+import SearchIcon from "../../../assets/images/search-icon-black.svg";
 import HeroSearchIcon from "../../molecules/HeroSearchIcon";
 import HeroSelect from "../../molecules/hero-select/HeroSelect";
 import LocationIcon from "../../molecules/HeroSelectLocationIcon";
+
 import { useTranslation } from "react-i18next";
 
 const { Option } = Select;

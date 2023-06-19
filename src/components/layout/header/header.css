@@ -1,14 +1,15 @@
 /* ----- HEADER ----- */
 .header-wrapper {
-  background: transparent;
+  /* background: transparent; */
 }
 
 .login__header-wrapper {
-  background: var(--primary-100);
+  /* background: var(--white); */
+  /* background: var(--primary-100); */
 }
 
 .user__header-wrapper {
-  background: var(--white);
+  /* background: var(--white); */
 }
 
 .header {
@@ -218,6 +219,11 @@
 }
 
 .login-buttons__header .primary-btn {
+  width: 100%;
+}
+
+.default-btn--user {
+  margin-top: 40px;
   width: 100%;
 }
 
