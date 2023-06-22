@@ -177,7 +177,7 @@ const AdditionalInformationBuilder = ({ props }) => {
                       </Col>
                     </Row>
                     {fields.map((field, index) => (
-                      <Row gutter={[15, 12]}>
+                      <Row gutter={[15, 12]} key={field.key}>
                         <Col xs={24} sm={11}>
                           <Form.Item
                             {...field}

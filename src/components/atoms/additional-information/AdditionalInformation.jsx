@@ -25,9 +25,9 @@ const AdditionalInformation = ({ props }) => {
 
   const [openLicense, setOpenLicense] = useState(false);
 
-  const [language, setLanguage] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState("");
 
-  const [level, setLevel] = useState("");
+  const [selectedLevel, setSelectedLevel] = useState("");
 
   // const [requiredMark, setRequiredMarkType] = useState("optional");
   // const onRequiredTypeChange = ({ requiredMarkValue }) => {
@@ -42,20 +42,20 @@ const AdditionalInformation = ({ props }) => {
   const handleAdd = (add) => {
     add();
     form.validateFields().then((values) => {
-      const newFile = { language: language, level: level };
+      const newFile = { language: selectedLanguage, level: selectedLevel };
       setFiles([...files, newFile]);
-      setLanguage("");
-      setLevel("");
+      setSelectedLanguage("");
+      setSelectedLevel("");
       form.resetFields(["language", "level"]);
     });
   };
 
   const onChangeLanguage = (value) => {
-    setLanguage(value);
+    setSelectedLanguage(value);
   };
 
   const onChangeLevel = (value) => {
-    setLevel(value);
+    setSelectedLevel(value);
   };
   // const onChange = (date, dateString) => {
   //   console.log(date, dateString);
@@ -108,7 +108,7 @@ const AdditionalInformation = ({ props }) => {
                         <Form.Item>
                           <Select
                             // defaultValue={"uzb"}
-                            value={language || undefined}
+                            value={selectedLanguage || undefined}
                             placeholder={t("chooseALanguage")}
                             size="large"
                             onChange={onChangeLanguage}
@@ -132,7 +132,7 @@ const AdditionalInformation = ({ props }) => {
                       <Col sm={11} xs={24}>
                         <Form.Item>
                           <Select
-                            value={level || undefined}
+                            value={selectedLevel || undefined}
                             // defaultValue={"b1"}
                             placeholder={t("selectALevel")}
                             size="large"
@@ -168,7 +168,7 @@ const AdditionalInformation = ({ props }) => {
                       </Col>
                     </Row>
                     {fields.map((field, index) => (
-                      <Row gutter={[15, 12]}>
+                      <Row gutter={[15, 12]} key={field.key}>
                         <Col xs={24} sm={11}>
                           <Form.Item
                             {...field}
@@ -182,7 +182,7 @@ const AdditionalInformation = ({ props }) => {
                             // ]}
                           >
                             <Select
-                              defaultValue={language}
+                              defaultValue={selectedLanguage}
                               // value={language}
                               // onChange={()=>setLanguage(language)}
                               // placeholder="adsnk"
@@ -217,7 +217,7 @@ const AdditionalInformation = ({ props }) => {
                             // ]}
                           >
                             <Select
-                              defaultValue={level}
+                              defaultValue={selectedLevel}
                               // placeholder="Daraja tanlang"
                               // value={level}
                               size="large"

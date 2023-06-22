@@ -1,10 +1,4 @@
-import {
-  MenuFoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  MenuUnfoldOutlined,
-} from "@ant-design/icons";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Input, Layout, Menu, theme } from "antd";
 import { useState } from "react";
 
@@ -12,7 +6,6 @@ import { DownOutlined } from "@ant-design/icons";
 
 import SmartjobShortLogo from "../../../assets/images/smartjob-logo-short.svg";
 import NotificationWhite from "../../../assets/images/notification-white-icon.svg";
-import ArrowWhite from "../../../assets/images/arrow-forward-white.svg";
 import ExpressLogo from "../../../assets/images/dashboard-express-log.svg";
 import SmartJobText from "../../../assets/images/smartjob-text-logo.svg";
 import AddCircleWhite from "../../../assets/images/add-circle-dashboard.svg";
@@ -30,6 +23,7 @@ import SettingIcon from "../../../assets/images/setting-icon-dashboard.svg";
 
 import "./sidebar.css";
 import { useTranslation } from "react-i18next";
+import VacancyList from "../../../pages/dashboard/vacancy-list/VacancyList";
 import CreateVacancy from "../../../pages/dashboard/create-vacancy/CreateVacancy";
 
 const { Header, Sider, Content } = Layout;
@@ -127,6 +121,8 @@ const itemsOfMenu = [
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [collapsed1, setCollapsed1] = useState(false);
+  const [selectedMenuItem, setSelectedMenuItem] = useState("1");
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -195,6 +191,8 @@ const Sidebar = () => {
             theme="dark"
             mode="inline"
             defaultSelectedKeys={["1"]}
+            selectedKeys={[selectedMenuItem]}
+            onClick={(e) => setSelectedMenuItem(e.key)}
             items={itemsOfMenu}
           />
         </Sider>
@@ -221,6 +219,8 @@ const Sidebar = () => {
             theme="dark"
             mode="inline"
             defaultSelectedKeys={["1"]}
+            selectedKeys={[selectedMenuItem]}
+            onClick={(e) => setSelectedMenuItem(e.key)}
             items={itemsOfMenu}
           />
         </Sider>
@@ -281,7 +281,8 @@ const Sidebar = () => {
           </div>
         </Header>
         <Content className="dashboard-content">
-          <CreateVacancy />
+          {selectedMenuItem === "1" && <CreateVacancy />}
+          {selectedMenuItem === "2" && <VacancyList />}
         </Content>
       </Layout>
     </Layout>

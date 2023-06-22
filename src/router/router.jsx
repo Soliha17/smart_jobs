@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 
 import { routesDatas } from "../mock/routes";
 import Header from "../components/layout/header/Header";
-import Dashboard from "../pages/dashboard/Dashboard";
+import Sidebar from "../components/layout/sidebar/Sidebar";
 
 const Rout = () => {
   const [isDashboard, setIsDashboard] = useState(false);
@@ -17,7 +17,7 @@ const Rout = () => {
 
   return (
     <Routes>
-      {isDashboard && <Route path={"/dashboard"} element={<Dashboard />} />}
+      {isDashboard && <Route path={"/dashboard"} element={<Sidebar />} />}
       <Route element={<Header />}>
         {routesDatas.map((pages) => (
           <Route path={pages.path} element={<pages.element />} key={pages.id} />
