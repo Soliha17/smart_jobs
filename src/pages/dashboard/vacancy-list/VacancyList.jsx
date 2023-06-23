@@ -44,7 +44,7 @@ const VacancyList = () => {
               <img src={RightLayoutIcon} alt="RightLayoutIcon" />
             </button>
           </div>
-          <button className="btn__vacancy-list">Vakansiya yaratish</button>
+          <button className="btn__vacancy-list white-btn">Vakansiya yaratish</button>
         </div>
       </div>
       <div className="content__vacancy-list">

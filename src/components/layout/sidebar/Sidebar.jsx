@@ -25,6 +25,7 @@ import "./sidebar.css";
 import { useTranslation } from "react-i18next";
 import VacancyList from "../../../pages/dashboard/vacancy-list/VacancyList";
 import CreateVacancy from "../../../pages/dashboard/create-vacancy/CreateVacancy";
+import Candidates from "../../../pages/dashboard/candidates/Candidates";
 
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
@@ -283,6 +284,7 @@ const Sidebar = () => {
         <Content className="dashboard-content">
           {selectedMenuItem === "1" && <CreateVacancy />}
           {selectedMenuItem === "2" && <VacancyList />}
+          {selectedMenuItem === "4" && <Candidates />}
         </Content>
       </Layout>
     </Layout>

@@ -169,6 +169,19 @@ body {
   background-color: var(--black-75);
 }
 
+.white-btn {
+  background: var(--white);
+  border: 1px solid var(--white);
+  border-radius: 8px;
+  color: var(--black-75, #555351);
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 1300px) {
   .container,
   .ant-tabs-nav {

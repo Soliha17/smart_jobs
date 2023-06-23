@@ -1,0 +1,95 @@
+.header__candidates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__candidates h2 {
+  color: var(--black-100, #1c1917);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.btn-group__candidates {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-group__candidates .white-btn:first-child {
+  width: 120px;
+  height: 53px;
+  gap: 10px;
+}
+
+.btn-group__candidates .white-btn:nth-child(2) {
+  width: 98px;
+  height: 53px;
+}
+
+.btn-group__candidates .white-btn:nth-child(3) {
+  width: 184px;
+  height: 53px;
+}
+
+.btn-group__candidates .primary-btn {
+  width: 177px;
+  height: 53px;
+}
+
+.feed__candidates {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  overflow: auto;
+  min-width: 100%;
+}
+
+.feed__candidates .ant-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 24px;
+  background: var(--white-50, #f9f9fb);
+  color: var(--black-75, #555351);
+  font-size: 16px;
+}
+
+.feed__candidates .ant-tag-checkable-checked {
+  background: var(--primary-75, #40aaff) !important;
+}
+
+.table__candidates {
+  margin-top: 24px;
+}
+
+.profile-group__candidates {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 992px) {
+  .header__candidates {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .feed__candidates {
+    gap: 8px;
+  }
+
+  .feed__candidates .ant-tag {
+    padding: 6px 12px;
+  }
+
+  .btn-group__candidates {
+    flex-direction: column;
+  }
+
+  .btn-group__candidates button {
+    width: 100% !important;
+  }
+}

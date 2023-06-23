@@ -39,16 +39,6 @@
 .btn__vacancy-list {
   width: 189px;
   height: 44px;
-  background: var(--white);
-  border: 1px solid var(--white);
-  border-radius: 8px;
-  color: var(--black-75, #555351);
-  font-size: 16px;
-  line-height: 20px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .select-group__vacancy-list {
