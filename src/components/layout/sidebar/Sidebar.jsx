@@ -26,6 +26,8 @@ import { useTranslation } from "react-i18next";
 import VacancyList from "../../../pages/dashboard/vacancy-list/VacancyList";
 import CreateVacancy from "../../../pages/dashboard/create-vacancy/CreateVacancy";
 import Candidates from "../../../pages/dashboard/candidates/Candidates";
+import TestList from "../../../pages/dashboard/test-list/TestList";
+import TestStatistic from "../../../pages/dashboard/test-statistic/TestStatistic";
 
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
@@ -285,6 +287,8 @@ const Sidebar = () => {
           {selectedMenuItem === "1" && <CreateVacancy />}
           {selectedMenuItem === "2" && <VacancyList />}
           {selectedMenuItem === "4" && <Candidates />}
+          {selectedMenuItem === "6" && <TestList />}
+          {selectedMenuItem === "7" && <TestStatistic />}
         </Content>
       </Layout>
     </Layout>

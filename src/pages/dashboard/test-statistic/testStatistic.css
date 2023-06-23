@@ -1,0 +1,134 @@
+.top__test {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top__test span {
+  width: 50%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top__test span:first-child {
+  background: var(--white, #fff);
+  color: var(--black-50, #8d8c8b);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.top__test span:last-child {
+  background: var(--primary-25, #bfe2ff);
+  color: var(--black-100, #1c1917);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.header__test-statistic {
+  margin: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__test-statistic span {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--black-100, #1c1917);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.header__test-statistic div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__test-statistic button {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.header__test-statistic button:first-child {
+  width: 141px;
+}
+
+.header__test-statistic button:last-child {
+  width: 174px;
+}
+
+.cards__test-statistic {
+  margin: 32px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 24px;
+}
+
+.card__test-statistic {
+  display: inline-flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.card__test-statistic h6 {
+  color: var(--black-100, #1c1917);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.card__test-statistic p {
+  color: var(--primary-100, #008dff);
+  font-size: 20px;
+}
+
+.table__test-statistic {
+  margin: 32px;
+}
+
+@media (max-width: 1300px) {
+  .cards__test-statistic {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .cards__test-statistic {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .header__test-statistic {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .cards__test-statistic {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .header__test-statistic,
+  .cards__test-statistic,
+  .table__test-statistic {
+    margin: 25px 10px;
+  }
+
+  .header__test-statistic span {
+    font-size: 20px;
+  }
+}

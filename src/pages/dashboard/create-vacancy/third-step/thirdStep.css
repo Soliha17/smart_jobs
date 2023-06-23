@@ -8,3 +8,7 @@
   font-size: 16px;
   line-height: 24px;
 }
+
+.add-test-modal .email_phone_form input[type="submit"] {
+  margin: 24px 0;
+}

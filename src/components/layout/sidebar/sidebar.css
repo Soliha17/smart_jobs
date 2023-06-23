@@ -172,6 +172,10 @@
   left: 72px;
 }
 
+.dashboard-content:has(.test-statistic) {
+  margin: 0;
+}
+
 @media (max-width: 992px) {
   .profile__dashboard-header {
     margin-right: 20px;

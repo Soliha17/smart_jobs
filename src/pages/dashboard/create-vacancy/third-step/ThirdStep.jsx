@@ -8,9 +8,14 @@ import QuestionMark from "../../../../assets/images/question-mark-dashboard.svg"
 import Edit from "../../../../assets/images/edit-icon.svg";
 import Trash from "../../../../assets/images/trash-icon.svg";
 import AddCircle from "../../../../assets/images/add-circle.svg";
+import AddUserModal from "./AddUserModal";
+import AddExternalUser from "./AddExternalUser";
 
 const ThirdStep = (props) => {
   const [form] = Form.useForm();
+
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
   const onChange = (date, dateString) => {
     console.log(date, dateString);
@@ -70,7 +75,7 @@ const ThirdStep = (props) => {
               <Button
                 block
                 size="large"
-                // onClick={() => setOpenPortfolioDrawer(true)}
+                onClick={() => setIsFirstModalOpen(!isFirstModalOpen)}
                 icon={<img src={AddCircle} alt="AddCircle" />}
                 style={{
                   textAlign: "left",
@@ -101,7 +106,7 @@ const ThirdStep = (props) => {
               <Button
                 block
                 size="large"
-                // onClick={() => setOpenPortfolioDrawer(true)}
+                // onClick={() => setIsSecondModalOpen(!isSecondModalOpen)}
                 icon={<img src={AddCircle} alt="AddCircle" />}
                 style={{
                   textAlign: "left",
@@ -132,7 +137,7 @@ const ThirdStep = (props) => {
               <Button
                 block
                 size="large"
-                // onClick={() => setOpenPortfolioDrawer(true)}
+                onClick={() => setIsSecondModalOpen(!isSecondModalOpen)}
                 icon={<img src={AddCircle} alt="AddCircle" />}
                 style={{
                   textAlign: "left",
@@ -232,6 +237,13 @@ const ThirdStep = (props) => {
           </div>
         </Form>
       </div>
+      {<AddUserModal open={isFirstModalOpen} setOpen={setIsFirstModalOpen} />}
+      {
+        <AddExternalUser
+          open={isSecondModalOpen}
+          setOpen={setIsSecondModalOpen}
+        />
+      }
     </>
   );
 };

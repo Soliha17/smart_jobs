@@ -1,0 +1,14 @@
+.header__test-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-test-modal .primary-btn {
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .add-test-modal .ant-modal-content {
+    padding: 16px !important;
+  }
+}

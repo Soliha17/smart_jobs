@@ -59,12 +59,10 @@ const JobSeekerModal = ({
       e.key === "&" ||
       e.key === "%" ||
       e.key === "$" ||
-      e.key === "@" ||
       e.key === "!" ||
       e.key === "^" ||
       e.key === "~" ||
       e.key === "#" ||
-      e.key === "." ||
       e.key === "," ||
       e.key === "Shift" ||
       e.key === " " ||
