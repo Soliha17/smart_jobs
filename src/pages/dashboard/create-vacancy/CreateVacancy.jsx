@@ -3,9 +3,9 @@ import { Steps } from "antd";
 
 import "./createVacancy.css";
 
-import AdditionalInformation from "../../../components/atoms/additional-information/AdditionalInformation";
 import FirstStep from "./first-step/FirstStep";
 import SecondStep from "./second-step/SecondStep";
+import ThirdStep from "./third-step/ThirdStep";
 
 const steps = [
   {
@@ -18,7 +18,7 @@ const steps = [
   },
   {
     title: "Last",
-    content: <AdditionalInformation />,
+    content: <ThirdStep />,
   },
 ];
 
@@ -48,7 +48,7 @@ const CreateVacancy = () => {
         ) : current === 1 ? (
           <SecondStep props={{ next, prev }} />
         ) : (
-          <AdditionalInformation props={{ next, prev }} />
+          <ThirdStep props={{ next, prev }} />
         )}
       </div>
     </div>
