@@ -1,11 +1,11 @@
 import React from "react";
+import { Table, Tag } from "antd";
 
 import "./testStatistic.css";
 
 import BackIcon from "../../../assets/images/back-bg-white-dashboard.svg";
 import DownloadIcon from "../../../assets/images/download-icon-white-dashboard.svg";
 import ForwardIcon from "../../../assets/images/forward-arrow-white.svg";
-import { Table, Tag } from "antd";
 
 const columns = [
   {

@@ -1,5 +1,4 @@
 .top__test {
-  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
 }
@@ -10,20 +9,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .top__test span:first-child {
   background: var(--white, #fff);
   color: var(--black-50, #8d8c8b);
-  font-size: 16px;
-  line-height: 24px;
 }
 
 .top__test span:last-child {
   background: var(--primary-25, #bfe2ff);
   color: var(--black-100, #1c1917);
-  font-size: 16px;
-  line-height: 24px;
 }
 
 .header__test-statistic {
