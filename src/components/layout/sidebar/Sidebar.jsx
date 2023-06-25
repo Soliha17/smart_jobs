@@ -30,6 +30,7 @@ import TestList from "../../../pages/dashboard/test-list/TestList";
 import TestStatistic from "../../../pages/dashboard/test-statistic/TestStatistic";
 import CreateTest from "../../../pages/dashboard/create-test/CreateTest";
 import TestResult from "../../../pages/dashboard/test-result/TestResult";
+import JobSeekers from "../../../pages/dashboard/job-seekers/JobSeekers";
 
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
@@ -289,6 +290,7 @@ const Sidebar = () => {
           {selectedMenuItem === "1" && <CreateVacancy />}
           {selectedMenuItem === "2" && <VacancyList />}
           {selectedMenuItem === "4" && <Candidates />}
+          {selectedMenuItem === "5" && <JobSeekers />}
           {selectedMenuItem === "6" && <TestList />}
           {selectedMenuItem === "7" && <TestStatistic />}
           {selectedMenuItem === "8" && <CreateTest />}
