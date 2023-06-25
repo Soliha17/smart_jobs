@@ -29,6 +29,7 @@ import Candidates from "../../../pages/dashboard/candidates/Candidates";
 import TestList from "../../../pages/dashboard/test-list/TestList";
 import TestStatistic from "../../../pages/dashboard/test-statistic/TestStatistic";
 import CreateTest from "../../../pages/dashboard/create-test/CreateTest";
+import TestResult from "../../../pages/dashboard/test-result/TestResult";
 
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
@@ -291,6 +292,7 @@ const Sidebar = () => {
           {selectedMenuItem === "6" && <TestList />}
           {selectedMenuItem === "7" && <TestStatistic />}
           {selectedMenuItem === "8" && <CreateTest />}
+          {selectedMenuItem === "9" && <TestResult />}
         </Content>
       </Layout>
     </Layout>

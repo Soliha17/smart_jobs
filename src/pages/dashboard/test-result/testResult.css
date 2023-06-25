@@ -1,0 +1,122 @@
+.test-result {
+}
+
+.test-result .header__test-result {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--black-100, #1c1917);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.cards__test-result {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 24px;
+}
+
+.card__test-result {
+  display: inline-flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.card__test-result h6 {
+  color: var(--black-100, #1c1917);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.card__test-result p {
+  color: var(--primary-100, #008dff);
+  font-size: 20px;
+}
+
+.test-container__test-result {
+  margin-top: 33px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.test-card__test-result {
+  background: var(--white);
+}
+
+.top__test-card {
+  padding: 14px 22px;
+  background: var(--white-50, #f9f9fb);
+}
+
+.top__test-card p {
+  color: var(--black-100, #1c1917);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.header__test-card,
+.footer__test-card {
+  padding: 22px;
+}
+
+.header__test-card {
+  border-top: 1px solid var(--black-12);
+  border-bottom: 1px solid var(--black-12);
+}
+
+.content__test-card {
+  padding: 24px 12px;
+}
+
+.content__test-card span {
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.content__test-card p {
+  color: var(--black-75);
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.right-answer__test-card {
+  border-radius: 24px;
+  border: 1px solid var(--green);
+}
+
+.wrong-answer__test-card {
+  border-radius: 26px;
+  border: 1px solid var(--orange);
+}
+
+.content__test-card {
+  border-bottom: 1px solid var(--black-12);
+}
+
+.footer__test-card p {
+  color: var(--black-100);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+  .cards__test-result {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .cards__test-result {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -9,14 +9,13 @@
 }
 
 .content__create-test {
-  /* background: aqua; */
   display: flex;
   justify-content: space-between;
 }
 
 .left__create-test {
   width: 35%;
-  min-height: 603px;
+  height: 100vh;
   background: var(--white);
 }
 

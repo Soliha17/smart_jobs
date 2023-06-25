@@ -73,6 +73,7 @@
   --black: #000000;
   --black-100: #1c1917;
   --black-75: #555351;
+  --black-12: rgba(227, 227, 227, 1);
   --black-50: #8d8c8b;
 
   --lightblue: rgba(255, 255, 255, 0.32);
@@ -83,6 +84,7 @@
   --red: #e61f2a;
   --red-badge: #f33;
 
+  --green: #15cf74;
   --skyblue: #f3f6fc;
   --grayblue: #374151;
 }
