@@ -190,7 +190,12 @@ function Header() {
                     </div>
                   </>
                 ) : (
-                  <button className="enter-btn__header">{t("entrance")}</button>
+                  <button
+                    className="enter-btn__header"
+                    onClick={() => setIsModalOpen(!isModalOpen)}
+                  >
+                    {t("entrance")}
+                  </button>
                 )}
                 <div className="mobileVisible">
                   <img

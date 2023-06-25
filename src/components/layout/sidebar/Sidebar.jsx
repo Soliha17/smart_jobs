@@ -1,5 +1,5 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Input, Layout, Menu, theme } from "antd";
+import { Button, Dropdown, Input, Layout, Menu } from "antd";
 import { useState } from "react";
 
 import { DownOutlined } from "@ant-design/icons";
