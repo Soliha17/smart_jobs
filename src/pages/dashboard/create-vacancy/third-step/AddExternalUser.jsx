@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Form, Input, Modal, Row, Select } from "antd";
+import { Col, Form, Modal, Row, Select } from "antd";
 import { useTranslation } from "react-i18next";
 
 import LabeledInput from "../../../../components/molecules/labeled-input/LabeledInput";

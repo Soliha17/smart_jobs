@@ -26,6 +26,8 @@ const SecondStep = ({ props }) => {
 
   const [value, setValue] = useState(1);
 
+  console.log(setValue);
+
   const next = props.next;
   const prev = props.prev;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Progress } from "antd";
+import { Modal } from "antd";
 
 import "./chatParticipants.css";
 

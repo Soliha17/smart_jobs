@@ -29,7 +29,6 @@ import Footer from "../../components/layout/footer/Footer";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ReportModal from "../../components/molecules/modal/ReportModal";
-import VacancyStepper from "../../components/atoms/vacancy-stepper/VacancyStepper";
 import ChooseResumeModal from "../../components/molecules/modal/ChooseResumeModal";
 
 const VacancyFull = () => {

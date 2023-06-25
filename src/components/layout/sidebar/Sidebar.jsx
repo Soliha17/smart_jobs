@@ -126,9 +126,9 @@ const Sidebar = () => {
   const [collapsed1, setCollapsed1] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState("1");
 
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  // const {
+  //   token: { colorBgContainer },
+  // } = theme.useToken();
 
   const { t } = useTranslation();
 

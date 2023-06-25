@@ -23,6 +23,8 @@ import { useTranslation } from "react-i18next";
 const MainMyApplications = () => {
   const [show, setShow] = useState(true);
 
+  console.log(setShow);
+
   const [openChatParticipants, setOpenChatParticipants] = useState(false);
 
   function openChatParticipantsModal() {

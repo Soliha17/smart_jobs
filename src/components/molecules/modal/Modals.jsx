@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Modal, Steps } from "antd";
 
 import JobSeekerModal from "./JobSeeker";
-import SignUp from "./SignUp";
 import Login from "./Login";
 import InfoFills from "./FillInfos";
 

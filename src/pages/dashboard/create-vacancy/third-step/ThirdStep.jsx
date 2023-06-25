@@ -17,9 +17,9 @@ const ThirdStep = (props) => {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
-  const onChange = (date, dateString) => {
-    console.log(date, dateString);
-  };
+  // const onChange = (date, dateString) => {
+  //   console.log(date, dateString);
+  // };
 
   const next = props.next;
   const prev = props.prev;

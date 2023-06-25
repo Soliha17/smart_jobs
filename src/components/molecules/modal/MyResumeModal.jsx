@@ -2,9 +2,6 @@ import React from "react";
 import { Col, Form, Modal, Radio, Row } from "antd";
 import { useTranslation } from "react-i18next";
 
-import LabeledInput from "../labeled-input/LabeledInput";
-import TextArea from "antd/es/input/TextArea";
-
 const MyResumeModal = ({ open, setOpen }) => {
   const [form] = Form.useForm();
 

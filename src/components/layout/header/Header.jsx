@@ -139,7 +139,7 @@ function Header() {
                       }}
                       trigger={["click"]}
                     >
-                      <a onClick={(e) => e.preventDefault()}>
+                      <a href="/" onClick={(e) => e.preventDefault()}>
                         <Space>
                           {t("supplements")}
                           <DownOutlined />
@@ -283,7 +283,7 @@ function Header() {
                             }}
                             trigger={["click"]}
                           >
-                            <a onClick={(e) => e.preventDefault()}>
+                            <a href="/" onClick={(e) => e.preventDefault()}>
                               <Space>
                                 {t("supplements")}
                                 <DownOutlined />

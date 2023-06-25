@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import TextArea from "antd/es/input/TextArea";
-import { useTransition } from "react";
 
 const SignupMock = () => {
   const [form] = Form.useForm();

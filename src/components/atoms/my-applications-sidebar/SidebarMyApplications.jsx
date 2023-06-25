@@ -17,6 +17,8 @@ const SidebarMyApplications = () => {
 
   const [show, setShow] = useState(true);
 
+  console.log(setShow);
+
   return (
     <div className="sidebar__my-applications applications-sidebar">
       <div className="top__applications-sidebar">

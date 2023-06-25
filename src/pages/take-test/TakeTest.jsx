@@ -2,12 +2,11 @@ import React, { useState } from "react";
 
 import "./takeTest.css";
 
-import { message, Steps, theme } from "antd";
+import { Steps } from "antd";
 import TestContent from "../../components/atoms/test-content/TestContent";
 import TestContent1 from "../../components/atoms/test-content/TestContent1";
 import TestContent2 from "../../components/atoms/test-content/TestContent2";
 import TestContentLast from "../../components/atoms/test-content/TestContentLast";
-import FinishTestModal from "../../components/atoms/finish-test-modal/FinishTestModal";
 
 const steps = [
   {
