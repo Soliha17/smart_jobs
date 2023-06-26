@@ -17,7 +17,7 @@ import "./secondStep.css";
 
 import EditIcon from "../../../../assets/images/edit-icon-table.svg";
 
-const SecondStep = ({ props }) => {
+const SecondStep = ({props}) => {
   const [form] = Form.useForm();
 
   const onChange = (date, dateString) => {
@@ -152,7 +152,10 @@ const SecondStep = ({ props }) => {
         />
       ),
       see: (
-        <button className="default-btn default-btn__create-vacancy">
+        <button
+          type="button"
+          className="default-btn default-btn__create-vacancy"
+        >
           Ko'rish
         </button>
       ),
@@ -177,7 +180,10 @@ const SecondStep = ({ props }) => {
         />
       ),
       see: (
-        <button className="default-btn default-btn__create-vacancy">
+        <button
+          type="button"
+          className="default-btn default-btn__create-vacancy"
+        >
           Ko'rish
         </button>
       ),
@@ -202,7 +208,10 @@ const SecondStep = ({ props }) => {
         />
       ),
       see: (
-        <button className="default-btn default-btn__create-vacancy">
+        <button
+          type="button"
+          className="default-btn default-btn__create-vacancy"
+        >
           Ko'rish
         </button>
       ),
@@ -227,7 +236,10 @@ const SecondStep = ({ props }) => {
         />
       ),
       see: (
-        <button className="default-btn default-btn__create-vacancy">
+        <button
+          type="button"
+          className="default-btn default-btn__create-vacancy"
+        >
           Ko'rish
         </button>
       ),
@@ -411,7 +423,9 @@ const SecondStep = ({ props }) => {
             <Col xs={24} sm={24}>
               <div className="table-header__create-vacancy">
                 <p className="subtitle__create-vacancy">Testlarni belgilash</p>
-                <button className="primary-btn">Test qo'shish</button>
+                <button type="button" className="primary-btn">
+                  Test qo'shish
+                </button>
               </div>
             </Col>
             <Col xs={24} sm={24}>

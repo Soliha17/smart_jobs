@@ -173,7 +173,8 @@
 }
 
 .dashboard-content:has(.test-statistic),
-.dashboard-content:has(.create-test) {
+.dashboard-content:has(.create-test),
+.dashboard-content:has(.general-settings) {
   margin: 0;
 }
 

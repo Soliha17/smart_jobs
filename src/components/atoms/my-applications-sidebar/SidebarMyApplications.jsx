@@ -13,6 +13,7 @@ const SidebarMyApplications = () => {
   const { t } = useTranslation();
 
   const onSearch = (value) => console.log(value);
+  
   const { Search } = Input;
 
   const [show, setShow] = useState(true);

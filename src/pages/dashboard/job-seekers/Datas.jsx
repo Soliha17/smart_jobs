@@ -6,7 +6,16 @@ import { Select, Timeline } from "antd";
 const Datas = () => {
   return (
     <div className="content__jobseekers-card">
-      <h4 className="title__jobseekers-card">Arizalar</h4>
+      <h6 className="desc__jobseekers-card">
+        Motivated and forward-thinking product owner with years of Agile product
+        management experience. The blend of analytical skills, product
+        development success and communication capabilities. Superior skills in
+        translating complex and abstract ideas into easily understood technical
+        solutions.Advanced Certified Scrum Product Owner® (A-CSPO) 2022
+      </h6>
+      <h4 className="title__jobseekers-card experience-title__jobseekers-card">
+        Arizalar
+      </h4>
       <div className="applications__jobseekers-card">
         <h6>Product designer</h6>
         <div>
@@ -51,7 +60,7 @@ const Datas = () => {
           />
         </div>
       </div>
-      <h4 className="subtitle__jobseekers-card" style={{ marginTop: "36px" }}>
+      <h4 className="title__jobseekers-card experience-title__jobseekers-card">
         Tajriba
       </h4>
       <span className="experience-header__jobseekers-card">
@@ -134,7 +143,9 @@ const Datas = () => {
         ]}
       />
       <div className="education-group__jobseekers-card">
-        <h2 className="title__jobseekers-card">Ta'lim</h2>
+        <h2 className="title__jobseekers-card education-title__jobseekers-card">
+          Ta'lim
+        </h2>
         <h6>Tashkent University of Information Technology</h6>
         <p>Aprel 2022 - Hozirgacha </p>
       </div>

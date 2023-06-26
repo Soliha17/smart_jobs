@@ -31,6 +31,10 @@ import TestStatistic from "../../../pages/dashboard/test-statistic/TestStatistic
 import CreateTest from "../../../pages/dashboard/create-test/CreateTest";
 import TestResult from "../../../pages/dashboard/test-result/TestResult";
 import JobSeekers from "../../../pages/dashboard/job-seekers/JobSeekers";
+import JobSeekerPage from "../../../pages/dashboard/job-seekers/JobSeekerPage";
+import Orders from "../../../pages/dashboard/orders/Orders";
+import CreateOrder from "../../../pages/dashboard/create-order/CreateOrder";
+import GeneralSettings from "../../../pages/dashboard/general-settings/GeneralSettings";
 
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
@@ -288,13 +292,17 @@ const Sidebar = () => {
         </Header>
         <Content className="dashboard-content">
           {selectedMenuItem === "1" && <CreateVacancy />}
-          {selectedMenuItem === "2" && <VacancyList />}
+          {selectedMenuItem === "2" && <GeneralSettings />}
+          {/* {selectedMenuItem === "2" && <VacancyList />} */}
+          {selectedMenuItem === "3" && <CreateOrder />}
+          {/* {selectedMenuItem === "3" && <Orders />} */}
           {selectedMenuItem === "4" && <Candidates />}
           {selectedMenuItem === "5" && <JobSeekers />}
           {selectedMenuItem === "6" && <TestList />}
           {selectedMenuItem === "7" && <TestStatistic />}
           {selectedMenuItem === "8" && <CreateTest />}
           {selectedMenuItem === "9" && <TestResult />}
+          {selectedMenuItem === "10" && <JobSeekerPage />}
         </Content>
       </Layout>
     </Layout>

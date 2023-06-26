@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Table } from "antd";
+import { Input, Table, Upload, message } from "antd";
 
 import BackIcon from "../../../assets/images/bg-white50-back-icon.svg";
 import BackIconWhite from "../../../assets/images/back-icon-chat.svg";
@@ -8,11 +8,12 @@ import AddIcon from "../../../assets/images/add-circle.svg";
 import AddPhotoIcon from "../../../assets/images/add-photo-icon.svg";
 
 import "./createTest.css";
+
 const columns = [
-  {
-    title: "To'g'ri javob",
-    dataIndex: "rightAnswer",
-  },
+  // {
+  //   title: "To'g'ri javob",
+  //   dataIndex: "rightAnswer",
+  // },
   {
     title: "Javoblar variantlari",
     dataIndex: "answerVariants",
@@ -26,25 +27,21 @@ const columns = [
 const data = [
   {
     key: "1",
-    rightAnswer: "A)",
     answerVariants: "Variant 1",
     delete: <img src={DeleteIcon} alt="DeleteIcon" />,
   },
   {
     key: "2",
-    rightAnswer: "B)",
     answerVariants: "Variant 2",
     delete: <img src={DeleteIcon} alt="DeleteIcon" />,
   },
   {
     key: "3",
-    rightAnswer: "C)",
     answerVariants: "Variant 3",
     delete: <img src={DeleteIcon} alt="DeleteIcon" />,
   },
   {
     key: "4",
-    rightAnswer: "D)",
     answerVariants: (
       <Input placeholder="Variant kiriting..." size="small" bordered={false} />
     ),
@@ -65,6 +62,19 @@ const rowSelection = {
     // Column configuration not to be checked
     name: record.name,
   }),
+};
+
+const props = {
+  beforeUpload: (file) => {
+    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+    if (!isJpgOrPng) {
+      message.error(`${file.name} is not a img`);
+    }
+    return isJpgOrPng || Upload.LIST_IGNORE;
+  },
+  onChange: (info) => {
+    console.log(info.fileList);
+  },
 };
 
 const CreateTest = () => {
@@ -119,11 +129,14 @@ const CreateTest = () => {
               }}
             />
           </div>
-          <button className="add-img-btn">
-            Rasm qo'shish
-            <img src={AddPhotoIcon} alt="AddPhotoIcon" />
-          </button>
-          <div style={{ overflow: "auto" }}>
+
+          <Upload {...props} listType="picture">
+            <button className="add-img-btn">
+              Rasm qo'shish
+              <img src={AddPhotoIcon} alt="AddPhotoIcon" />
+            </button>
+          </Upload>
+          <div style={{ overflow: "auto", marginTop: "32px" }}>
             <Table
               rowSelection={{
                 type: "radio",

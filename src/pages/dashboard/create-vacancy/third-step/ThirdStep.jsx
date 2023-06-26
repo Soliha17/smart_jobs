@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row, Select, message } from "antd";
+import { Button, Col, Form, Row, Select, Tooltip, message } from "antd";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -11,7 +11,7 @@ import AddCircle from "../../../../assets/images/add-circle.svg";
 import AddUserModal from "./AddUserModal";
 import AddExternalUser from "./AddExternalUser";
 
-const ThirdStep = (props) => {
+const ThirdStep = ({ props }) => {
   const [form] = Form.useForm();
 
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
@@ -59,7 +59,13 @@ const ThirdStep = (props) => {
             <Col xs={24} sm={24}>
               <span className="section-title__create-vacancy">
                 Recrutorlar
-                <img src={QuestionMark} alt="QuestionMark" />
+                <Tooltip
+                  placement="right"
+                  title={"Ma'lumotlarni  kiriting"}
+                  color="blue"
+                >
+                  <img src={QuestionMark} alt="QuestionMark" />
+                </Tooltip>
               </span>
               <div className="field__resume">
                 <span>
@@ -90,7 +96,13 @@ const ThirdStep = (props) => {
             <Col xs={24} sm={24}>
               <span className="section-title__create-vacancy">
                 Xodimlar (intervyu oluvchilar)
-                <img src={QuestionMark} alt="QuestionMark" />
+                <Tooltip
+                  placement="right"
+                  title={"Ma'lumotlarni  kiriting"}
+                  color="blue"
+                >
+                  <img src={QuestionMark} alt="QuestionMark" />
+                </Tooltip>
               </span>
               <div className="field__resume">
                 <span>
@@ -106,7 +118,7 @@ const ThirdStep = (props) => {
               <Button
                 block
                 size="large"
-                // onClick={() => setIsSecondModalOpen(!isSecondModalOpen)}
+                onClick={() => setIsFirstModalOpen(!isFirstModalOpen)}
                 icon={<img src={AddCircle} alt="AddCircle" />}
                 style={{
                   textAlign: "left",
@@ -121,7 +133,13 @@ const ThirdStep = (props) => {
             <Col xs={24} sm={24}>
               <span className="section-title__create-vacancy">
                 Tashqi foydalanuvchilar
-                <img src={QuestionMark} alt="QuestionMark" />
+                <Tooltip
+                  placement="right"
+                  title={"Ma'lumotlarni  kiriting"}
+                  color="blue"
+                >
+                  <img src={QuestionMark} alt="QuestionMark" />
+                </Tooltip>
               </span>
               <div className="field__resume">
                 <span>

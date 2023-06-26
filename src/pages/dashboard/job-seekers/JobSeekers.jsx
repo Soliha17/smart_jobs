@@ -58,6 +58,7 @@ const JobSeekers = () => {
           <Search
             placeholder="Nomzodlar izlash"
             allowClear
+            style={{ width: "100%" }}
             size="large"
             suffix={<img src={SearchIcon} alt="" width={20} />}
             // onSearch={onSearch}
