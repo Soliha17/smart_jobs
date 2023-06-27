@@ -1,12 +1,12 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Input, Layout, Menu, Select } from "antd";
+import { Button, Input, Layout, Menu } from "antd";
 import { useState } from "react";
 
 // import { DownOutlined } from "@ant-design/icons";
 
 import SmartjobShortLogo from "../../../assets/images/smartjob-logo-short.svg";
 import NotificationWhite from "../../../assets/images/notification-white-icon.svg";
-import ExpressLogo from "../../../assets/images/dashboard-express-log.svg";
+// import ExpressLogo from "../../../assets/images/dashboard-express-log.svg";
 import SmartJobText from "../../../assets/images/smartjob-text-logo.svg";
 import AddCircleWhite from "../../../assets/images/add-circle-dashboard.svg";
 import SearchIcon from "../../../assets/images/search-icon-black.svg";
@@ -22,7 +22,7 @@ import HelpIcon from "../../../assets/images/help-icon-dashboard.svg";
 import SettingIcon from "../../../assets/images/setting-icon-dashboard.svg";
 
 import "./sidebar.css";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 // import VacancyList from "../../../pages/dashboard/vacancy-list/VacancyList";
 import CreateVacancy from "../../../pages/dashboard/create-vacancy/CreateVacancy";
 import Candidates from "../../../pages/dashboard/candidates/Candidates";
@@ -36,11 +36,7 @@ import JobSeekerPage from "../../../pages/dashboard/job-seekers/JobSeekerPage";
 import CreateOrder from "../../../pages/dashboard/create-order/CreateOrder";
 import GeneralSettings from "../../../pages/dashboard/general-settings/GeneralSettings";
 
-import {
-  MailOutlined,
-  SettingOutlined,
-  AppstoreOutlined,
-} from "@ant-design/icons";
+import { SettingOutlined, AppstoreOutlined } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
@@ -164,12 +160,12 @@ const itemsOfMenu = [
   },
 ];
 
-const languageOptions = [
-  { value: "en", label: "En" },
-  { value: "ru", label: "Ru" },
-  { value: "uz", label: "Uz" },
-  // Add more language options as needed
-];
+// const languageOptions = [
+//   { value: "en", label: "En" },
+//   { value: "ru", label: "Ru" },
+//   { value: "uz", label: "Uz" },
+//   // Add more language options as needed
+// ];
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -180,59 +176,59 @@ const Sidebar = () => {
   //   token: { colorBgContainer },
   // } = theme.useToken();
 
-  const { i18n, t } = useTranslation();
+  // const { i18n, t } = useTranslation();
 
   const onSearch = (value) => console.log(value);
 
-  const currentLanguage = i18n.language;
+  // const currentLanguage = i18n.language;
 
-  const handleLanguageChange = (value) => {
-    i18n.changeLanguage(value);
-  };
+  // const handleLanguageChange = (value) => {
+  //   i18n.changeLanguage(value);
+  // };
 
-  const items = [
-    {
-      label: (
-        <a href="https://www.antgroup.com">
-          <img src="" alt="" />
-          Profil
-        </a>
-      ),
-      key: "0",
-    },
-    {
-      label: (
-        <Select
-          value={currentLanguage}
-          onChange={handleLanguageChange}
-          bordered={false}
-        >
-          {languageOptions.map((option) => (
-            <Select.Option key={option.value} value={option.value}>
-              {option.label}
-            </Select.Option>
-          ))}
-        </Select>
-      ),
-      key: "1",
-    },
-    {
-      label: <a href="https://www.aliyun.com">{t("professions")}</a>,
-      key: "2",
-    },
-    {
-      label: <a href="https://www.aliyun.com">{t("areas")}</a>,
-      key: "3",
-    },
-    {
-      label: <a href="https://www.aliyun.com">{t("aboutUs")}</a>,
-      key: "4",
-    },
-    {
-      label: <a href="https://www.aliyun.com">{t("help")}</a>,
-      key: "5",
-    },
-  ];
+  // const items = [
+  //   {
+  //     label: (
+  //       <a href="https://www.antgroup.com">
+  //         <img src="" alt="" />
+  //         Profil
+  //       </a>
+  //     ),
+  //     key: "0",
+  //   },
+  //   {
+  //     label: (
+  //       <Select
+  //         value={currentLanguage}
+  //         onChange={handleLanguageChange}
+  //         bordered={false}
+  //       >
+  //         {languageOptions.map((option) => (
+  //           <Select.Option key={option.value} value={option.value}>
+  //             {option.label}
+  //           </Select.Option>
+  //         ))}
+  //       </Select>
+  //     ),
+  //     key: "1",
+  //   },
+  //   {
+  //     label: <a href="https://www.aliyun.com">{t("professions")}</a>,
+  //     key: "2",
+  //   },
+  //   {
+  //     label: <a href="https://www.aliyun.com">{t("areas")}</a>,
+  //     key: "3",
+  //   },
+  //   {
+  //     label: <a href="https://www.aliyun.com">{t("aboutUs")}</a>,
+  //     key: "4",
+  //   },
+  //   {
+  //     label: <a href="https://www.aliyun.com">{t("help")}</a>,
+  //     key: "5",
+  //   },
+  // ];
 
   return (
     <Layout className="dashboard-solya" style={{ position: "relative" }}>
