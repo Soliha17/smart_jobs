@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { Drawer, Dropdown, Select, Space } from "antd";
@@ -72,7 +72,7 @@ function Header() {
 
   const items = [
     {
-      label: <a href="/dashboard">{t("companies")}</a>,
+      label: <Link to="/dashboard">{t("companies")}</Link>,
       key: "0",
     },
     {
