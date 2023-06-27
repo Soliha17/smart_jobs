@@ -1,8 +1,8 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Input, Layout, Menu } from "antd";
+import { Button, Input, Layout, Menu, Select } from "antd";
 import { useState } from "react";
 
-import { DownOutlined } from "@ant-design/icons";
+// import { DownOutlined } from "@ant-design/icons";
 
 import SmartjobShortLogo from "../../../assets/images/smartjob-logo-short.svg";
 import NotificationWhite from "../../../assets/images/notification-white-icon.svg";
@@ -23,7 +23,7 @@ import SettingIcon from "../../../assets/images/setting-icon-dashboard.svg";
 
 import "./sidebar.css";
 import { useTranslation } from "react-i18next";
-import VacancyList from "../../../pages/dashboard/vacancy-list/VacancyList";
+// import VacancyList from "../../../pages/dashboard/vacancy-list/VacancyList";
 import CreateVacancy from "../../../pages/dashboard/create-vacancy/CreateVacancy";
 import Candidates from "../../../pages/dashboard/candidates/Candidates";
 import TestList from "../../../pages/dashboard/test-list/TestList";
@@ -32,12 +32,48 @@ import CreateTest from "../../../pages/dashboard/create-test/CreateTest";
 import TestResult from "../../../pages/dashboard/test-result/TestResult";
 import JobSeekers from "../../../pages/dashboard/job-seekers/JobSeekers";
 import JobSeekerPage from "../../../pages/dashboard/job-seekers/JobSeekerPage";
-import Orders from "../../../pages/dashboard/orders/Orders";
+// import Orders from "../../../pages/dashboard/orders/Orders";
 import CreateOrder from "../../../pages/dashboard/create-order/CreateOrder";
 import GeneralSettings from "../../../pages/dashboard/general-settings/GeneralSettings";
 
+import {
+  MailOutlined,
+  SettingOutlined,
+  AppstoreOutlined,
+} from "@ant-design/icons";
+
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
+
+function getItem(label, key, icon, children, type) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  };
+}
+
+const menuItems = [
+  getItem("Navigation Two", "sub2", <AppstoreOutlined />, [
+    getItem("Option 5", "5"),
+    getItem("Option 6", "6"),
+    getItem("Submenu", "sub3", null, [
+      getItem("Option 7", "7"),
+      getItem("Option 8", "8"),
+    ]),
+  ]),
+  {
+    type: "divider",
+  },
+  getItem("Navigation Three", "sub4", <SettingOutlined />, [
+    getItem("Option 9", "9"),
+    getItem("Option 10", "10"),
+    getItem("Option 11", "11"),
+    getItem("Option 12", "12"),
+  ]),
+];
 
 const itemsOfMenu = [
   {
@@ -128,6 +164,13 @@ const itemsOfMenu = [
   },
 ];
 
+const languageOptions = [
+  { value: "en", label: "En" },
+  { value: "ru", label: "Ru" },
+  { value: "uz", label: "Uz" },
+  // Add more language options as needed
+];
+
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [collapsed1, setCollapsed1] = useState(false);
@@ -137,17 +180,40 @@ const Sidebar = () => {
   //   token: { colorBgContainer },
   // } = theme.useToken();
 
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const onSearch = (value) => console.log(value);
 
+  const currentLanguage = i18n.language;
+
+  const handleLanguageChange = (value) => {
+    i18n.changeLanguage(value);
+  };
+
   const items = [
     {
-      label: <a href="https://www.antgroup.com">{t("companies")}</a>,
+      label: (
+        <a href="https://www.antgroup.com">
+          <img src="" alt="" />
+          Profil
+        </a>
+      ),
       key: "0",
     },
     {
-      label: <a href="https://www.aliyun.com">{t("articles")}</a>,
+      label: (
+        <Select
+          value={currentLanguage}
+          onChange={handleLanguageChange}
+          bordered={false}
+        >
+          {languageOptions.map((option) => (
+            <Select.Option key={option.value} value={option.value}>
+              {option.label}
+            </Select.Option>
+          ))}
+        </Select>
+      ),
       key: "1",
     },
     {
@@ -275,7 +341,17 @@ const Sidebar = () => {
               <img src={AddCircleWhite} alt="AddCircleWhite" />
             </button>
             <div className="profile__dashboard-header">
-              <Dropdown
+              <Menu
+                // onClick={onClick}
+                style={{
+                  width: 256,
+                }}
+                defaultSelectedKeys={["1"]}
+                defaultOpenKeys={["sub1"]}
+                mode="inline"
+                items={menuItems}
+              />
+              {/* <Dropdown
                 menu={{
                   items,
                 }}
@@ -286,7 +362,7 @@ const Sidebar = () => {
                   {window.innerWidth >= 700 && "Express 24"}
                   <DownOutlined />
                 </button>
-              </Dropdown>
+              </Dropdown> */}
             </div>
           </div>
         </Header>
