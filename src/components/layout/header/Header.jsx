@@ -72,7 +72,7 @@ function Header() {
 
   const items = [
     {
-      label: <a href="https://www.antgroup.com">{t("companies")}</a>,
+      label: <a href="/dashboard">{t("companies")}</a>,
       key: "0",
     },
     {
