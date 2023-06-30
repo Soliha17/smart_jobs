@@ -1,0 +1,17 @@
+.chat {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.chat-wrapper {
+  /* background: var(--white-50); */
+}
+
+@media (max-width: 1100px) {
+  .chat {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

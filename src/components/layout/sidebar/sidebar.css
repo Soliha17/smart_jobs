@@ -174,8 +174,12 @@
 
 .dashboard-content:has(.test-statistic),
 .dashboard-content:has(.create-test),
-.dashboard-content:has(.general-settings) {
+.dashboard-content:has(.settings) {
   margin: 0;
+}
+
+.dashboard-content:has(.chat) {
+  margin: 26px 30px;
 }
 
 @media (max-width: 992px) {
@@ -259,5 +263,9 @@
 
   .profile__dashboard-header {
     margin-right: 10px;
+  }
+
+  .dashboard-content:has(.chat) {
+    margin: 26px 0;
   }
 }

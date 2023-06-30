@@ -1,12 +1,14 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Input, Layout, Menu } from "antd";
 import { useState } from "react";
-
-// import { DownOutlined } from "@ant-design/icons";
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
+import { Button, Dropdown, Input, Layout, Menu, Select } from "antd";
 
 import SmartjobShortLogo from "../../../assets/images/smartjob-logo-short.svg";
 import NotificationWhite from "../../../assets/images/notification-white-icon.svg";
-// import ExpressLogo from "../../../assets/images/dashboard-express-log.svg";
+import ExpressLogo from "../../../assets/images/dashboard-express-log.svg";
 import SmartJobText from "../../../assets/images/smartjob-text-logo.svg";
 import AddCircleWhite from "../../../assets/images/add-circle-dashboard.svg";
 import SearchIcon from "../../../assets/images/search-icon-black.svg";
@@ -20,157 +22,220 @@ import TestIcon from "../../../assets/images/test-icon-dashboard.svg";
 import ReportIcon from "../../../assets/images/report-icon-dashboard.svg";
 import HelpIcon from "../../../assets/images/help-icon-dashboard.svg";
 import SettingIcon from "../../../assets/images/setting-icon-dashboard.svg";
+import LanguageIcon from "../../../assets/images/language-select-icon.svg";
+import LightmodeIcon from "../../../assets/images/light-mode-icon.svg";
+import ProfilIcon from "../../../assets/images/profil-icon-dashboard.svg";
 
 import "./sidebar.css";
 // import { useTranslation } from "react-i18next";
-// import VacancyList from "../../../pages/dashboard/vacancy-list/VacancyList";
-import CreateVacancy from "../../../pages/dashboard/create-vacancy/CreateVacancy";
+import VacancyList from "../../../pages/dashboard/vacancy-list/VacancyList";
+// import CreateVacancy from "../../../pages/dashboard/create-vacancy/CreateVacancy";
 import Candidates from "../../../pages/dashboard/candidates/Candidates";
 import TestList from "../../../pages/dashboard/test-list/TestList";
 import TestStatistic from "../../../pages/dashboard/test-statistic/TestStatistic";
 import CreateTest from "../../../pages/dashboard/create-test/CreateTest";
 import TestResult from "../../../pages/dashboard/test-result/TestResult";
 import JobSeekers from "../../../pages/dashboard/job-seekers/JobSeekers";
-import JobSeekerPage from "../../../pages/dashboard/job-seekers/JobSeekerPage";
+// import JobSeekerPage from "../../../pages/dashboard/job-seekers/JobSeekerPage";
 // import Orders from "../../../pages/dashboard/orders/Orders";
 import CreateOrder from "../../../pages/dashboard/create-order/CreateOrder";
-import GeneralSettings from "../../../pages/dashboard/general-settings/GeneralSettings";
-
-import { SettingOutlined, AppstoreOutlined } from "@ant-design/icons";
+import Chat from "../../../pages/dashboard/chat/Chat";
+import Notifications from "../../../pages/dashboard/notifications/Notifications";
+import Settings from "../../../pages/dashboard/settings/Settings";
 
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
 
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
-
-const menuItems = [
-  getItem("Navigation Two", "sub2", <AppstoreOutlined />, [
-    getItem("Option 5", "5"),
-    getItem("Option 6", "6"),
-    getItem("Submenu", "sub3", null, [
-      getItem("Option 7", "7"),
-      getItem("Option 8", "8"),
-    ]),
-  ]),
-  {
-    type: "divider",
-  },
-  getItem("Navigation Three", "sub4", <SettingOutlined />, [
-    getItem("Option 9", "9"),
-    getItem("Option 10", "10"),
-    getItem("Option 11", "11"),
-    getItem("Option 12", "12"),
-  ]),
+const languageOptions = [
+  { value: "en", label: "English" },
+  { value: "ru", label: "Russian" },
+  { value: "uz", label: "Uzbek" },
+  // Add more language options as needed
 ];
 
-const itemsOfMenu = [
+const items = [
   {
     key: "1",
-    icon: <img src={AddboxIcon} alt="AddboxIcon" />,
-    label: "Dashboard",
+    label: (
+      <span style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <img src={ProfilIcon} alt="ProfilIcon" />
+        Profil
+      </span>
+    ),
   },
   {
     key: "2",
-    icon: <img src={JobIcon} alt="JobIcon" />,
-    label: "Vakansiyalar",
+    label: (
+      <span style={{ display: "flex", alignItems: "center" }}>
+        <img src={LanguageIcon} alt="LanguageIcon" />
+        <Select
+          defaultValue="en"
+          bordered={false}
+          onClick={(e) => e.stopPropagation()}
+          style={{ width: "100%" }}
+        >
+          {languageOptions.map((option) => (
+            <Select.Option key={option.value} value={option.value}>
+              {option.label}
+            </Select.Option>
+          ))}
+        </Select>
+      </span>
+    ),
   },
   {
     key: "3",
-    icon: <img src={SmsIcon} alt="SmsIcon" />,
-    label: "Xabarlar",
-  },
-  {
-    key: "4",
-    icon: <img src={PeopleIcon} alt="PeopleIcon" />,
-    label: "Nomzodlar",
-  },
-  {
-    key: "5",
-    icon: (
-      <img
-        src={SearchNavIcon}
-        className="last-icon__dashboard-menu"
-        alt="SearchNavIcon"
-      />
+    label: (
+      <span style={{ display: "flex", alignItems: "center" }}>
+        <img src={LightmodeIcon} alt="LightmodeIcon" />
+
+        <Select
+          defaultValue="day"
+          bordered={false}
+          style={{ width: "100%" }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Select.Option value="day">Kunduzgi rejim</Select.Option>
+          <Select.Option value="night">Qorong'i rejim</Select.Option>
+        </Select>
+      </span>
     ),
-    label: "Ish qidiruvchilar",
-  },
-  {
-    key: "6",
-    icon: (
-      <img
-        src={TestIcon}
-        className="last-icon__dashboard-menu"
-        alt="TestIcon"
-      />
-    ),
-    label: "Testlar",
-  },
-  {
-    key: "7",
-    icon: (
-      <img
-        src={ReportIcon}
-        className="last-icon__dashboard-menu"
-        alt="ReportIcon"
-      />
-    ),
-    label: "Hisobotlar",
-  },
-  {
-    key: "8",
-    icon: (
-      <img
-        src={PlanIcon}
-        className="last-icon__dashboard-menu"
-        alt="PlanIcon"
-      />
-    ),
-    label: "Buyurtmalar",
-  },
-  {
-    key: "9",
-    icon: (
-      <img
-        src={HelpIcon}
-        className="last-icon__dashboard-menu1"
-        alt="PlanIcon"
-      />
-    ),
-    label: "Yordam",
-  },
-  {
-    key: "10",
-    icon: (
-      <img
-        src={SettingIcon}
-        className="last-icon__dashboard-menu1"
-        alt="PlanIcon"
-      />
-    ),
-    label: "Sozlamalar",
   },
 ];
-
-// const languageOptions = [
-//   { value: "en", label: "En" },
-//   { value: "ru", label: "Ru" },
-//   { value: "uz", label: "Uz" },
-//   // Add more language options as needed
-// ];
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [collapsed1, setCollapsed1] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState("1");
+  const [selectedInsideMenuItem, setSelectedInsideMenuItem] = useState("7.1");
+  const [dropdownVisible, setDropdownVisible] = useState(false); // Add dropdownVisible state
+
+  // const handleInsideMenuSelect = ({ key }) => {
+  //   setSelectedInsideMenuItem(key);
+  // };
+
+  const itemsOfMenu = [
+    {
+      key: "1",
+      icon: <img src={AddboxIcon} alt="AddboxIcon" />,
+      label: "Dashboard",
+    },
+    {
+      key: "2",
+      icon: <img src={JobIcon} alt="JobIcon" />,
+      label: "Vakansiyalar",
+    },
+    {
+      key: "3",
+      icon: <img src={SmsIcon} alt="SmsIcon" />,
+      label: "Xabarlar",
+    },
+    {
+      key: "4",
+      icon: <img src={PeopleIcon} alt="PeopleIcon" />,
+      label: "Nomzodlar",
+      dropdown: true,
+      dropdownContent: (
+        <Menu>
+          <Menu.Item key="4.1">Option 1</Menu.Item>
+          <Menu.Item key="4.2">Option 2</Menu.Item>
+          <Menu.Item key="4.3">Option 3</Menu.Item>
+        </Menu>
+      ),
+    },
+    {
+      key: "5",
+      icon: (
+        <img
+          src={SearchNavIcon}
+          className="last-icon__dashboard-menu"
+          alt="SearchNavIcon"
+        />
+      ),
+      label: "Ish qidiruvchilar",
+    },
+    {
+      key: "6",
+      icon: (
+        <img
+          src={TestIcon}
+          className="last-icon__dashboard-menu"
+          alt="TestIcon"
+        />
+      ),
+      label: "Testlar",
+    },
+    {
+      key: "7",
+      icon: (
+        <img
+          src={ReportIcon}
+          className="last-icon__dashboard-menu"
+          alt="ReportIcon"
+        />
+      ),
+      label: "Hisobotlar",
+      dropdown: true,
+      dropdownContent: (
+        <Menu>
+          <Menu.Item
+            key="7.1"
+            onClick={(e) => setSelectedInsideMenuItem(e.key)}
+          >
+            Test statistikasi
+          </Menu.Item>
+          <Menu.Item
+            key="7.2"
+            onClick={(e) => setSelectedInsideMenuItem(e.key)}
+          >
+            Test natijalari
+          </Menu.Item>
+          <Menu.Item
+            key="7.3"
+            onClick={(e) => setSelectedInsideMenuItem(e.key)}
+          >
+            Option 3
+          </Menu.Item>
+        </Menu>
+      ),
+    },
+    {
+      key: "8",
+      icon: (
+        <img
+          src={PlanIcon}
+          className="last-icon__dashboard-menu"
+          alt="PlanIcon"
+        />
+      ),
+      label: "Buyurtmalar",
+    },
+    {
+      key: "9",
+      icon: (
+        <img
+          src={HelpIcon}
+          className="last-icon__dashboard-menu1"
+          alt="PlanIcon"
+        />
+      ),
+      label: "Yordam",
+    },
+    {
+      key: "10",
+      icon: (
+        <img
+          src={SettingIcon}
+          className="last-icon__dashboard-menu1"
+          alt="PlanIcon"
+        />
+      ),
+      label: "Sozlamalar",
+    },
+  ];
+
+  console.log("selectedMenuItem: ", selectedMenuItem);
+  console.log("selectedInsideMenuItem: ", selectedInsideMenuItem);
 
   // const {
   //   token: { colorBgContainer },
@@ -229,6 +294,10 @@ const Sidebar = () => {
   //     key: "5",
   //   },
   // ];
+
+  const handleDropdownVisibleChange = (visible) => {
+    setDropdownVisible(visible);
+  };
 
   return (
     <Layout className="dashboard-solya" style={{ position: "relative" }}>
@@ -293,8 +362,31 @@ const Sidebar = () => {
             defaultSelectedKeys={["1"]}
             selectedKeys={[selectedMenuItem]}
             onClick={(e) => setSelectedMenuItem(e.key)}
-            items={itemsOfMenu}
-          />
+            // items={itemsOfMenu}
+          >
+            {itemsOfMenu.map((item) =>
+              item.dropdown ? (
+                <Menu.Item key={item.key} icon={item.icon}>
+                  <Dropdown overlay={item.dropdownContent}>
+                    <span
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      {item.label} <DownOutlined />
+                    </span>
+                  </Dropdown>
+                </Menu.Item>
+              ) : (
+                <Menu.Item key={item.key} icon={item.icon}>
+                  {item.label}
+                </Menu.Item>
+              )
+            )}
+          </Menu>
         </Sider>
       )}
       <Layout>
@@ -337,44 +429,43 @@ const Sidebar = () => {
               <img src={AddCircleWhite} alt="AddCircleWhite" />
             </button>
             <div className="profile__dashboard-header">
-              <Menu
-                // onClick={onClick}
-                style={{
-                  width: 256,
-                }}
-                defaultSelectedKeys={["1"]}
-                defaultOpenKeys={["sub1"]}
-                mode="inline"
-                items={menuItems}
-              />
-              {/* <Dropdown
+              <Dropdown
                 menu={{
                   items,
                 }}
                 trigger={["click"]}
+                visible={dropdownVisible} // Pass the dropdownVisible state
+                onVisibleChange={handleDropdownVisibleChange} // Handle visibility change
               >
                 <button onClick={(e) => e.preventDefault()}>
                   <img src={ExpressLogo} alt="Pofile Img" width={43} />
                   {window.innerWidth >= 700 && "Express 24"}
                   <DownOutlined />
                 </button>
-              </Dropdown> */}
+              </Dropdown>
             </div>
           </div>
         </Header>
         <Content className="dashboard-content">
-          {selectedMenuItem === "1" && <CreateVacancy />}
-          {selectedMenuItem === "2" && <GeneralSettings />}
-          {/* {selectedMenuItem === "2" && <VacancyList />} */}
-          {selectedMenuItem === "3" && <CreateOrder />}
+          {selectedMenuItem === "1" && <Notifications />}
+          {/* {selectedMenuItem === "1" && <CreateVacancy />} */}
+          {selectedMenuItem === "2" && <VacancyList />}
+          {selectedMenuItem === "3" && <Chat />}
           {/* {selectedMenuItem === "3" && <Orders />} */}
           {selectedMenuItem === "4" && <Candidates />}
           {selectedMenuItem === "5" && <JobSeekers />}
           {selectedMenuItem === "6" && <TestList />}
-          {selectedMenuItem === "7" && <TestStatistic />}
+          {selectedMenuItem === "7" && selectedInsideMenuItem === "7.1" && (
+            <TestStatistic />
+          )}
+          {selectedMenuItem === "7" && selectedInsideMenuItem === "7.2" && (
+            <TestResult />
+          )}
           {selectedMenuItem === "8" && <CreateTest />}
-          {selectedMenuItem === "9" && <TestResult />}
-          {selectedMenuItem === "10" && <JobSeekerPage />}
+          {selectedMenuItem === "9" && <CreateOrder />}
+          {selectedMenuItem === "10" && <Settings />}
+
+          {/* {selectedMenuItem === "10" && <JobSeekerPage />} */}
         </Content>
       </Layout>
     </Layout>

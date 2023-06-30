@@ -1,40 +1,12 @@
 import React from "react";
-import { Col, Form, Row, Select, Tabs } from "antd";
+import { Col, Form, Row, Select } from "antd";
 
-import "./generalSettings.css";
+import "./settings.css";
 
 import LabeledInput from "../../../components/molecules/labeled-input/LabeledInput";
 
 const GeneralSettings = () => {
   const [form] = Form.useForm();
-
-  const items = [
-    {
-      key: "1",
-      label: "Umumiy",
-      // children: <Information />,
-    },
-    {
-      key: "2",
-      label: "Kompaniya ma'lumotlari",
-      // children: <MyApplications />,
-    },
-    {
-      key: "3",
-      label: "Foydalanuvchilar",
-      // children: <MyResumes />,
-    },
-    {
-      key: "4",
-      label: "Bildirishnomalar",
-      // children: <SavedProfile />,
-    },
-    {
-      key: "5",
-      label: "Parolni o'zgartirish",
-      // children: <SettingsProfile />,
-    },
-  ];
 
   function onChange() {
     console.log("onchange");
@@ -51,9 +23,8 @@ const GeneralSettings = () => {
   };
 
   return (
-    <div className="general-settings">
-      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-      <h6>Umumiy sozlamalar</h6>
+    <div>
+      <h6 className="title__general-settings">Umumiy sozlamalar</h6>
       <div className="content__general-settings">
         <Form
           form={form}

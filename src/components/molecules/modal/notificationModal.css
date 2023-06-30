@@ -1,0 +1,41 @@
+.ant-modal-root:has(.notification-modal) .ant-modal-content {
+  width: 818px !important;
+}
+
+.notification-modal-container {
+  margin-top: 24px;
+}
+
+.notification-modal-container img {
+  width: 100%;
+  max-width: 722px;
+  height: auto;
+  border-radius: 26px;
+  background: var(--primary-12, #e0f1ff);
+}
+
+.notification-modal-container p {
+  margin-top: 30px;
+  color: var(--black-100, #1c1917);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.notification-modal-container button {
+  margin-top: 24px;
+  display: block;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .ant-modal-root:has(.notification-modal) .ant-modal-content {
+    width: 90% !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .ant-modal-root:has(.notification-modal) .ant-modal-content {
+    width: 100% !important;
+  }
+}

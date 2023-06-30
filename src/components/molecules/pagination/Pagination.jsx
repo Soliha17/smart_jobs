@@ -17,7 +17,7 @@ const itemRender = (_, type, originalElement) => {
   if (type === "next") {
     return (
       <div className="button-group">
-        <a href="/">Keyingisi</a>
+        <a href="/">Oldinga</a>
         <img src={PrevIcon} alt="prev icon" />
       </div>
     );
