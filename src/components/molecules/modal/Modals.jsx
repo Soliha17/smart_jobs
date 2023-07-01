@@ -3,6 +3,7 @@ import { Modal, Steps } from "antd";
 
 import JobSeekerModal from "./JobSeeker";
 import Login from "./Login";
+import SignUp from "./SignUp";
 import InfoFills from "./FillInfos";
 
 import SmartJobLogo from "../../../assets/images/smart-logo.svg";
@@ -15,7 +16,7 @@ const steps = [
   },
   {
     title: "Second",
-    content: <Login />,
+    content: <SignUp />,
   },
   {
     title: "Last",
@@ -26,10 +27,8 @@ const steps = [
 const Modals = ({ open, setOpen }) => {
   // const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-  const [selectedButton, setSelectedButton] = useState("btn1");
+  // const [selectedButton, setSelectedButton] = useState("btn1");
   const [data, setData] = useState("");
-
-  console.log(selectedButton);
 
   const next = (stepNumber) => {
     setCurrent(current + stepNumber);
@@ -70,17 +69,17 @@ const Modals = ({ open, setOpen }) => {
         >
           {current === 0 ? (
             <JobSeekerModal
-              selectedButton={selectedButton}
-              setSelectedButton={setSelectedButton}
+              // selectedButton={selectedButton}
+              // setSelectedButton={setSelectedButton}
               next={next}
               prev={prev}
               dataHandler={{ data, setData }}
             />
           ) : current === 1 ? (
-            <Login next={next} prev={prev} data={data} />
+            <SignUp next={next} prev={prev} data={data} />
           ) : (
             <InfoFills
-              selectedButton={selectedButton}
+              // selectedButton={selectedButton}
               next={next}
               prev={prev}
             />

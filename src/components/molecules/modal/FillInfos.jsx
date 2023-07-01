@@ -14,8 +14,9 @@ import "./modal.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
-const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
+const InfoFills = ({ open, setOpen, prev, next }) => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -31,9 +32,13 @@ const InfoFills = ({ open, setOpen, prev, next, selectedButton }) => {
     prev(2);
   }
 
-  console.log(selectedButton);
+  // console.log(selectedButton);
 
   const { t } = useTranslation();
+
+   const selectedButton = useSelector(
+     (state) => state.selectRoleSlice.selectedButton
+   );
 
   return (
     <div className="body__login-modal full-infos-modal">

@@ -10,13 +10,15 @@ import { useTranslation } from "react-i18next";
 
 // import { Form, Input } from 'antd'
 
-const JobSeekerModal = ({
-  next,
-  selectedButton,
-  setSelectedButton,
-  dataHandler,
-}) => {
+import { useSelector, useDispatch } from "react-redux";
+import selectRoleReducer, {
+  selectButton,
+} from "../../../store/selectRole.slice";
+import { GetSmsCodeThunk } from "../../../store/auth.slice";
+
+const JobSeekerModal = ({ next, dataHandler }) => {
   // const [form] = Form.useForm();
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState("");
 
@@ -24,9 +26,9 @@ const JobSeekerModal = ({
 
   const { t } = useTranslation();
 
-  const selectButton = (btn) => {
-    setSelectedButton(btn);
-  };
+  // const selectButton = (btn) => {
+  //   setSelectedButton(btn);
+  // };
 
   const onSubmit = (values) => {
     values.preventDefault();
@@ -39,11 +41,17 @@ const JobSeekerModal = ({
         !inputValue.includes("@")) ||
       (inputValue.length &&
         inputValue.slice(0, 1) === "+" &&
-        inputValue.length === 14)
+        inputValue.length === 13)
     ) {
+      let resultInputValue = inputValue.split(" ").join();
+      dispatch(
+        GetSmsCodeThunk({
+          data: { phoneNumberOrEmailAddress: resultInputValue },
+        })
+      );
       setData(inputValue);
       console.log("data", data);
-      next(1);
+      // next(1);
     }
   };
 
@@ -109,6 +117,14 @@ const JobSeekerModal = ({
     }
   }, [inputValue, errorText]);
 
+  const selectedButton = useSelector(
+    (state) => state.selectRoleSlice.selectedButton
+  );
+
+  const handleButtonClick = (button) => {
+    dispatch(selectButton(button));
+  };
+
   return (
     <div className="body__login-modal">
       <div className="select-btn-group__login-modal">
@@ -116,7 +132,7 @@ const JobSeekerModal = ({
           className={` ${
             selectedButton === "btn1" && "selected-button____login-modal"
           }`}
-          onClick={() => selectButton("btn1")}
+          onClick={() => handleButtonClick("btn1")}
         >
           {t("theApplicant")}
         </button>
@@ -124,7 +140,7 @@ const JobSeekerModal = ({
           className={` ${
             selectedButton === "btn2" && "selected-button____login-modal"
           }`}
-          onClick={() => selectButton("btn2")}
+          onClick={() => handleButtonClick("btn2")}
         >
           {t("employer")}
         </button>
