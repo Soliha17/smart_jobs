@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "antd";
+import { useDispatch } from "react-redux";
 
 const OTPInput = () => {
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState(false);
+
+  const dispatch = useDispatch();
 
   const onInputValueChange = (e) => {
     const value = e.target.value;

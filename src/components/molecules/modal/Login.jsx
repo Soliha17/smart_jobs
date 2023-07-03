@@ -6,9 +6,11 @@ import PrivacyIcon from "../../../assets/images/privacy-icon.svg";
 import LabeledInput from "../labeled-input/LabeledInput";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 
 const Login = ({ next, prev }) => {
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
 
   const onFinish = (values) => {
     console.log("Success:", values);

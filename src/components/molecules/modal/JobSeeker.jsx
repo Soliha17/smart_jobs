@@ -14,7 +14,9 @@ import { useSelector, useDispatch } from "react-redux";
 import selectRoleReducer, {
   selectButton,
 } from "../../../store/selectRole.slice";
-import { GetSmsCodeThunk } from "../../../store/auth.slice";
+import { GetOrganizationMe, GetSmsCodeThunk, setSmsCode } from "../../../store/auth.slice";
+import { useNavigate } from "react-router-dom";
+import { getOrganizationMe } from "../../../store/request";
 
 const JobSeekerModal = ({ next, dataHandler }) => {
   // const [form] = Form.useForm();
@@ -25,6 +27,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   const { data, setData } = dataHandler;
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   // const selectButton = (btn) => {
   //   setSelectedButton(btn);
@@ -32,7 +35,15 @@ const JobSeekerModal = ({ next, dataHandler }) => {
 
   const onSubmit = (values) => {
     values.preventDefault();
+    dispatch(getOrganizationMe({token: '', data: {}}));
     // console.log("data",data)
+    function callback(status) {
+      if (status == 200) {
+        next(1);
+      } else {
+        console.log("Xatolik yuz berdi!");
+      }
+    }
 
     if (
       (inputValue.length &&
@@ -41,17 +52,18 @@ const JobSeekerModal = ({ next, dataHandler }) => {
         !inputValue.includes("@")) ||
       (inputValue.length &&
         inputValue.slice(0, 1) === "+" &&
-        inputValue.length === 13)
+        inputValue.length === 14) //is not working stop, 1 minute
     ) {
-      let resultInputValue = inputValue.split(" ").join();
-      dispatch(
-        GetSmsCodeThunk({
-          data: { phoneNumberOrEmailAddress: resultInputValue },
-        })
-      );
+      let resultInputValue = inputValue
+        .split("")
+        .filter((item) => item !== " ")
+        .join("");
+      console.log(resultInputValue);
+      dispatch(GetSmsCodeThunk({ phone: resultInputValue, callback }));
       setData(inputValue);
       console.log("data", data);
-      // next(1);
+      console.log(1);
+      // ;
     }
   };
 
@@ -181,39 +193,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
           <br />
           <input type="submit" value={t("continue")} onClick={onSubmit} />
         </form>
-        {/* <Form
-              form={form}
-              layout="vertical"
-              name="basic"
-              initialValues={
-                {
-                  // require: true,
-                  // requiredMark: true,
-                  // requiredMarkValue: requiredMark,
-                }
-              }
-              onFinish={onFinish}
-              // onValuesChange={onRequiredTypeChange}
-              // requiredMark={requiredMark}
-              onFinishFailed={onFinishFailed}
-              autoComplete="off"
-            >
-              <Row gutter={[24, 34]}>
-                <Col xs={24} sm={24}>
-
-                   <LabeledInput
-                    labelName="Telefon yoki E-maingizni kiriting"
-                    labelFor="phoneOrEmail"
-                    // req={true}
-                    input={<Input size="large" />}
-                  />
-
-                </Col>
-                <Col xs={24} sm={24}>
-                  <button className="primary-btn">Davom etish</button>
-                </Col>
-              </Row>
-            </Form> */}
         <span className="text__login-modal">
           <img src={PrivacyIcon} alt="privacy-icon" />
           <p>{t("allYourInformationIsProtected")}</p>

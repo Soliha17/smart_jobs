@@ -1,18 +1,24 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Col, Row, Form } from "antd";
+import { Col, Row, Form, Input } from "antd";
 
 import "./modal.css";
 
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../assets/images/resend-icon.svg";
 import OTPInput from "../../atoms/OTPInput";
+import { useDispatch } from "react-redux";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
+  const [inputValue, setInputValue] = useState("");
+  const [errorText, setErrorText] = useState(false);
+  const dispatch = useDispatch();
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    // dispatch(setSmsCode(values));
+
     next(2);
   };
 
@@ -26,11 +32,27 @@ const SignUp = ({ next, prev, data }) => {
     prev(1);
   }
 
+  const onInputValueChange = (e) => {
+    const value = e.target.value;
+
+    if (value.length <= 4) {
+      setInputValue(value);
+    }
+
+    if (value.length > 1 && value.length < 4) {
+      setErrorText(true);
+    } else {
+      setErrorText(false);
+    }
+  };
+
   const initialSeconds = 10;
   const [seconds, setSeconds] = useState(initialSeconds);
   const [isTimerFinished, setIsTimerFinished] = useState(false);
 
   useEffect(() => {
+    setErrorText(inputValue.length > 1 || inputValue.length >= 4);
+
     const interval = setInterval(() => {
       setSeconds((prevCount) => {
         if (prevCount > 1) {
@@ -43,7 +65,7 @@ const SignUp = ({ next, prev, data }) => {
       });
     }, 1000);
     return () => clearInterval(interval);
-  }, [isTimerFinished]);
+  }, [isTimerFinished, inputValue]);
 
   function handleTimerReset() {
     setSeconds(initialSeconds);
@@ -75,7 +97,20 @@ const SignUp = ({ next, prev, data }) => {
         >
           <Row gutter={[24, 24]}>
             <Col xs={24} sm={24}>
-              <OTPInput />
+              <div className="code-group__modal">
+                <Input
+                  className="code-input__modal"
+                  type="number"
+                  maxLength={4}
+                  value={inputValue}
+                  onChange={onInputValueChange}
+                />
+                {errorText && (
+                  <span className="error-text">
+                    4 ta raqamga teng bo'lishi kerak.
+                  </span>
+                )}
+              </div>
             </Col>
           </Row>
         </Form>
