@@ -40,7 +40,7 @@ export async function postOrganizationGetSmsCode(params) {
 }
 
 export async function postOrganizationVerifySmsCode(params) {
-  console.log(params);
+  console.log("Need:", params);
   try {
     const res = await axios({
       url: `${process.env.REACT_APP_API_ROUTE}/Organization/VerifySmsCode`,

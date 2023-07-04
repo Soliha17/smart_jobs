@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getOrganizationMe, postOrganizationGetSmsCode } from "./request";
+import {
+  getOrganizationMe,
+  postOrganizationGetSmsCode,
+  postOrganizationVerifySmsCode,
+} from "./request";
 
 const initialState = {
   phoneNumber: "",
@@ -15,6 +19,11 @@ export const GetSmsCodeThunk = createAsyncThunk(
 export const GetOrganizationMe = createAsyncThunk(
   "auth/organization",
   getOrganizationMe
+);
+
+export const PostOrganizationVerifySmsCode = createAsyncThunk(
+  "auth/VerifySmsCode",
+  postOrganizationVerifySmsCode
 );
 
 export const authSlice = createSlice({

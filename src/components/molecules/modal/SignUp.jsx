@@ -8,6 +8,7 @@ import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../assets/images/resend-icon.svg";
 import OTPInput from "../../atoms/OTPInput";
 import { useDispatch, useSelector } from "react-redux";
+import { setSmsCode } from "../../../store/auth.slice";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
@@ -15,14 +16,11 @@ const SignUp = ({ next, prev, data }) => {
   const [errorText, setErrorText] = useState(false);
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state);
-  console.log(state);
+  const state = useSelector((state) => state.authSlice.smsCode);
 
   const onFinish = (values) => {
     console.log("Success:", values);
     // dispatch(setSmsCode(values));
-
-    next(2);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -40,6 +38,12 @@ const SignUp = ({ next, prev, data }) => {
 
     if (value.length <= 4) {
       setInputValue(value);
+      console.log(value);
+    }
+
+    if (value.length === 4 && state === value) {
+      dispatch(setSmsCode(value));
+      next(2);
     }
 
     if (value.length > 1 && value.length < 4) {
@@ -49,7 +53,7 @@ const SignUp = ({ next, prev, data }) => {
     }
   };
 
-  const initialSeconds = 10;
+  const initialSeconds = 60;
   const [seconds, setSeconds] = useState(initialSeconds);
   const [isTimerFinished, setIsTimerFinished] = useState(false);
 
