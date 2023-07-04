@@ -7,7 +7,9 @@ import OccupationCard from "../occupation-card/OccupationCard";
 import { Carousel } from "antd";
 
 const items = occupationDatas.map(({ id, title, cost, text }) => {
-  return <OccupationCard id={id} title={title} text={text} cost={cost} />;
+  return (
+    <OccupationCard key={id} id={id} title={title} text={text} cost={cost} />
+  );
 });
 
 const OccupationCarousel = () => {

@@ -25,17 +25,28 @@ export const authSlice = createSlice({
       state.smsCode = action.payload;
     },
   },
-  extraReducers: {
-    [GetSmsCodeThunk.pending]: function (state) {
+  extraReducers: (builder) => {
+    builder.addCase(GetSmsCodeThunk.pending, function (state) {
       state.isLoading = true;
-    },
-    [GetSmsCodeThunk.fulfilled]: function (state, action) {
+    });
+    builder.addCase(GetSmsCodeThunk.fulfilled, function (state, action) {
       state.isLoading = false;
-    },
-    [GetSmsCodeThunk.rejected]: function (state) {
+    });
+    builder.addCase(GetSmsCodeThunk.rejected, function (state) {
       state.isLoading = false;
-    },
+    });
   },
+  // extraReducers: {
+  //   [GetSmsCodeThunk.pending]: function (state) {
+  //     state.isLoading = true;
+  //   },
+  //   [GetSmsCodeThunk.fulfilled]: function (state, action) {
+  //     state.isLoading = false;
+  //   },
+  //   [GetSmsCodeThunk.rejected]: function (state) {
+  //     state.isLoading = false;
+  //   },
+  // },
 });
 
 export const { setSmsCode } = authSlice.actions;

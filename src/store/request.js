@@ -3,27 +3,30 @@ import axios from "axios";
 export async function getOrganizationMe(params) {
   try {
     const res = await axios({
-      url: `${process.env.REACT_APP_API_ROUTE}/Organization/Me`,
+      url: `${process.env.REACT_APP_API_ROUTE}/Moderator/Me`,
       method: "GET",
       headers: {
-        Authorization:`Bearer ${params.token}`,
+        Authorization: `Bearer ${params.token}`,
+        refreshToken: `${params.refreshToken}`,
       },
     });
+    console.log("res :", res);
 
-    return res.data;
+    return res.data.result;
   } catch (error) {
     console.log(error);
   }
 }
 
 export async function postOrganizationGetSmsCode(params) {
-  console.log(params);
+  console.log("params:", params);
   try {
     const res = await axios({
       url: `${process.env.REACT_APP_API_ROUTE}/Organization/GetSmsCode`,
       method: "POST",
-      data: {
+      headers: {
         phoneNumberOrEmailAddress: params.phone,
+        // 'lang: 1'
       },
     });
 
@@ -106,14 +109,4 @@ export async function postOrganizationRegister(params) {
   }
 }
 
-export async function organizationMeGet(params) {
-  try {
-    const res = await axios({
-      url: `${process.env.REACT_APP_API_ROUTE}/Organization/Me`,
-      method: "GET",
-    });
-  } catch (error) {
-    console.log(error);
-  }
-}
 // error.massage edimi error.response.data.message

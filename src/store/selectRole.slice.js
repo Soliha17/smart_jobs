@@ -14,7 +14,7 @@ export const selectRoleSlice = createSlice({
       state.selectedButton = action.payload;
     },
   },
-  extraReducers: {},
+  extraReducers: (builder) => {},
 });
 
 export const { selectButton } = selectRoleSlice.actions;

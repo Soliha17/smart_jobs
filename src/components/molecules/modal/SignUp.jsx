@@ -7,13 +7,16 @@ import "./modal.css";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../assets/images/resend-icon.svg";
 import OTPInput from "../../atoms/OTPInput";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState(false);
   const dispatch = useDispatch();
+
+  const state = useSelector((state) => state);
+  console.log(state);
 
   const onFinish = (values) => {
     console.log("Success:", values);

@@ -14,9 +14,13 @@ import { useSelector, useDispatch } from "react-redux";
 import selectRoleReducer, {
   selectButton,
 } from "../../../store/selectRole.slice";
-import { GetOrganizationMe, GetSmsCodeThunk, setSmsCode } from "../../../store/auth.slice";
+import {
+  GetOrganizationMe,
+  GetSmsCodeThunk,
+  setSmsCode,
+} from "../../../store/auth.slice";
 import { useNavigate } from "react-router-dom";
-import { getOrganizationMe } from "../../../store/request";
+// import { getOrganizationMe } from "../../../store/request";
 
 const JobSeekerModal = ({ next, dataHandler }) => {
   // const [form] = Form.useForm();
@@ -35,7 +39,13 @@ const JobSeekerModal = ({ next, dataHandler }) => {
 
   const onSubmit = (values) => {
     values.preventDefault();
-    dispatch(getOrganizationMe({token: '', data: {}}));
+    dispatch(
+      GetOrganizationMe({
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJGaXJzdE5hbWUiOiJGYXhyaWRkaW4iLCJMYXN0TmFtZSI6Ilh1c2huYXphcm92IiwiUm9sZSI6Ik1vZGVyYXRvciIsIlBob25lTnVtYmVyIjoiOTk4OTM2ODMxNTU1IiwiRW1haWwiOiJtYWlsQGtodXNobmF6YXJvdi5tZSIsIlNleCI6InRydWUiLCJuYmYiOjE2ODg0NjEwMzMsImV4cCI6MTY4ODQ2NDAzMywiaWF0IjoxNjg4NDYxMDMzfQ.ZhLIYXnFIRISZVSMbQj61oDtRG6o_CPbHuckq-viquc",
+        // data: { login: "998936831555", password: "Q1w2e3r4" },
+      })
+    );
     // console.log("data",data)
     function callback(status) {
       if (status == 200) {
