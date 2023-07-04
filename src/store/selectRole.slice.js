@@ -1,9 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  organization: "organization",
-  worker: "worker",
-  selectedButton: "btn1",
+  selectedButton: "worker",
 };
 
 export const selectRoleSlice = createSlice({

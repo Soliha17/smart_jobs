@@ -11,22 +11,17 @@ import { useTranslation } from "react-i18next";
 // import { Form, Input } from 'antd'
 
 import { useSelector, useDispatch } from "react-redux";
-import selectRoleReducer, {
-  selectButton,
-} from "../../../store/selectRole.slice";
-import {
-  GetOrganizationMe,
-  GetSmsCodeThunk,
-  setSmsCode,
-} from "../../../store/auth.slice";
+import { selectButton } from "../../../store/selectRole.slice";
+import { GetSmsCodeThunk } from "../../../store/auth.slice";
 import { useNavigate } from "react-router-dom";
-// import { getOrganizationMe } from "../../../store/request";
 
 const JobSeekerModal = ({ next, dataHandler }) => {
   // const [form] = Form.useForm();
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState("");
+
+  const { selectedButton } = useSelector((state) => state.selectRoleSlice);
 
   const { data, setData } = dataHandler;
 
@@ -39,13 +34,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
 
   const onSubmit = (values) => {
     values.preventDefault();
-    dispatch(
-      GetOrganizationMe({
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJGaXJzdE5hbWUiOiJGYXhyaWRkaW4iLCJMYXN0TmFtZSI6Ilh1c2huYXphcm92IiwiUm9sZSI6Ik1vZGVyYXRvciIsIlBob25lTnVtYmVyIjoiOTk4OTM2ODMxNTU1IiwiRW1haWwiOiJtYWlsQGtodXNobmF6YXJvdi5tZSIsIlNleCI6InRydWUiLCJuYmYiOjE2ODg0NjEwMzMsImV4cCI6MTY4ODQ2NDAzMywiaWF0IjoxNjg4NDYxMDMzfQ.ZhLIYXnFIRISZVSMbQj61oDtRG6o_CPbHuckq-viquc",
-        // data: { login: "998936831555", password: "Q1w2e3r4" },
-      })
-    );
+
     // console.log("data",data)
     function callback(status) {
       if (status == 200) {
@@ -69,7 +58,13 @@ const JobSeekerModal = ({ next, dataHandler }) => {
         .filter((item) => item !== " ")
         .join("");
       console.log(resultInputValue);
-      dispatch(GetSmsCodeThunk({ phone: resultInputValue, callback }));
+      dispatch(
+        GetSmsCodeThunk({
+          phone: resultInputValue,
+          role: selectedButton,
+          callback,
+        })
+      );
       setData(inputValue);
       console.log("data", data);
       console.log(1);
@@ -139,10 +134,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     }
   }, [inputValue, errorText]);
 
-  const selectedButton = useSelector(
-    (state) => state.selectRoleSlice.selectedButton
-  );
-
   const handleButtonClick = (button) => {
     dispatch(selectButton(button));
   };
@@ -152,17 +143,17 @@ const JobSeekerModal = ({ next, dataHandler }) => {
       <div className="select-btn-group__login-modal">
         <button
           className={` ${
-            selectedButton === "btn1" && "selected-button____login-modal"
+            selectedButton === "worker" && "selected-button____login-modal"
           }`}
-          onClick={() => handleButtonClick("btn1")}
+          onClick={() => handleButtonClick("worker")}
         >
           {t("theApplicant")}
         </button>
         <button
           className={` ${
-            selectedButton === "btn2" && "selected-button____login-modal"
+            selectedButton === "organizator" && "selected-button____login-modal"
           }`}
-          onClick={() => handleButtonClick("btn2")}
+          onClick={() => handleButtonClick("organizator")}
         >
           {t("employer")}
         </button>

@@ -1,9 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  getOrganizationMe,
-  postOrganizationGetSmsCode,
-  postOrganizationVerifySmsCode,
-} from "./request";
+import { postOrganizationGetSmsCode } from "./request";
 
 const initialState = {
   phoneNumber: "",
@@ -14,16 +10,6 @@ const initialState = {
 export const GetSmsCodeThunk = createAsyncThunk(
   "auth/getSmsCode",
   postOrganizationGetSmsCode
-);
-
-export const GetOrganizationMe = createAsyncThunk(
-  "auth/organization",
-  getOrganizationMe
-);
-
-export const PostOrganizationVerifySmsCode = createAsyncThunk(
-  "auth/VerifySmsCode",
-  postOrganizationVerifySmsCode
 );
 
 export const authSlice = createSlice({
@@ -46,17 +32,6 @@ export const authSlice = createSlice({
       state.isLoading = false;
     });
   },
-  // extraReducers: {
-  //   [GetSmsCodeThunk.pending]: function (state) {
-  //     state.isLoading = true;
-  //   },
-  //   [GetSmsCodeThunk.fulfilled]: function (state, action) {
-  //     state.isLoading = false;
-  //   },
-  //   [GetSmsCodeThunk.rejected]: function (state) {
-  //     state.isLoading = false;
-  //   },
-  // },
 });
 
 export const { setSmsCode } = authSlice.actions;

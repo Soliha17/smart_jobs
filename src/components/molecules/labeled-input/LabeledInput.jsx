@@ -13,7 +13,7 @@ const LabeledInput = ({
 }) => {
   const rules = [
     {
-      // required: req,
+      required: req,
       // max: 32,
 
       // message: validateMessages,
@@ -51,10 +51,10 @@ const LabeledInput = ({
     });
   }
 
-  if (labelFor === "confirmParolOfInfo") {
+  if (labelFor === "confirmPassword") {
     rules.push(({ getFieldValue }) => ({
       validator(_, value) {
-        if (!value || getFieldValue("parolOfInfo") === value) {
+        if (!value || getFieldValue("password") === value) {
           return Promise.resolve();
         }
         return Promise.reject(

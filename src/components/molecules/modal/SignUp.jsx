@@ -6,20 +6,14 @@ import "./modal.css";
 
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../assets/images/resend-icon.svg";
-import OTPInput from "../../atoms/OTPInput";
+// import OTPInput from "../../atoms/OTPInput";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  PostOrganizationVerifySmsCode,
-  setSmsCode,
-} from "../../../store/auth.slice";
-import { postOrganizationVerifySmsCode } from "../../../store/request";
 import { useVerifyNumberMutation } from "../../../store/api/apiSlice";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
   const [inputValue, setInputValue] = useState("");
-  const [errorText, setErrorText] = useState(false);
-  const dispatch = useDispatch();
+  const [errorText, setErrorText] = useState("");
 
   const [verifyCode] = useVerifyNumberMutation();
 
@@ -56,15 +50,15 @@ const SignUp = ({ next, prev, data }) => {
           if (res.result.success) {
             next(2);
           } else {
-            setErrorText("error");
+            setErrorText("Xato kod");
           }
         });
     }
 
     if (value.length > 1 && value.length < 4) {
-      setErrorText(true);
+      setErrorText("4 ta raqam bo'lishi kerak");
     } else {
-      setErrorText(false);
+      setErrorText("");
     }
   };
 
@@ -127,11 +121,7 @@ const SignUp = ({ next, prev, data }) => {
                   value={inputValue}
                   onChange={onInputValueChange}
                 />
-                {errorText && (
-                  <span className="error-text">
-                    4 ta raqamga teng bo'lishi kerak.
-                  </span>
-                )}
+                {<span className="error-text">{errorText}</span>}
               </div>
             </Col>
           </Row>

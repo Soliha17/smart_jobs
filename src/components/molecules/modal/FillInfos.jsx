@@ -15,13 +15,38 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useRegisterOrganizationMutation } from "../../../store/api/apiSlice";
 
 const InfoFills = ({ open, setOpen, prev, next }) => {
   const [form] = Form.useForm();
 
+  const [registerOrganization] = useRegisterOrganizationMutation();
+
   const onFinish = (values) => {
-    console.log("Success:", values);
-    setOpen(false);
+    console.log("Success:", values.companySizeId);
+    registerOrganization({
+      name: values.name,
+      description: "desc",
+      logo: "smartjobe",
+      webSiteUrl: "smartjobe.uz",
+      firstName: values.firstName,
+      lastName: values.lastName,
+      addressId: 2,
+      email: values.email,
+      phoneNumber: "+998914159581",
+      password: values.password,
+      companySizeId: values.companySizeId,
+      companyDirectionId: 3,
+    })
+      .unwrap()
+      .then((res) => {
+        if (res.result.success) {
+          setOpen(false);
+          console.log("need:", res);
+        } else {
+          console.log("Xato kod");
+        }
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -36,9 +61,9 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
 
   const { t } = useTranslation();
 
-   const selectedButton = useSelector(
-     (state) => state.selectRoleSlice.selectedButton
-   );
+  const selectedButton = useSelector(
+    (state) => state.selectRoleSlice.selectedButton
+  );
 
   return (
     <div className="body__login-modal full-infos-modal">
@@ -68,20 +93,21 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
           autoComplete="off"
         >
           <Row gutter={[24, 5]}>
-            {selectedButton === "btn2" && (
+            {selectedButton === "organizator" && (
               <>
                 <Col xs={24} sm={24}>
                   <LabeledInput
                     labelName={t("enterYourCompanyName")}
-                    labelFor="nameOfCompanyInfo"
+                    labelFor="name"
                     req={true}
                     input={<Input maxLength={32} size="large" />}
                   />
                 </Col>
+
                 <Col xs={24} sm={24}>
                   <LabeledInput
                     labelName={t("numberOfEmployees")}
-                    labelFor="amountOfCompanyInfo"
+                    labelFor="companySizeId"
                     req={true}
                     input={
                       <Select
@@ -91,43 +117,43 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                         // onChange={onChange}
                         options={[
                           {
-                            value: "1-20",
+                            value: "1",
                             label: "1-20",
                           },
                           {
-                            value: "21-30",
+                            value: "2",
                             label: "21-30",
                           },
                           {
-                            value: "31-50",
+                            value: "3",
                             label: "31-50",
                           },
                           {
-                            value: "51-70",
+                            value: "4",
                             label: "51-70",
                           },
                           {
-                            value: "71-100",
+                            value: "5",
                             label: "71-100",
                           },
                           {
-                            value: "101-150",
+                            value: "6",
                             label: "101-150",
                           },
                           {
-                            value: "151-300",
+                            value: "7",
                             label: "151-300",
                           },
                           {
-                            value: "301-500",
+                            value: "8",
                             label: "301-500",
                           },
                           {
-                            value: "501-800",
+                            value: "9",
                             label: "501-800",
                           },
                           {
-                            value: "801-2000",
+                            value: "10",
                             label: "801-2000",
                           },
                         ]}
@@ -141,7 +167,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("enterYourName")}
-                labelFor="nameOfInfo"
+                labelFor="firstName"
                 req={true}
                 input={
                   <Input maxLength={32} size="large" placeholder="Nodir" />
@@ -151,7 +177,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("enterYourLastName")}
-                labelFor="surnameOfInfo"
+                labelFor="lastName"
                 req={true}
                 input={
                   <Input maxLength={32} size="large" placeholder="Karimov" />
@@ -251,7 +277,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("email")}
-                labelFor="emailOfInfo"
+                labelFor="email"
                 req={true}
                 input={<Input size="large" />}
               />
@@ -259,15 +285,15 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("comeUpWithAPassword")}
-                labelFor="parolOfInfo"
+                labelFor="password"
                 req={true}
-                input={<Input.Password size="large" />}
+                input={<Input.Password minLength={8} size="large" />}
               />
             </Col>
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("enterThePasswordAgain")}
-                labelFor="confirmParolOfInfo"
+                labelFor="confirmPassword"
                 req={true}
                 input={<Input.Password size="large" />}
               />

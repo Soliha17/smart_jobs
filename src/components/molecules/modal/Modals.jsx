@@ -78,11 +78,7 @@ const Modals = ({ open, setOpen }) => {
           ) : current === 1 ? (
             <SignUp next={next} prev={prev} data={data} />
           ) : (
-            <InfoFills
-              // selectedButton={selectedButton}
-              next={next}
-              prev={prev}
-            />
+            <InfoFills setOpen={setOpen} next={next} prev={prev} />
           )}
         </Modal>
       </div>

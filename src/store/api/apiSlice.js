@@ -22,9 +22,18 @@ export const apiSlice = createApi({
     //   }),
     //   providesTags: ["pages"],
     // }),
+    
     verifyNumber: builder.mutation({
       query: (body) => ({
         url: `/Organization/VerifySmsCode`,
+        method: "POST",
+        body,
+      }),
+    }),
+
+    registerOrganization: builder.mutation({
+      query: (body) => ({
+        url: `/Organization/Register`,
         method: "POST",
         body,
       }),
@@ -35,4 +44,5 @@ export const apiSlice = createApi({
 export const {
   // pages
   useVerifyNumberMutation,
+  useRegisterOrganizationMutation
 } = apiSlice;
