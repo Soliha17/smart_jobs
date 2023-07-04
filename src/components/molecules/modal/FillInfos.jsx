@@ -15,11 +15,16 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useRegisterOrganizationMutation } from "../../../store/api/apiSlice";
+import {
+  useGetCompanyDirectionsQuery,
+  useRegisterOrganizationMutation,
+} from "../../../store/api/apiSlice";
 
 const InfoFills = ({ open, setOpen, prev, next }) => {
   const [form] = Form.useForm();
 
+  const { data: companyDirections } = useGetCompanyDirectionsQuery();
+  console.log(companyDirections);
   const [registerOrganization] = useRegisterOrganizationMutation();
 
   const onFinish = (values) => {

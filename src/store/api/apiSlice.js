@@ -14,15 +14,7 @@ export const apiSlice = createApi({
   }),
   tagTypes: ["pages", "page"],
   endpoints: (builder) => ({
-    //Pages
-    // getPages: builder.query({
-    //   query: (params) => ({
-    //     url: "/api/v1/page/getAll",
-    //     params,
-    //   }),
-    //   providesTags: ["pages"],
-    // }),
-    
+    //Auth
     verifyNumber: builder.mutation({
       query: (body) => ({
         url: `/Organization/VerifySmsCode`,
@@ -30,7 +22,6 @@ export const apiSlice = createApi({
         body,
       }),
     }),
-
     registerOrganization: builder.mutation({
       query: (body) => ({
         url: `/Organization/Register`,
@@ -38,11 +29,20 @@ export const apiSlice = createApi({
         body,
       }),
     }),
+    // Company direction
+    getCompanyDirections: builder.query({
+      query: () => ({
+        url: "/CompanyDirection/Get",
+      }),
+      providesTags: ["CompanyDirections"],
+    }),
   }),
 });
 
 export const {
   // pages
   useVerifyNumberMutation,
-  useRegisterOrganizationMutation
+  useRegisterOrganizationMutation,
+  // CompanyDirection
+  useGetCompanyDirectionsQuery,
 } = apiSlice;
