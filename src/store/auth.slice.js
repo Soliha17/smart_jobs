@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   phoneNumber: "",
-  smsCode: null,
+  smsId: null,
   isLoading: false,
 };
 
@@ -31,7 +31,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setSmsCode(state, action) {
-      state.smsCode = action.payload;
+      state.smsId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -40,6 +40,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(GetSmsCodeThunk.fulfilled, function (state, action) {
       state.isLoading = false;
+      state.smsId = action.payload.result.smsId;
     });
     builder.addCase(GetSmsCodeThunk.rejected, function (state) {
       state.isLoading = false;

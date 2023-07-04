@@ -9,6 +9,7 @@ import ResendIcon from "../../../assets/images/resend-icon.svg";
 import OTPInput from "../../atoms/OTPInput";
 import { useDispatch, useSelector } from "react-redux";
 import { setSmsCode } from "../../../store/auth.slice";
+import { postOrganizationVerifySmsCode } from "../../../store/request";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
@@ -16,7 +17,8 @@ const SignUp = ({ next, prev, data }) => {
   const [errorText, setErrorText] = useState(false);
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state.authSlice.smsCode);
+  const { smsId } = useSelector((state) => state.authSlice);
+  console.log("state", smsId);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -41,8 +43,8 @@ const SignUp = ({ next, prev, data }) => {
       console.log(value);
     }
 
-    if (value.length === 4 && state === value) {
-      dispatch(setSmsCode(value));
+    if (value.length === 4) {
+      dispatch(postOrganizationVerifySmsCode({ code: value, id: smsId }));
       next(2);
     }
 

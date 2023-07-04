@@ -39,19 +39,14 @@ export async function postOrganizationGetSmsCode(params) {
   // AxiosError = error
 }
 
-export async function postOrganizationVerifySmsCode(params) {
-  console.log("Need:", params);
+export async function postOrganizationVerifySmsCode(body) {
+  console.log("Need:", body);
   try {
     const res = await axios({
       url: `${process.env.REACT_APP_API_ROUTE}/Organization/VerifySmsCode`,
       method: "POST",
-      data: {
-        id: 0,
-        code: 0,
-      },
+      data: body,
     });
-
-    console.log(res);
 
     return res.data;
   } catch (error) {
