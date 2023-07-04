@@ -8,14 +8,20 @@ import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../assets/images/resend-icon.svg";
 import OTPInput from "../../atoms/OTPInput";
 import { useDispatch, useSelector } from "react-redux";
-import { PostOrganizationVerifySmsCode, setSmsCode } from "../../../store/auth.slice";
+import {
+  PostOrganizationVerifySmsCode,
+  setSmsCode,
+} from "../../../store/auth.slice";
 import { postOrganizationVerifySmsCode } from "../../../store/request";
+import { useVerifyNumberMutation } from "../../../store/api/apiSlice";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState(false);
   const dispatch = useDispatch();
+
+  const [verifyCode] = useVerifyNumberMutation();
 
   const { smsId } = useSelector((state) => state.authSlice);
   console.log("state", smsId);
@@ -44,8 +50,15 @@ const SignUp = ({ next, prev, data }) => {
     }
 
     if (value.length === 4) {
-      dispatch(PostOrganizationVerifySmsCode({ code: value, id: smsId }));
-      next(2);
+      verifyCode({ code: value, id: smsId })
+        .unwrap()
+        .then((res) => {
+          if (res.result.success) {
+            next(2);
+          } else {
+            setErrorText("error");
+          }
+        });
     }
 
     if (value.length > 1 && value.length < 4) {
