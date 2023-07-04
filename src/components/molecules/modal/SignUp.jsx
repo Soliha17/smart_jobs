@@ -8,7 +8,7 @@ import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../assets/images/resend-icon.svg";
 import OTPInput from "../../atoms/OTPInput";
 import { useDispatch, useSelector } from "react-redux";
-import { setSmsCode } from "../../../store/auth.slice";
+import { PostOrganizationVerifySmsCode, setSmsCode } from "../../../store/auth.slice";
 import { postOrganizationVerifySmsCode } from "../../../store/request";
 
 const SignUp = ({ next, prev, data }) => {
@@ -44,7 +44,7 @@ const SignUp = ({ next, prev, data }) => {
     }
 
     if (value.length === 4) {
-      dispatch(postOrganizationVerifySmsCode({ code: value, id: smsId }));
+      dispatch(PostOrganizationVerifySmsCode({ code: value, id: smsId }));
       next(2);
     }
 
