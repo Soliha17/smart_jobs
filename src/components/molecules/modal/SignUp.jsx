@@ -7,15 +7,23 @@ import "./modal.css";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../assets/images/resend-icon.svg";
 // import OTPInput from "../../atoms/OTPInput";
-import { useDispatch, useSelector } from "react-redux";
-import { useVerifyNumberMutation } from "../../../store/api/apiSlice";
+import { useSelector } from "react-redux";
+import {
+  useVerifySmsCodeOrganizationMutation,
+  useVerifySmsCodeWorkerMutation,
+} from "../../../store/api/apiSlice";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState("");
 
-  const [verifyCode] = useVerifyNumberMutation();
+  const selectedButton = useSelector(
+    (state) => state.selectRoleSlice.selectedButton
+  );
+
+  const [verifySmsCodeOrganization] = useVerifySmsCodeOrganizationMutation();
+  const [verifySmsCodeWorker] = useVerifySmsCodeWorkerMutation();
 
   const { smsId } = useSelector((state) => state.authSlice);
 
@@ -39,19 +47,31 @@ const SignUp = ({ next, prev, data }) => {
 
     if (value.length <= 4) {
       setInputValue(value);
-      console.log(value);
+      // console.log(value);
     }
 
     if (value.length === 4) {
-      verifyCode({ code: value, id: smsId })
-        .unwrap()
-        .then((res) => {
-          if (res.result.success) {
-            next(2);
-          } else {
-            setErrorText("Xato kod");
-          }
-        });
+      if (selectedButton === "organization") {
+        verifySmsCodeOrganization({ code: value, id: smsId })
+          .unwrap()
+          .then((res) => {
+            if (res.result.success) {
+              next(2);
+            } else {
+              setErrorText("Xato kod");
+            }
+          });
+      } else {
+        verifySmsCodeWorker({ code: value, id: smsId })
+          .unwrap()
+          .then((res) => {
+            if (res.result.success) {
+              next(2);
+            } else {
+              setErrorText("Xato kod");
+            }
+          });
+      }
     }
 
     if (value.length > 1 && value.length < 4) {

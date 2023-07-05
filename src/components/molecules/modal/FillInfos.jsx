@@ -18,40 +18,89 @@ import { useSelector } from "react-redux";
 import {
   useGetCompanyDirectionsQuery,
   useRegisterOrganizationMutation,
+  useGetCompanySizesQuery,
+  useRegisterWorkerMutation,
+  useGetAddressQuery,
+  useGetCountriesQuery,
+  useGetCitiesQuery,
+  useGetRegionsQuery,
 } from "../../../store/api/apiSlice";
 
 const InfoFills = ({ open, setOpen, prev, next }) => {
   const [form] = Form.useForm();
 
-  const { data: companyDirections } = useGetCompanyDirectionsQuery();
-  console.log("companyDirections: ", companyDirections);
+  const { t } = useTranslation();
+
+  const selectedButton = useSelector(
+    (state) => state.selectRoleSlice.selectedButton
+  );
+  const phoneNumber = useSelector((state) => state.authSlice.phoneNumber);
+
   const [registerOrganization] = useRegisterOrganizationMutation();
+  const [registerWorker] = useRegisterWorkerMutation();
+  const { data: getCompanyDirections } = useGetCompanyDirectionsQuery();
+  // console.log("companyDirections: ", getCompanyDirections);
+  const { data: getCompanySizes } = useGetCompanySizesQuery();
+  // console.log(getCompanySizes?.result);
+  const { data: getAddress } = useGetAddressQuery();
+  // console.log(getAddress);
+  const { data: countries } = useGetCountriesQuery();
+  const { data: regions, refetch: getRegions } = useGetRegionsQuery(
+    { davlatId: form.getFieldValue("countries") },
+    { skip: !form.getFieldValue("countries") }
+  );
+  const { data: cities } = useGetCitiesQuery(
+    { viloyatId: form.getFieldValue("regions") },
+    { skip: !form.getFieldValue("regions") }
+  );
 
   const onFinish = (values) => {
-    console.log("Success:", values.companySizeId);
-    registerOrganization({
-      name: values.name,
-      description: "desc",
-      logo: "smartjobe",
-      webSiteUrl: "smartjobe.uz",
-      firstName: values.firstName,
-      lastName: values.lastName,
-      addressId: 2,
-      email: values.email,
-      phoneNumber: "+998914159581",
-      password: values.password,
-      companySizeId: values.companySizeId,
-      companyDirectionId: 3,
-    })
-      .unwrap()
-      .then((res) => {
-        if (res.result.success) {
+    console.log("Success:", values.countries);
+
+    if (selectedButton === "organizator") {
+      registerOrganization({
+        description: "",
+        logo: "",
+        webSiteUrl: "",
+        addressId: 773,
+        name: values.name,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        phoneNumber: phoneNumber,
+        password: values.password,
+        companySizeId: Number(values.companySizeId),
+        companyDirectionId: Number(values.companyDirectionId),
+      })
+        .unwrap()
+        .then((res) => {
+          // if (res.result.success) {
           setOpen(false);
           console.log("need:", res);
-        } else {
+          // } else {
           console.log("Xato kod");
-        }
-      });
+          // }
+        });
+    } else {
+      const formattedBirthDate = values.bithDate.format(
+        "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+      );
+
+      registerWorker({
+        addressId: 773,
+        phoneNumber: phoneNumber,
+        bithDate: formattedBirthDate,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        sex: values.sex === "male" ? true : false,
+        email: values.email,
+        password: values.password,
+      })
+        .unwrap()
+        .then((res) => {
+          setOpen(false);
+        });
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -62,13 +111,20 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
     prev(2);
   }
 
-  // console.log(selectedButton);
+  function onChange() {
+    console.log("inpiut changing");
+  }
 
-  const { t } = useTranslation();
+  function onChangeCountry(value) {
+    console.log(value);
+    form.setFieldsValue({ countries: value });
+    // getRegions({ davlatId: value });
+  }
 
-  const selectedButton = useSelector(
-    (state) => state.selectRoleSlice.selectedButton
-  );
+  // function onChangeRegion(value) {
+  //   form.setFieldsValue({ cities: undefined });
+  //   getCities({ viloyatId: value });
+  // }
 
   return (
     <div className="body__login-modal full-infos-modal">
@@ -120,48 +176,29 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                         placeholder={t("choose")}
                         size="large"
                         // onChange={onChange}
-                        options={[
-                          {
-                            value: "1",
-                            label: "1-20",
-                          },
-                          {
-                            value: "2",
-                            label: "21-30",
-                          },
-                          {
-                            value: "3",
-                            label: "31-50",
-                          },
-                          {
-                            value: "4",
-                            label: "51-70",
-                          },
-                          {
-                            value: "5",
-                            label: "71-100",
-                          },
-                          {
-                            value: "6",
-                            label: "101-150",
-                          },
-                          {
-                            value: "7",
-                            label: "151-300",
-                          },
-                          {
-                            value: "8",
-                            label: "301-500",
-                          },
-                          {
-                            value: "9",
-                            label: "501-800",
-                          },
-                          {
-                            value: "10",
-                            label: "801-2000",
-                          },
-                        ]}
+                        options={getCompanySizes?.result.map((option) => ({
+                          value: option.id.toString(),
+                          label: option.name,
+                        }))}
+                      />
+                    }
+                  />
+                </Col>
+                <Col xs={24} sm={24}>
+                  <LabeledInput
+                    labelName="Kompaniyangiz yo'nalishi"
+                    labelFor="companyDirectionId"
+                    req={true}
+                    input={
+                      <Select
+                        // defaultValue="full"
+                        placeholder={t("choose")}
+                        size="large"
+                        // onChange={onChange}
+                        options={getCompanyDirections?.result.map((option) => ({
+                          value: option.id.toString(),
+                          label: option.name,
+                        }))}
                       />
                     }
                   />
@@ -192,7 +229,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("birthday")}
-                labelFor="birthdayOfInfo"
+                labelFor="bithDate"
                 req={true}
                 input={
                   <DatePicker
@@ -207,7 +244,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("gender")}
-                labelFor="genderOfInfo"
+                labelFor="sex"
                 req={true}
                 input={
                   <Radio.Group
@@ -224,28 +261,38 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("country")}
-                labelFor="countryOfInfo"
+                labelFor="countries"
                 req={true}
                 input={
                   <Select
                     // defaultValue="uzbekistan"
                     placeholder={t("choose")}
                     size="large"
-                    // onChange={onChange}
-                    options={[
-                      {
-                        value: "uzbekistan",
-                        label: "O'zbekiston",
-                      },
-                      {
-                        value: "turkey",
-                        label: "Turkiya",
-                      },
-                      {
-                        value: "usa",
-                        label: "AQSH",
-                      },
-                    ]}
+                    onChange={onChangeCountry}
+                    options={countries?.result.map((option) => ({
+                      value: option.id.toString(),
+                      label: option.name,
+                    }))}
+                  />
+                }
+              />
+            </Col>
+
+            <Col xs={24} sm={24}>
+              <LabeledInput
+                labelName="Viloyat"
+                labelFor="regions"
+                req={true}
+                input={
+                  <Select
+                    // defaultValue="buxoro"
+                    placeholder={t("choose")}
+                    size="large"
+                    // onChange={onChangeRegion}
+                    options={regions?.result.map((option) => ({
+                      value: option.id.toString(),
+                      label: option.name,
+                    }))}
                   />
                 }
               />
@@ -253,28 +300,18 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("city")}
-                labelFor="cityOfInfo"
+                labelFor="cities"
                 req={true}
                 input={
                   <Select
                     // defaultValue="buxoro"
                     placeholder={t("choose")}
                     size="large"
-                    // onChange={onChange}
-                    options={[
-                      {
-                        value: "buxoro",
-                        label: "Buxoro",
-                      },
-                      {
-                        value: "toshkent",
-                        label: "Toshkent",
-                      },
-                      {
-                        value: "istanbul",
-                        label: "Istanbul",
-                      },
-                    ]}
+                    onChange={onChange}
+                    options={cities?.result.map((option) => ({
+                      value: option.id.toString(),
+                      label: option.name,
+                    }))}
                   />
                 }
               />

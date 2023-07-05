@@ -12,35 +12,37 @@ import { useTranslation } from "react-i18next";
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectButton } from "../../../store/selectRole.slice";
-import { GetSmsCodeThunk } from "../../../store/auth.slice";
-import { useNavigate } from "react-router-dom";
+import { GetSmsCodeThunk, setPhone } from "../../../store/auth.slice";
 
 const JobSeekerModal = ({ next, dataHandler }) => {
   // const [form] = Form.useForm();
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState("");
+  const [errorApiText, setErrorApiText] = useState("");
 
   const { selectedButton } = useSelector((state) => state.selectRoleSlice);
 
-  const { data, setData } = dataHandler;
+  const { setData } = dataHandler;
 
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
-
+  function callback(status, errorMessage) {
+    console.log("status here:", status);
+    if (status === 200) {
+      next(1);
+    } else if (status === 400) {
+      setErrorApiText(errorMessage || "");
+      next(2);
+    } else {
+      setErrorApiText("");
+    }
+  }
 
   const onSubmit = (values) => {
     values.preventDefault();
 
     // console.log("data",data)
-    function callback(status) {
-      if (status == 200) {
-        next(1);
-      } else {
-        console.log("Xatolik yuz berdi!");
-      }
-    }
 
     if (
       (inputValue.length &&
@@ -49,7 +51,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
         !inputValue.includes("@")) ||
       (inputValue.length &&
         inputValue.slice(0, 1) === "+" &&
-        inputValue.length === 14) //is not working stop, 1 minute
+        inputValue.length === 14)
     ) {
       let resultInputValue = inputValue
         .split("")
@@ -63,6 +65,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
           callback,
         })
       );
+      dispatch(setPhone(resultInputValue));
       setData(inputValue);
       // console.log("data", data);
       // console.log(1);
@@ -127,14 +130,19 @@ const JobSeekerModal = ({ next, dataHandler }) => {
       setErrorText("");
     } else if (inputValue.slice(0, 1) === "+" && inputValue.length === 14) {
       setErrorText("");
+      // callback();
     } else if (inputValue === "") {
       setErrorText("");
     }
-  }, [inputValue, errorText]);
+  }, [inputValue, errorText, errorApiText]);
 
   const handleButtonClick = (button) => {
     dispatch(selectButton(button));
   };
+
+  function handleChange() {
+    // console.log("changed");
+  }
 
   return (
     <div className="body__login-modal">
@@ -174,6 +182,8 @@ const JobSeekerModal = ({ next, dataHandler }) => {
               value={inputValue}
               // control={control}
               // {...register("phone")}
+
+              onChange={handleChange}
               onKeyDown={onInputValueChange}
               autoComplete="off"
             />
@@ -184,11 +194,14 @@ const JobSeekerModal = ({ next, dataHandler }) => {
               value={inputValue}
               // control={control}
               // {...register("email")}
+              onChange={handleChange}
               onKeyDown={onInputValueChange}
               autoComplete="off"
             />
           )}
-          {errorText && <span className="error-text">{errorText}</span>}
+          {(errorText || errorApiText) && (
+            <span className="error-text">{errorText || errorApiText}</span>
+          )}
           <br />
           <input type="submit" value={t("continue")} onClick={onSubmit} />
         </form>
