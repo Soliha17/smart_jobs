@@ -28,9 +28,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  // const selectButton = (btn) => {
-  //   setSelectedButton(btn);
-  // };
+
 
   const onSubmit = (values) => {
     values.preventDefault();
@@ -57,7 +55,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
         .split("")
         .filter((item) => item !== " ")
         .join("");
-      console.log(resultInputValue);
+      // console.log(resultInputValue);
       dispatch(
         GetSmsCodeThunk({
           phone: resultInputValue,
@@ -66,8 +64,8 @@ const JobSeekerModal = ({ next, dataHandler }) => {
         })
       );
       setData(inputValue);
-      console.log("data", data);
-      console.log(1);
+      // console.log("data", data);
+      // console.log(1);
       // ;
     }
   };

@@ -34,7 +34,7 @@ const Modals = ({ open, setOpen }) => {
     setCurrent(current + stepNumber);
   };
 
-  console.log(data);
+  // console.log(data);
 
   const prev = (stepNumber) => {
     setCurrent(current - stepNumber);

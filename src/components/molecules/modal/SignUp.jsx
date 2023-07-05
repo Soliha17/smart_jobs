@@ -18,7 +18,6 @@ const SignUp = ({ next, prev, data }) => {
   const [verifyCode] = useVerifyNumberMutation();
 
   const { smsId } = useSelector((state) => state.authSlice);
-  console.log("state", smsId);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -29,7 +28,7 @@ const SignUp = ({ next, prev, data }) => {
     console.log("Failed:", errorInfo);
   };
 
-  console.log(data);
+  // console.log(data);
 
   function handleBack() {
     prev(1);
