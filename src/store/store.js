@@ -13,7 +13,6 @@ export const store = configureStore({
   reducer: rootReducer,
   // devTools: process.env.NODE_ENV === "development",
   middleware: middleWares,
-  [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
 export const persistor = persistStore(store);
