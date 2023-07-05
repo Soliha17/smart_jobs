@@ -7,11 +7,11 @@ import { apiSlice } from "./api/apiSlice";
 
 const middleWares = [thunk, apiSlice.middleware];
 
-if (process.env.NODE_ENV === "development") middleWares.push(logger);
+// if (process.env.NODE_ENV === "development") middleWares.push(logger);
 
 export const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV === "development",
+  // devTools: process.env.NODE_ENV === "development",
   middleware: middleWares,
   [apiSlice.reducerPath]: apiSlice.reducer,
 });

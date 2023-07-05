@@ -12,6 +12,7 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
+
   tagTypes: ["pages", "page"],
   endpoints: (builder) => ({
     //Auth
@@ -22,6 +23,7 @@ export const apiSlice = createApi({
         body,
       }),
     }),
+
     registerOrganization: builder.mutation({
       query: (body) => ({
         url: `/Organization/Register`,
@@ -29,6 +31,7 @@ export const apiSlice = createApi({
         body,
       }),
     }),
+
     // Company direction
     getCompanyDirections: builder.query({
       query: () => ({

@@ -23,8 +23,7 @@ import {
 const InfoFills = ({ open, setOpen, prev, next }) => {
   const [form] = Form.useForm();
 
-  const { data: companyDirections } = useGetCompanyDirectionsQuery();
-  console.log(companyDirections);
+  const companyDirections = useGetCompanyDirectionsQuery();
   const [registerOrganization] = useRegisterOrganizationMutation();
 
   const onFinish = (values) => {
@@ -69,6 +68,9 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
   const selectedButton = useSelector(
     (state) => state.selectRoleSlice.selectedButton
   );
+
+  console.log("companyDirections: ", companyDirections);
+
 
   return (
     <div className="body__login-modal full-infos-modal">
