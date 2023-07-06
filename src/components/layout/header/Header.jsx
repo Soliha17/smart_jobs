@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { Drawer, Dropdown, Select, Space } from "antd";
@@ -19,6 +25,7 @@ import VacancyInput from "../../atoms/vacancy-input/VacancyInput";
 import Modals from "../../molecules/modal/Modals";
 import TestHeader from "../test-header/TestHeader";
 import CloseIcon from "./CloseIcon";
+import LogOutModal from "../../molecules/modal/LogOut";
 
 const languageOptions = [
   { value: "en", label: "En" },
@@ -38,6 +45,7 @@ function Header() {
   const [visible, setVisible] = useState(false);
   const [isUser, setIsUser] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isHeroPage, setIsHeroPage] = useState(false);
 
   const location = useLocation();
@@ -100,6 +108,8 @@ function Header() {
   function goToHomePage() {
     navigate("/");
   }
+
+  const accessToken = localStorage.getItem("accessToken");
 
   return (
     <>
@@ -189,6 +199,13 @@ function Header() {
                       </Dropdown>
                     </div>
                   </>
+                ) : accessToken ? (
+                  <button
+                    className="enter-btn__header"
+                    onClick={() => setIsLogoutModalOpen(!isLogoutModalOpen)}
+                  >
+                    Logout
+                  </button>
                 ) : (
                   <button
                     className="enter-btn__header"
@@ -311,6 +328,10 @@ function Header() {
           </div>
           <Outlet />
           <Modals open={isModalOpen} setOpen={setIsModalOpen} />
+          <LogOutModal
+            open={isLogoutModalOpen}
+            setOpen={setIsLogoutModalOpen}
+          />
         </div>
       ) : (
         <TestHeader />

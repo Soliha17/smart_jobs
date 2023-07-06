@@ -40,7 +40,9 @@ const Login = ({ next, prev, setOpen }) => {
       })
         .unwrap()
         .then((res) => {
-          // console.log(res);
+          console.log("neeeeddd", res.result.token.accessToken);
+          localStorage.setItem("accessToken", res.result.token.accessToken);
+          localStorage.setItem("refreshToken", res.result.token.refreshToken);
           setErrorText("");
           setOpen(false);
         })
@@ -59,6 +61,8 @@ const Login = ({ next, prev, setOpen }) => {
         .unwrap()
         .then((res) => {
           // console.log(res);
+          localStorage.setItem("accessToken", res.result.token.accessToken);
+          localStorage.setItem("refreshToken", res.result.token.refreshToken);
           setErrorText("");
           setOpen(false);
         })

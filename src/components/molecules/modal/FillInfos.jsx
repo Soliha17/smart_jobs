@@ -65,7 +65,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
         description: "",
         logo: "",
         webSiteUrl: "",
-        addressId: 773,
+        addressId: values.countries,
         name: values.name,
         firstName: values.firstName,
         lastName: values.lastName,
@@ -77,12 +77,9 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
       })
         .unwrap()
         .then((res) => {
-          // if (res.result.success) {
-          setOpen(false);
-          console.log("need:", res);
-          // } else {
-          console.log("Xato kod");
-          // }
+          // setOpen(false);
+          prev(1);
+          console.log("res:", res);
         });
     } else {
       const formattedBirthDate = values.bithDate.format(
@@ -90,7 +87,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
       );
 
       registerWorker({
-        addressId: 773,
+        addressId: values.countries,
         phoneNumber: phoneNumber,
         bithDate: formattedBirthDate,
         firstName: values.firstName,
@@ -101,7 +98,8 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
       })
         .unwrap()
         .then((res) => {
-          setOpen(false);
+          // setOpen(false);
+          prev(1);
         });
     }
   };

@@ -50,7 +50,7 @@ export async function patchOrganizationRefreshToken(params) {
   // AxiosError = error
 }
 
-export async function getOrganizationRefreshToken(params) {
+export async function getLogout(params) {
   try {
     const res = await axios({
       url:
@@ -59,13 +59,15 @@ export async function getOrganizationRefreshToken(params) {
           : `${process.env.REACT_APP_API_ROUTE}/Worker/Logout`,
       method: "GET",
       headers: {
-        refreshToken: params.refreshToken,
+        refreshToken: localStorage.getItem("refreshToken"),
       },
     });
 
     console.log("working...", params.role);
 
     // params.callback(res.status);
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("accessToken");
 
     return res.data;
   } catch (error) {

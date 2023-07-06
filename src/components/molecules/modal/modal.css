@@ -253,12 +253,12 @@
 .code-group__modal {
   margin-bottom: 130px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 16px;
 }
 
 .code-input__modal {
-  /* width: 59px; */
+  width: 59px;
   height: 50px;
   color: var(--black-100) !important;
   background: var(--white-50) !important;
@@ -271,8 +271,17 @@
   outline: none;
 }
 
-.code-group__modal .error-text {
-  font-size: 16px;
+.code-input__modal:focus {
+  border: none !important;
+}
+
+.error-text__code-group-modal {
+  display: block;
+  color: var(--red, #e61f2a);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
 }
 
 @media (max-width: 1200px) {

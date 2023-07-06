@@ -12,6 +12,7 @@ import {
   useVerifySmsCodeOrganizationMutation,
   useVerifySmsCodeWorkerMutation,
 } from "../../../store/api/apiSlice";
+import OTPInput from "./OTP";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
@@ -42,52 +43,56 @@ const SignUp = ({ next, prev, data }) => {
     prev(1);
   }
 
-  const onInputValueChange = (e) => {
-    const value = e.target.value;
+  const onInputValueChange = (arr) => {
+    // const value = e.target.value;
+    console.log(arr);
 
-    if (value.length <= 4) {
-      setInputValue(value);
-      // console.log(value);
-    }
+    let value = arr.join("");
+    // let value = Number(resValue);
 
-    if (value.length === 4) {
-      if (selectedButton === "organizator") {
-        verifySmsCodeOrganization({ code: value, id: smsId })
-          .unwrap()
-          .then((res) => {
-            if (res.result.success) {
-              next(2);
-            } else {
-              setErrorText("Xato kod");
-            }
-          });
-      } else {
-        verifySmsCodeWorker({ code: value, id: smsId })
-          .unwrap()
-          .then((res) => {
-            if (res.result.success) {
-              next(2);
-            } else {
-              setErrorText("Xato kod");
-            }
-          });
-      }
-    }
-
-    if (value.length > 1 && value.length < 4) {
-      setErrorText("4 ta raqam bo'lishi kerak");
+    if (value.length < 4) {
+      setErrorText("Raqam 4 ta bo'lishi kerak");
+      return;
     } else {
       setErrorText("");
     }
+
+    console.log(value);
+
+    setInputValue(value);
+
+    if (selectedButton === "organizator") {
+      verifySmsCodeOrganization({ code: value, id: smsId })
+        .unwrap()
+        .then((res) => {
+          console.log(res);
+          setErrorText("");
+          if (res.result.success) {
+            next(2);
+          }
+        })
+        .catch((error) => setErrorText("Xato kod"));
+    } else {
+      verifySmsCodeWorker({ code: value, id: smsId })
+        .unwrap()
+        .then((res) => {
+          console.log(res);
+          setErrorText("");
+          if (res.result.success) {
+            next(2);
+          }
+        })
+        .catch((error) => setErrorText("Xato kod"));
+    }
   };
+
+  console.log(errorText);
 
   const initialSeconds = 60;
   const [seconds, setSeconds] = useState(initialSeconds);
   const [isTimerFinished, setIsTimerFinished] = useState(false);
 
   useEffect(() => {
-    setErrorText(inputValue.length > 1 || inputValue.length >= 4);
-
     const interval = setInterval(() => {
       setSeconds((prevCount) => {
         if (prevCount > 1) {
@@ -133,14 +138,19 @@ const SignUp = ({ next, prev, data }) => {
           <Row gutter={[24, 24]}>
             <Col xs={24} sm={24}>
               <div className="code-group__modal">
-                <Input
+                {/* <Input
                   className="code-input__modal"
                   type="number"
                   maxLength={4}
                   value={inputValue}
                   onChange={onInputValueChange}
+                /> */}
+                <OTPInput
+                  length={4}
+                  autoFocus={true}
+                  onValueChange={onInputValueChange}
                 />
-                {<span className="error-text">{errorText}</span>}
+                <span className="error-text__code-group-modal">{errorText}</span>
               </div>
             </Col>
           </Row>
