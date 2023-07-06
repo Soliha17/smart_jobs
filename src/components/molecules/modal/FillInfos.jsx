@@ -46,11 +46,11 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
   const { data: getAddress } = useGetAddressQuery();
   // console.log(getAddress);
   const { data: countries } = useGetCountriesQuery();
-  const { data: regions, refetch: getRegions } = useGetRegionsQuery(
+  const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
     { davlatId: address.countryId },
     { skip: !address.countryId }
   );
-  const { data: cities } = useGetCitiesQuery(
+  const { data: cities, isFetching: isCitiesFetching } = useGetCitiesQuery(
     { viloyatId: address.regionId },
     { skip: !address.regionId }
   );
@@ -119,12 +119,16 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
   }
 
   function onChangeCountry(value, a, b, c) {
-    form.setFieldsValue({ countries: value });
+    form.setFieldsValue({
+      countries: value,
+      regions: undefined,
+      cities: undefined,
+    });
     setAddress({ ...address, countryId: value });
   }
 
   function onChangeRegion(value) {
-    form.setFieldsValue({ regions: value });
+    form.setFieldsValue({ regions: value, cities: undefined });
     setAddress({ ...address, regionId: value });
   }
 
@@ -291,10 +295,14 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                     placeholder={t("choose")}
                     size="large"
                     onChange={onChangeRegion}
-                    options={regions?.result.map((option) => ({
-                      value: option.id.toString(),
-                      label: option.name,
-                    }))}
+                    options={
+                      isRegionsFetching
+                        ? []
+                        : regions?.result.map((option) => ({
+                            value: option.id.toString(),
+                            label: option.name,
+                          }))
+                    }
                   />
                 }
               />
@@ -310,10 +318,14 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                     placeholder={t("choose")}
                     size="large"
                     onChange={onChange}
-                    options={cities?.result.map((option) => ({
-                      value: option.id.toString(),
-                      label: option.name,
-                    }))}
+                    options={
+                      isCitiesFetching
+                        ? []
+                        : cities?.result.map((option) => ({
+                            value: option.id.toString(),
+                            label: option.name,
+                          }))
+                    }
                   />
                 }
               />
