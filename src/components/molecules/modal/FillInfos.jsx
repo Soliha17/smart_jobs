@@ -122,6 +122,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
     form.setFieldsValue({ countries: value });
     setAddress({ ...address, countryId: value });
   }
+
   function onChangeRegion(value) {
     form.setFieldsValue({ regions: value });
     setAddress({ ...address, regionId: value });

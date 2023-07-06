@@ -69,8 +69,6 @@ const Modals = ({ open, setOpen }) => {
         >
           {current === 0 ? (
             <JobSeekerModal
-              // selectedButton={selectedButton}
-              // setSelectedButton={setSelectedButton}
               next={next}
               prev={prev}
               dataHandler={{ data, setData }}
@@ -78,6 +76,8 @@ const Modals = ({ open, setOpen }) => {
           ) : current === 1 ? (
             <SignUp next={next} prev={prev} data={data} />
           ) : current === 2 ? (
+            <Login next={next} prev={prev} data={data} setOpen={setOpen} />
+          ) : current === 3 ? (
             <Login next={next} prev={prev} data={data} setOpen={setOpen} />
           ) : (
             <InfoFills setOpen={setOpen} next={next} prev={prev} />

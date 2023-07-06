@@ -51,7 +51,7 @@ const SignUp = ({ next, prev, data }) => {
     }
 
     if (value.length === 4) {
-      if (selectedButton === "organization") {
+      if (selectedButton === "organizator") {
         verifySmsCodeOrganization({ code: value, id: smsId })
           .unwrap()
           .then((res) => {
