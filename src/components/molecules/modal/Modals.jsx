@@ -19,6 +19,10 @@ const steps = [
     content: <SignUp />,
   },
   {
+    title: "Third",
+    content: <Login />,
+  },
+  {
     title: "Last",
     content: <InfoFills />,
   },
@@ -78,7 +82,7 @@ const Modals = ({ open, setOpen }) => {
           ) : current === 2 ? (
             <Login next={next} prev={prev} data={data} setOpen={setOpen} />
           ) : current === 3 ? (
-            <Login next={next} prev={prev} data={data} setOpen={setOpen} />
+            <InfoFills setOpen={setOpen} next={next} prev={prev} />
           ) : (
             <InfoFills setOpen={setOpen} next={next} prev={prev} />
           )}

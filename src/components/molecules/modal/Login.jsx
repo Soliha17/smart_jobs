@@ -8,7 +8,10 @@ import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useLoginOrganizationMutation } from "../../../store/api/apiSlice";
+import {
+  useLoginOrganizationMutation,
+  useLoginWorkerMutation,
+} from "../../../store/api/apiSlice";
 import { useState } from "react";
 
 const Login = ({ next, prev, setOpen }) => {
@@ -19,30 +22,55 @@ const Login = ({ next, prev, setOpen }) => {
   const [errorText, setErrorText] = useState("");
 
   const { phoneNumber } = useSelector((state) => state.authSlice);
+
+  const { selectedButton } = useSelector((state) => state.selectRoleSlice);
   // console.log(phoneNumber);
 
   const [loginOrganization] = useLoginOrganizationMutation();
 
+  const [loginWorker] = useLoginWorkerMutation();
+
   const onFinish = (values) => {
     // console.log("Success:", values);
 
-    loginOrganization({
-      login: phoneNumber,
-      password: values.password,
-    })
-      .unwrap()
-      .then((res) => {
-        // console.log(res);
-        setErrorText("");
-        setOpen(false);
+    if (selectedButton === "organizator") {
+      loginOrganization({
+        login: phoneNumber,
+        password: values.password,
       })
-      .catch((error) => {
-        if (error.status === 404) {
-          setErrorText("Parolni xato kiritdingiz");
-        } else {
-          setErrorText("Muammo bo'ldi aylanib keling!");
-        }
-      });
+        .unwrap()
+        .then((res) => {
+          // console.log(res);
+          setErrorText("");
+          setOpen(false);
+        })
+        .catch((error) => {
+          if (error.status === 404) {
+            setErrorText("Parolni xato kiritdingiz");
+          } else {
+            setErrorText("Muammo bo'ldi aylanib keling!");
+          }
+        });
+    } else {
+      loginWorker({
+        login: phoneNumber,
+        password: values.password,
+      })
+        .unwrap()
+        .then((res) => {
+          // console.log(res);
+          setErrorText("");
+          setOpen(false);
+        })
+        .catch((error) => {
+          if (error.status === 404) {
+            setErrorText("Parolni xato kiritdingiz");
+          } else {
+            setErrorText("Muammo bo'ldi aylanib keling!");
+          }
+        });
+    }
+
     // if (values.parolOfLogin === "solya") {
     //   // navigate("/dashboard");
     //   // setOpen(false);
@@ -54,7 +82,7 @@ const Login = ({ next, prev, setOpen }) => {
   };
 
   function handleBack() {
-    prev(1);
+    prev(2);
   }
 
   const { t } = useTranslation();

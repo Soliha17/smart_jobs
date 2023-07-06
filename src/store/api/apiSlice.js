@@ -55,6 +55,14 @@ export const apiSlice = createApi({
         body,
       }),
     }),
+    // Login Worker
+    loginWorker: builder.mutation({
+      query: (body) => ({
+        url: `/Worker/Login`,
+        method: "POST",
+        body,
+      }),
+    }),
     // Company direction
     getCompanyDirections: builder.query({
       query: () => ({
@@ -119,4 +127,5 @@ export const {
   useGetCountriesQuery,
   useGetCitiesQuery,
   useGetRegionsQuery,
+  useLoginWorkerMutation,
 } = apiSlice;

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { postOrganizationGetSmsCode } from "./request";
+import { patchOrganizationRefreshToken, postGetSmsCode } from "./request";
 
 const initialState = {
   phoneNumber: "",
@@ -9,7 +9,12 @@ const initialState = {
 
 export const GetSmsCodeThunk = createAsyncThunk(
   "auth/getSmsCode",
-  postOrganizationGetSmsCode
+  postGetSmsCode
+);
+
+export const RefreshTokenThunk = createAsyncThunk(
+  "auth/refreshToken",
+  patchOrganizationRefreshToken
 );
 
 export const authSlice = createSlice({

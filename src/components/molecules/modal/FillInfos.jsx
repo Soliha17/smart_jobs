@@ -111,7 +111,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
   };
 
   function handleBack() {
-    prev(2);
+    prev(3);
   }
 
   function onChange() {
