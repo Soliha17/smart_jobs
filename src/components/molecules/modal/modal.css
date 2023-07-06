@@ -250,8 +250,15 @@
   color: var(--black-75);
 }
 
+
+.code-container__modal{
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .code-group__modal {
-  margin-bottom: 130px;
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -279,9 +286,13 @@
   display: block;
   color: var(--red, #e61f2a);
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   line-height: normal;
+}
+
+.ant-form  .code-input--error{
+  border-color: var(--red, #e61f2a) !important;
 }
 
 @media (max-width: 1200px) {

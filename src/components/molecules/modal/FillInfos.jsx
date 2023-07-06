@@ -39,7 +39,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
 
   const [registerOrganization] = useRegisterOrganizationMutation();
   const [registerWorker] = useRegisterWorkerMutation();
-  const { data: getCompanyDirections } = useGetCompanyDirectionsQuery();
+  const { data: companyDirections } = useGetCompanyDirectionsQuery();
   // console.log("companyDirections: ", getCompanyDirections);
   const { data: getCompanySizes } = useGetCompanySizesQuery();
   // console.log(getCompanySizes?.result);
@@ -199,7 +199,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                         placeholder={t("choose")}
                         size="large"
                         // onChange={onChange}
-                        options={getCompanyDirections?.result.map((option) => ({
+                        options={companyDirections?.result.map((option) => ({
                           value: option.id.toString(),
                           label: option.name,
                         }))}

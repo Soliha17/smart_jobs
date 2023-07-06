@@ -7,21 +7,30 @@ import "./modal.css";
 import BackIcon from "../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../assets/images/resend-icon.svg";
 // import OTPInput from "../../atoms/OTPInput";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   useVerifySmsCodeOrganizationMutation,
   useVerifySmsCodeWorkerMutation,
 } from "../../../store/api/apiSlice";
 import OTPInput from "./OTP";
+import { GetSmsCodeThunk, setSmsCode } from "../../../store/auth.slice";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState("");
+  const dispatch = useDispatch()
 
   const selectedButton = useSelector(
     (state) => state.selectRoleSlice.selectedButton
   );
+  const phoneNumber = useSelector(
+    (state) => state.authSlice.phoneNumber
+  );
+  const smsCode = useSelector(
+    (state) => state.authSlice.smsCode
+  );
+
 
   const [verifySmsCodeOrganization] = useVerifySmsCodeOrganizationMutation();
   const [verifySmsCodeWorker] = useVerifySmsCodeWorkerMutation();
@@ -29,12 +38,12 @@ const SignUp = ({ next, prev, data }) => {
   const { smsId } = useSelector((state) => state.authSlice);
 
   const onFinish = (values) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
     // dispatch(setSmsCode(values));
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
   };
 
   // console.log(data);
@@ -43,11 +52,11 @@ const SignUp = ({ next, prev, data }) => {
     prev(1);
   }
 
-  const onInputValueChange = (arr) => {
+  const onInputValueChange = (value) => {
     // const value = e.target.value;
-    console.log(arr);
+    // console.log(arr);
 
-    let value = arr.join("");
+
     // let value = Number(resValue);
 
     if (value.length < 4) {
@@ -57,7 +66,7 @@ const SignUp = ({ next, prev, data }) => {
       setErrorText("");
     }
 
-    console.log(value);
+    // console.log(value);
 
     setInputValue(value);
 
@@ -65,7 +74,7 @@ const SignUp = ({ next, prev, data }) => {
       verifySmsCodeOrganization({ code: value, id: smsId })
         .unwrap()
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setErrorText("");
           if (res.result.success) {
             next(2);
@@ -76,7 +85,7 @@ const SignUp = ({ next, prev, data }) => {
       verifySmsCodeWorker({ code: value, id: smsId })
         .unwrap()
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setErrorText("");
           if (res.result.success) {
             next(2);
@@ -86,9 +95,9 @@ const SignUp = ({ next, prev, data }) => {
     }
   };
 
-  console.log(errorText);
+  // console.log(errorText);
 
-  const initialSeconds = 60;
+  const initialSeconds = 10;
   const [seconds, setSeconds] = useState(initialSeconds);
   const [isTimerFinished, setIsTimerFinished] = useState(false);
 
@@ -110,6 +119,16 @@ const SignUp = ({ next, prev, data }) => {
   function handleTimerReset() {
     setSeconds(initialSeconds);
     setIsTimerFinished(false);
+    setErrorText("")
+
+    console.log(smsCode);
+
+    dispatch(setSmsCode(["","","",""]))
+
+
+    dispatch(GetSmsCodeThunk({
+      phone: phoneNumber,
+      role: selectedButton}))
   }
 
   const { t, i18n } = useTranslation();
@@ -137,7 +156,8 @@ const SignUp = ({ next, prev, data }) => {
         >
           <Row gutter={[24, 24]}>
             <Col xs={24} sm={24}>
-              <div className="code-group__modal">
+              <div className="code-container__modal">
+                <div className="code-group__modal">
                 {/* <Input
                   className="code-input__modal"
                   type="number"
@@ -145,11 +165,13 @@ const SignUp = ({ next, prev, data }) => {
                   value={inputValue}
                   onChange={onInputValueChange}
                 /> */}
-                <OTPInput
+                  <OTPInput
+                    error={errorText}
                   length={4}
                   autoFocus={true}
                   onValueChange={onInputValueChange}
                 />
+              </div>
                 <span className="error-text__code-group-modal">{errorText}</span>
               </div>
             </Col>

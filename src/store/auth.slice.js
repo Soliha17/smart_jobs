@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
-  getLogout,
   patchOrganizationRefreshToken,
   postGetSmsCode,
 } from "./request";
@@ -8,6 +7,7 @@ import {
 const initialState = {
   phoneNumber: "",
   smsId: null,
+  smsCode:["","","",""],
   isLoading: false,
 };
 
@@ -25,8 +25,11 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setSmsCode(state, action) {
+    setSmsId(state, action) {
       state.smsId = action.payload;
+    },
+    setSmsCode(state, action) {
+      state.smsCode = action.payload;
     },
     setPhone(state, action) {
       state.phoneNumber = action.payload;
@@ -46,6 +49,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setSmsCode, setPhone } = authSlice.actions;
+export const {  setSmsId, setPhone, setSmsCode } = authSlice.actions;
 
 export default authSlice.reducer;

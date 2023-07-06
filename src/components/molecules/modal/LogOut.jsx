@@ -20,7 +20,7 @@ const LogOutModal = ({ open, setOpen }) => {
     // dispatch(getLogout());
     try {
       const res = await axios({
-        url: `${process.env.REACT_APP_API_ROUTE}/Worker/Logout`,
+        url: `${process.env.REACT_APP_API_ROUTE}/Organization/Logout`,
         method: "GET",
         headers: {
           refreshToken: localStorage.getItem("refreshToken"),

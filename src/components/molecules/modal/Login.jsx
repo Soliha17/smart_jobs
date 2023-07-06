@@ -125,7 +125,7 @@ const Login = ({ next, prev, setOpen }) => {
                 req={true}
                 input={<Input.Password size="large" />}
               />
-              {<span className="error-text">{errorText}</span>}
+              <span className="error-text">{errorText}</span>
             </Col>
             <Col xs={24} sm={24}>
               <button className="primary-btn">{t("continue")}</button>
