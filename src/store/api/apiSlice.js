@@ -92,7 +92,7 @@ export const apiSlice = createApi({
     }),
     getCities: builder.query({
       query: (params) => ({
-        url: "/Address/GetShahar",
+        url: "/Address/GetShaxar",
         params,
       }),
       providesTags: ["GetShahar"],

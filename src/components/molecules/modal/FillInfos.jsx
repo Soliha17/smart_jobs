@@ -25,11 +25,12 @@ import {
   useGetCitiesQuery,
   useGetRegionsQuery,
 } from "../../../store/api/apiSlice";
+import { useState } from "react";
 
 const InfoFills = ({ open, setOpen, prev, next }) => {
   const [form] = Form.useForm();
-
   const { t } = useTranslation();
+  const [address, setAddress] = useState({ countryId: null, regionId: null });
 
   const selectedButton = useSelector(
     (state) => state.selectRoleSlice.selectedButton
@@ -46,13 +47,15 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
   // console.log(getAddress);
   const { data: countries } = useGetCountriesQuery();
   const { data: regions, refetch: getRegions } = useGetRegionsQuery(
-    { davlatId: form.getFieldValue("countries") },
-    { skip: !form.getFieldValue("countries") }
+    { davlatId: address.countryId },
+    { skip: !address.countryId }
   );
   const { data: cities } = useGetCitiesQuery(
-    { viloyatId: form.getFieldValue("regions") },
-    { skip: !form.getFieldValue("regions") }
+    { viloyatId: address.regionId },
+    { skip: !address.regionId }
   );
+
+  console.log(form.getFieldValue("countries"));
 
   const onFinish = (values) => {
     console.log("Success:", values.countries);
@@ -115,16 +118,14 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
     console.log("inpiut changing");
   }
 
-  function onChangeCountry(value) {
-    console.log(value);
+  function onChangeCountry(value, a, b, c) {
     form.setFieldsValue({ countries: value });
-    // getRegions({ davlatId: value });
+    setAddress({ ...address, countryId: value });
   }
-
-  // function onChangeRegion(value) {
-  //   form.setFieldsValue({ cities: undefined });
-  //   getCities({ viloyatId: value });
-  // }
+  function onChangeRegion(value) {
+    form.setFieldsValue({ regions: value });
+    setAddress({ ...address, regionId: value });
+  }
 
   return (
     <div className="body__login-modal full-infos-modal">
@@ -288,7 +289,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                     // defaultValue="buxoro"
                     placeholder={t("choose")}
                     size="large"
-                    // onChange={onChangeRegion}
+                    onChange={onChangeRegion}
                     options={regions?.result.map((option) => ({
                       value: option.id.toString(),
                       label: option.name,
