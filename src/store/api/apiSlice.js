@@ -1,16 +1,57 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const baseQuery = fetchBaseQuery({
+  baseUrl: process.env.REACT_APP_API_ROUTE,
+  prepareHeaders: async (headers, { getState }) => {
+    console.log(getState());
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      headers.set("Authorization", `Bearer ${accessToken}`);
+    }
+    headers.set("Accept", `application/json`);
+    return headers;
+  },
+});
+
+const customBaseQuery = async (args, api, extraOptions) => {
+  let result = await baseQuery(args, api, extraOptions);
+
+  if (result?.error?.status === 401 && localStorage.getItem("refreshToken")) {
+    // console.log(args, api, extraOptions);
+    let refreshResult = await fetchBaseQuery({
+      baseUrl: process.env.REACT_APP_API_ROUTE,
+      prepareHeaders: async (headers) => {
+        const refreshToken = localStorage.getItem("refreshToken");
+        headers.set("refreshToken", refreshToken);
+        headers.set("Accept", `application/json`);
+        return headers;
+      },
+    })(
+      { ...args, url: "/Organization/RefreshToken", method: "PATCH" },
+      api,
+      extraOptions
+    );
+
+    localStorage.setItem(
+      "accessToken",
+      refreshResult?.data?.result?.token?.accessToken
+    );
+    localStorage.setItem(
+      "refreshToken",
+      refreshResult?.data?.result?.token?.refreshToken
+    );
+
+    result = await baseQuery(args, api, extraOptions);
+  }
+
+  console.log(result);
+
+  return result;
+};
+
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_API_ROUTE,
-    prepareHeaders: async (headers) => {
-      const accessToken = localStorage.getItem("accessToken");
-      headers.set("Authorization", `Bearer ${accessToken}`);
-      headers.set("Accept", `application/json`);
-      return headers;
-    },
-  }),
+  baseQuery: customBaseQuery,
   tagTypes: ["CompanyDirections"],
   endpoints: (builder) => ({
     // ----- Auth -----
@@ -117,22 +158,6 @@ export const apiSlice = createApi({
       providesTags: ["GetShahar"],
     }),
   }),
-  shouldRetryOnError: (error) => {
-    console.log(error);
-    alert("dsakn")
-    // Check if the error is due to an expired token
-    if (error.status === 401 && error.data?.code === 'TOKEN_EXPIRED') {
-      // Implement your token refresh logic here
-      // Retrieve a new access token using the refresh token
-      // Update the access token in your application's state or storage
-
-      // Return true to indicate that the request should be retried
-      return true;
-    }
-
-    // Return false to indicate that the request should not be retried
-    return false;
-  },
 });
 
 export const {
@@ -156,5 +181,5 @@ export const {
   useGetRegionsQuery,
   useLoginWorkerMutation,
   useGetOrganizationQuery,
-  useGetWorkerQuery
+  useGetWorkerQuery,
 } = apiSlice;

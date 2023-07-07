@@ -47,6 +47,7 @@ const Login = ({ next, prev, setOpen }) => {
           setOpen(false);
         })
         .catch((error) => {
+          console.log(error);
           if (error.status === 404) {
             setErrorText("Parolni xato kiritdingiz");
           } else {
