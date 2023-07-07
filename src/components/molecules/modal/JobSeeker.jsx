@@ -20,6 +20,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   // const [phoneNumber, setInputValue] = useState("");
   const [errorText, setErrorText] = useState("");
   const [errorApiText, setErrorApiText] = useState("");
+  const [inputType, setInputType] = useState("email");
 
   const phoneInputRef = useRef(null);
   const emailInputRef = useRef(null);
@@ -28,7 +29,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   const { phoneNumber } = useSelector((state) => state.authSlice);
 
   const { setData } = dataHandler;
-
 
   const { t } = useTranslation();
 
@@ -78,8 +78,13 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     }
   };
 
+  function handleShow(e) {
+    // console.log(e.target.selectionStart);
+    // setInputType("text");
+  }
+
   const onInputValueChange = (e) => {
-    console.log(e.key);
+    setInputType("text");
 
     if (
       e.key === "*" ||
@@ -103,14 +108,15 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     ) {
       e.preventDefault();
     } else if (e.key === "Backspace") {
-      dispatch(setPhone(phoneNumber.slice(0, phoneNumber.length - 1)));
-      // const currentPosition = e.target.selectionStart;
-      // const newValue =
-      //   inputValue.slice(0, currentPosition - 1) +
-      //   inputValue.slice(currentPosition);
-      // setInputValue(newValue);
-      // e.target.setSelectionRange(currentPosition - 1, currentPosition - 1);
-      // return;
+      dispatch(
+        setPhone(
+          phoneNumber.slice(0, e.target.selectionStart - 1) +
+            phoneNumber.slice(e.target.selectionStart, phoneNumber.length)
+        )
+      );
+
+      // let start = e.target.selectionStart;
+      // e.target.setSelectionRange(start, start);
     } else {
       if (!isNaN(e.key - 0) && phoneNumber.slice(0, 1) !== "+") {
         dispatch(setPhone("+998 " + e.key));
@@ -134,6 +140,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
       !phoneNumber.includes(".") &&
       !phoneNumber.includes("@")
     ) {
+      setInputType("email");
       setErrorText("Bu e-mail orqali ro'yxatdan o'tilmagan");
     } else if (
       (phoneNumber.slice(0, 1) === "+" && phoneNumber.length > 14) ||
@@ -191,6 +198,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
             errorText ? "email_phone_form error_form" : "email_phone_form"
           }
         >
+          {/* <input type={inputType} onKeyDown={handleShow} /> */}
           <label htmlFor="input" className="input_label">
             {t("enterYourPhoneOrEmail")}
           </label>{" "}
@@ -209,12 +217,12 @@ const JobSeekerModal = ({ next, dataHandler }) => {
           ) : (
             <input
               name="mail"
-              type="email"
+              type={inputType}
               value={phoneNumber}
               // control={control}
               // {...register("email")}
               onChange={handleChange}
-              ref={emailInputRef}
+              ref={phoneInputRef}
               onKeyDown={onInputValueChange}
               autoComplete="off"
             />
