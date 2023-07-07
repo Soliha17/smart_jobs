@@ -7,6 +7,7 @@ import "./chooseResumeModal.css";
 import { useDispatch } from "react-redux";
 import { LogOutThunk } from "../../../store/logOut.slice";
 import { getLogout } from "../../../store/request";
+
 import axios from "axios";
 
 const LogOutModal = ({ open, setOpen }) => {
@@ -33,13 +34,15 @@ const LogOutModal = ({ open, setOpen }) => {
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");
 
-      setOpen(true)
+      setOpen(true);
 
       return res.data;
     } catch (error) {
       // console.log(error, params.role);
       // params.callback(error.response.status, error.response.data.error.message);
     }
+
+    setOpen(!open);
   };
 
   const { t } = useTranslation();
@@ -49,12 +52,18 @@ const LogOutModal = ({ open, setOpen }) => {
       <Modal
         open={open}
         onCancel={handleCancel}
-        wrapClassName="report-modal add-test-modal"
+        wrapClassName="report-modal logout-modal"
         footer={null}
       >
         <h3>Tizimdan chiqmoqmisiz ?</h3>
-        <Button>Yo'q</Button>
-        <Button onClick={logOut}>Ha</Button>
+        <div className="footer__logout-modal">
+          <button className="primary-btn" onClick={() => setOpen(!open)}>
+            Yo'q
+          </button>
+          <button className="white-btn" onClick={logOut}>
+            Ha
+          </button>
+        </div>
       </Modal>
     </>
   );

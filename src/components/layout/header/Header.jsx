@@ -28,6 +28,10 @@ import CloseIcon from "./CloseIcon";
 import LogOutModal from "../../molecules/modal/LogOut";
 import { useDispatch } from "react-redux";
 import { setPhone } from "../../../store/auth.slice";
+import {
+  useGetOrganizationQuery,
+  useGetWorkerQuery,
+} from "../../../store/api/apiSlice";
 
 const languageOptions = [
   { value: "en", label: "En" },
@@ -51,6 +55,12 @@ function Header() {
   const [isHeroPage, setIsHeroPage] = useState(false);
   const dispatch = useDispatch();
 
+  const { data: organizationMe } = useGetOrganizationQuery();
+  const { data: workerMe } = useGetWorkerQuery();
+
+  console.log("organizationMe", organizationMe);
+  console.log("workerMe", workerMe);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -61,6 +71,10 @@ function Header() {
       setIsHeroPage(true);
     } else {
       setIsHeroPage(false);
+    }
+
+    if (organizationMe || workerMe) {
+      setIsUser(true);
     }
   }, [location.pathname]);
 
@@ -83,6 +97,11 @@ function Header() {
     setIsModalOpen(!isModalOpen);
     setVisible(false);
     dispatch(setPhone(""));
+  }
+
+  function openLogoutModal() {
+    setVisible(false);
+    setIsLogoutModalOpen(!isLogoutModalOpen);
   }
 
   const items = [
@@ -196,7 +215,8 @@ function Header() {
                         <button onClick={(e) => e.preventDefault()}>
                           <Space className="profile__name">
                             <img src={ProfileImg} alt="Pofile Img" width={43} />
-                            {t("nameOfUser")}
+                            {organizationMe.result.fistName}
+                            {organizationMe.result.lastName}
                             <DownOutlined />
                           </Space>
                         </button>
@@ -265,7 +285,8 @@ function Header() {
                                 alt="Pofile Img"
                                 width={43}
                               />
-                              {t("nameOfUser")}
+                              {organizationMe.result.fistName}
+                              {organizationMe.result.lastName}
                               <DownOutlined />
                             </Space>
                           </button>
@@ -325,7 +346,10 @@ function Header() {
                       </ul>
                     </nav>
                     {isUser && (
-                      <button className="default-btn default-btn--user">
+                      <button
+                        className="default-btn default-btn--user"
+                        onClick={openLogoutModal}
+                      >
                         {t("exit")}
                       </button>
                     )}

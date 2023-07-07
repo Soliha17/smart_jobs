@@ -32,6 +32,11 @@
   padding: 30px 40px;
 }
 
+.ant-modal-root:has(.logut-modal) .ant-modal-content {
+  max-width: 492px !important;
+  padding: 32px;
+}
+
 .ant-modal-root:has(.report-modal) .ant-modal-body {
   width: 100% !important;
 }
@@ -129,6 +134,30 @@
 
 .stepper-none {
   display: none;
+}
+
+/* LOGOUT MODAL */
+.logout-modal h3 {
+  margin-bottom: 76px;
+  color: var(--black-100, #1c1917);
+  font-weight: 600;
+  font-size: 25px;
+  line-height: normal;
+}
+
+.footer__logout-modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-modal button {
+  width: 202px;
+  height: 48px;
+}
+
+.logout-modal .white-btn {
+  background: var(--white-100);
 }
 
 .login-modal .ant-modal-content {
@@ -250,8 +279,7 @@
   color: var(--black-75);
 }
 
-
-.code-container__modal{
+.code-container__modal {
   margin-bottom: 100px;
   display: flex;
   flex-direction: column;
@@ -291,7 +319,7 @@
   line-height: normal;
 }
 
-.ant-form  .code-input--error{
+.ant-form .code-input--error {
   border-color: var(--red, #e61f2a) !important;
 }
 
