@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Steps } from "antd";
 
 import JobSeekerModal from "./JobSeeker";
@@ -29,16 +29,18 @@ const steps = [
 ];
 
 const Modals = ({ open, setOpen }) => {
-  // const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-  // const [selectedButton, setSelectedButton] = useState("btn1");
   const [data, setData] = useState("");
+
+  useEffect(() => {
+    if (!open) {
+      setCurrent(0);
+    }
+  }, [open]);
 
   const next = (stepNumber) => {
     setCurrent(current + stepNumber);
   };
-
-  // console.log(data);
 
   const prev = (stepNumber) => {
     setCurrent(current - stepNumber);

@@ -33,6 +33,8 @@ const LogOutModal = ({ open, setOpen }) => {
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");
 
+      setOpen(true)
+
       return res.data;
     } catch (error) {
       // console.log(error, params.role);
@@ -47,10 +49,10 @@ const LogOutModal = ({ open, setOpen }) => {
       <Modal
         open={open}
         onCancel={handleCancel}
-        wrapClassName="choose-resume-modal"
+        wrapClassName="report-modal add-test-modal"
         footer={null}
       >
-        <h1>Chiqishni istaysizmi</h1>
+        <h3>Chiqishni istaysizmi</h3>
         <Button onClick={logOut}>ok</Button>
         <Button>cancel</Button>
       </Modal>

@@ -3,15 +3,12 @@ import { Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { setSmsCode } from "../../../store/auth.slice";
 
-const OTPInput = ({ length, autoFocus, onValueChange,error }) => {
+const OTPInput = ({ length, autoFocus, onValueChange, error }) => {
   // const [otp, setOtp] = useState(Array(length).fill(""));
   const inputs = useRef([]);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-
-    const smsCode = useSelector(
-    (state) => state.authSlice.smsCode
-  );
+  const smsCode = useSelector((state) => state.authSlice.smsCode);
 
   console.log(smsCode);
 
@@ -19,16 +16,15 @@ const OTPInput = ({ length, autoFocus, onValueChange,error }) => {
     if (autoFocus) {
       inputs.current[0].focus();
     }
-  }, []);
+  }, [autoFocus]);
 
   const handleChange = (e, index) => {
     const newSmsCode = [...smsCode];
     let value = e.target.value;
 
-
     if (/^\d*$/.test(value) && value.length <= 1) {
       newSmsCode[index] = value;
-    dispatch(setSmsCode(newSmsCode))
+      dispatch(setSmsCode(newSmsCode));
 
       let resValue = newSmsCode.join("");
 
@@ -42,7 +38,7 @@ const OTPInput = ({ length, autoFocus, onValueChange,error }) => {
       }
     } else if (!value && index > 0) {
       newSmsCode[index] = value;
-      dispatch(setSmsCode(newSmsCode))
+      dispatch(setSmsCode(newSmsCode));
       inputs.current[index - 1].focus();
     }
   };
@@ -55,12 +51,13 @@ const OTPInput = ({ length, autoFocus, onValueChange,error }) => {
     }
   };
 
-
   return (
     <>
       {smsCode.map((digit, index) => (
         <Input
-          className={`code-input__modal ${error !== ""  ? "code-input--error" : ""}`}
+          className={`code-input__modal ${
+            error !== "" ? "code-input--error" : ""
+          }`}
           key={index}
           value={digit}
           onChange={(e) => handleChange(e, index)}

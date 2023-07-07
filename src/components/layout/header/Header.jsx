@@ -55,10 +55,8 @@ function Header() {
 
   useEffect(() => {
     if (location.pathname === "/") {
-      setIsUser(false);
       setIsHeroPage(true);
     } else {
-      setIsUser(true);
       setIsHeroPage(false);
     }
   }, [location.pathname]);
@@ -77,6 +75,11 @@ function Header() {
   const onClose = () => {
     setVisible(false);
   };
+
+  function handleOpenModal() {
+    setIsModalOpen(!isModalOpen);
+    setVisible(false);
+  }
 
   const items = [
     {
@@ -117,16 +120,13 @@ function Header() {
         <div className="header-wrapper">
           <div
             className={
-              isUser ? "user__header-wrapper" : "login__header-wrapper"
-            }
-            style={
-              isHeroPage ? { background: "#008DFF" } : { background: "white" }
+              isHeroPage ? "hero__header-wrapper" : "not-hero__header-wrapper"
             }
           >
             <header className="header container">
               <div className="logo__header">
                 <img
-                  src={isUser ? LogoBlack : Logo}
+                  src={isHeroPage ? Logo : LogoBlack}
                   alt="Smart Jobs' Logo"
                   onClick={goToHomePage}
                 />
@@ -216,7 +216,7 @@ function Header() {
                 )}
                 <div className="mobileVisible">
                   <img
-                    src={isUser ? BlackMenu : WhiteMenu}
+                    src={isHeroPage ? WhiteMenu : BlackMenu}
                     onClick={showDrawer}
                     className="hamburger-btn__header"
                     alt=""
@@ -269,7 +269,12 @@ function Header() {
                       </div>
                     ) : (
                       <div className="login-buttons__header">
-                        <button className="primary-btn">Kirish</button>
+                        <button
+                          className="primary-btn"
+                          onClick={handleOpenModal}
+                        >
+                          Kirish
+                        </button>
                         <button className="job-seeker-btn__header">
                           Ish qidiruvchilar uchun
                         </button>

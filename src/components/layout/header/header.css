@@ -3,13 +3,12 @@
   /* background: transparent; */
 }
 
-.login__header-wrapper {
-  /* background: var(--white); */
-  /* background: var(--primary-100); */
+.hero__header-wrapper {
+  background: var(--primary-100);
 }
 
-.user__header-wrapper {
-  /* background: var(--white); */
+.not-hero__header-wrapper {
+  background: var(--white);
 }
 
 .header {
@@ -30,20 +29,20 @@
 }
 
 .select__header .ant-select-selector {
-  height: 48px !important;
   padding: 8px 0px 0 20px !important;
+  height: 48px !important;
   color: var(--white) !important;
   background: var(--lightblue) !important;
   border-radius: 12px;
 }
 
-.user__header-wrapper .select__header .ant-select-selector {
-  background: var(--white-50) !important;
-  color: var(--black-75) !important;
-}
-
 .select__header .ant-select-arrow {
   display: none;
+}
+
+.not-hero__header-wrapper .select__header .ant-select-selector {
+  background: var(--white-50) !important;
+  color: var(--black-75) !important;
 }
 
 .employer-btn__header {
@@ -57,6 +56,11 @@
   line-height: 24px;
   border: none;
   cursor: pointer;
+}
+
+.not-hero__header-wrapper .employer-btn__header {
+  background: var(--white-50) !important;
+  color: var(--black-75) !important;
 }
 
 .enter-btn__header {
@@ -78,6 +82,11 @@
   color: var(--black-100) !important;
 } */
 
+.not-hero__header-wrapper .enter-btn__header {
+  background: var(--primary-100);
+  color: var(--white);
+}
+
 .reminder-btn__header {
   width: 48px;
   height: 48px;
@@ -85,6 +94,15 @@
   background: var(--white-50);
   border: none;
   cursor: pointer;
+}
+
+.hero__header-wrapper .reminder-btn__header {
+  background: var(--lightblue);
+}
+
+.hero__header-wrapper .reminder-btn__header img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7443%)
+    hue-rotate(66deg) brightness(96%) contrast(90%);
 }
 
 /* HEADER NAV STYLES */
@@ -105,12 +123,12 @@
   transition: all 0.3s ease-in;
 }
 
-.user__header-wrapper nav a {
-  color: var(--black-75);
+.hero__header-wrapper nav a {
+  color: var(--white);
 }
 
-.login__header-wrapper nav a {
-  color: var(--white);
+.not-hero__header-wrapper nav a {
+  color: var(--black-75);
 }
 
 .header nav a::after {
@@ -130,8 +148,8 @@
   background: var(--primary-100);
 }
 
-.login__header-wrapper nav a:hover::after,
-.login__header-wrapper nav a.active::after {
+.hero__header-wrapper nav a:hover::after,
+.hero__header-wrapper nav a.active::after {
   background: var(--white);
 }
 
@@ -160,6 +178,10 @@
   font-size: 16px;
   line-height: 20px;
   color: var(--black-75);
+}
+
+.hero__header-wrapper .profile__name {
+  color: var(--white);
 }
 
 .hamburger-btn__header {
@@ -196,6 +218,10 @@
 
 .drawer__header .ant-drawer-header-title {
   flex: none !important;
+}
+
+.drawer__header .ant-drawer-header-title button {
+  margin-inline-end: 0;
 }
 
 .drawer-select__header {

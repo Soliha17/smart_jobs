@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import "./modal.css";
 import "./JobSeekerStyle.css";
@@ -21,7 +21,11 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   const [errorText, setErrorText] = useState("");
   const [errorApiText, setErrorApiText] = useState("");
 
+  const phoneInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+
   const { selectedButton } = useSelector((state) => state.selectRoleSlice);
+  const { phoneNumber } = useSelector((state) => state.authSlice);
 
   const { setData } = dataHandler;
 
@@ -74,6 +78,8 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   };
 
   const onInputValueChange = (e) => {
+    console.log(e.key);
+
     if (
       e.key === "*" ||
       e.key === "/" ||
@@ -96,19 +102,32 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     ) {
       e.preventDefault();
     } else if (e.key === "Backspace") {
-      setInputValue(inputValue.slice(0, inputValue.length - 1));
+      const currentPosition = e.target.selectionStart;
+      if (currentPosition > 0) {
+        const newValue =
+          inputValue.slice(0, currentPosition - 1) +
+          inputValue.slice(currentPosition);
+        setInputValue(newValue);
+        e.target.setSelectionRange(currentPosition - 1, currentPosition - 1);
+      }
+      return;
     } else {
       if (!isNaN(e.key - 0) && inputValue.slice(0, 1) !== "+") {
         setInputValue("+998 " + e.key);
       } else if (!isNaN(e.key - 0)) {
         setInputValue(inputValue + e.key);
       } else {
-        setInputValue(inputValue + e.key);
+        setInputValue(inputValue);
       }
     }
   };
 
   useEffect(() => {
+    if (selectedButton === "worker" || selectedButton === "organizator") {
+      phoneInputRef.current?.focus();
+      emailInputRef.current?.focus();
+    }
+
     if (
       inputValue.length &&
       inputValue.slice(0, 1) !== "+" &&
@@ -134,7 +153,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     } else if (inputValue === "") {
       setErrorText("");
     }
-  }, [inputValue, errorText, errorApiText]);
+  }, [inputValue, errorText, errorApiText, selectedButton]);
 
   const handleButtonClick = (button) => {
     dispatch(selectButton(button));
@@ -180,6 +199,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
             <input
               type="text"
               value={inputValue}
+              ref={phoneInputRef}
               // control={control}
               // {...register("phone")}
 
@@ -194,6 +214,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
               value={inputValue}
               // control={control}
               // {...register("email")}
+              ref={emailInputRef}
               onChange={handleChange}
               onKeyDown={onInputValueChange}
               autoComplete="off"
