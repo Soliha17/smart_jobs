@@ -5,10 +5,10 @@ import { useTranslation } from "react-i18next";
 
 import "./chooseResumeModal.css";
 
-import PlusIcon from "../../../assets/images/add-circle-blue.svg";
-import Boy from "../../../assets/images/designer-boy.png";
+import PlusIcon from "../../../../assets/images/add-circle-blue.svg";
+import Boy from "../../../../assets/images/designer-boy.png";
 import TextArea from "antd/es/input/TextArea";
-import AssignedToWorkModal from "../../atoms/assigned-to-work-modal/AssignedToWorkModal";
+import AssignedToWorkModal from "../../../atoms/assigned-to-work-modal/AssignedToWorkModal";
 
 const ChooseResumeModal = ({ open, setOpen }) => {
   const [form] = Form.useForm();

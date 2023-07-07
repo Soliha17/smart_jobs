@@ -17,7 +17,7 @@ import Read from "../../../assets/images/2-check-icon.svg";
 import AttachFile from "../../../assets/images/attach-file-icon.svg";
 import Send from "../../../assets/images/send-icon-chat.svg";
 import BackIcon from "../../../assets/images/back-icon-chat.svg";
-import ChatParticipants from "../../molecules/modal/ChatParticipants";
+import ChatParticipants from "../../molecules/modal/chat-participants/ChatParticipants";
 import { useTranslation } from "react-i18next";
 
 const MainMyApplications = () => {

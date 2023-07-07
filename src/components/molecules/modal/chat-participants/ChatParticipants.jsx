@@ -3,9 +3,9 @@ import { Modal } from "antd";
 
 import "./chatParticipants.css";
 
-import Girl from "../../../assets/images/hr-girl.png";
-import Man from "../../../assets/images/hr-man.png";
-import Boy from "../../../assets/images/designer-boy.png";
+import Girl from "../../../../assets/images/hr-girl.png";
+import Man from "../../../../assets/images/hr-man.png";
+import Boy from "../../../../assets/images/designer-boy.png";
 import { useTranslation } from "react-i18next";
 
 const ChatParticipants = ({ open, setOpen }) => {

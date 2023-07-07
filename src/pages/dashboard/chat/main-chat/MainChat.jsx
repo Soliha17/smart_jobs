@@ -16,7 +16,7 @@ import AttachFile from "../../../../assets/images/attach-file-icon.svg";
 import Send from "../../../../assets/images/send-icon-chat.svg";
 import BackIcon from "../../../../assets/images/back-icon-chat.svg";
 
-import ChatParticipants from "../../../../components/molecules/modal/ChatParticipants";
+import ChatParticipants from "../../../../components/molecules/modal/chat-participants/ChatParticipants";
 
 const MainChat = () => {
   const [show, setShow] = useState(true);

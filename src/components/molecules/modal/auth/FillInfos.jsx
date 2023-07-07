@@ -11,8 +11,9 @@ import {
 
 import "./modal.css";
 
-import LabeledInput from "../labeled-input/LabeledInput";
-import BackIcon from "../../../assets/images/arrow-back-modal.svg";
+import LabeledInput from "../../labeled-input/LabeledInput";
+import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
+
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import {
@@ -24,7 +25,7 @@ import {
   useGetCountriesQuery,
   useGetCitiesQuery,
   useGetRegionsQuery,
-} from "../../../store/api/apiSlice";
+} from "../../../../store/api/apiSlice";
 import { useState } from "react";
 
 const InfoFills = ({ open, setOpen, prev, next }) => {

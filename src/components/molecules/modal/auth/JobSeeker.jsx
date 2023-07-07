@@ -5,14 +5,14 @@ import "./JobSeekerStyle.css";
 
 // import InfoFills from "./FillInfos";
 
-import PrivacyIcon from "../../../assets/images/privacy-icon.svg";
+import PrivacyIcon from "../../../../assets/images/privacy-icon.svg";
 import { useTranslation } from "react-i18next";
 
 // import { Form, Input } from 'antd'
 
 import { useSelector, useDispatch } from "react-redux";
-import { selectButton } from "../../../store/selectRole.slice";
-import { GetSmsCodeThunk, setPhone } from "../../../store/auth.slice";
+import { selectButton } from "../../../../store/selectRole.slice";
+import { GetSmsCodeThunk, setPhone } from "../../../../store/auth.slice";
 
 const JobSeekerModal = ({ next, dataHandler }) => {
   // const [form] = Form.useForm();

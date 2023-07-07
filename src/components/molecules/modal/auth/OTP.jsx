@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { setSmsCode } from "../../../store/auth.slice";
+import { setSmsCode } from "../../../../store/auth.slice";
 
 const OTPInput = ({ length, autoFocus, onValueChange, error }) => {
   // const [otp, setOtp] = useState(Array(length).fill(""));

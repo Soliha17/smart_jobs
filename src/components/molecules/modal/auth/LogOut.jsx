@@ -3,10 +3,7 @@ import { Button, Col, Form, Modal, Row } from "antd";
 
 import { useTranslation } from "react-i18next";
 
-import "./chooseResumeModal.css";
 import { useDispatch } from "react-redux";
-import { LogOutThunk } from "../../../store/logOut.slice";
-import { getLogout } from "../../../store/request";
 
 import axios from "axios";
 

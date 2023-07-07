@@ -7,7 +7,7 @@ import { Col, Row } from "antd";
 
 import GreenDot from "../../../assets/images/green-point.svg";
 import PaginationCompany from "../../../components/molecules/pagination/Pagination";
-import NotificationsModal from "../../../components/molecules/modal/NotificationsModal";
+import NotificationsModal from "../../../components/molecules/modal/notification/NotificationsModal";
 
 const tagsData = ["Barchasi", "Aktiv", "Arxivdagilar"];
 

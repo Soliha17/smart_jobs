@@ -22,16 +22,16 @@ import LogoBlack from "../../../assets/images/logo-header-black.png";
 import ProfileImg from "../../../assets/images/profile-icon-header.svg";
 
 import VacancyInput from "../../atoms/vacancy-input/VacancyInput";
-import Modals from "../../molecules/modal/Modals";
 import TestHeader from "../test-header/TestHeader";
 import CloseIcon from "./CloseIcon";
-import LogOutModal from "../../molecules/modal/LogOut";
 import { useDispatch } from "react-redux";
 import { setPhone } from "../../../store/auth.slice";
 import {
   useGetOrganizationQuery,
   useGetWorkerQuery,
 } from "../../../store/api/apiSlice";
+import Modals from "../../molecules/modal/auth/Modals";
+import LogOutModal from "../../molecules/modal/auth/LogOut";
 
 const languageOptions = [
   { value: "en", label: "En" },

@@ -26,6 +26,6 @@ export const logoutSlice = createSlice({
   },
 });
 
-export const { setSmsCode, setPhone } = logoutSlice.actions;
+export const {} = logoutSlice.actions;
 
 export default logoutSlice.reducer;

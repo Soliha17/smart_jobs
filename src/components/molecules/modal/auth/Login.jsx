@@ -2,16 +2,16 @@ import { Col, Input, Row, Form } from "antd";
 
 import "./modal.css";
 
-import PrivacyIcon from "../../../assets/images/privacy-icon.svg";
-import LabeledInput from "../labeled-input/LabeledInput";
-import BackIcon from "../../../assets/images/arrow-back-modal.svg";
+import PrivacyIcon from "../../../../assets/images/privacy-icon.svg";
+import LabeledInput from "../../labeled-input/LabeledInput";
+import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import {
   useLoginOrganizationMutation,
   useLoginWorkerMutation,
-} from "../../../store/api/apiSlice";
+} from "../../../../store/api/apiSlice";
 import { useState } from "react";
 
 const Login = ({ next, prev, setOpen }) => {

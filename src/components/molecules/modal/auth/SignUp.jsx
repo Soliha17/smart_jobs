@@ -4,16 +4,16 @@ import { Col, Row, Form, Input } from "antd";
 
 import "./modal.css";
 
-import BackIcon from "../../../assets/images/arrow-back-modal.svg";
-import ResendIcon from "../../../assets/images/resend-icon.svg";
+import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
+import ResendIcon from "../../../../assets/images/resend-icon.svg";
 // import OTPInput from "../../atoms/OTPInput";
 import { useDispatch, useSelector } from "react-redux";
 import {
   useVerifySmsCodeOrganizationMutation,
   useVerifySmsCodeWorkerMutation,
-} from "../../../store/api/apiSlice";
+} from "../../../../store/api/apiSlice";
 import OTPInput from "./OTP";
-import { GetSmsCodeThunk, setSmsCode } from "../../../store/auth.slice";
+import { GetSmsCodeThunk, setSmsCode } from "../../../../store/auth.slice";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();

@@ -5,7 +5,7 @@ import "./notificationModal.css";
 
 import { useTranslation } from "react-i18next";
 
-import NotImg from "../../../assets/images/not-modal-img.png";
+import NotImg from "../../../../assets/images/not-modal-img.png";
 
 const NotificationsModal = ({ open, setOpen }) => {
   const handleCancel = () => {
