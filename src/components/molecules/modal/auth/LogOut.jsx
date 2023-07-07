@@ -35,7 +35,7 @@ const LogOutModal = ({ open, setOpen }) => {
     try {
       const res = await axios({
         url:
-          (organizationMe ?? workerMe).result.role === "organizator"
+          (organizationMe ?? workerMe)?.result?.role === "Organization"
             ? `${process.env.REACT_APP_API_ROUTE}/Organization/Logout`
             : `${process.env.REACT_APP_API_ROUTE}/Worker/Logout`,
         method: "GET",
