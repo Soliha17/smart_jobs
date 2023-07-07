@@ -40,9 +40,17 @@
   display: none;
 }
 
+.select__header .ant-select-selector:hover {
+  background: var(--primary-50) !important;
+}
+
 .not-hero__header-wrapper .select__header .ant-select-selector {
   background: var(--white-50) !important;
   color: var(--black-75) !important;
+}
+
+.not-hero__header-wrapper .select__header .ant-select-selector:hover {
+  background: var(--white-100) !important;
 }
 
 .employer-btn__header {
@@ -56,11 +64,20 @@
   line-height: 24px;
   border: none;
   cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.employer-btn__header:hover {
+  background: var(--primary-50);
 }
 
 .not-hero__header-wrapper .employer-btn__header {
   background: var(--white-50) !important;
   color: var(--black-75) !important;
+}
+
+.not-hero__header-wrapper .employer-btn__header:hover {
+  background: var(--white-100) !important;
 }
 
 .enter-btn__header {
@@ -74,17 +91,20 @@
   color: var(--black-100);
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease-in;
 }
 
-/*
 .enter-btn__header:hover {
-  background: var(--white) !important;
-  color: var(--black-100) !important;
-} */
+  background: var(--white-100) !important;
+}
 
 .not-hero__header-wrapper .enter-btn__header {
   background: var(--primary-100);
   color: var(--white);
+}
+
+.not-hero__header-wrapper .enter-btn__header:hover {
+  background: var(--primary-50) !important;
 }
 
 .reminder-btn__header {
