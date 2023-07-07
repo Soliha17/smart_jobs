@@ -17,7 +17,7 @@ import { GetSmsCodeThunk, setPhone } from "../../../store/auth.slice";
 const JobSeekerModal = ({ next, dataHandler }) => {
   // const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const [inputValue, setInputValue] = useState("");
+  // const [phoneNumber, setInputValue] = useState("");
   const [errorText, setErrorText] = useState("");
   const [errorApiText, setErrorApiText] = useState("");
 
@@ -28,6 +28,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   const { phoneNumber } = useSelector((state) => state.authSlice);
 
   const { setData } = dataHandler;
+
 
   const { t } = useTranslation();
 
@@ -49,19 +50,19 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     // console.log("data",data)
 
     if (
-      (inputValue.length &&
-        inputValue.slice(0, 1) !== "+" &&
-        !inputValue.includes(".") &&
-        !inputValue.includes("@")) ||
-      (inputValue.length &&
-        inputValue.slice(0, 1) === "+" &&
-        inputValue.length === 14)
+      (phoneNumber.length &&
+        phoneNumber.slice(0, 1) !== "+" &&
+        !phoneNumber.includes(".") &&
+        !phoneNumber.includes("@")) ||
+      (phoneNumber.length &&
+        phoneNumber.slice(0, 1) === "+" &&
+        phoneNumber.length === 14)
     ) {
-      let resultInputValue = inputValue
+      let resultInputValue = phoneNumber
         .split("")
         .filter((item) => item !== " ")
         .join("");
-      // console.log(resultInputValue);
+      console.log(resultInputValue);
       dispatch(
         GetSmsCodeThunk({
           phone: resultInputValue,
@@ -69,8 +70,8 @@ const JobSeekerModal = ({ next, dataHandler }) => {
           callback,
         })
       );
-      dispatch(setPhone(resultInputValue));
-      setData(inputValue);
+      // dispatch(setPhone(resultInputValue));
+      setData(phoneNumber);
       // console.log("data", data);
       // console.log(1);
       // ;
@@ -102,22 +103,21 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     ) {
       e.preventDefault();
     } else if (e.key === "Backspace") {
-      const currentPosition = e.target.selectionStart;
-      if (currentPosition > 0) {
-        const newValue =
-          inputValue.slice(0, currentPosition - 1) +
-          inputValue.slice(currentPosition);
-        setInputValue(newValue);
-        e.target.setSelectionRange(currentPosition - 1, currentPosition - 1);
-      }
-      return;
+      dispatch(setPhone(phoneNumber.slice(0, phoneNumber.length - 1)));
+      // const currentPosition = e.target.selectionStart;
+      // const newValue =
+      //   inputValue.slice(0, currentPosition - 1) +
+      //   inputValue.slice(currentPosition);
+      // setInputValue(newValue);
+      // e.target.setSelectionRange(currentPosition - 1, currentPosition - 1);
+      // return;
     } else {
-      if (!isNaN(e.key - 0) && inputValue.slice(0, 1) !== "+") {
-        setInputValue("+998 " + e.key);
+      if (!isNaN(e.key - 0) && phoneNumber.slice(0, 1) !== "+") {
+        dispatch(setPhone("+998 " + e.key));
       } else if (!isNaN(e.key - 0)) {
-        setInputValue(inputValue + e.key);
+        dispatch(setPhone(phoneNumber + e.key));
       } else {
-        setInputValue(inputValue);
+        dispatch(setPhone(phoneNumber));
       }
     }
   };
@@ -129,38 +129,38 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     }
 
     if (
-      inputValue.length &&
-      inputValue.slice(0, 1) !== "+" &&
-      !inputValue.includes(".") &&
-      !inputValue.includes("@")
+      phoneNumber.length &&
+      phoneNumber.slice(0, 1) !== "+" &&
+      !phoneNumber.includes(".") &&
+      !phoneNumber.includes("@")
     ) {
       setErrorText("Bu e-mail orqali ro'yxatdan o'tilmagan");
     } else if (
-      (inputValue.slice(0, 1) === "+" && inputValue.length > 14) ||
-      (inputValue.length > 4 && inputValue.length < 14)
+      (phoneNumber.slice(0, 1) === "+" && phoneNumber.length > 14) ||
+      (phoneNumber.length > 4 && phoneNumber.length < 14)
     ) {
       setErrorText("Raqam formati noto'g'ri");
     } else if (
-      inputValue.length &&
-      inputValue.slice(0, 1) !== "+" &&
-      inputValue.includes(".") &&
-      inputValue.includes("@")
+      phoneNumber.length &&
+      phoneNumber.slice(0, 1) !== "+" &&
+      phoneNumber.includes(".") &&
+      phoneNumber.includes("@")
     ) {
       setErrorText("");
-    } else if (inputValue.slice(0, 1) === "+" && inputValue.length === 14) {
+    } else if (phoneNumber.slice(0, 1) === "+" && phoneNumber.length === 14) {
       setErrorText("");
       // callback();
-    } else if (inputValue === "") {
+    } else if (phoneNumber === "") {
       setErrorText("");
     }
-  }, [inputValue, errorText, errorApiText, selectedButton]);
+  }, [phoneNumber, errorText, errorApiText, selectedButton]);
 
   const handleButtonClick = (button) => {
     dispatch(selectButton(button));
   };
 
   function handleChange() {
-    // console.log("changed");
+    // console.log(phoneNumber);
   }
 
   return (
@@ -195,14 +195,13 @@ const JobSeekerModal = ({ next, dataHandler }) => {
             {t("enterYourPhoneOrEmail")}
           </label>{" "}
           <br />
-          {inputValue.slice(0, 1) !== "+" ? (
+          {phoneNumber.slice(0, 1) !== "+" ? (
             <input
               type="text"
-              value={inputValue}
+              value={phoneNumber}
               ref={phoneInputRef}
               // control={control}
               // {...register("phone")}
-
               onChange={handleChange}
               onKeyDown={onInputValueChange}
               autoComplete="off"
@@ -211,11 +210,11 @@ const JobSeekerModal = ({ next, dataHandler }) => {
             <input
               name="mail"
               type="email"
-              value={inputValue}
+              value={phoneNumber}
               // control={control}
               // {...register("email")}
-              ref={emailInputRef}
               onChange={handleChange}
+              ref={emailInputRef}
               onKeyDown={onInputValueChange}
               autoComplete="off"
             />

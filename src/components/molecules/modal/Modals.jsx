@@ -7,6 +7,8 @@ import SignUp from "./SignUp";
 import InfoFills from "./FillInfos";
 
 import SmartJobLogo from "../../../assets/images/smart-logo.svg";
+import { useDispatch } from "react-redux";
+import { setPhone } from "../../../store/auth.slice";
 
 // steppper
 const steps = [
@@ -31,6 +33,7 @@ const steps = [
 const Modals = ({ open, setOpen }) => {
   const [current, setCurrent] = useState(0);
   const [data, setData] = useState("");
+
 
   useEffect(() => {
     if (!open) {

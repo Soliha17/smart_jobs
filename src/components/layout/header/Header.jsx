@@ -26,6 +26,8 @@ import Modals from "../../molecules/modal/Modals";
 import TestHeader from "../test-header/TestHeader";
 import CloseIcon from "./CloseIcon";
 import LogOutModal from "../../molecules/modal/LogOut";
+import { useDispatch } from "react-redux";
+import { setPhone } from "../../../store/auth.slice";
 
 const languageOptions = [
   { value: "en", label: "En" },
@@ -47,6 +49,7 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isHeroPage, setIsHeroPage] = useState(false);
+  const dispatch = useDispatch();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -79,6 +82,7 @@ function Header() {
   function handleOpenModal() {
     setIsModalOpen(!isModalOpen);
     setVisible(false);
+    dispatch(setPhone(""));
   }
 
   const items = [
@@ -209,7 +213,7 @@ function Header() {
                 ) : (
                   <button
                     className="enter-btn__header"
-                    onClick={() => setIsModalOpen(!isModalOpen)}
+                    onClick={handleOpenModal}
                   >
                     {t("entrance")}
                   </button>

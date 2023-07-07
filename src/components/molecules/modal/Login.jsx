@@ -34,8 +34,13 @@ const Login = ({ next, prev, setOpen }) => {
     // console.log("Success:", values);
 
     if (selectedButton === "organizator") {
+      let resultInputValue = phoneNumber
+        .split("")
+        .filter((item) => item !== " ")
+        .join("");
+
       loginOrganization({
-        login: phoneNumber,
+        login: resultInputValue,
         password: values.password,
       })
         .unwrap()
@@ -51,7 +56,7 @@ const Login = ({ next, prev, setOpen }) => {
           if (error.status === 404) {
             setErrorText("Parolni xato kiritdingiz");
           } else {
-            setErrorText("Muammo bo'ldi aylanib keling!");
+            setErrorText("Siz boshqa role bilan ro'yxatdan o'tgansiz!");
           }
         });
     } else {

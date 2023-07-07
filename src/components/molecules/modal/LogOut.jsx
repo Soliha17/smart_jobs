@@ -52,9 +52,9 @@ const LogOutModal = ({ open, setOpen }) => {
         wrapClassName="report-modal add-test-modal"
         footer={null}
       >
-        <h3>Chiqishni istaysizmi</h3>
-        <Button onClick={logOut}>ok</Button>
-        <Button>cancel</Button>
+        <h3>Tizimdan chiqmoqmisiz ?</h3>
+        <Button>Yo'q</Button>
+        <Button onClick={logOut}>Ha</Button>
       </Modal>
     </>
   );
