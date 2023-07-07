@@ -24,7 +24,7 @@ import ProfileImg from "../../../assets/images/profile-icon-header.svg";
 import VacancyInput from "../../atoms/vacancy-input/VacancyInput";
 import TestHeader from "../test-header/TestHeader";
 import CloseIcon from "./CloseIcon";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setPhone } from "../../../store/auth.slice";
 import {
   useGetOrganizationQuery,
@@ -32,6 +32,7 @@ import {
 } from "../../../store/api/apiSlice";
 import Modals from "../../molecules/modal/auth/Modals";
 import LogOutModal from "../../molecules/modal/auth/LogOut";
+import { setIsUserLoggedIn } from "../../../store/selectRole.slice";
 
 const languageOptions = [
   { value: "en", label: "En" },
@@ -49,7 +50,7 @@ const drawerLanguageOptions = [
 
 function Header() {
   const [visible, setVisible] = useState(false);
-  const [isUser, setIsUser] = useState(false);
+  // const [isUserLoggedIn, setIsUser] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isHeroPage, setIsHeroPage] = useState(false);
@@ -57,6 +58,10 @@ function Header() {
 
   const { data: organizationMe } = useGetOrganizationQuery();
   const { data: workerMe } = useGetWorkerQuery();
+
+  const isUserLoggedIn = useSelector(
+    (state) => state.selectRoleSlice.isUserLoggedIn
+  );
 
   console.log("organizationMe", organizationMe);
   console.log("workerMe", workerMe);
@@ -74,9 +79,11 @@ function Header() {
     }
 
     if (organizationMe || workerMe) {
-      setIsUser(true);
+      dispatch(setIsUserLoggedIn(true));
+    } else {
+      dispatch(setIsUserLoggedIn(false));
     }
-  }, [location.pathname]);
+  }, [location.pathname, organizationMe, workerMe]);
 
   const currentLanguage = i18n.language;
   const isTestPage = location.pathname === "/test";
@@ -126,7 +133,14 @@ function Header() {
       key: "4",
     },
     {
-      label: <a href="https://www.aliyun.com">{t("help")}</a>,
+      label: (
+        <span
+          href="https://www.aliyun.com"
+          onClick={() => setIsLogoutModalOpen(!isLogoutModalOpen)}
+        >
+          Chiqish
+        </span>
+      ),
       key: "5",
     },
   ];
@@ -183,7 +197,7 @@ function Header() {
                 </ul>
               </nav>
               <div className="actions__header">
-                {!isUser && (
+                {!isUserLoggedIn && (
                   <button className="employer-btn__header">
                     {t("forEmployers")}
                   </button>
@@ -200,7 +214,7 @@ function Header() {
                     </Select.Option>
                   ))}
                 </Select>
-                {isUser ? (
+                {isUserLoggedIn ? (
                   <>
                     <button className="reminder-btn__header">
                       <img src={Bell} alt="bell icon" />
@@ -215,21 +229,14 @@ function Header() {
                         <button onClick={(e) => e.preventDefault()}>
                           <Space className="profile__name">
                             <img src={ProfileImg} alt="Pofile Img" width={43} />
-                            {organizationMe.result.fistName}
-                            {organizationMe.result.lastName}
+                            {(workerMe ?? organizationMe)?.result.fistName}
+                            {(workerMe ?? organizationMe)?.result.lastName}
                             <DownOutlined />
                           </Space>
                         </button>
                       </Dropdown>
                     </div>
                   </>
-                ) : accessToken ? (
-                  <button
-                    className="enter-btn__header"
-                    onClick={() => setIsLogoutModalOpen(!isLogoutModalOpen)}
-                  >
-                    Logout
-                  </button>
                 ) : (
                   <button
                     className="enter-btn__header"
@@ -270,7 +277,7 @@ function Header() {
                       ))}
                     </Select>
 
-                    {isUser ? (
+                    {isUserLoggedIn ? (
                       <div className="profile__header drawer-profile__header">
                         <Dropdown
                           menu={{
@@ -285,8 +292,8 @@ function Header() {
                                 alt="Pofile Img"
                                 width={43}
                               />
-                              {organizationMe.result.fistName}
-                              {organizationMe.result.lastName}
+                              {(workerMe ?? organizationMe)?.result.fistName}
+                              {(workerMe ?? organizationMe)?.result.lastName}
                               <DownOutlined />
                             </Space>
                           </button>
@@ -345,7 +352,7 @@ function Header() {
                         </li>
                       </ul>
                     </nav>
-                    {isUser && (
+                    {isUserLoggedIn && (
                       <button
                         className="default-btn default-btn--user"
                         onClick={openLogoutModal}

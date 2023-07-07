@@ -181,5 +181,7 @@ export const {
   useGetRegionsQuery,
   useLoginWorkerMutation,
   useGetOrganizationQuery,
+  useLazyGetOrganizationQuery,
   useGetWorkerQuery,
+  useLazyGetWorkerQuery,
 } = apiSlice;

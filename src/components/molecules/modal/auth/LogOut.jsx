@@ -3,12 +3,28 @@ import { Button, Col, Form, Modal, Row } from "antd";
 
 import { useTranslation } from "react-i18next";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import axios from "axios";
+import { setIsUserLoggedIn } from "../../../../store/selectRole.slice";
+import {
+  useGetOrganizationQuery,
+  useGetWorkerQuery,
+} from "../../../../store/api/apiSlice";
 
 const LogOutModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
+
+  const selectedButton = useSelector(
+    (state) => state.selectRoleSlice.selectedButton
+  );
+
+  const { data: organizationMe } = useGetOrganizationQuery();
+  const { data: workerMe } = useGetWorkerQuery();
+
+  const isUserLoggedIn = useSelector(
+    (state) => state.selectRoleSlice.isUserLoggedIn
+  );
 
   const handleCancel = () => {
     setOpen(false);
@@ -18,7 +34,10 @@ const LogOutModal = ({ open, setOpen }) => {
     // dispatch(getLogout());
     try {
       const res = await axios({
-        url: `${process.env.REACT_APP_API_ROUTE}/Organization/Logout`,
+        url:
+          (organizationMe ?? workerMe).result.role === "organizator"
+            ? `${process.env.REACT_APP_API_ROUTE}/Organization/Logout`
+            : `${process.env.REACT_APP_API_ROUTE}/Worker/Logout`,
         method: "GET",
         headers: {
           refreshToken: localStorage.getItem("refreshToken"),
@@ -31,15 +50,14 @@ const LogOutModal = ({ open, setOpen }) => {
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");
 
-      setOpen(true);
+      setOpen(false);
+      dispatch(setIsUserLoggedIn(false));
 
       return res.data;
     } catch (error) {
       // console.log(error, params.role);
       // params.callback(error.response.status, error.response.data.error.message);
     }
-
-    setOpen(!open);
   };
 
   const { t } = useTranslation();

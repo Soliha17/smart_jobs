@@ -9,10 +9,15 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import {
+  useGetOrganizationQuery,
+  useGetWorkerQuery,
+  useLazyGetOrganizationQuery,
+  useLazyGetWorkerQuery,
   useLoginOrganizationMutation,
   useLoginWorkerMutation,
 } from "../../../../store/api/apiSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { setSmsCode } from "../../../../store/auth.slice";
 
 const Login = ({ next, prev, setOpen }) => {
   const [form] = Form.useForm();
@@ -29,6 +34,10 @@ const Login = ({ next, prev, setOpen }) => {
   const [loginOrganization] = useLoginOrganizationMutation();
 
   const [loginWorker] = useLoginWorkerMutation();
+
+  const [getOrganization, { data: organizationMe }] =
+    useLazyGetOrganizationQuery();
+  const [getWorker, { data: workerMe }] = useLazyGetWorkerQuery();
 
   const onFinish = (values) => {
     // console.log("Success:", values);
@@ -49,6 +58,8 @@ const Login = ({ next, prev, setOpen }) => {
           localStorage.setItem("accessToken", res.result.token.accessToken);
           localStorage.setItem("refreshToken", res.result.token.refreshToken);
           setErrorText("");
+          getOrganization();
+          dispatch(setSmsCode(["", "", "", ""]));
           setOpen(false);
         })
         .catch((error) => {
@@ -61,7 +72,10 @@ const Login = ({ next, prev, setOpen }) => {
         });
     } else {
       loginWorker({
-        login: phoneNumber,
+        login: phoneNumber
+          .split("")
+          .filter((item) => item !== " ")
+          .join(""),
         password: values.password,
       })
         .unwrap()
@@ -70,6 +84,8 @@ const Login = ({ next, prev, setOpen }) => {
           localStorage.setItem("accessToken", res.result.token.accessToken);
           localStorage.setItem("refreshToken", res.result.token.refreshToken);
           setErrorText("");
+          getWorker();
+          dispatch(setSmsCode(["", "", "", ""]));
           setOpen(false);
         })
         .catch((error) => {

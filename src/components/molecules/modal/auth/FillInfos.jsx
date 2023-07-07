@@ -71,7 +71,10 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
         firstName: values.firstName,
         lastName: values.lastName,
         email: values.email,
-        phoneNumber: phoneNumber,
+        phoneNumber: phoneNumber
+          .split("")
+          .filter((item) => item !== " ")
+          .join(""),
         password: values.password,
         companySizeId: Number(values.companySizeId),
         companyDirectionId: Number(values.companyDirectionId),
@@ -89,7 +92,10 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
 
       registerWorker({
         addressId: values.countries,
-        phoneNumber: phoneNumber,
+        phoneNumber: phoneNumber
+          .split("")
+          .filter((item) => item !== " ")
+          .join(""),
         bithDate: formattedBirthDate,
         firstName: values.firstName,
         lastName: values.lastName,
