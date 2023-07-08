@@ -1,19 +1,14 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Col, Row, Form, Input } from "antd";
-
+import { Col, Row, Form } from "antd";
 import "./modal.css";
 
 import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../../assets/images/resend-icon.svg";
-// import OTPInput from "../../atoms/OTPInput";
 import { useDispatch, useSelector } from "react-redux";
 import OTPInput from "./OTP";
 import { GetSmsCodeThunk, setSmsCode } from "../../../../store/auth.slice";
-import {
-  useVerifySmsCodeOrganizationMutation,
-  useVerifySmsCodeWorkerMutation,
-} from "src/store/api/authApiSlice";
+import { useVerifySmsCodeMutation } from "src/store/api/authApiSlice";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
@@ -22,11 +17,9 @@ const SignUp = ({ next, prev, data }) => {
   const dispatch = useDispatch();
 
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
-  const phoneNumber = useSelector((state) => state.authSlice.phoneNumber);
-  const smsCode = useSelector((state) => state.authSlice.smsCode);
+  const { phoneNumber, smsCode } = useSelector((state) => state.authSlice);
 
-  const [verifySmsCodeOrganization] = useVerifySmsCodeOrganizationMutation();
-  const [verifySmsCodeWorker] = useVerifySmsCodeWorkerMutation();
+  const [verifySmsCode] = useVerifySmsCodeMutation();
 
   const { smsId } = useSelector((state) => state.authSlice);
 
@@ -61,29 +54,15 @@ const SignUp = ({ next, prev, data }) => {
 
     setInputValue(value);
 
-    if (selectedRole === "Organization") {
-      verifySmsCodeOrganization({ code: value, id: smsId })
-        .unwrap()
-        .then((res) => {
-          // console.log(res);
-          setErrorText("");
-          if (res.result.success) {
-            next(2);
-          }
-        })
-        .catch((error) => setErrorText("Xato kod"));
-    } else {
-      verifySmsCodeWorker({ code: value, id: smsId })
-        .unwrap()
-        .then((res) => {
-          // console.log(res);
-          setErrorText("");
-          if (res.result.success) {
-            next(2);
-          }
-        })
-        .catch((error) => setErrorText("Xato kod"));
-    }
+    verifySmsCode({ role: selectedRole, body: { code: value, id: smsId } })
+      .unwrap()
+      .then((res) => {
+        setErrorText("");
+        if (res.result.success) {
+          next(2);
+        }
+      })
+      .catch((error) => setErrorText("Xato kod"));
   };
 
   // console.log(errorText);
@@ -124,7 +103,7 @@ const SignUp = ({ next, prev, data }) => {
           .split("")
           .filter((item) => item !== " ")
           .join(""),
-        role: selectedRole === "Worker" ? "worker" : "organizator",,
+        role: selectedRole === "Worker" ? "worker" : "organizator",
       })
     );
   }

@@ -2,16 +2,9 @@ import { apiSlice } from "./apiSlice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    verifySmsCodeOrganization: builder.mutation({
-      query: (body) => ({
-        url: `/Organization/VerifySmsCode`,
-        method: "POST",
-        body,
-      }),
-    }),
-    verifySmsCodeWorker: builder.mutation({
-      query: (body) => ({
-        url: `/Worker/VerifySmsCode`,
+    verifySmsCode: builder.mutation({
+      query: ({ role, body }) => ({
+        url: `/${role}/VerifySmsCode`,
         method: "POST",
         body,
       }),
@@ -60,8 +53,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useVerifySmsCodeOrganizationMutation,
-  useVerifySmsCodeWorkerMutation,
+  useVerifySmsCodeMutation,
   useRegisterOrganizationMutation,
   useRegisterWorkerMutation,
   useLoginOrganizationMutation,

@@ -28,8 +28,9 @@ const Login = ({ next, prev, setOpen }) => {
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
   // console.log(phoneNumber);
 
-  const [loginOrganization] = useLoginOrganizationMutation();
-  const [loginWorker] = useLoginWorkerMutation();
+  const [loginOrganization, { isLoading: orgLoading }] =
+    useLoginOrganizationMutation();
+  const [loginWorker, { isLoading: workerLoading }] = useLoginWorkerMutation();
   const [getOrganization, { data: organizationMe }] =
     useLazyGetOrganizationQuery();
   const [getWorker, { data: workerMe }] = useLazyGetWorkerQuery();
@@ -147,7 +148,12 @@ const Login = ({ next, prev, setOpen }) => {
               <span className="error-text">{errorText}</span>
             </Col>
             <Col xs={24} sm={24}>
-              <button className="primary-btn">{t("continue")}</button>
+              <button
+                disabled={orgLoading || workerLoading}
+                className="primary-btn"
+              >
+                {t("continue")}
+              </button>
             </Col>
           </Row>
         </Form>
