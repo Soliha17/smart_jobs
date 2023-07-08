@@ -9,57 +9,32 @@ export const authApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
-    registerOrganization: builder.mutation({
-      query: (body) => ({
-        url: `/Organization/Register`,
+    register: builder.mutation({
+      query: ({ role, body }) => ({
+        url: `/${role}/Register`,
         method: "POST",
         body,
       }),
     }),
-    registerWorker: builder.mutation({
-      query: (body) => ({
-        url: `/Worker/Register`,
+    login: builder.mutation({
+      query: ({ role, body }) => ({
+        url: `/${role}/Login`,
         method: "POST",
         body,
       }),
     }),
-    loginOrganization: builder.mutation({
-      query: (body) => ({
-        url: `/Organization/Login`,
-        method: "POST",
-        body,
+    getMe: builder.query({
+      query: (role) => ({
+        url: `/${role}/Me`,
       }),
-    }),
-    loginWorker: builder.mutation({
-      query: (body) => ({
-        url: `/Worker/Login`,
-        method: "POST",
-        body,
-      }),
-    }),
-    getOrganization: builder.query({
-      query: () => ({
-        url: "/Organization/Me",
-      }),
-      providesTags: ["Organization"],
-    }),
-    getWorker: builder.query({
-      query: () => ({
-        url: "/Worker/Me",
-      }),
-      providesTags: ["Worker"],
     }),
   }),
 });
 
 export const {
   useVerifySmsCodeMutation,
-  useRegisterOrganizationMutation,
-  useRegisterWorkerMutation,
-  useLoginOrganizationMutation,
-  useLoginWorkerMutation,
-  useGetOrganizationQuery,
-  useLazyGetOrganizationQuery,
-  useGetWorkerQuery,
-  useLazyGetWorkerQuery,
+  useRegisterMutation,
+  useLoginMutation,
+  useGetMeQuery,
+  useLazyGetMeQuery,
 } = authApiSlice;

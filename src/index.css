@@ -150,7 +150,7 @@ body {
 }
 
 .primary-btn:hover {
-  background-color: var(--primary-75);
+  /* background-color: var(--primary-75); */
 }
 
 .default-btn {

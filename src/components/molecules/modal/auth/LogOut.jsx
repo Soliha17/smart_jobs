@@ -7,16 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import axios from "axios";
 import { setIsUserLoggedIn } from "../../../../store/selectRole.slice";
-import {
-  useGetOrganizationQuery,
-  useGetWorkerQuery,
-} from "../../../../store/api/authApiSlice";
+import { useGetMeQuery } from "../../../../store/api/authApiSlice";
 
 const LogOutModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
 
-  const { data: organizationMe } = useGetOrganizationQuery();
-  const { data: workerMe } = useGetWorkerQuery();
+  const { selectedRole } = useSelector((state) => state.selectRoleSlice);
+
+  const { data: me } = useGetMeQuery(selectedRole);
 
   const handleCancel = () => {
     setOpen(false);
@@ -27,7 +25,7 @@ const LogOutModal = ({ open, setOpen }) => {
     try {
       const res = await axios({
         url:
-          (organizationMe ?? workerMe)?.result?.role === "Organization"
+          selectedRole === "Organization"
             ? `${process.env.REACT_APP_API_ROUTE}/Organization/Logout`
             : `${process.env.REACT_APP_API_ROUTE}/Worker/Logout`,
         method: "GET",

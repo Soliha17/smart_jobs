@@ -7,6 +7,8 @@ import {
   Radio,
   Select,
   Checkbox,
+  message,
+  notification,
 } from "antd";
 
 import "./modal.css";
@@ -17,10 +19,7 @@ import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import {
-  useRegisterOrganizationMutation,
-  useRegisterWorkerMutation,
-} from "../../../../store/api/authApiSlice";
+import { useRegisterMutation } from "../../../../store/api/authApiSlice";
 import {
   useGetAddressQuery,
   useGetCitiesQuery,
@@ -33,23 +32,23 @@ import {
 const InfoFills = ({ open, setOpen, prev, next }) => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
+
   const [address, setAddress] = useState({ countryId: null, regionId: null });
 
-  const {selectedRole} = useSelector(
-    (state) => state.selectRoleSlice
-  );
+  const { selectedRole } = useSelector((state) => state.selectRoleSlice);
   const phoneNumber = useSelector((state) => state.authSlice.phoneNumber);
 
-  const [registerOrganization] = useRegisterOrganizationMutation();
-  const [registerWorker] = useRegisterWorkerMutation();
+  const [register, { isLoading: registerLoading }] = useRegisterMutation();
   const { data: companyDirections } = useGetCompanyDirectionsQuery();
   const { data: getCompanySizes } = useGetCompanySizesQuery();
   const { data: getAddress } = useGetAddressQuery();
   const { data: countries } = useGetCountriesQuery();
+
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
     { davlatId: address.countryId },
-    { skip: !address.countryId }
+    { skip: !address.countryId || selectedRole === "Organization" }
   );
+
   const { data: cities, isFetching: isCitiesFetching } = useGetCitiesQuery(
     { viloyatId: address.regionId },
     { skip: !address.regionId }
@@ -60,54 +59,54 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
   const onFinish = (values) => {
     console.log("Success:", values.countries);
 
-    if (selectedRole === "Organization") {
-      registerOrganization({
-        description: "",
-        logo: "",
-        webSiteUrl: "",
-        addressId: values.countries,
-        name: values.name,
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        phoneNumber: phoneNumber
-          .split("")
-          .filter((item) => item !== " ")
-          .join(""),
-        password: values.password,
-        companySizeId: Number(values.companySizeId),
-        companyDirectionId: Number(values.companyDirectionId),
-      })
-        .unwrap()
-        .then((res) => {
-          // setOpen(false);
-          prev(1);
-          console.log("res:", res);
-        });
-    } else {
-      const formattedBirthDate = values.bithDate.format(
-        "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
-      );
+    const formattedBirthDate = values.bithDate.format(
+      "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+    );
 
-      registerWorker({
-        addressId: values.countries,
-        phoneNumber: phoneNumber
-          .split("")
-          .filter((item) => item !== " ")
-          .join(""),
-        bithDate: formattedBirthDate,
-        firstName: values.firstName,
-        lastName: values.lastName,
-        sex: values.sex === "male" ? true : false,
-        email: values.email,
-        password: values.password,
+    register({
+      role: selectedRole,
+      body:
+        selectedRole === "Organization"
+          ? {
+              description: "",
+              logo: "",
+              webSiteUrl: "",
+              addressId: values.countries,
+              name: values.name,
+              firstName: values.firstName,
+              lastName: values.lastName,
+              email: values.email,
+              phoneNumber: phoneNumber
+                .split("")
+                .filter((item) => item !== " ")
+                .join(""),
+              password: values.password,
+              companySizeId: Number(values.companySizeId),
+              companyDirectionId: Number(values.companyDirectionId),
+            }
+          : {
+              addressId: values.countries,
+              phoneNumber: phoneNumber
+                .split("")
+                .filter((item) => item !== " ")
+                .join(""),
+              bithDate: formattedBirthDate,
+              firstName: values.firstName,
+              lastName: values.lastName,
+              sex: values.sex === "male" ? true : false,
+              email: values.email,
+              password: values.password,
+            },
+    })
+      .unwrap()
+      .then((res) => {
+        // setOpen(false);
+        prev(1);
+        console.log("res:", res);
       })
-        .unwrap()
-        .then((res) => {
-          // setOpen(false);
-          prev(1);
-        });
-    }
+      .catch((error) =>
+        notification["error"]({ message: error.data.error.message })
+      );
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -164,6 +163,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
           autoComplete="off"
         >
           <Row gutter={[24, 5]}>
+            <h1>{}</h1>
             {selectedRole === "Organization" && (
               <>
                 <Col xs={24} sm={24}>
@@ -186,7 +186,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                         placeholder={t("choose")}
                         size="large"
                         // onChange={onChange}
-                        options={getCompanySizes?.result.map((option) => ({
+                        options={getCompanySizes?.result?.map((option) => ({
                           value: option.id.toString(),
                           label: option.name,
                         }))}
@@ -205,7 +205,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                         placeholder={t("choose")}
                         size="large"
                         // onChange={onChange}
-                        options={companyDirections?.result.map((option) => ({
+                        options={companyDirections?.result?.map((option) => ({
                           value: option.id.toString(),
                           label: option.name,
                         }))}
@@ -236,38 +236,44 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                 }
               />
             </Col>
-            <Col xs={24} sm={24}>
-              <LabeledInput
-                labelName={t("birthday")}
-                labelFor="bithDate"
-                req={true}
-                input={
-                  <DatePicker
-                    // onChange={onChange}
-                    size="large"
-                    picker="date"
-                    format={"DD/MM/YYYY"}
-                  />
-                }
-              />
-            </Col>
-            <Col xs={24} sm={24}>
-              <LabeledInput
-                labelName={t("gender")}
-                labelFor="sex"
-                req={true}
-                input={
-                  <Radio.Group
-                    // onChange={onChange}
-                    // defaultValue="male"
-                    size="large"
-                  >
-                    <Radio.Button value="male">{t("male")}</Radio.Button>
-                    <Radio.Button value="female">{t("female")}</Radio.Button>
-                  </Radio.Group>
-                }
-              />
-            </Col>
+            {selectedRole === "Worker" && (
+              <Col xs={24} sm={24}>
+                <LabeledInput
+                  labelName={t("birthday")}
+                  labelFor="bithDate"
+                  req={true}
+                  input={
+                    <DatePicker
+                      // onChange={onChange}
+                      size="large"
+                      picker="date"
+                      format={"DD/MM/YYYY"}
+                    />
+                  }
+                />
+              </Col>
+            )}
+
+            {selectedRole === "Worker" && (
+              <Col xs={24} sm={24}>
+                <LabeledInput
+                  labelName={t("gender")}
+                  labelFor="sex"
+                  req={true}
+                  input={
+                    <Radio.Group
+                      // onChange={onChange}
+                      // defaultValue="male"
+                      size="large"
+                    >
+                      <Radio.Button value="male">{t("male")}</Radio.Button>
+                      <Radio.Button value="female">{t("female")}</Radio.Button>
+                    </Radio.Group>
+                  }
+                />
+              </Col>
+            )}
+
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("country")}
@@ -279,7 +285,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                     placeholder={t("choose")}
                     size="large"
                     onChange={onChangeCountry}
-                    options={countries?.result.map((option) => ({
+                    options={countries?.result?.map((option) => ({
                       value: option.id.toString(),
                       label: option.name,
                     }))}
@@ -288,52 +294,57 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
               />
             </Col>
 
-            <Col xs={24} sm={24}>
-              <LabeledInput
-                labelName="Viloyat"
-                labelFor="regions"
-                req={true}
-                input={
-                  <Select
-                    // defaultValue="buxoro"
-                    placeholder={t("choose")}
-                    size="large"
-                    onChange={onChangeRegion}
-                    options={
-                      isRegionsFetching
-                        ? []
-                        : regions?.result.map((option) => ({
-                            value: option.id.toString(),
-                            label: option.name,
-                          }))
+            {selectedRole === "Worker" && (
+              <>
+                <Col xs={24} sm={24}>
+                  <LabeledInput
+                    labelName="Viloyat"
+                    labelFor="regions"
+                    req={true}
+                    input={
+                      <Select
+                        // defaultValue="buxoro"
+                        placeholder={t("choose")}
+                        size="large"
+                        onChange={onChangeRegion}
+                        options={
+                          isRegionsFetching
+                            ? []
+                            : regions?.result?.map((option) => ({
+                                value: option.id.toString(),
+                                label: option.name,
+                              }))
+                        }
+                      />
                     }
                   />
-                }
-              />
-            </Col>
-            <Col xs={24} sm={24}>
-              <LabeledInput
-                labelName={t("city")}
-                labelFor="cities"
-                req={true}
-                input={
-                  <Select
-                    // defaultValue="buxoro"
-                    placeholder={t("choose")}
-                    size="large"
-                    onChange={onChange}
-                    options={
-                      isCitiesFetching
-                        ? []
-                        : cities?.result.map((option) => ({
-                            value: option.id.toString(),
-                            label: option.name,
-                          }))
+                </Col>
+                <Col xs={24} sm={24}>
+                  <LabeledInput
+                    labelName={t("city")}
+                    labelFor="cities"
+                    req={true}
+                    input={
+                      <Select
+                        // defaultValue="buxoro"
+                        placeholder={t("choose")}
+                        size="large"
+                        onChange={onChange}
+                        options={
+                          isCitiesFetching
+                            ? []
+                            : cities?.result?.map((option) => ({
+                                value: option.id.toString(),
+                                label: option.name,
+                              }))
+                        }
+                      />
                     }
                   />
-                }
-              />
-            </Col>
+                </Col>
+              </>
+            )}
+
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("email")}
@@ -372,7 +383,13 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
               />
             </Col>
             <Col xs={24} sm={24}>
-              <button type="submit" className="primary-btn">
+              <button
+                type="primary"
+                htmlType="submit"
+                className="primary-btn"
+                disabled={registerLoading}
+                loading={registerLoading}
+              >
                 {t("signUp")}
               </button>
             </Col>

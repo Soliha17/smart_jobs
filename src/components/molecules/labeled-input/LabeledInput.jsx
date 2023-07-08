@@ -13,6 +13,7 @@ const LabeledInput = ({
 }) => {
   const rules = [
     {
+      // require holatida language va link , image qismlar ishlamaydi
       required: req,
       // max: 32,
 

@@ -29,10 +29,7 @@ import { setPhone } from "../../../store/auth.slice";
 import Modals from "../../molecules/modal/auth/Modals";
 import LogOutModal from "../../molecules/modal/auth/LogOut";
 import { setIsUserLoggedIn } from "../../../store/selectRole.slice";
-import {
-  useGetOrganizationQuery,
-  useGetWorkerQuery,
-} from "../../../store/api/authApiSlice";
+import { useGetMeQuery } from "src/store/api/authApiSlice";
 
 const languageOptions = [
   { value: "en", label: "En" },
@@ -50,21 +47,18 @@ const drawerLanguageOptions = [
 
 function Header() {
   const [visible, setVisible] = useState(false);
-  // const [isUserLoggedIn, setIsUser] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isHeroPage, setIsHeroPage] = useState(false);
   const dispatch = useDispatch();
 
-  const { data: organizationMe } = useGetOrganizationQuery();
-  const { data: workerMe } = useGetWorkerQuery();
+  const { selectedRole } = useSelector((state) => state.selectRoleSlice);
+
+  const { data: me } = useGetMeQuery(selectedRole);
 
   const isUserLoggedIn = useSelector(
     (state) => state.selectRoleSlice.isUserLoggedIn
   );
-
-  console.log("organizationMe", organizationMe);
-  console.log("workerMe", workerMe);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -78,12 +72,12 @@ function Header() {
       setIsHeroPage(false);
     }
 
-    if (organizationMe || workerMe) {
+    if (me) {
       dispatch(setIsUserLoggedIn(true));
     } else {
       dispatch(setIsUserLoggedIn(false));
     }
-  }, [location.pathname, organizationMe, workerMe]);
+  }, [location.pathname, me]);
 
   const currentLanguage = i18n.language;
   const isTestPage = location.pathname === "/test";
@@ -148,8 +142,6 @@ function Header() {
   function goToHomePage() {
     navigate("/");
   }
-
-  const accessToken = localStorage.getItem("accessToken");
 
   return (
     <>
@@ -229,8 +221,8 @@ function Header() {
                         <button onClick={(e) => e.preventDefault()}>
                           <Space className="profile__name">
                             <img src={ProfileImg} alt="Pofile Img" width={43} />
-                            {(workerMe ?? organizationMe)?.result.fistName}
-                            {(workerMe ?? organizationMe)?.result.lastName}
+                            {me.result?.firstName}
+                            {me.result?.lastName}
                             <DownOutlined />
                           </Space>
                         </button>
@@ -292,8 +284,8 @@ function Header() {
                                 alt="Pofile Img"
                                 width={43}
                               />
-                              {(workerMe ?? organizationMe)?.result.fistName}
-                              {(workerMe ?? organizationMe)?.result.lastName}
+                              {me.result?.firstName}
+                              {me.result?.lastName}
                               <DownOutlined />
                             </Space>
                           </button>

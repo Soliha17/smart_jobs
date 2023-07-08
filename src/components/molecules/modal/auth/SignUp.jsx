@@ -58,7 +58,7 @@ const SignUp = ({ next, prev, data }) => {
       .unwrap()
       .then((res) => {
         setErrorText("");
-        if (res.result.success) {
+        if (res.result?.success) {
           next(2);
         }
       })

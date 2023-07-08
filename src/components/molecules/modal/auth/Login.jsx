@@ -1,4 +1,4 @@
-import { Col, Input, Row, Form } from "antd";
+import { Col, Input, Row, Form, Button } from "antd";
 
 import "./modal.css";
 
@@ -10,10 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { setSmsCode } from "src/store/auth.slice";
 import {
-  useLazyGetOrganizationQuery,
-  useLazyGetWorkerQuery,
-  useLoginOrganizationMutation,
-  useLoginWorkerMutation,
+  useLazyGetMeQuery,
+  useLoginMutation,
 } from "src/store/api/authApiSlice";
 import { setIsUserLoggedIn } from "src/store/selectRole.slice";
 
@@ -28,77 +26,45 @@ const Login = ({ next, prev, setOpen }) => {
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
   // console.log(phoneNumber);
 
-  const [loginOrganization, { isLoading: orgLoading }] =
-    useLoginOrganizationMutation();
-  const [loginWorker, { isLoading: workerLoading }] = useLoginWorkerMutation();
-  const [getOrganization, { data: organizationMe }] =
-    useLazyGetOrganizationQuery();
-  const [getWorker, { data: workerMe }] = useLazyGetWorkerQuery();
+  const [login, { isLoading: loginLoading }] = useLoginMutation();
+  const [getMe, { data: me }] = useLazyGetMeQuery();
+
+  console.log(loginLoading);
 
   const onFinish = (values) => {
-    // console.log("Success:", values);
+    console.log("Success:", values);
 
-    if (selectedRole === "Organization") {
-      let resultInputValue = phoneNumber
-        .split("")
-        .filter((item) => item !== " ")
-        .join("");
+    let resultInputValue = phoneNumber
+      .split("")
+      .filter((item) => item !== " ")
+      .join("");
 
-      loginOrganization({
+    login({
+      role: selectedRole,
+      body: {
         login: resultInputValue,
         password: values.password,
+      },
+    })
+      .unwrap()
+      .then((res) => {
+        console.log("neeeeddd", res.result.token.accessToken);
+        localStorage.setItem("accessToken", res.result?.token.accessToken);
+        localStorage.setItem("refreshToken", res.result?.token.refreshToken);
+        setErrorText("");
+        getMe(selectedRole);
+        dispatch(setSmsCode(["", "", "", ""]));
+        dispatch(setIsUserLoggedIn(true));
+        setOpen(false);
       })
-        .unwrap()
-        .then((res) => {
-          console.log("neeeeddd", res.result.token.accessToken);
-          localStorage.setItem("accessToken", res.result.token.accessToken);
-          localStorage.setItem("refreshToken", res.result.token.refreshToken);
-          setErrorText("");
-          getOrganization();
-          dispatch(setSmsCode(["", "", "", ""]));
-          dispatch(setIsUserLoggedIn(true));
-          setOpen(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          if (error.status === 404) {
-            setErrorText("Parolni xato kiritdingiz");
-          } else {
-            setErrorText("Siz boshqa role bilan ro'yxatdan o'tgansiz!");
-          }
-        });
-    } else {
-      loginWorker({
-        login: phoneNumber
-          .split("")
-          .filter((item) => item !== " ")
-          .join(""),
-        password: values.password,
-      })
-        .unwrap()
-        .then((res) => {
-          // console.log(res);
-          localStorage.setItem("accessToken", res.result.token.accessToken);
-          localStorage.setItem("refreshToken", res.result.token.refreshToken);
-          setErrorText("");
-          getWorker();
-          dispatch(setSmsCode(["", "", "", ""]));
-          dispatch(setIsUserLoggedIn(true));
-          setOpen(false);
-        })
-        .catch((error) => {
-          if (error.status === 404) {
-            setErrorText("Parolni xato kiritdingiz");
-          } else {
-            setErrorText("Muammo bo'ldi aylanib keling!");
-          }
-        });
-    }
-
-    // if (values.parolOfLogin === "solya") {
-    //   // navigate("/dashboard");
-    //   // setOpen(false);
-    // }
+      .catch((error) => {
+        console.log(error);
+        if (error.status === 404) {
+          setErrorText("Parolni xato kiritdingiz");
+        } else {
+          setErrorText("Siz boshqa role bilan ro'yxatdan o'tgansiz!");
+        }
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -148,12 +114,15 @@ const Login = ({ next, prev, setOpen }) => {
               <span className="error-text">{errorText}</span>
             </Col>
             <Col xs={24} sm={24}>
-              <button
-                disabled={orgLoading || workerLoading}
+              <Button
+                htmlType="submit"
+                type="primary"
+                disabled={loginLoading}
+                loading={loginLoading}
                 className="primary-btn"
               >
                 {t("continue")}
-              </button>
+              </Button>
             </Col>
           </Row>
         </Form>
