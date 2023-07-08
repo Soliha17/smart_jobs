@@ -342,12 +342,13 @@
   "commissioned": "Ishga topshirildi",
   "aboutUs": "Biz haqimizda",
   "exit": "Chiqish",
+
+  "theDirectionOfYourCompany": "Kompaniyangiz yo'nalishi",
+  "province": "Viloyat",
+  "doYouWantToLogOut": "Tizimdan chiqmoqchimisiz ?",
+  "no": " Yo'q",
+  "yes": "Ha",
   
-  "": "",
-  "": "",
-  "": "",
-  "": "",
-  "": "",
   "": "",
   "": ""
 }

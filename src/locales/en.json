@@ -342,5 +342,11 @@
   "submitAnApplication": "Submit an application",
   "commissioned": "Commissioned",
   "aboutUs": "About Us",
-  "exit": "Exit"
+  "exit": "Exit",
+
+  "theDirectionOfYourCompany": "The direction of your company",
+  "province": "Province",
+  "doYouWantToLogOut": "Do you want to log out?",
+  "no": "No",
+  "yes": "Yes"
 }

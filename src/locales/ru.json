@@ -343,5 +343,11 @@
   "submitAnApplication": "Отправить заявку",
   "commissioned": "Назначено",
   "aboutUs": "О нас",
-  "exit": "Выход"
+  "exit": "Выход",
+
+  "theDirectionOfYourCompany": "Направление вашей компании",
+  "province": "Провинция",
+  "doYouWantToLogOut": "Вы хотите выйти из системы?",
+  "no": "Нет",
+  "yes": "Да"
 }

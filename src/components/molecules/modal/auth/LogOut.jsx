@@ -1,13 +1,13 @@
 import React from "react";
-import { Button, Col, Form, Modal, Row } from "antd";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setIsUserLoggedIn } from "../../../../store/selectRole.slice";
+import { useGetMeQuery } from "../../../../store/api/authApiSlice";
 
 import { useTranslation } from "react-i18next";
 
-import { useDispatch, useSelector } from "react-redux";
-
-import axios from "axios";
-import { setIsUserLoggedIn } from "../../../../store/selectRole.slice";
-import { useGetMeQuery } from "../../../../store/api/authApiSlice";
+import { Modal } from "antd";
 
 const LogOutModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
@@ -21,7 +21,6 @@ const LogOutModal = ({ open, setOpen }) => {
   };
 
   const logOut = async () => {
-    // dispatch(getLogout());
     try {
       const res = await axios({
         url:
@@ -34,9 +33,6 @@ const LogOutModal = ({ open, setOpen }) => {
         },
       });
 
-      // console.log("working...", params.role);
-
-      // params.callback(res.status);
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");
 
@@ -60,13 +56,13 @@ const LogOutModal = ({ open, setOpen }) => {
         wrapClassName="report-modal logout-modal"
         footer={null}
       >
-        <h3>Tizimdan chiqmoqmisiz ?</h3>
+        <h3>{t("doYouWantToLogOut")}</h3>
         <div className="footer__logout-modal">
           <button className="primary-btn" onClick={() => setOpen(!open)}>
-            Yo'q
+            {t("no")}
           </button>
           <button className="white-btn" onClick={logOut}>
-            Ha
+            {t("yes")}
           </button>
         </div>
       </Modal>

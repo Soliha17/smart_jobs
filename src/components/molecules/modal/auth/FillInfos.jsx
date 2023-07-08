@@ -1,3 +1,19 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+import { useRegisterMutation } from "src/store/api/authApiSlice";
+
+import {
+  useGetAddressQuery,
+  useGetCitiesQuery,
+  useGetCompanyDirectionsQuery,
+  useGetCompanySizesQuery,
+  useGetCountriesQuery,
+  useGetRegionsQuery,
+} from "src/store/api/apiSlice";
+
+import { useTranslation } from "react-i18next";
+
 import {
   Col,
   Input,
@@ -7,29 +23,17 @@ import {
   Radio,
   Select,
   Checkbox,
-  message,
   notification,
+  Button,
 } from "antd";
 
 import "./modal.css";
 
 import LabeledInput from "../../labeled-input/LabeledInput";
-import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
 
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { useState } from "react";
-import { useRegisterMutation } from "../../../../store/api/authApiSlice";
-import {
-  useGetAddressQuery,
-  useGetCitiesQuery,
-  useGetCompanyDirectionsQuery,
-  useGetCompanySizesQuery,
-  useGetCountriesQuery,
-  useGetRegionsQuery,
-} from "../../../../store/api/apiSlice";
+import BackIcon from "src/assets/images/arrow-back-modal.svg";
 
-const InfoFills = ({ open, setOpen, prev, next }) => {
+const InfoFills = ({ setOpen, prev, next }) => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
 
@@ -54,10 +58,8 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
     { skip: !address.regionId }
   );
 
-  console.log(form.getFieldValue("countries"));
-
   const onFinish = (values) => {
-    console.log("Success:", values.countries);
+    // console.log("Success:", values);
 
     const formattedBirthDate = values.bithDate.format(
       "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
@@ -196,7 +198,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                 </Col>
                 <Col xs={24} sm={24}>
                   <LabeledInput
-                    labelName="Kompaniyangiz yo'nalishi"
+                    labelName={t("theDirectionOfYourCompany")}
                     labelFor="companyDirectionId"
                     req={true}
                     input={
@@ -298,7 +300,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
               <>
                 <Col xs={24} sm={24}>
                   <LabeledInput
-                    labelName="Viloyat"
+                    labelName={t("province")}
                     labelFor="regions"
                     req={true}
                     input={
@@ -383,7 +385,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
               />
             </Col>
             <Col xs={24} sm={24}>
-              <button
+              <Button
                 type="primary"
                 htmlType="submit"
                 className="primary-btn"
@@ -391,7 +393,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
                 loading={registerLoading}
               >
                 {t("signUp")}
-              </button>
+              </Button>
             </Col>
           </Row>
         </Form>

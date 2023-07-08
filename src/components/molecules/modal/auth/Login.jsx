@@ -1,13 +1,6 @@
-import { Col, Input, Row, Form, Button } from "antd";
-
-import "./modal.css";
-
-import PrivacyIcon from "src/assets/images/privacy-icon.svg";
-import LabeledInput from "../../labeled-input/LabeledInput";
-import BackIcon from "src/assets/images/arrow-back-modal.svg";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { setSmsCode } from "src/store/auth.slice";
 import {
   useLazyGetMeQuery,
@@ -15,24 +8,34 @@ import {
 } from "src/store/api/authApiSlice";
 import { setIsUserLoggedIn } from "src/store/selectRole.slice";
 
+import { useTranslation } from "react-i18next";
+
+import { Col, Input, Row, Form, Button } from "antd";
+
+import "./modal.css";
+
+import LabeledInput from "../../labeled-input/LabeledInput";
+
+import PrivacyIcon from "src/assets/images/privacy-icon.svg";
+import BackIcon from "src/assets/images/arrow-back-modal.svg";
+
 const Login = ({ next, prev, setOpen }) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [errorText, setErrorText] = useState("");
 
   const { phoneNumber } = useSelector((state) => state.authSlice);
 
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
-  // console.log(phoneNumber);
 
   const [login, { isLoading: loginLoading }] = useLoginMutation();
   const [getMe, { data: me }] = useLazyGetMeQuery();
 
-  console.log(loginLoading);
 
   const onFinish = (values) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
 
     let resultInputValue = phoneNumber
       .split("")
@@ -75,7 +78,6 @@ const Login = ({ next, prev, setOpen }) => {
     prev(2);
   }
 
-  const { t } = useTranslation();
 
   return (
     <div className="signin-modal">

@@ -1,23 +1,32 @@
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { Col, Row, Form } from "antd";
-import "./modal.css";
-
-import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
-import ResendIcon from "../../../../assets/images/resend-icon.svg";
 import { useDispatch, useSelector } from "react-redux";
-import OTPInput from "./OTP";
-import { GetSmsCodeThunk, setSmsCode } from "../../../../store/auth.slice";
+
+import { GetSmsCodeThunk, setSmsCode } from "src/store/auth.slice";
 import { useVerifySmsCodeMutation } from "src/store/api/authApiSlice";
 
-const SignUp = ({ next, prev, data }) => {
+import { Col, Row, Form } from "antd";
+import { useTranslation } from "react-i18next";
+
+import "./modal.css";
+
+import BackIcon from "src/assets/images/arrow-back-modal.svg";
+import ResendIcon from "src/assets/images/resend-icon.svg";
+
+import OTPInput from "./OTP";
+
+const SignUp = ({ next, prev }) => {
   const [form] = Form.useForm();
   const [inputValue, setInputValue] = useState("");
   const [errorText, setErrorText] = useState("");
+
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
+
+  const isLanguageEnglish = i18n.language === "en";
+  const isLanguageRussian = i18n.language === "ru";
 
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
-  const { phoneNumber, smsCode } = useSelector((state) => state.authSlice);
+  const { phoneNumber } = useSelector((state) => state.authSlice);
 
   const [verifySmsCode] = useVerifySmsCodeMutation();
 
@@ -25,11 +34,10 @@ const SignUp = ({ next, prev, data }) => {
 
   const onFinish = (values) => {
     // console.log("Success:", values);
-    // dispatch(setSmsCode(values));
   };
 
   const onFinishFailed = (errorInfo) => {
-    // console.log("Failed:", errorInfo);
+    console.log("Failed:", errorInfo);
   };
 
   function handleBack() {
@@ -38,19 +46,12 @@ const SignUp = ({ next, prev, data }) => {
   }
 
   const onInputValueChange = (value) => {
-    // const value = e.target.value;
-    // console.log(arr);
-
-    // let value = Number(resValue);
-
     if (value.length < 4) {
       setErrorText("Raqam 4 ta bo'lishi kerak");
       return;
     } else {
       setErrorText("");
     }
-
-    // console.log(value);
 
     setInputValue(value);
 
@@ -65,9 +66,7 @@ const SignUp = ({ next, prev, data }) => {
       .catch((error) => setErrorText("Xato kod"));
   };
 
-  // console.log(errorText);
-
-  const initialSeconds = 10;
+  const initialSeconds = 60;
   const [seconds, setSeconds] = useState(initialSeconds);
   const [isTimerFinished, setIsTimerFinished] = useState(false);
 
@@ -93,8 +92,6 @@ const SignUp = ({ next, prev, data }) => {
     setIsTimerFinished(false);
     setErrorText("");
 
-    console.log(smsCode);
-
     dispatch(setSmsCode(["", "", "", ""]));
 
     dispatch(
@@ -108,11 +105,6 @@ const SignUp = ({ next, prev, data }) => {
     );
   }
 
-  const { t, i18n } = useTranslation();
-
-  const isLanguageEnglish = i18n.language === "en";
-  const isLanguageRussian = i18n.language === "ru";
-
   return (
     <div className="body__login-modal">
       <span className="back-icon__modal">
@@ -120,7 +112,7 @@ const SignUp = ({ next, prev, data }) => {
       </span>
       <h3 className="header__modal">{t("verificationCode")}</h3>
       <p className="info__modal">
-        {t("verificationCode")} {data} {t("sentToTheNumber")}
+        {t("verificationCode")} {phoneNumber} {t("sentToTheNumber")}
       </p>
       <div className="content__login-modal">
         <Form
@@ -135,13 +127,6 @@ const SignUp = ({ next, prev, data }) => {
             <Col xs={24} sm={24}>
               <div className="code-container__modal">
                 <div className="code-group__modal">
-                  {/* <Input
-                  className="code-input__modal"
-                  type="number"
-                  maxLength={4}
-                  value={inputValue}
-                  onChange={onInputValueChange}
-                /> */}
                   <OTPInput
                     error={errorText}
                     length={4}

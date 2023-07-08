@@ -6,6 +6,12 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setIsUserLoggedIn } from "../../../store/selectRole.slice";
+import { setPhone } from "../../../store/auth.slice";
+import { useGetMeQuery } from "src/store/api/authApiSlice";
+
 import { useTranslation } from "react-i18next";
 
 import { Drawer, Dropdown, Select, Space } from "antd";
@@ -13,23 +19,19 @@ import { DownOutlined } from "@ant-design/icons";
 
 import "./header.css";
 
-import Logo from "../../../assets/images/new-header-logo.svg";
-import DrawerLogo from "../../../assets/images/drawer-smartjob-logo.svg";
-import BlackMenu from "../../../assets/images/black-menu-header.svg";
-import WhiteMenu from "../../../assets/images/white-menu-header.svg";
-import Bell from "../../../assets/images/bell-icon-header.svg";
-import LogoBlack from "../../../assets/images/logo-header-black.png";
-import ProfileImg from "../../../assets/images/profile-icon-header.svg";
+import Logo from "src/assets/images/new-header-logo.svg";
+import DrawerLogo from "src/assets/images/drawer-smartjob-logo.svg";
+import BlackMenu from "src/assets/images/black-menu-header.svg";
+import WhiteMenu from "src/assets/images/white-menu-header.svg";
+import Bell from "src/assets/images/bell-icon-header.svg";
+import LogoBlack from "src/assets/images/logo-header-black.png";
+import ProfileImg from "src/assets/images/profile-icon-header.svg";
 
-import VacancyInput from "../../atoms/vacancy-input/VacancyInput";
-import TestHeader from "../test-header/TestHeader";
 import CloseIcon from "./CloseIcon";
-import { useDispatch, useSelector } from "react-redux";
-import { setPhone } from "../../../store/auth.slice";
+import TestHeader from "../test-header/TestHeader";
+import VacancyInput from "src/components/atoms/vacancy-input/VacancyInput";
 import Modals from "../../molecules/modal/auth/Modals";
 import LogOutModal from "../../molecules/modal/auth/LogOut";
-import { setIsUserLoggedIn } from "../../../store/selectRole.slice";
-import { useGetMeQuery } from "src/store/api/authApiSlice";
 
 const languageOptions = [
   { value: "en", label: "En" },
@@ -50,7 +52,11 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isHeroPage, setIsHeroPage] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { i18n, t } = useTranslation();
 
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
 
@@ -59,11 +65,6 @@ function Header() {
   const isUserLoggedIn = useSelector(
     (state) => state.selectRoleSlice.isUserLoggedIn
   );
-
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const { i18n, t } = useTranslation();
 
   useEffect(() => {
     if (location.pathname === "/") {

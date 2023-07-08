@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { setSmsCode } from "src/store/auth.slice";
 import { Modal, Steps } from "antd";
 
 import JobSeekerModal from "./JobSeeker";
 import Login from "./Login";
 import SignUp from "./SignUp";
-
-import SmartJobLogo from "../../../../assets/images/smart-logo.svg";
 import InfoFills from "./FillInfos";
-import { useDispatch } from "react-redux";
-import { setSmsCode } from "../../../../store/auth.slice";
+
+import SmartJobLogo from "src/assets/images/smart-logo.svg";
+
 
 // steppper
 const steps = [
@@ -32,7 +34,6 @@ const steps = [
 
 const Modals = ({ open, setOpen }) => {
   const [current, setCurrent] = useState(0);
-  const [data, setData] = useState("");
 
   const dispatch = useDispatch();
 
@@ -80,15 +81,11 @@ const Modals = ({ open, setOpen }) => {
           footer={false}
         >
           {current === 0 ? (
-            <JobSeekerModal
-              next={next}
-              prev={prev}
-              dataHandler={{ data, setData }}
-            />
+            <JobSeekerModal next={next} prev={prev} />
           ) : current === 1 ? (
-            <SignUp next={next} prev={prev} data={data} />
+            <SignUp next={next} prev={prev} />
           ) : current === 2 ? (
-            <Login next={next} prev={prev} data={data} setOpen={setOpen} />
+            <Login next={next} prev={prev} setOpen={setOpen} />
           ) : current === 3 ? (
             <InfoFills setOpen={setOpen} next={next} prev={prev} />
           ) : (

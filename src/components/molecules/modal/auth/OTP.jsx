@@ -1,16 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Input } from "antd";
+import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { setSmsCode } from "../../../../store/auth.slice";
 
+import { Input } from "antd";
+
 const OTPInput = ({ length, autoFocus, onValueChange, error }) => {
-  // const [otp, setOtp] = useState(Array(length).fill(""));
   const inputs = useRef([]);
   const dispatch = useDispatch();
 
   const smsCode = useSelector((state) => state.authSlice.smsCode);
-
-  console.log(smsCode);
 
   useEffect(() => {
     if (autoFocus) {

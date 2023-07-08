@@ -1,26 +1,23 @@
 import { useEffect, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { setSelectedRole } from "../../../../store/selectRole.slice";
+import { GetSmsCodeThunk, setPhone } from "../../../../store/auth.slice";
+
+import { useTranslation } from "react-i18next";
 
 import "./modal.css";
 import "./JobSeekerStyle.css";
 
-// import InfoFills from "./FillInfos";
+import PrivacyIcon from "src/assets/images/privacy-icon.svg";
 
-import PrivacyIcon from "../../../../assets/images/privacy-icon.svg";
-import { useTranslation } from "react-i18next";
-
-// import { Form, Input } from 'antd'
-
-import { useSelector, useDispatch } from "react-redux";
-import { setSelectedRole } from "../../../../store/selectRole.slice";
-import { GetSmsCodeThunk, setPhone } from "../../../../store/auth.slice";
-
-const JobSeekerModal = ({ next, dataHandler }) => {
-  // const [form] = Form.useForm();
-  const dispatch = useDispatch();
-  // const [phoneNumber, setInputValue] = useState("");
+const JobSeekerModal = ({ next }) => {
   const [errorText, setErrorText] = useState("");
   const [errorApiText, setErrorApiText] = useState("");
   const [inputType, setInputType] = useState("email");
+
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const phoneInputRef = useRef(null);
   const emailInputRef = useRef(null);
@@ -28,12 +25,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
   const { phoneNumber } = useSelector((state) => state.authSlice);
 
-  const { setData } = dataHandler;
-
-  const { t } = useTranslation();
-
   function callback(status, errorMessage) {
-    console.log("status here:", status);
     if (status === 200) {
       next(1);
     } else if (status === 400) {
@@ -46,8 +38,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
 
   const onSubmit = (values) => {
     values.preventDefault();
-
-    // console.log("data",data)
 
     if (
       (phoneNumber.length &&
@@ -70,11 +60,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
           callback,
         })
       );
-      // dispatch(setPhone(resultInputValue));
-      setData(phoneNumber);
-      // console.log("data", data);
-      // console.log(1);
-      // ;
     }
   };
 
@@ -158,9 +143,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     dispatch(setSelectedRole(role));
   };
 
-  function handleChange() {
-    // console.log(phoneNumber);
-  }
+  function handleChange() {}
 
   return (
     <div className="body__login-modal">
@@ -190,7 +173,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
             errorText ? "email_phone_form error_form" : "email_phone_form"
           }
         >
-          {/* <input type={inputType} onKeyDown={handleShow} /> */}
           <label htmlFor="input" className="input_label">
             {t("enterYourPhoneOrEmail")}
           </label>{" "}
@@ -200,8 +182,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
               type="text"
               value={phoneNumber}
               ref={phoneInputRef}
-              // control={control}
-              // {...register("phone")}
               onChange={handleChange}
               onKeyDown={onInputValueChange}
               autoComplete="off"
@@ -211,8 +191,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
               name="mail"
               type={inputType}
               value={phoneNumber}
-              // control={control}
-              // {...register("email")}
               onChange={handleChange}
               ref={phoneInputRef}
               onKeyDown={onInputValueChange}
