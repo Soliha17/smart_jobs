@@ -13,7 +13,7 @@ export async function postGetSmsCode(params) {
       },
     });
 
-    console.log("working...", params.role);
+    // console.log("working...", params.role);
 
     params.callback(res.status);
 

@@ -61,9 +61,11 @@ const InfoFills = ({ setOpen, prev, next }) => {
   const onFinish = (values) => {
     // console.log("Success:", values);
 
-    const formattedBirthDate = values.bithDate.format(
+    const formattedBirthDate = values?.bithDate?.format(
       "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
     );
+
+    console.log(values);
 
     register({
       role: selectedRole,

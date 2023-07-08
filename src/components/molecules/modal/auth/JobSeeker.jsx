@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { setSelectedRole } from "../../../../store/selectRole.slice";
-import { GetSmsCodeThunk, setPhone } from "../../../../store/auth.slice";
+import {
+  GetSmsCodeThunk,
+  setPhone,
+  setSmsCode,
+} from "../../../../store/auth.slice";
 
 import { useTranslation } from "react-i18next";
 
@@ -39,6 +43,8 @@ const JobSeekerModal = ({ next }) => {
   const onSubmit = (values) => {
     values.preventDefault();
 
+    dispatch(setSmsCode(["", "", "", ""]));
+
     if (
       (phoneNumber.length &&
         phoneNumber.slice(0, 1) !== "+" &&
@@ -52,7 +58,6 @@ const JobSeekerModal = ({ next }) => {
         .split("")
         .filter((item) => item !== " ")
         .join("");
-      console.log(resultInputValue);
       dispatch(
         GetSmsCodeThunk({
           phone: resultInputValue,
