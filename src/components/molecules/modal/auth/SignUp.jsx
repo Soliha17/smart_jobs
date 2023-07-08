@@ -120,8 +120,11 @@ const SignUp = ({ next, prev, data }) => {
 
     dispatch(
       GetSmsCodeThunk({
-        phone: phoneNumber,
-        role: selectedRole === "Worker" ? "worker" : "organizator",
+        phone: phoneNumber
+          .split("")
+          .filter((item) => item !== " ")
+          .join(""),
+        role: selectedRole === "Worker" ? "worker" : "organizator",,
       })
     );
   }
