@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Mutex } from "async-mutex";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_API_ROUTE,
@@ -13,38 +14,52 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+const mutex = new Mutex();
 const customBaseQuery = async (args, api, extraOptions) => {
+  await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 401 && localStorage.getItem("refreshToken")) {
-    // console.log(args, api, extraOptions);
-    let refreshResult = await fetchBaseQuery({
-      baseUrl: process.env.REACT_APP_API_ROUTE,
-      prepareHeaders: async (headers) => {
-        const refreshToken = localStorage.getItem("refreshToken");
-        headers.set("refreshToken", refreshToken);
-        headers.set("Accept", `application/json`);
-        return headers;
-      },
-    })(
-      { ...args, url: "/Organization/RefreshToken", method: "PATCH" },
-      api,
-      extraOptions
-    );
+    if (!mutex.isLocked()) {
+      const release = await mutex.acquire();
+      try {
+        let refreshResult = await fetchBaseQuery({
+          baseUrl: process.env.REACT_APP_API_ROUTE,
+          prepareHeaders: async (headers) => {
+            const refreshToken = localStorage.getItem("refreshToken");
+            headers.set("refreshToken", refreshToken);
+            headers.set("Accept", `application/json`);
+            return headers;
+          },
+        })(
+          { ...args, url: "/Organization/RefreshToken", method: "PATCH" },
+          api,
+          extraOptions
+        );
 
-    localStorage.setItem(
-      "accessToken",
-      refreshResult?.data?.result?.token?.accessToken
-    );
-    localStorage.setItem(
-      "refreshToken",
-      refreshResult?.data?.result?.token?.refreshToken
-    );
+        if (refreshResult?.data) {
+          localStorage.setItem(
+            "accessToken",
+            refreshResult?.data?.result?.token?.accessToken
+          );
+          localStorage.setItem(
+            "refreshToken",
+            refreshResult?.data?.result?.token?.refreshToken
+          );
 
-    result = await baseQuery(args, api, extraOptions);
+          result = await baseQuery(args, api, extraOptions);
+        } else {
+          // logout
+        }
+      } finally {
+        release();
+      }
+    } else {
+      // wait until the mutex is available without locking it
+      await mutex.waitForUnlock();
+      result = await baseQuery(args, api, extraOptions);
+    }
   }
-
-  console.log(result);
 
   return result;
 };
@@ -54,55 +69,6 @@ export const apiSlice = createApi({
   baseQuery: customBaseQuery,
   tagTypes: ["CompanyDirections"],
   endpoints: (builder) => ({
-    // ----- Auth -----
-    // VerifySmsCode Organization
-    verifySmsCodeOrganization: builder.mutation({
-      query: (body) => ({
-        url: `/Organization/VerifySmsCode`,
-        method: "POST",
-        body,
-      }),
-    }),
-    // Register Organization
-    registerOrganization: builder.mutation({
-      query: (body) => ({
-        url: `/Organization/Register`,
-        method: "POST",
-        body,
-      }),
-    }),
-    // VerifySmsCode Worker
-    verifySmsCodeWorker: builder.mutation({
-      query: (body) => ({
-        url: `/Worker/VerifySmsCode`,
-        method: "POST",
-        body,
-      }),
-    }),
-    // Register Worker
-    registerWorker: builder.mutation({
-      query: (body) => ({
-        url: `/Worker/Register`,
-        method: "POST",
-        body,
-      }),
-    }),
-    // Login Organization
-    loginOrganization: builder.mutation({
-      query: (body) => ({
-        url: `/Organization/Login`,
-        method: "POST",
-        body,
-      }),
-    }),
-    // Login Worker
-    loginWorker: builder.mutation({
-      query: (body) => ({
-        url: `/Worker/Login`,
-        method: "POST",
-        body,
-      }),
-    }),
     // Company direction
     getCompanyDirections: builder.query({
       query: () => ({
@@ -123,18 +89,6 @@ export const apiSlice = createApi({
         url: "/Address/Get",
       }),
       providesTags: ["Address"],
-    }),
-    getOrganization: builder.query({
-      query: () => ({
-        url: "/Organization/Me",
-      }),
-      providesTags: ["Organization"],
-    }),
-    getWorker: builder.query({
-      query: () => ({
-        url: "/Worker/Me",
-      }),
-      providesTags: ["Worker"],
     }),
     // Davlatlar
     getCountries: builder.query({
@@ -161,27 +115,10 @@ export const apiSlice = createApi({
 });
 
 export const {
-  // VerifySmcCodeOrganization
-  useVerifySmsCodeOrganizationMutation,
-  // VerifySmsCodeWorker
-  useVerifySmsCodeWorkerMutation,
-  // RegisterOrganization
-  useRegisterOrganizationMutation,
-  // RegisterWorker
-  useRegisterWorkerMutation,
-  // CompanyDirection
   useGetCompanyDirectionsQuery,
-  // CompanySizes
   useGetCompanySizesQuery,
-  // Address
   useGetAddressQuery,
-  useLoginOrganizationMutation,
   useGetCountriesQuery,
   useGetCitiesQuery,
   useGetRegionsQuery,
-  useLoginWorkerMutation,
-  useGetOrganizationQuery,
-  useLazyGetOrganizationQuery,
-  useGetWorkerQuery,
-  useLazyGetWorkerQuery,
 } = apiSlice;

@@ -10,21 +10,13 @@ import { setIsUserLoggedIn } from "../../../../store/selectRole.slice";
 import {
   useGetOrganizationQuery,
   useGetWorkerQuery,
-} from "../../../../store/api/apiSlice";
+} from "../../../../store/api/authApiSlice";
 
 const LogOutModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
 
-  const selectedButton = useSelector(
-    (state) => state.selectRoleSlice.selectedButton
-  );
-
   const { data: organizationMe } = useGetOrganizationQuery();
   const { data: workerMe } = useGetWorkerQuery();
-
-  const isUserLoggedIn = useSelector(
-    (state) => state.selectRoleSlice.isUserLoggedIn
-  );
 
   const handleCancel = () => {
     setOpen(false);

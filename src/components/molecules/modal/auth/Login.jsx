@@ -2,39 +2,34 @@ import { Col, Input, Row, Form } from "antd";
 
 import "./modal.css";
 
-import PrivacyIcon from "../../../../assets/images/privacy-icon.svg";
+import PrivacyIcon from "src/assets/images/privacy-icon.svg";
 import LabeledInput from "../../labeled-input/LabeledInput";
-import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
+import BackIcon from "src/assets/images/arrow-back-modal.svg";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { setSmsCode } from "src/store/auth.slice";
 import {
-  useGetOrganizationQuery,
-  useGetWorkerQuery,
   useLazyGetOrganizationQuery,
   useLazyGetWorkerQuery,
   useLoginOrganizationMutation,
   useLoginWorkerMutation,
-} from "../../../../store/api/apiSlice";
-import { useEffect, useState } from "react";
-import { setSmsCode } from "../../../../store/auth.slice";
+} from "src/store/api/authApiSlice";
+import { setIsUserLoggedIn } from "src/store/selectRole.slice";
 
 const Login = ({ next, prev, setOpen }) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [errorText, setErrorText] = useState("");
 
   const { phoneNumber } = useSelector((state) => state.authSlice);
 
-  const { selectedButton } = useSelector((state) => state.selectRoleSlice);
+  const { selectedRole } = useSelector((state) => state.selectRoleSlice);
   // console.log(phoneNumber);
 
   const [loginOrganization] = useLoginOrganizationMutation();
-
   const [loginWorker] = useLoginWorkerMutation();
-
   const [getOrganization, { data: organizationMe }] =
     useLazyGetOrganizationQuery();
   const [getWorker, { data: workerMe }] = useLazyGetWorkerQuery();
@@ -42,7 +37,7 @@ const Login = ({ next, prev, setOpen }) => {
   const onFinish = (values) => {
     // console.log("Success:", values);
 
-    if (selectedButton === "organizator") {
+    if (selectedRole === "Organization") {
       let resultInputValue = phoneNumber
         .split("")
         .filter((item) => item !== " ")
@@ -60,6 +55,7 @@ const Login = ({ next, prev, setOpen }) => {
           setErrorText("");
           getOrganization();
           dispatch(setSmsCode(["", "", "", ""]));
+          dispatch(setIsUserLoggedIn(true));
           setOpen(false);
         })
         .catch((error) => {
@@ -86,6 +82,7 @@ const Login = ({ next, prev, setOpen }) => {
           setErrorText("");
           getWorker();
           dispatch(setSmsCode(["", "", "", ""]));
+          dispatch(setIsUserLoggedIn(true));
           setOpen(false);
         })
         .catch((error) => {

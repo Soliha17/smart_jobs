@@ -26,13 +26,13 @@ import TestHeader from "../test-header/TestHeader";
 import CloseIcon from "./CloseIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { setPhone } from "../../../store/auth.slice";
-import {
-  useGetOrganizationQuery,
-  useGetWorkerQuery,
-} from "../../../store/api/apiSlice";
 import Modals from "../../molecules/modal/auth/Modals";
 import LogOutModal from "../../molecules/modal/auth/LogOut";
 import { setIsUserLoggedIn } from "../../../store/selectRole.slice";
+import {
+  useGetOrganizationQuery,
+  useGetWorkerQuery,
+} from "../../../store/api/authApiSlice";
 
 const languageOptions = [
   { value: "en", label: "En" },

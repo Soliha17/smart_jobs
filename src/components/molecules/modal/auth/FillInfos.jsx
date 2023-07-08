@@ -16,36 +16,35 @@ import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
 
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import {
-  useGetCompanyDirectionsQuery,
   useRegisterOrganizationMutation,
-  useGetCompanySizesQuery,
   useRegisterWorkerMutation,
+} from "../../../../store/api/authApiSlice";
+import {
   useGetAddressQuery,
-  useGetCountriesQuery,
   useGetCitiesQuery,
+  useGetCompanyDirectionsQuery,
+  useGetCompanySizesQuery,
+  useGetCountriesQuery,
   useGetRegionsQuery,
 } from "../../../../store/api/apiSlice";
-import { useState } from "react";
 
 const InfoFills = ({ open, setOpen, prev, next }) => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
   const [address, setAddress] = useState({ countryId: null, regionId: null });
 
-  const selectedButton = useSelector(
-    (state) => state.selectRoleSlice.selectedButton
+  const {selectedRole} = useSelector(
+    (state) => state.selectRoleSlice
   );
   const phoneNumber = useSelector((state) => state.authSlice.phoneNumber);
 
   const [registerOrganization] = useRegisterOrganizationMutation();
   const [registerWorker] = useRegisterWorkerMutation();
   const { data: companyDirections } = useGetCompanyDirectionsQuery();
-  // console.log("companyDirections: ", getCompanyDirections);
   const { data: getCompanySizes } = useGetCompanySizesQuery();
-  // console.log(getCompanySizes?.result);
   const { data: getAddress } = useGetAddressQuery();
-  // console.log(getAddress);
   const { data: countries } = useGetCountriesQuery();
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
     { davlatId: address.countryId },
@@ -61,7 +60,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
   const onFinish = (values) => {
     console.log("Success:", values.countries);
 
-    if (selectedButton === "organizator") {
+    if (selectedRole === "Organization") {
       registerOrganization({
         description: "",
         logo: "",
@@ -165,7 +164,7 @@ const InfoFills = ({ open, setOpen, prev, next }) => {
           autoComplete="off"
         >
           <Row gutter={[24, 5]}>
-            {selectedButton === "organizator" && (
+            {selectedRole === "Organization" && (
               <>
                 <Col xs={24} sm={24}>
                   <LabeledInput

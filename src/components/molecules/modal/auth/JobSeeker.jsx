@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 // import { Form, Input } from 'antd'
 
 import { useSelector, useDispatch } from "react-redux";
-import { selectButton } from "../../../../store/selectRole.slice";
+import { setSelectedRole } from "../../../../store/selectRole.slice";
 import { GetSmsCodeThunk, setPhone } from "../../../../store/auth.slice";
 
 const JobSeekerModal = ({ next, dataHandler }) => {
@@ -25,7 +25,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   const phoneInputRef = useRef(null);
   const emailInputRef = useRef(null);
 
-  const { selectedButton } = useSelector((state) => state.selectRoleSlice);
+  const { selectedRole } = useSelector((state) => state.selectRoleSlice);
   const { phoneNumber } = useSelector((state) => state.authSlice);
 
   const { setData } = dataHandler;
@@ -66,7 +66,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
       dispatch(
         GetSmsCodeThunk({
           phone: resultInputValue,
-          role: selectedButton,
+          role: selectedRole === "Worker" ? "worker" : "organizator",
           callback,
         })
       );
@@ -77,11 +77,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
       // ;
     }
   };
-
-  function handleShow(e) {
-    // console.log(e.target.selectionStart);
-    // setInputType("text");
-  }
 
   const onInputValueChange = (e) => {
     setInputType("text");
@@ -114,9 +109,6 @@ const JobSeekerModal = ({ next, dataHandler }) => {
             phoneNumber.slice(e.target.selectionStart, phoneNumber.length)
         )
       );
-
-      // let start = e.target.selectionStart;
-      // e.target.setSelectionRange(start, start);
     } else {
       if (!isNaN(e.key - 0) && phoneNumber.slice(0, 1) !== "+") {
         dispatch(setPhone("+998 " + e.key));
@@ -129,7 +121,7 @@ const JobSeekerModal = ({ next, dataHandler }) => {
   };
 
   useEffect(() => {
-    if (selectedButton === "worker" || selectedButton === "organizator") {
+    if (selectedRole === "Worker" || selectedRole === "Organization") {
       phoneInputRef.current?.focus();
       emailInputRef.current?.focus();
     }
@@ -160,10 +152,10 @@ const JobSeekerModal = ({ next, dataHandler }) => {
     } else if (phoneNumber === "") {
       setErrorText("");
     }
-  }, [phoneNumber, errorText, errorApiText, selectedButton]);
+  }, [phoneNumber, errorText, errorApiText, selectedRole]);
 
-  const handleButtonClick = (button) => {
-    dispatch(selectButton(button));
+  const handleButtonClick = (role) => {
+    dispatch(setSelectedRole(role));
   };
 
   function handleChange() {
@@ -175,17 +167,17 @@ const JobSeekerModal = ({ next, dataHandler }) => {
       <div className="select-btn-group__login-modal">
         <button
           className={` ${
-            selectedButton === "worker" && "selected-button____login-modal"
+            selectedRole === "Worker" && "selected-button____login-modal"
           }`}
-          onClick={() => handleButtonClick("worker")}
+          onClick={() => handleButtonClick("Worker")}
         >
           {t("theApplicant")}
         </button>
         <button
           className={` ${
-            selectedButton === "organizator" && "selected-button____login-modal"
+            selectedRole === "Organization" && "selected-button____login-modal"
           }`}
-          onClick={() => handleButtonClick("organizator")}
+          onClick={() => handleButtonClick("Organization")}
         >
           {t("employer")}
         </button>

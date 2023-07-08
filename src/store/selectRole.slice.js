@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedButton: "worker",
+  selectedRole: "Worker",
   isUserLoggedIn: false,
 };
 
@@ -9,8 +9,8 @@ export const selectRoleSlice = createSlice({
   name: "selectRole",
   initialState,
   reducers: {
-    selectButton: (state, action) => {
-      state.selectedButton = action.payload;
+    setSelectedRole: (state, action) => {
+      state.selectedRole = action.payload;
     },
     setIsUserLoggedIn: (state, action) => {
       state.isUserLoggedIn = action.payload;
@@ -19,6 +19,6 @@ export const selectRoleSlice = createSlice({
   extraReducers: (builder) => {},
 });
 
-export const { selectButton, setIsUserLoggedIn } = selectRoleSlice.actions;
+export const { setSelectedRole, setIsUserLoggedIn } = selectRoleSlice.actions;
 
 export default selectRoleSlice.reducer;

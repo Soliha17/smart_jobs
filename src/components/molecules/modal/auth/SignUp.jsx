@@ -8,12 +8,12 @@ import BackIcon from "../../../../assets/images/arrow-back-modal.svg";
 import ResendIcon from "../../../../assets/images/resend-icon.svg";
 // import OTPInput from "../../atoms/OTPInput";
 import { useDispatch, useSelector } from "react-redux";
+import OTPInput from "./OTP";
+import { GetSmsCodeThunk, setSmsCode } from "../../../../store/auth.slice";
 import {
   useVerifySmsCodeOrganizationMutation,
   useVerifySmsCodeWorkerMutation,
-} from "../../../../store/api/apiSlice";
-import OTPInput from "./OTP";
-import { GetSmsCodeThunk, setSmsCode } from "../../../../store/auth.slice";
+} from "src/store/api/authApiSlice";
 
 const SignUp = ({ next, prev, data }) => {
   const [form] = Form.useForm();
@@ -21,9 +21,7 @@ const SignUp = ({ next, prev, data }) => {
   const [errorText, setErrorText] = useState("");
   const dispatch = useDispatch();
 
-  const selectedButton = useSelector(
-    (state) => state.selectRoleSlice.selectedButton
-  );
+  const { selectedRole } = useSelector((state) => state.selectRoleSlice);
   const phoneNumber = useSelector((state) => state.authSlice.phoneNumber);
   const smsCode = useSelector((state) => state.authSlice.smsCode);
 
@@ -40,8 +38,6 @@ const SignUp = ({ next, prev, data }) => {
   const onFinishFailed = (errorInfo) => {
     // console.log("Failed:", errorInfo);
   };
-
-  // console.log(data);
 
   function handleBack() {
     prev(1);
@@ -65,7 +61,7 @@ const SignUp = ({ next, prev, data }) => {
 
     setInputValue(value);
 
-    if (selectedButton === "organizator") {
+    if (selectedRole === "Organization") {
       verifySmsCodeOrganization({ code: value, id: smsId })
         .unwrap()
         .then((res) => {
@@ -125,7 +121,7 @@ const SignUp = ({ next, prev, data }) => {
     dispatch(
       GetSmsCodeThunk({
         phone: phoneNumber,
-        role: selectedButton,
+        role: selectedRole === "Worker" ? "worker" : "organizator",
       })
     );
   }
