@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Steps } from "antd";
 
 import "./BuildResume.css";
+
 import BasicInfoResume from "../../components/atoms/basic-info-resume/BasicInfoResume";
 import ProfessionalInformation from "../../components/atoms/professional-information/ProfessionalInformation";
 import AdditionalInformation from "../../components/atoms/additional-information/AdditionalInformation";

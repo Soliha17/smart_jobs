@@ -6,6 +6,7 @@ import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import { useTranslation } from "react-i18next";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
+import { restrictedKeysInSignUpForm } from "src/assets/constants/inputConstants";
 
 const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
@@ -45,28 +46,7 @@ const BasicInfoResume = ({ props }) => {
   };
 
   const handleKeyDown = (e) => {
-    if (
-      e.key === "*" ||
-      e.key === "/" ||
-      e.key === "+" ||
-      e.key === "-" ||
-      e.key === "_" ||
-      e.key === "(" ||
-      e.key === ")" ||
-      e.key === "&" ||
-      e.key === "%" ||
-      e.key === "$" ||
-      e.key === "@" ||
-      e.key === "!" ||
-      e.key === "^" ||
-      e.key === "~" ||
-      e.key === "#" ||
-      e.key === "." ||
-      e.key === "," ||
-      e.key === "Shift" ||
-      e.key === " " ||
-      e.key === "Alt"
-    ) {
+    if (restrictedKeysInSignUpForm.includes(e.key)) {
       e.preventDefault();
     }
   };
@@ -81,6 +61,7 @@ const BasicInfoResume = ({ props }) => {
   //     range: "${label} must be between ${0} and ${10}",
   //   },
   // };
+
   const { Option } = Select;
 
   const prefixSelector = (

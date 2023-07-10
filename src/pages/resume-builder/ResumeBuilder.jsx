@@ -3,14 +3,16 @@ import { Progress, Steps } from "antd";
 
 import "./ResumeBuilder.css";
 
+import { useTranslation } from "react-i18next";
+
 import BasicInfoResumeBuilder from "../../components/atoms/basic-info-resume-builder/BasicInfoResumeBuilder";
 import ProfessionalInformationBuilder from "../../components/atoms/professional-information-builder/ProfessionalInformationBuilder";
 import AdditionalInformationBuilder from "../../components/atoms/additional-information-builder/AdditionalInformationBuilder";
 
-import TemplateBg1 from "../../assets/images/temp-img-resume-builder.png";
-import ResumeTemplate from "../../assets/images/res-temp-resume-builder.png";
-import Rectangle from "../../assets/images/rec-resume-builder.png";
-import { useTranslation } from "react-i18next";
+import TemplateBg1 from "src/assets/images/temp-img-resume-builder.png";
+import ResumeTemplate from "src/assets/images/res-temp-resume-builder.png";
+import Rectangle from "src/assets/images/rec-resume-builder.png";
+
 
 const steps = [
   {

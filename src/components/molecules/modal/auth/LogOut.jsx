@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsUserLoggedIn } from "../../../../store/selectRole.slice";
+import { setIsUserLoggedIn } from "src/store/selectRole.slice";
 import { useTranslation } from "react-i18next";
 import { Modal } from "antd";
 

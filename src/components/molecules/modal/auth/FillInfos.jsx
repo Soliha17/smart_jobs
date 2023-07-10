@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import { useRegisterMutation } from "src/store/api/authApiSlice";
 
 import {
-  useGetAddressQuery,
-  useGetCitiesQuery,
   useGetCompanyDirectionsQuery,
   useGetCompanySizesQuery,
   useGetCountriesQuery,
@@ -46,17 +44,11 @@ const InfoFills = ({ setOpen, prev, next }) => {
   const [register, { isLoading: registerLoading }] = useRegisterMutation();
   const { data: companyDirections } = useGetCompanyDirectionsQuery();
   const { data: getCompanySizes } = useGetCompanySizesQuery();
-  const { data: getAddress } = useGetAddressQuery();
   const { data: countries } = useGetCountriesQuery();
 
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
     { davlatId: address.countryId },
     { skip: !address.countryId || selectedRole === "Organization" }
-  );
-
-  const { data: cities, isFetching: isCitiesFetching } = useGetCitiesQuery(
-    { viloyatId: address.regionId },
-    { skip: !address.regionId }
   );
 
   const onFinish = (values) => {
@@ -118,10 +110,6 @@ const InfoFills = ({ setOpen, prev, next }) => {
 
   function handleBack() {
     prev(3);
-  }
-
-  function onChange() {
-    console.log("inpiut changing");
   }
 
   function onChangeCountry(value, a, b, c) {
@@ -298,54 +286,29 @@ const InfoFills = ({ setOpen, prev, next }) => {
             </Col>
 
             {selectedRole === "Worker" && (
-              <>
-                <Col xs={24} sm={24}>
-                  <LabeledInput
-                    labelName={t("province")}
-                    labelFor="regions"
-                    req={true}
-                    input={
-                      <Select
-                        // defaultValue="buxoro"
-                        placeholder={t("choose")}
-                        size="large"
-                        onChange={onChangeRegion}
-                        options={
-                          isRegionsFetching
-                            ? []
-                            : regions?.result?.map((option) => ({
-                                value: option.id.toString(),
-                                label: option.name,
-                              }))
-                        }
-                      />
-                    }
-                  />
-                </Col>
-                <Col xs={24} sm={24}>
-                  <LabeledInput
-                    labelName={t("city")}
-                    labelFor="cities"
-                    req={true}
-                    input={
-                      <Select
-                        // defaultValue="buxoro"
-                        placeholder={t("choose")}
-                        size="large"
-                        onChange={onChange}
-                        options={
-                          isCitiesFetching
-                            ? []
-                            : cities?.result?.map((option) => ({
-                                value: option.id.toString(),
-                                label: option.name,
-                              }))
-                        }
-                      />
-                    }
-                  />
-                </Col>
-              </>
+              <Col xs={24} sm={24}>
+                <LabeledInput
+                  labelName={t("province")}
+                  labelFor="regions"
+                  req={true}
+                  input={
+                    <Select
+                      // defaultValue="buxoro"
+                      placeholder={t("choose")}
+                      size="large"
+                      onChange={onChangeRegion}
+                      options={
+                        isRegionsFetching
+                          ? []
+                          : regions?.result?.map((option) => ({
+                              value: option.id.toString(),
+                              label: option.name,
+                            }))
+                      }
+                    />
+                  }
+                />
+              </Col>
             )}
 
             <Col xs={24} sm={24}>
