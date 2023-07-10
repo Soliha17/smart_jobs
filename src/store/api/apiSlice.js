@@ -111,6 +111,13 @@ export const apiSlice = createApi({
       }),
       providesTags: ["GetShahar"],
     }),
+    getCountriesGeneral: builder.query({
+      query: (params) => ({
+        url: "/Countries/Get",
+        params,
+      }),
+      providesTags: ["GetCountriesGeneral"],
+    }),
   }),
 });
 
@@ -121,4 +128,5 @@ export const {
   useGetCountriesQuery,
   useGetCitiesQuery,
   useGetRegionsQuery,
+  useGetCountriesGeneralQuery,
 } = apiSlice;

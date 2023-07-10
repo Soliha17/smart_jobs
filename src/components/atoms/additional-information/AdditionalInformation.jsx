@@ -12,9 +12,14 @@ import LicenseDrawer from "../../molecules/drawer/LicenseDrawer";
 
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import { useCreateResumeMutation } from "src/store/api/resumeApiSlice";
 
 const AdditionalInformation = ({ props }) => {
   const [form] = Form.useForm();
+
+
+  const [createResume, { isLoading: createResumeLoading }] =
+    useCreateResumeMutation();
 
   const [openAcademicResDrawer, setOpenAcademicResDrawer] = useState(false);
 

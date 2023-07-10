@@ -3,15 +3,16 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Input, Row, Select } from "antd";
 import "./professionalInformation.css";
 
+import { useTranslation } from "react-i18next";
+
 import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 
-import Trash from "../../../assets/images/trash-icon.svg";
-import Edit from "../../../assets/images/edit-icon.svg";
-import AddCircle from "../../../assets/images/add-circle.svg";
+import Trash from "src/assets/images/trash-icon.svg";
+import Edit from "src/assets/images/edit-icon.svg";
+import AddCircle from "src/assets/images/add-circle.svg";
 import AddTag from "../../molecules/add-tag/AddTag";
 import JobDrawer from "../../molecules/drawer/JobDrawer";
 import StudyDrawer from "../../molecules/drawer/StudyDrawer";
-import { useTranslation } from "react-i18next";
 
 const ProfessionalInformation = ({ props }) => {
   const [form] = Form.useForm();

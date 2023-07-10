@@ -8,42 +8,79 @@ import { useTranslation } from "react-i18next";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { restrictedKeysInSignUpForm } from "src/assets/constants/inputConstants";
 
+import {
+  useGetCountriesGeneralQuery,
+  useGetCountriesQuery,
+  useGetRegionsQuery,
+} from "src/store/api/apiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setResumeFormData } from "src/store/resume.slice";
+
 const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
-  // const [requiredMark, setRequiredMarkType] = useState("optional");
-  // const onRequiredTypeChange = ({ requiredMarkValue }) => {
-  //   setRequiredMarkType(requiredMarkValue);
-  // };
+  const dispatch = useDispatch();
 
-  // const [value, setValue] = useState("");
+  const [address, setAddress] = useState({ countryId: null, cityId: null });
 
-  // const handleChange = (e) => {
-  //   const inputValue = e.target.value;
-  //   const digitsOnly = inputValue.replace(/\D/g, ""); // Remove non-digit characters
+  const { resumeFormData } = useSelector((state) => state.createResumeSlice);
 
-  //   if (digitsOnly.length <= 9) {
-  //     setValue(digitsOnly);
-  //   } else {
-  //     setValue(0);
-  //   }
-  // };
+  const { data: countries } = useGetCountriesQuery();
+  const { data: countriesGeneral } = useGetCountriesGeneralQuery();
+
+  const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
+    { davlatId: address.countryId },
+    { skip: !address.countryId }
+  );
+  // console.log(countriesGeneral);
 
   const next = props.next;
-  // console.log(next);
 
   const onFinish = (values) => {
     console.log("Success:", values);
 
+    const formattedBirthDate = values?.birthDate?.format(
+      "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+    );
+
+    dispatch(
+      setResumeFormData({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        birthDate: formattedBirthDate,
+        sex: values.sex === "male" ? true : false,
+        about: values.about,
+        tel: values.numberPrefix + values.number,
+        email: values.email,
+        citizenshipId: Number(values.citizenship),
+        countryId: Number(values.country),
+        cityId: Number(values.regions),
+      })
+    );
+
     next(1);
   };
 
+  console.log("resumeFormData:", resumeFormData);
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+    console.log("files:", files);
+    console.log("selectedFileType:", selectedFileType);
+    console.log("fileValue:", fileValue);
   };
 
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+
+  function onChangeCountry(value, a, b, c) {
+    form.setFieldsValue({
+      countries: value,
+      regions: undefined,
+      cities: undefined,
+    });
+    setAddress({ ...address, countryId: value });
+  }
 
   const handleKeyDown = (e) => {
     if (restrictedKeysInSignUpForm.includes(e.key)) {
@@ -65,7 +102,7 @@ const BasicInfoResume = ({ props }) => {
   const { Option } = Select;
 
   const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
+    <Form.Item name="numberPrefix" initialValue="998" noStyle>
       <Select style={{ width: 100 }} defaultValue={"998"}>
         <Option value="998">+998</Option>
         <Option value="1">+1</Option>
@@ -84,8 +121,10 @@ const BasicInfoResume = ({ props }) => {
     form.validateFields().then((values) => {
       const newFile = { type: selectedFileType, value: fileValue };
       setFiles([...files, newFile]);
+      console.log("---------------files----------------", files);
       setSelectedFileType("");
       setFileValue("");
+
       form.resetFields(["fileType", "fileValue"]);
     });
   };
@@ -127,7 +166,7 @@ const BasicInfoResume = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("name")}
-                labelFor="name"
+                labelFor="firstName"
                 req={true}
                 input={<Input size="large" maxLength={32} />}
               />
@@ -135,7 +174,7 @@ const BasicInfoResume = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("surname")}
-                labelFor="surname"
+                labelFor="lastName"
                 req={true}
                 input={<Input size="large" maxLength={32} />}
               />
@@ -143,14 +182,14 @@ const BasicInfoResume = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("birthday")}
-                labelFor="birthday"
+                labelFor="birthDate"
                 req={true}
                 input={
                   <DatePicker
-                    onChange={onChange}
-                    format={"DD/MM/YYYY"}
+                    // onChange={onChange}
                     size="large"
                     picker="date"
+                    format={"DD/MM/YYYY"}
                   />
                 }
               />
@@ -158,7 +197,7 @@ const BasicInfoResume = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("gender")}
-                labelFor="gender"
+                labelFor="sex"
                 req={true}
                 input={
                   <Radio.Group
@@ -180,52 +219,36 @@ const BasicInfoResume = ({ props }) => {
                 input={
                   <Select
                     // defaultValue="uzbekistan"
-                    placeholder="Tanlang"
+                    placeholder={t("choose")}
                     size="large"
-                    onChange={onChange}
-                    options={[
-                      {
-                        value: "uzbekistan",
-                        label: "O'zbekiston",
-                      },
-                      {
-                        value: "turkey",
-                        label: "Turkiya",
-                      },
-                      {
-                        value: "usa",
-                        label: "AQSH",
-                      },
-                    ]}
+                    onChange={onChangeCountry}
+                    options={countries?.result?.map((option) => ({
+                      value: option.id.toString(),
+                      label: option.name,
+                    }))}
                   />
                 }
               />
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
-                labelName={t("city")}
-                labelFor="city"
+                labelName={t("province")}
+                labelFor="regions"
                 req={true}
                 input={
                   <Select
                     // defaultValue="buxoro"
-                    placeholder="Tanlang"
+                    placeholder={t("choose")}
                     size="large"
                     onChange={onChange}
-                    options={[
-                      {
-                        value: "buxoro",
-                        label: "Buxoro",
-                      },
-                      {
-                        value: "toshkent",
-                        label: "Toshkent",
-                      },
-                      {
-                        value: "istanbul",
-                        label: "Istanbul",
-                      },
-                    ]}
+                    options={
+                      isRegionsFetching
+                        ? []
+                        : regions?.result?.map((option) => ({
+                            value: option.id.toString(),
+                            label: option.name,
+                          }))
+                    }
                   />
                 }
               />
@@ -237,23 +260,13 @@ const BasicInfoResume = ({ props }) => {
                 input={
                   <Select
                     // defaultValue="uzbek"
-                    placeholder="Tanlang"
+                    placeholder={t("choose")}
                     size="large"
                     onChange={onChange}
-                    options={[
-                      {
-                        value: "uzbek",
-                        label: "O'zbek",
-                      },
-                      {
-                        value: "rus",
-                        label: "Rus",
-                      },
-                      {
-                        value: "qozoq",
-                        label: "Qozoq",
-                      },
-                    ]}
+                    options={countriesGeneral?.result?.map((option) => ({
+                      value: option.id.toString(),
+                      label: option.name,
+                    }))}
                   />
                 }
               />
@@ -261,7 +274,7 @@ const BasicInfoResume = ({ props }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("describeYourself")}
-                labelFor="desc"
+                labelFor="about"
                 input={<TextArea rows={4} />}
               />
             </Col>
@@ -324,20 +337,19 @@ const BasicInfoResume = ({ props }) => {
                         </Form.Item>
                       </Col>
                       <Col xs={24} sm={2}>
-                        <Form.Item>
-                          <Button
-                            className="action-btn__lan-resume"
-                            size="large"
-                            type="dashed"
-                            onClick={() => handleAdd(add)}
-                            block
-                          >
-                            <span className="hidden-text__lan-resume">
-                              {t("add")}
-                            </span>
-                            <PlusOutlined />
-                          </Button>
-                        </Form.Item>
+                        <Button
+                          className="action-btn__lan-resume"
+                          size="large"
+                          htmlType="button"
+                          type="dashed"
+                          onClick={() => handleAdd(add)}
+                          block
+                        >
+                          <span className="hidden-text__lan-resume">
+                            {t("add")}
+                          </span>
+                          <PlusOutlined />
+                        </Button>
                       </Col>
                     </Row>
                     {fields.map((field, index) => (
@@ -376,6 +388,7 @@ const BasicInfoResume = ({ props }) => {
                           <Button
                             type="dashed"
                             size="large"
+                            htmlType="button"
                             className="action-btn__lan-resume"
                             onClick={() => remove(field.name)}
                             block

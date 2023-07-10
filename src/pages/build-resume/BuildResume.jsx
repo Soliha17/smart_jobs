@@ -23,7 +23,6 @@ const steps = [
 ];
 
 const BuildResume = () => {
-  // const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
 
   const next = (stepNumber) => {
