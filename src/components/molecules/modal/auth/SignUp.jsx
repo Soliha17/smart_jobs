@@ -13,6 +13,7 @@ import BackIcon from "src/assets/images/arrow-back-modal.svg";
 import ResendIcon from "src/assets/images/resend-icon.svg";
 
 import OTPInput from "./OTP";
+import { phonePattern } from "src/assets/constants/inputConstants";
 
 const SignUp = ({ next, prev }) => {
   const [form] = Form.useForm();
@@ -96,10 +97,7 @@ const SignUp = ({ next, prev }) => {
 
     dispatch(
       GetSmsCodeThunk({
-        phone: phoneNumber
-          .split("")
-          .filter((item) => item !== " ")
-          .join(""),
+        phone: `${phonePattern.test(phoneNumber) ? `+` : ""}${phoneNumber}`,
         role: selectedRole === "Worker" ? "worker" : "organizator",
       })
     );

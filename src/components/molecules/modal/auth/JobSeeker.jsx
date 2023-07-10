@@ -1,19 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import { setSelectedRole } from "../../../../store/selectRole.slice";
-import {
-  GetSmsCodeThunk,
-  setPhone,
-  setSmsCode,
-} from "../../../../store/auth.slice";
-
+import { setSelectedRole } from "src/store/selectRole.slice";
+import { GetSmsCodeThunk, setPhone, setSmsCode } from "src/store/auth.slice";
 import { useTranslation } from "react-i18next";
-
+import PrivacyIcon from "src/assets/images/privacy-icon.svg";
+import {
+  emailPattern,
+  phonePattern,
+  restrictedKeysInSignUpForm,
+} from "src/assets/constants/inputConstants";
 import "./modal.css";
 import "./JobSeekerStyle.css";
-
-import PrivacyIcon from "src/assets/images/privacy-icon.svg";
 
 const JobSeekerModal = ({ next }) => {
   const [errorText, setErrorText] = useState("");
@@ -45,22 +42,18 @@ const JobSeekerModal = ({ next }) => {
 
     dispatch(setSmsCode(["", "", "", ""]));
 
-    if (
-      (phoneNumber.length &&
-        phoneNumber.slice(0, 1) !== "+" &&
-        !phoneNumber.includes(".") &&
-        !phoneNumber.includes("@")) ||
-      (phoneNumber.length &&
-        phoneNumber.slice(0, 1) === "+" &&
-        phoneNumber.length === 14)
-    ) {
-      let resultInputValue = phoneNumber
-        .split("")
-        .filter((item) => item !== " ")
-        .join("");
+    if (emailPattern.test(phoneNumber)) {
       dispatch(
         GetSmsCodeThunk({
-          phone: resultInputValue,
+          phone: phoneNumber,
+          role: selectedRole === "Worker" ? "worker" : "organizator",
+          callback,
+        })
+      );
+    } else if (phonePattern.test(phoneNumber)) {
+      dispatch(
+        GetSmsCodeThunk({
+          phone: `+${phoneNumber}`,
           role: selectedRole === "Worker" ? "worker" : "organizator",
           callback,
         })
@@ -69,86 +62,82 @@ const JobSeekerModal = ({ next }) => {
   };
 
   const onInputValueChange = (e) => {
-    setInputType("text");
-
-    if (
-      e.key === "*" ||
-      e.key === "/" ||
-      e.key === "+" ||
-      e.key === "-" ||
-      e.key === "_" ||
-      e.key === "(" ||
-      e.key === ")" ||
-      e.key === "&" ||
-      e.key === "%" ||
-      e.key === "$" ||
-      e.key === "!" ||
-      e.key === "^" ||
-      e.key === "~" ||
-      e.key === "#" ||
-      e.key === "," ||
-      e.key === "Shift" ||
-      e.key === " " ||
-      e.key === "Alt"
-    ) {
+    console.log(e.key);
+    // setInputType("text");
+    if (restrictedKeysInSignUpForm.includes(e.key)) {
       e.preventDefault();
-    } else if (e.key === "Backspace") {
-      dispatch(
-        setPhone(
-          phoneNumber.slice(0, e.target.selectionStart - 1) +
-            phoneNumber.slice(e.target.selectionStart, phoneNumber.length)
-        )
-      );
-    } else {
-      if (!isNaN(e.key - 0) && phoneNumber.slice(0, 1) !== "+") {
-        dispatch(setPhone("+998 " + e.key));
-      } else if (!isNaN(e.key - 0)) {
-        dispatch(setPhone(phoneNumber + e.key));
-      } else {
-        dispatch(setPhone(phoneNumber));
-      }
     }
+    // else if (e.key === "Backspace") {
+    //   dispatch(
+    //     setPhone(
+    //       phoneNumber.slice(0, e.target.selectionStart - 1) +
+    //         phoneNumber.slice(e.target.selectionStart, phoneNumber.length)
+    //     )
+    //   );
+    // } else {
+    //   if (!isNaN(e.key - 0) && phoneNumber.slice(0, 1) !== "+") {
+    //     dispatch(setPhone("+998 " + e.key));
+    //   } else if (!isNaN(e.key - 0)) {
+    //     dispatch(setPhone(phoneNumber + e.key));
+    //   } else {
+    //     dispatch(setPhone(phoneNumber));
+    //   }
+    // }
   };
 
   useEffect(() => {
-    if (selectedRole === "Worker" || selectedRole === "Organization") {
+    if (selectedRole) {
       phoneInputRef.current?.focus();
       emailInputRef.current?.focus();
     }
 
-    if (
-      phoneNumber.length &&
-      phoneNumber.slice(0, 1) !== "+" &&
-      !phoneNumber.includes(".") &&
-      !phoneNumber.includes("@")
-    ) {
-      setInputType("email");
-      setErrorText("Bu e-mail orqali ro'yxatdan o'tilmagan");
-    } else if (
-      (phoneNumber.slice(0, 1) === "+" && phoneNumber.length > 14) ||
-      (phoneNumber.length > 4 && phoneNumber.length < 14)
-    ) {
-      setErrorText("Raqam formati noto'g'ri");
-    } else if (
-      phoneNumber.length &&
-      phoneNumber.slice(0, 1) !== "+" &&
-      phoneNumber.includes(".") &&
-      phoneNumber.includes("@")
-    ) {
-      setErrorText("");
-    } else if (phoneNumber.slice(0, 1) === "+" && phoneNumber.length === 14) {
-      setErrorText("");
-      // callback();
-    } else if (phoneNumber === "") {
-      setErrorText("");
-    }
+    // if (
+    //   phoneNumber.length &&
+    //   phoneNumber.slice(0, 1) !== "+" &&
+    //   !phoneNumber.includes(".") &&
+    //   !phoneNumber.includes("@")
+    // ) {
+    //   setInputType("email");
+    //   setErrorText("Bu e-mail orqali ro'yxatdan o'tilmagan");
+    // } else if (
+    //   (phoneNumber.slice(0, 1) === "+" && phoneNumber.length > 14) ||
+    //   (phoneNumber.length > 4 && phoneNumber.length < 14)
+    // ) {
+    //   setErrorText("Raqam formati noto'g'ri");
+    // } else if (
+    //   phoneNumber.length &&
+    //   phoneNumber.slice(0, 1) !== "+" &&
+    //   phoneNumber.includes(".") &&
+    //   phoneNumber.includes("@")
+    // ) {
+    //   setErrorText("");
+    // } else if (phoneNumber.slice(0, 1) === "+" && phoneNumber.length === 14) {
+    //   setErrorText("");
+    //   // callback();
+    // } else if (phoneNumber === "") {
+    //   setErrorText("");
+    // }
   }, [phoneNumber, errorText, errorApiText, selectedRole]);
 
   const handleButtonClick = (role) => {
     dispatch(setSelectedRole(role));
   };
 
-  function handleChange() {}
+  function handleChange(e) {
+    const input = e.target.value;
+
+    if (emailPattern.test(input)) {
+      dispatch(setPhone(input));
+      setErrorText("");
+    } else if (phonePattern.test(input)) {
+      dispatch(setPhone(input));
+      setErrorText("");
+    } else {
+      setErrorText("Invalid input");
+    }
+
+    dispatch(setPhone(input));
+  }
 
   return (
     <div className="body__login-modal">
@@ -182,7 +171,7 @@ const JobSeekerModal = ({ next }) => {
             {t("enterYourPhoneOrEmail")}
           </label>{" "}
           <br />
-          {phoneNumber.slice(0, 1) !== "+" ? (
+          {/* {phoneNumber.slice(0, 1) !== "+" ? (
             <input
               type="text"
               value={phoneNumber}
@@ -191,17 +180,17 @@ const JobSeekerModal = ({ next }) => {
               onKeyDown={onInputValueChange}
               autoComplete="off"
             />
-          ) : (
-            <input
-              name="mail"
-              type={inputType}
-              value={phoneNumber}
-              onChange={handleChange}
-              ref={phoneInputRef}
-              onKeyDown={onInputValueChange}
-              autoComplete="off"
-            />
-          )}
+          ) : ( */}
+          <input
+            // name="mail"
+            type={inputType}
+            value={phoneNumber}
+            ref={phoneInputRef}
+            onChange={handleChange}
+            onKeyDown={onInputValueChange}
+            autoComplete="off"
+          />
+          {/* // )} */}
           {(errorText || errorApiText) && (
             <span className="error-text">{errorText || errorApiText}</span>
           )}

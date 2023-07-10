@@ -18,6 +18,7 @@ import LabeledInput from "../../labeled-input/LabeledInput";
 
 import PrivacyIcon from "src/assets/images/privacy-icon.svg";
 import BackIcon from "src/assets/images/arrow-back-modal.svg";
+import { phonePattern } from "src/assets/constants/inputConstants";
 
 const Login = ({ next, prev, setOpen }) => {
   const [form] = Form.useForm();
@@ -31,21 +32,13 @@ const Login = ({ next, prev, setOpen }) => {
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
 
   const [login, { isLoading: loginLoading }] = useLoginMutation();
-  const [getMe, { data: me }] = useLazyGetMeQuery();
-
+  const [getMe] = useLazyGetMeQuery();
 
   const onFinish = (values) => {
-    // console.log("Success:", values);
-
-    let resultInputValue = phoneNumber
-      .split("")
-      .filter((item) => item !== " ")
-      .join("");
-
     login({
       role: selectedRole,
       body: {
-        login: resultInputValue,
+        login: `${phonePattern.test(phoneNumber) ? `+` : ""}${phoneNumber}`,
         password: values.password,
       },
     })
@@ -77,7 +70,6 @@ const Login = ({ next, prev, setOpen }) => {
   function handleBack() {
     prev(2);
   }
-
 
   return (
     <div className="signin-modal">

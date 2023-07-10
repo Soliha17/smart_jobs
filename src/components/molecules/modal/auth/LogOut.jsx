@@ -1,20 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-
 import { setIsUserLoggedIn } from "../../../../store/selectRole.slice";
-import { useGetMeQuery } from "../../../../store/api/authApiSlice";
-
 import { useTranslation } from "react-i18next";
-
 import { Modal } from "antd";
 
 const LogOutModal = ({ open, setOpen }) => {
   const dispatch = useDispatch();
 
   const { selectedRole } = useSelector((state) => state.selectRoleSlice);
-
-  const { data: me } = useGetMeQuery(selectedRole);
 
   const handleCancel = () => {
     setOpen(false);

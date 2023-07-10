@@ -58,13 +58,10 @@ function Header() {
   const dispatch = useDispatch();
   const { i18n, t } = useTranslation();
 
-  const { selectedRole } = useSelector((state) => state.selectRoleSlice);
-
-  const { data: me } = useGetMeQuery(selectedRole);
-
-  const isUserLoggedIn = useSelector(
-    (state) => state.selectRoleSlice.isUserLoggedIn
+  const { selectedRole, isUserLoggedIn } = useSelector(
+    (state) => state.selectRoleSlice
   );
+  const { data: me } = useGetMeQuery(selectedRole, { skip: !isUserLoggedIn });
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -79,6 +76,12 @@ function Header() {
       dispatch(setIsUserLoggedIn(false));
     }
   }, [location.pathname, me]);
+
+  useEffect(() => {
+    if (localStorage.getItem("refreshToken")) {
+      dispatch(setIsUserLoggedIn(true));
+    }
+  }, []);
 
   const currentLanguage = i18n.language;
   const isTestPage = location.pathname === "/test";
@@ -222,8 +225,8 @@ function Header() {
                         <button onClick={(e) => e.preventDefault()}>
                           <Space className="profile__name">
                             <img src={ProfileImg} alt="Pofile Img" width={43} />
-                            {me.result?.firstName}
-                            {me.result?.lastName}
+                            {me?.result?.fistName}
+                            {me?.result?.lastName}
                             <DownOutlined />
                           </Space>
                         </button>
@@ -285,8 +288,8 @@ function Header() {
                                 alt="Pofile Img"
                                 width={43}
                               />
-                              {me.result?.firstName}
-                              {me.result?.lastName}
+                              {me?.result?.fistName}
+                              {me?.result?.lastName}
                               <DownOutlined />
                             </Space>
                           </button>

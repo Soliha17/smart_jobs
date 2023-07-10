@@ -32,6 +32,7 @@ import "./modal.css";
 import LabeledInput from "../../labeled-input/LabeledInput";
 
 import BackIcon from "src/assets/images/arrow-back-modal.svg";
+import { phonePattern } from "src/assets/constants/inputConstants";
 
 const InfoFills = ({ setOpen, prev, next }) => {
   const [form] = Form.useForm();
@@ -80,20 +81,18 @@ const InfoFills = ({ setOpen, prev, next }) => {
               firstName: values.firstName,
               lastName: values.lastName,
               email: values.email,
-              phoneNumber: phoneNumber
-                .split("")
-                .filter((item) => item !== " ")
-                .join(""),
+              phoneNumber: `${
+                phonePattern.test(phoneNumber) ? `+` : ""
+              }${phoneNumber}`,
               password: values.password,
               companySizeId: Number(values.companySizeId),
               companyDirectionId: Number(values.companyDirectionId),
             }
           : {
               addressId: values.countries,
-              phoneNumber: phoneNumber
-                .split("")
-                .filter((item) => item !== " ")
-                .join(""),
+              phoneNumber: `${
+                phonePattern.test(phoneNumber) ? `+` : ""
+              }${phoneNumber}`,
               bithDate: formattedBirthDate,
               firstName: values.firstName,
               lastName: values.lastName,
