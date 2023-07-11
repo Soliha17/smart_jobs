@@ -9,8 +9,6 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
-    // need add put resume
-
     getAllWorkFormat: builder.query({
       query: () => ({
         url: `/WorkFormat/GetAll`,
@@ -40,6 +38,7 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: `/Skill/GetAll`,
       }),
+      providesTags: ["skills"],
     }),
     createSkill: builder.mutation({
       query: (body) => ({
@@ -47,6 +46,7 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["skills"],
     }),
   }),
 });

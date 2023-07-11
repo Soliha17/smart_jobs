@@ -34,8 +34,6 @@ const ProfessionalInformation = ({ props }) => {
   const { data: currencies } = useGetCurrenciesQuery();
   const { data: skill } = useGetAllSkillQuery();
 
-  console.log(workFormat, typeOfOrganization);
-
   const [jobValues, setJobValues] = useState([]);
   const [studyValues, setStudyValues] = useState([]);
 

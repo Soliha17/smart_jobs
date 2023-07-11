@@ -4,7 +4,6 @@ import { Mutex } from "async-mutex";
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_API_ROUTE,
   prepareHeaders: async (headers, { getState }) => {
-    console.log(getState());
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
       headers.set("Authorization", `Bearer ${accessToken}`);
@@ -67,7 +66,7 @@ const customBaseQuery = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: customBaseQuery,
-  tagTypes: ["CompanyDirections"],
+  tagTypes: ["skills"],
   endpoints: (builder) => ({
     // Company direction
     getCompanyDirections: builder.query({

@@ -15,8 +15,6 @@ const SkillSelect = ({ form }) => {
   const { data: skill } = useGetAllSkillQuery();
   const [createSkill] = useCreateSkillMutation();
 
-  console.log(form.getFieldsValue());
-
   function handleChange(id, arr) {
     console.log("id:", id);
     console.log("arr:", arr);
@@ -27,17 +25,18 @@ const SkillSelect = ({ form }) => {
         .unwrap()
         .then((res) => {
           console.log(res.result.id);
-          form.setFieldValue("skills", [
-            ...form.getFieldValue("skills"),
-            res.result.id,
-          ]);
+          // form.setFieldValue("skills", [
+          //   ...form.getFieldValue("skills"),
+          //   res.result.id,
+          // ]);
         })
         .catch((error) => {
           console.log(error);
         });
     } else {
-      
     }
+
+    console.log(form.getFieldValue("skills"));
   }
 
   return (
