@@ -9,6 +9,9 @@ import { useTranslation } from "react-i18next";
 const ExtraExperience = ({ open, setOpen }) => {
   const [form] = Form.useForm();
 
+  const [isChecked, setIsChecked] = useState(true);
+
+
   const [showExtraExtraExperience, setShowExtraExtraExperience] =
     useState(false);
 
@@ -21,6 +24,72 @@ const ExtraExperience = ({ open, setOpen }) => {
   };
 
   const { t } = useTranslation();
+
+  const monthOptions = [
+    {
+      value: "dekabr",
+      label: "Dekabr",
+    },
+    {
+      value: "yanvar",
+      label: "Yanvar",
+    },
+    {
+      value: "fevral",
+      label: "Fevral",
+    },
+    {
+      value: "mart",
+      label: "Mart",
+    },
+    {
+      value: "aprel",
+      label: "Aprel",
+    },
+    {
+      value: "may",
+      label: "May",
+    },
+    {
+      value: "iyun",
+      label: "Iyun",
+    },
+    {
+      value: "iyul",
+      label: "Iyul",
+    },
+    {
+      value: "avgust",
+      label: "Avgust",
+    },
+    {
+      value: "sentyabr",
+      label: "Sentyabr",
+    },
+    {
+      value: "oktyabr",
+      label: "Oktyabr",
+    },
+    {
+      value: "noyabr",
+      label: "Noyabr",
+    },
+  ];
+
+  const yearOptions = [];
+
+  for (let i = 1970; i <= 2023; i++) {
+    yearOptions.push({
+      value: i.toString(),
+      label: i.toString(),
+    });
+  }
+
+
+
+  function onChange(event) {
+    setIsChecked(event.target.checked);
+  }
 
   return (
     <>
@@ -142,77 +211,87 @@ const ExtraExperience = ({ open, setOpen }) => {
             />
           </Col>
           <Col xs={24} sm={12}>
-            <LabeledInput
-              labelName={t("startTime")}
-              labelFor="beginsOfThatCompany"
-              input={
-                <Row gutter={[12, 5]}>
-                  <Col xs={12}>
+            <Row gutter={[12, 5]}>
+              <Col xs={12}>
+                <LabeledInput
+                  labelName={t("startTime")}
+                  labelFor="beginsMonthOfJob"
+                  input={
                     <Select
                       // defaultValue="oy"
-                      placeholder={t("month")}
+                      placeholder="Oy"
                       size="large"
                       // onChange={onChange}
-                      options={[
-                        {
-                          value: "dekabr",
-                          label: "Dekabr",
-                        },
-                        {
-                          value: "yanvar",
-                          label: "Yanvar",
-                        },
-                        {
-                          value: "fevral",
-                          label: "Fevral",
-                        },
-                        {
-                          value: "mart",
-                          label: "Mart",
-                        },
-                        {
-                          value: "iyun",
-                          label: "Iyun",
-                        },
-                      ]}
+                      options={monthOptions}
                     />
-                  </Col>
-                  <Col xs={12}>
+                  }
+                />
+              </Col>
+              <Col xs={12}>
+                <LabeledInput
+                  labelName="&nbsp;"
+                  labelFor="beginsYearOfJob"
+                  input={
                     <Select
-                      // defaultValue="uzbek"
-                      placeholder={t("year")}
+                      // defaultValue="oy"
+                      placeholder="Yil"
                       size="large"
                       // onChange={onChange}
-                      options={[
-                        {
-                          value: "2020",
-                          label: "2020",
-                        },
-                        {
-                          value: "2021",
-                          label: "2021",
-                        },
-                        {
-                          value: "2022",
-                          label: "2022",
-                        },
-                        {
-                          value: "2023",
-                          label: "2023",
-                        },
-                      ]}
+                      options={yearOptions}
                     />
-                  </Col>
-                </Row>
-              }
-            />
+                  }
+                />
+              </Col>
+            </Row>
           </Col>
+
           <Col xs={24} sm={12}>
-            <LabeledInput
-              labelName="Tugash vaqti"
-              labelFor="finishOfThatCompany"
-              input={<Checkbox checked={true}>{t("untilNow")}</Checkbox>}
-            />
+            <Row gutter={[12, 5]}>
+              <Col xs={12}>
+                <LabeledInput
+                  labelName={t("endTime")}
+                  labelFor="finishMonthOfJob"
+                  input={
+                    <Select
+                      // defaultValue="oy"
+                      placeholder="Oy"
+                      size="large"
+                      disabled={isChecked}
+                      // onChange={onChange}
+                      options={monthOptions}
+                    />
+                  }
+                />
+              </Col>
+              <Col xs={12}>
+                <LabeledInput
+                  labelName="&nbsp;"
+                  labelFor="finishYearOfJob"
+                  input={
+                    <Select
+                      // defaultValue="oy"
+                      placeholder="Yil"
+                      size="large"
+                      disabled={isChecked}
+                      // onChange={onChange}
+                      options={yearOptions}
+                    />
+                  }
+                />
+              </Col>
+              <Col xs={24}>
+                <LabeledInput
+                  // labelName="&nbsp;"
+                  valuePropName="checked"
+                  labelFor="workingUntilNow"
+                  input={
+                    <Checkbox checked={isChecked} onChange={onChange}>
+                      {t("untilNow")}
+                    </Checkbox>
+                  }
+                />
+              </Col>
+            </Row>
           </Col>
           <Col xs={24} sm={24}>
             <Button

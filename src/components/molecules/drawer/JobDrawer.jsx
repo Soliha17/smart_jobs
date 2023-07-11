@@ -20,6 +20,9 @@ import AddCircle from "../../../assets/images/add-circle.svg";
 import { v4 as uuidv4 } from "uuid";
 import ExtraExperience from "./ExtraExperience";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { setExperienceDrawerData } from "src/store/resume.slice";
+
 const JobDrawer = ({
   open,
   setOpen,
@@ -31,6 +34,13 @@ const JobDrawer = ({
 
   const [childrenDrawer, setChildrenDrawer] = useState(false);
 
+  const { experienceDrawerData } = useSelector(
+    (state) => state.createResumeSlice
+  );
+
+  console.log(experienceDrawerData);
+
+  const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(true);
 
   function onChange(event) {
@@ -56,27 +66,13 @@ const JobDrawer = ({
       form.setFieldsValue(isJobEditValues);
     }
   }, [open, form, isJobEditValues]);
+
   // []da faqat open qolishi kerak, netlifyga deploy qilishda xato bermasligi uchun qoyilgan qolganlari
 
-  const onFinish = (data) => {
-    console.log("Success:", data);
+  const onFinish = (values) => {
+    console.log("Success:", values);
+    dispatch(setExperienceDrawerData(values));
     setOpen(false);
-    getJobFunction();
-    if (isJobEditValues != null) {
-      const index = jobValues.findIndex(
-        (item) => item.id === isJobEditValues.id
-      );
-      if (index !== -1) {
-        jobValues[index] = data;
-        setJobValues([...jobValues]);
-        localStorage.removeItem("isJobEdit");
-      }
-    } else {
-      jobValues.push({ ...data, id: uuidv4() });
-      setJobValues([...jobValues]);
-    }
-    localStorage.setItem("jobDrawerValues", JSON.stringify(jobValues));
-    form.resetFields();
   };
 
   const onClose = () => {
@@ -104,11 +100,70 @@ const JobDrawer = ({
 
   const { t } = useTranslation();
 
+  const monthOptions = [
+    {
+      value: "dekabr",
+      label: "Dekabr",
+    },
+    {
+      value: "yanvar",
+      label: "Yanvar",
+    },
+    {
+      value: "fevral",
+      label: "Fevral",
+    },
+    {
+      value: "mart",
+      label: "Mart",
+    },
+    {
+      value: "aprel",
+      label: "Aprel",
+    },
+    {
+      value: "may",
+      label: "May",
+    },
+    {
+      value: "iyun",
+      label: "Iyun",
+    },
+    {
+      value: "iyul",
+      label: "Iyul",
+    },
+    {
+      value: "avgust",
+      label: "Avgust",
+    },
+    {
+      value: "sentyabr",
+      label: "Sentyabr",
+    },
+    {
+      value: "oktyabr",
+      label: "Oktyabr",
+    },
+    {
+      value: "noyabr",
+      label: "Noyabr",
+    },
+  ];
+
+  const yearOptions = [];
+
+  for (let i = 1970; i <= 2023; i++) {
+    yearOptions.push({
+      value: i.toString(),
+      label: i.toString(),
+    });
+  }
+
   return (
     <>
       <Drawer
         title={t("yourWorkExperience")}
-        // width={818}
         size="large"
         closable={false}
         onClose={onClose}
@@ -149,7 +204,7 @@ const JobDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("whatPositionDidYouWorkIn")}
-                  labelFor="workedLevel"
+                  labelFor="workedPosition"
                   req={true}
                   input={<Input size="large" maxLength={9} />}
                 />
@@ -248,28 +303,7 @@ const JobDrawer = ({
                           placeholder="Oy"
                           size="large"
                           // onChange={onChange}
-                          options={[
-                            {
-                              value: "dekabr",
-                              label: "Dekabr",
-                            },
-                            {
-                              value: "yanvar",
-                              label: "Yanvar",
-                            },
-                            {
-                              value: "fevral",
-                              label: "Fevral",
-                            },
-                            {
-                              value: "mart",
-                              label: "Mart",
-                            },
-                            {
-                              value: "iyun",
-                              label: "Iyun",
-                            },
-                          ]}
+                          options={monthOptions}
                         />
                       }
                     />
@@ -284,24 +318,7 @@ const JobDrawer = ({
                           placeholder="Yil"
                           size="large"
                           // onChange={onChange}
-                          options={[
-                            {
-                              value: "2020",
-                              label: "2020",
-                            },
-                            {
-                              value: "2021",
-                              label: "2021",
-                            },
-                            {
-                              value: "2022",
-                              label: "2022",
-                            },
-                            {
-                              value: "2023",
-                              label: "2023",
-                            },
-                          ]}
+                          options={yearOptions}
                         />
                       }
                     />
@@ -322,28 +339,7 @@ const JobDrawer = ({
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={[
-                            {
-                              value: "dekabr",
-                              label: "Dekabr",
-                            },
-                            {
-                              value: "yanvar",
-                              label: "Yanvar",
-                            },
-                            {
-                              value: "fevral",
-                              label: "Fevral",
-                            },
-                            {
-                              value: "mart",
-                              label: "Mart",
-                            },
-                            {
-                              value: "iyun",
-                              label: "Iyun",
-                            },
-                          ]}
+                          options={monthOptions}
                         />
                       }
                     />
@@ -359,24 +355,7 @@ const JobDrawer = ({
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={[
-                            {
-                              value: "2020",
-                              label: "2020",
-                            },
-                            {
-                              value: "2021",
-                              label: "2021",
-                            },
-                            {
-                              value: "2022",
-                              label: "2022",
-                            },
-                            {
-                              value: "2023",
-                              label: "2023",
-                            },
-                          ]}
+                          options={yearOptions}
                         />
                       }
                     />
@@ -396,14 +375,6 @@ const JobDrawer = ({
                 </Row>
               </Col>
 
-              {/* <Col xs={24} sm={12}>
-                <LabeledInput
-                  labelName="Tugash vaqti"
-                  labelFor="finishOfJob"
-                  valuePropName="checked"
-                  input={<Checkbox>Hozirgacha</Checkbox>}
-                />
-              </Col> */}
               <Col xs={24} sm={24}>
                 <Button
                   block
@@ -438,25 +409,6 @@ const JobDrawer = ({
             </button>
           </Form>
         </div>
-
-        {/* <Drawer
-          title="Ish tajribangiz"
-          width={603}
-          closable={false}
-          onClose={onChildrenDrawerClose}
-          open={childrenDrawer}
-          extra={
-            <Space>
-              <img
-                src={CloseIcon}
-                onClick={onChildrenDrawerClose}
-                alt="CloseIcon"
-              />
-            </Space>
-          }
-        > */}
-
-        {/* </Drawer> */}
       </Drawer>
     </>
   );
