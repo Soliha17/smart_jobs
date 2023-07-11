@@ -11,12 +11,21 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
     }),
     // need add put resume
 
-    getMe: builder.query({
-      query: (role) => ({
-        url: `/${role}/Me`,
+    getWorkFormat: builder.query({
+      query: () => ({
+        url: `/WorkFormat/Get`,
+      }),
+    }),
+    getTypeOfOrganization: builder.query({
+      query: () => ({
+        url: `/TypeOfOrganization/Get`,
       }),
     }),
   }),
 });
 
-export const { useCreateResumeMutation } = resumeApiSlice;
+export const {
+  useCreateResumeMutation,
+  useGetWorkFormatQuery,
+  useGetTypeOfOrganizationQuery,
+} = resumeApiSlice;

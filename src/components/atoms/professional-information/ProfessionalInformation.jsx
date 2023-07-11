@@ -13,12 +13,21 @@ import AddCircle from "src/assets/images/add-circle.svg";
 import AddTag from "../../molecules/add-tag/AddTag";
 import JobDrawer from "../../molecules/drawer/JobDrawer";
 import StudyDrawer from "../../molecules/drawer/StudyDrawer";
+import {
+  useGetTypeOfOrganizationQuery,
+  useGetWorkFormatQuery,
+} from "src/store/api/resumeApiSlice";
 
 const ProfessionalInformation = ({ props }) => {
   const [form] = Form.useForm();
 
   const [openJobDrawer, setOpenJobDrawer] = useState(false);
   const [openStudyDrawer, setOpenStudyDrawer] = useState(false);
+
+  const { data: workFormat } = useGetWorkFormatQuery();
+  const { data: typeOfOrganization } = useGetTypeOfOrganizationQuery();
+
+  console.log(workFormat, typeOfOrganization);
 
   const [jobValues, setJobValues] = useState([]);
   const [studyValues, setStudyValues] = useState([]);
@@ -189,24 +198,18 @@ const ProfessionalInformation = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("theFormatYouWantToWorkWith")}
-                labelFor="jobDirection"
+                labelFor="workFormat"
                 req={true}
                 input={
                   <Select
                     // defaultValue="masofadan"
-                    placeholder="Tanlang"
+                    placeholder={t("choose")}
                     size="large"
                     onChange={onChange}
-                    options={[
-                      {
-                        value: "masofadan",
-                        label: "Masofadan",
-                      },
-                      {
-                        value: "offisda",
-                        label: "Offisda",
-                      },
-                    ]}
+                    options={workFormat?.result?.map((option) => ({
+                      value: option.id.toString(),
+                      label: option.name,
+                    }))}
                   />
                 }
               />
@@ -219,7 +222,7 @@ const ProfessionalInformation = ({ props }) => {
                 input={
                   <Select
                     // defaultValue="full"
-                    placeholder="Tanlang"
+                    placeholder={t("choose")}
                     size="large"
                     onChange={onChange}
                     options={[
@@ -323,7 +326,7 @@ const ProfessionalInformation = ({ props }) => {
 
             <Col xs={24} sm={24}>
               <LabeledInput
-                labelName="Ko'nikmalaringiz"
+                labelName={t("skills")}
                 labelFor="skills"
                 input={
                   <span
