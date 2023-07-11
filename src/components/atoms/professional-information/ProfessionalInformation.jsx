@@ -22,6 +22,7 @@ import {
   useGetWorkFormatQuery,
 } from "src/store/api/resumeApiSlice";
 import SkillSelect from "./SkillSelect";
+import { useSelector } from "react-redux";
 
 const ProfessionalInformation = ({ props }) => {
   const [form] = Form.useForm();
@@ -33,6 +34,11 @@ const ProfessionalInformation = ({ props }) => {
   const { data: typeOfOrganization } = useGetAllTypeOfOrganizationQuery();
   const { data: currencies } = useGetCurrenciesQuery();
   const { data: skill } = useGetAllSkillQuery();
+
+
+  const { experienceDrawerData } = useSelector(
+    (state) => state.createResumeSlice
+  );
 
   console.log(workFormat, typeOfOrganization);
 
@@ -132,7 +138,8 @@ const ProfessionalInformation = ({ props }) => {
                 input={jobValues?.map((item) => (
                   <div key={item?.id} className="field__resume">
                     <span>
-                      <h4>{item?.workedLevel}</h4>•<p>{item?.workedCompany}</p>•
+                      <h4>{item?.workedPosition}</h4>•
+                      <p>{item?.workedCompany}</p>•
                       <p>
                         {item?.beginsMonthOfJob} {item?.beginsYearOfJob}
                       </p>
@@ -341,23 +348,6 @@ const ProfessionalInformation = ({ props }) => {
             <Col xs={24} sm={24} style={{ marginTop: "20px" }}>
               <SkillSelect form={form} />
             </Col>
-            {/* <Col xs={24} sm={24}>
-              <LabeledInput
-                labelName={t("skills")}
-                labelFor="skills"
-                input={
-                  <span
-                    style={{
-                      display: "flex",
-                      flexDirection: "column-reverse",
-                      gap: "12px",
-                    }}
-                  >
-                    <AddTag />
-                  </span>
-                }
-              />
-            </Col> */}
           </Row>
           <div className="footer__resume">
             <Button size="large" onClick={() => prev(1)}>
