@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  resumeFormData: {},
+  resumeFormData: {
+    files: [
+      {
+        type: null,
+        value: "",
+      },
+    ],
+  },
 };
 
 export const createResumeSlice = createSlice({

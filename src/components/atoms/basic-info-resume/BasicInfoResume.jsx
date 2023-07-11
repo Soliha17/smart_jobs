@@ -21,8 +21,6 @@ const BasicInfoResume = ({ props }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const [selectedFileType, setSelectedFileType] = useState("");
-  const [fileValue, setFileValue] = useState("");
   const [address, setAddress] = useState({ countryId: null, cityId: null });
 
   const { resumeFormData } = useSelector((state) => state.createResumeSlice);
@@ -52,8 +50,6 @@ const BasicInfoResume = ({ props }) => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
-    console.log("selectedFileType:", selectedFileType);
-    console.log("fileValue:", fileValue);
   };
 
   const onChange = (date, dateString) => {
@@ -89,7 +85,7 @@ const BasicInfoResume = ({ props }) => {
   const { Option } = Select;
 
   const prefixSelector = (
-    <Form.Item name="numberPrefix" initialValue="998" noStyle>
+    <Form.Item name="numberPrefix" noStyle>
       <Select style={{ width: 100 }} defaultValue={"998"}>
         <Option value="998">+998</Option>
         <Option value="1">+1</Option>
@@ -98,21 +94,7 @@ const BasicInfoResume = ({ props }) => {
   );
 
   const handleAdd = (add) => {
-    add({ type: selectedFileType, value: fileValue });
-    form.validateFields(["files"]).then((values) => {
-      setSelectedFileType("");
-      setFileValue("");
-
-      form.resetFields(["fileType", "fileValue"]);
-    });
-  };
-
-  const handleFileTypeChange = (value) => {
-    setSelectedFileType(value);
-  };
-
-  const handleFileValueChange = (e) => {
-    setFileValue(e.target.value);
+    add({ type: null, value: "" });
   };
 
   return (
@@ -283,47 +265,6 @@ const BasicInfoResume = ({ props }) => {
               <Form.List name="files">
                 {(fields, { add, remove }) => (
                   <>
-                    <Row gutter={[15, 12]} className="main-lan-row__resume">
-                      <Col xs={24} sm={11}>
-                        <Form.Item>
-                          <Select
-                            value={selectedFileType || undefined}
-                            placeholder={t("chooseLinkOrImage")}
-                            size="large"
-                            onChange={handleFileTypeChange}
-                            options={[
-                              { value: "image", label: "Image" },
-                              { value: "link", label: "Link" },
-                            ]}
-                          />
-                        </Form.Item>
-                      </Col>
-                      <Col sm={11} xs={24}>
-                        <Form.Item>
-                          <Input
-                            value={fileValue}
-                            placeholder={t("enterFileOrLink")}
-                            size="large"
-                            onChange={handleFileValueChange}
-                          />
-                        </Form.Item>
-                      </Col>
-                      <Col xs={24} sm={2}>
-                        <Button
-                          className="action-btn__lan-resume"
-                          size="large"
-                          htmlType="button"
-                          type="dashed"
-                          onClick={() => handleAdd(add)}
-                          block
-                        >
-                          <span className="hidden-text__lan-resume">
-                            {t("add")}
-                          </span>
-                          <PlusOutlined />
-                        </Button>
-                      </Col>
-                    </Row>
                     {fields.map((field, index) => (
                       <Row gutter={[15, 12]} key={field.key}>
                         <Col xs={24} sm={11}>
@@ -333,7 +274,6 @@ const BasicInfoResume = ({ props }) => {
                             // fieldKey={[field.fieldKey, "type"]}
                           >
                             <Select
-                              defaultValue={selectedFileType}
                               placeholder="Choose Link or Image"
                               size="large"
                               options={[
@@ -350,26 +290,41 @@ const BasicInfoResume = ({ props }) => {
                             // // fieldKey={[field.fieldKey, "value"]}
                           >
                             <Input
-                              defaultValue={fileValue}
                               placeholder="Enter File or Link"
                               size="large"
                             />
                           </Form.Item>
                         </Col>
                         <Col xs={24} sm={2}>
-                          <Button
-                            type="dashed"
-                            size="large"
-                            htmlType="button"
-                            className="action-btn__lan-resume"
-                            onClick={() => remove(field.name)}
-                            block
-                          >
-                            <span className="hidden-text__lan-resume">
-                              {t("turnOff")}
-                            </span>
-                            <DeleteOutlined />
-                          </Button>
+                          {index === fields.length - 1 ? (
+                            <Button
+                              className="action-btn__lan-resume"
+                              size="large"
+                              htmlType="button"
+                              type="dashed"
+                              onClick={() => handleAdd(add)}
+                              block
+                            >
+                              <span className="hidden-text__lan-resume">
+                                {t("add")}
+                              </span>
+                              <PlusOutlined />
+                            </Button>
+                          ) : (
+                            <Button
+                              type="dashed"
+                              size="large"
+                              htmlType="button"
+                              className="action-btn__lan-resume"
+                              onClick={() => remove(field.name)}
+                              block
+                            >
+                              <span className="hidden-text__lan-resume">
+                                {t("turnOff")}
+                              </span>
+                              <DeleteOutlined />
+                            </Button>
+                          )}
                         </Col>
                       </Row>
                     ))}

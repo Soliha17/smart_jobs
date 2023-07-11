@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Col, Form, Input, Row, Select } from "antd";
+import { Button, Col, Divider, Form, Input, Row, Select, Space } from "antd";
 import "./professionalInformation.css";
 
 import { useTranslation } from "react-i18next";
@@ -14,9 +14,14 @@ import AddTag from "../../molecules/add-tag/AddTag";
 import JobDrawer from "../../molecules/drawer/JobDrawer";
 import StudyDrawer from "../../molecules/drawer/StudyDrawer";
 import {
+  useGetAllSkillQuery,
+  useGetAllTypeOfOrganizationQuery,
+  useGetAllWorkFormatQuery,
+  useGetCurrenciesQuery,
   useGetTypeOfOrganizationQuery,
   useGetWorkFormatQuery,
 } from "src/store/api/resumeApiSlice";
+import SkillSelect from "./SkillSelect";
 
 const ProfessionalInformation = ({ props }) => {
   const [form] = Form.useForm();
@@ -24,8 +29,10 @@ const ProfessionalInformation = ({ props }) => {
   const [openJobDrawer, setOpenJobDrawer] = useState(false);
   const [openStudyDrawer, setOpenStudyDrawer] = useState(false);
 
-  const { data: workFormat } = useGetWorkFormatQuery();
-  const { data: typeOfOrganization } = useGetTypeOfOrganizationQuery();
+  const { data: workFormat } = useGetAllWorkFormatQuery();
+  const { data: typeOfOrganization } = useGetAllTypeOfOrganizationQuery();
+  const { data: currencies } = useGetCurrenciesQuery();
+  const { data: skill } = useGetAllSkillQuery();
 
   console.log(workFormat, typeOfOrganization);
 
@@ -225,25 +232,38 @@ const ProfessionalInformation = ({ props }) => {
                     placeholder={t("choose")}
                     size="large"
                     onChange={onChange}
-                    options={[
-                      {
-                        value: "full",
-                        label: "To'liq stavka",
-                      },
-                      {
-                        value: "part",
-                        label: "Part time",
-                      },
-                    ]}
+                    options={typeOfOrganization?.result?.map((option) => ({
+                      value: option.id.toString(),
+                      label: option.name,
+                    }))}
                   />
                 }
               />
             </Col>
-            <Col xs={24} sm={24}>
+            <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("theSalaryYouWantToReceive")}
                 labelFor="salary"
-                input={<Input size="large" />}
+                input={<Input size="large" type="number" min={0} />}
+              />
+            </Col>
+            <Col xs={24} sm={12}>
+              <LabeledInput
+                labelName="Valyutani tanlang"
+                labelFor="valyuteType"
+                req={true}
+                input={
+                  <Select
+                    // defaultValue="uzbekistan"
+                    placeholder="Valyutani tanlang"
+                    size="large"
+                    onChange={onChange}
+                    options={currencies?.result?.map((option) => ({
+                      value: option.id.toString(),
+                      label: option.name,
+                    }))}
+                  />
+                }
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -300,31 +320,28 @@ const ProfessionalInformation = ({ props }) => {
               />
               <Row>
                 <Col xs={24} sm={24}>
-                  <LabeledInput
-                    labelName=""
-                    labelFor="educationAddButton"
-                    input={
-                      <Button
-                        block
-                        size="large"
-                        onClick={() => setOpenStudyDrawer(true)}
-                        icon={<img src={AddCircle} alt="" />}
-                        style={{
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "12px",
-                        }}
-                      >
-                        {t("add")}
-                      </Button>
-                    }
-                  />
+                  <Button
+                    block
+                    size="large"
+                    onClick={() => setOpenStudyDrawer(true)}
+                    icon={<img src={AddCircle} alt="" />}
+                    style={{
+                      textAlign: "left",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                    }}
+                  >
+                    {t("add")}
+                  </Button>
                 </Col>
               </Row>
             </Col>
 
-            <Col xs={24} sm={24}>
+            <Col xs={24} sm={24} style={{ marginTop: "20px" }}>
+              <SkillSelect form={form} />
+            </Col>
+            {/* <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("skills")}
                 labelFor="skills"
@@ -340,7 +357,7 @@ const ProfessionalInformation = ({ props }) => {
                   </span>
                 }
               />
-            </Col>
+            </Col> */}
           </Row>
           <div className="footer__resume">
             <Button size="large" onClick={() => prev(1)}>

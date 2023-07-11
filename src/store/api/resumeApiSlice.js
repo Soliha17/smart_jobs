@@ -11,9 +11,19 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
     }),
     // need add put resume
 
+    getAllWorkFormat: builder.query({
+      query: () => ({
+        url: `/WorkFormat/GetAll`,
+      }),
+    }),
     getWorkFormat: builder.query({
       query: () => ({
         url: `/WorkFormat/Get`,
+      }),
+    }),
+    getAllTypeOfOrganization: builder.query({
+      query: () => ({
+        url: `/TypeOfOrganization/GetAll`,
       }),
     }),
     getTypeOfOrganization: builder.query({
@@ -21,11 +31,33 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         url: `/TypeOfOrganization/Get`,
       }),
     }),
+    getCurrencies: builder.query({
+      query: () => ({
+        url: `/Currencies/Get`,
+      }),
+    }),
+    getAllSkill: builder.query({
+      query: () => ({
+        url: `/Skill/GetAll`,
+      }),
+    }),
+    createSkill: builder.mutation({
+      query: (body) => ({
+        url: `/Skill/Create`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
 export const {
   useCreateResumeMutation,
+  useGetAllWorkFormatQuery,
   useGetWorkFormatQuery,
+  useGetAllTypeOfOrganizationQuery,
   useGetTypeOfOrganizationQuery,
+  useGetCurrenciesQuery,
+  useGetAllSkillQuery,
+  useCreateSkillMutation,
 } = resumeApiSlice;
