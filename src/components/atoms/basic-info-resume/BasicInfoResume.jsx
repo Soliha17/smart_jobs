@@ -19,7 +19,10 @@ import { setResumeFormData } from "src/store/resume.slice";
 const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
+  const [selectedFileType, setSelectedFileType] = useState("");
+  const [fileValue, setFileValue] = useState("");
   const [address, setAddress] = useState({ countryId: null, cityId: null });
 
   const { resumeFormData } = useSelector((state) => state.createResumeSlice);
@@ -31,7 +34,6 @@ const BasicInfoResume = ({ props }) => {
     { davlatId: address.countryId },
     { skip: !address.countryId }
   );
-  // console.log(countriesGeneral);
 
   const next = props.next;
 
@@ -42,21 +44,7 @@ const BasicInfoResume = ({ props }) => {
       "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
     );
 
-    dispatch(
-      setResumeFormData({
-        firstName: values.firstName,
-        lastName: values.lastName,
-        birthDate: formattedBirthDate,
-        sex: values.sex === "male" ? true : false,
-        about: values.about,
-        tel: values.numberPrefix + values.number,
-        email: values.email,
-        citizenshipId: Number(values.citizenship),
-        countryId: Number(values.country),
-        cityId: Number(values.regions),
-      })
-    );
-
+    dispatch(setResumeFormData(values));
     next(1);
   };
 
@@ -64,7 +52,6 @@ const BasicInfoResume = ({ props }) => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
-    console.log("files:", files);
     console.log("selectedFileType:", selectedFileType);
     console.log("fileValue:", fileValue);
   };
@@ -110,18 +97,9 @@ const BasicInfoResume = ({ props }) => {
     </Form.Item>
   );
 
-  const { t } = useTranslation();
-
-  const [files, setFiles] = useState([]);
-  const [selectedFileType, setSelectedFileType] = useState("");
-  const [fileValue, setFileValue] = useState("");
-
   const handleAdd = (add) => {
-    add();
-    form.validateFields().then((values) => {
-      const newFile = { type: selectedFileType, value: fileValue };
-      setFiles([...files, newFile]);
-      console.log("---------------files----------------", files);
+    add({ type: selectedFileType, value: fileValue });
+    form.validateFields(["files"]).then((values) => {
       setSelectedFileType("");
       setFileValue("");
 
@@ -149,13 +127,7 @@ const BasicInfoResume = ({ props }) => {
           layout="vertical"
           // validateMessages={validateMessages}
           name="basic"
-          initialValues={
-            {
-              // require: true,
-              // requiredMark: true,
-              // requiredMarkValue: requiredMark,
-            }
-          }
+          initialValues={resumeFormData}
           onFinish={onFinish}
           // onValuesChange={onRequiredTypeChange}
           // requiredMark={requiredMark}
@@ -308,7 +280,7 @@ const BasicInfoResume = ({ props }) => {
             <Col xs={24}>
               <p className="language-label">{t("addLinks")}</p>
 
-              <Form.List name="files" initialValue={files}>
+              <Form.List name="files">
                 {(fields, { add, remove }) => (
                   <>
                     <Row gutter={[15, 12]} className="main-lan-row__resume">
@@ -358,7 +330,7 @@ const BasicInfoResume = ({ props }) => {
                           <Form.Item
                             {...field}
                             name={[field.name, "type"]}
-                            fieldKey={[field.fieldKey, "type"]}
+                            // fieldKey={[field.fieldKey, "type"]}
                           >
                             <Select
                               defaultValue={selectedFileType}
@@ -375,7 +347,7 @@ const BasicInfoResume = ({ props }) => {
                           <Form.Item
                             {...field}
                             name={[field.name, "value"]}
-                            fieldKey={[field.fieldKey, "value"]}
+                            // // fieldKey={[field.fieldKey, "value"]}
                           >
                             <Input
                               defaultValue={fileValue}
