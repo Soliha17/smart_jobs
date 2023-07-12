@@ -9,44 +9,19 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
-    getAllWorkFormat: builder.query({
-      query: () => ({
-        url: `/WorkFormat/GetAll`,
-      }),
-    }),
-    getWorkFormat: builder.query({
-      query: () => ({
-        url: `/WorkFormat/Get`,
-      }),
-    }),
-    getAllTypeOfOrganization: builder.query({
-      query: () => ({
-        url: `/TypeOfOrganization/GetAll`,
-      }),
-    }),
-    getTypeOfOrganization: builder.query({
-      query: () => ({
-        url: `/TypeOfOrganization/Get`,
-      }),
-    }),
-    getCurrencies: builder.query({
-      query: () => ({
-        url: `/Currencies/Get`,
-      }),
-    }),
-    getAllSkill: builder.query({
-      query: () => ({
-        url: `/Skill/GetAll`,
-      }),
-      providesTags: ["skills"],
-    }),
-    createSkill: builder.mutation({
+    academicResult: builder.mutation({
       query: (body) => ({
-        url: `/Skill/Create`,
+        url: `/Resume/AcademicResult`,
         method: "POST",
         body,
       }),
-      invalidatesTags: ["skills"],
+    }),
+    license: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/License`,
+        method: "POST",
+        body,
+      }),
     }),
   }),
 });
@@ -54,10 +29,5 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
 export const {
   useCreateResumeMutation,
   useGetAllWorkFormatQuery,
-  useGetWorkFormatQuery,
-  useGetAllTypeOfOrganizationQuery,
-  useGetTypeOfOrganizationQuery,
-  useGetCurrenciesQuery,
-  useGetAllSkillQuery,
-  useCreateSkillMutation,
+  useLicenseMutation,
 } = resumeApiSlice;

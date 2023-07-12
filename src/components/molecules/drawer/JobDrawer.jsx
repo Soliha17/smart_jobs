@@ -11,20 +11,18 @@ import {
 } from "antd";
 import { useEffect, useState } from "react";
 
-import CloseIcon from "../../../assets/images/Exit.svg";
+import CloseIcon from "src/assets/images/Exit.svg";
 
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
-import AddCircle from "../../../assets/images/add-circle.svg";
+import AddCircle from "src/assets/images/add-circle.svg";
 import ExtraExperience from "./ExtraExperience";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   useGetAllTypeOfOrganizationQuery,
-  useGetAllWorkFormatQuery,
-} from "src/store/api/resumeApiSlice";
-import {
   useGetCountriesQuery,
   useGetRegionsQuery,
 } from "src/store/api/apiSlice";
@@ -32,14 +30,10 @@ import {
   setExperienceData,
   setExperienceDrawerData,
 } from "src/store/resume.slice";
+import { monthOptions } from "src/assets/constants/inputConstants";
+import { useGetAllWorkFormatQuery } from "src/store/api/resumeApiSlice";
 
-const JobDrawer = ({
-  open,
-  setOpen,
-  jobValues,
-  setJobValues,
-  getJobFunction,
-}) => {
+const JobDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
 
@@ -113,57 +107,6 @@ const JobDrawer = ({
     });
     setAddress({ ...address, countryId: value });
   }
-
-  const monthOptions = [
-    {
-      value: "dekabr",
-      label: "Dekabr",
-    },
-    {
-      value: "yanvar",
-      label: "Yanvar",
-    },
-    {
-      value: "fevral",
-      label: "Fevral",
-    },
-    {
-      value: "mart",
-      label: "Mart",
-    },
-    {
-      value: "aprel",
-      label: "Aprel",
-    },
-    {
-      value: "may",
-      label: "May",
-    },
-    {
-      value: "iyun",
-      label: "Iyun",
-    },
-    {
-      value: "iyul",
-      label: "Iyul",
-    },
-    {
-      value: "avgust",
-      label: "Avgust",
-    },
-    {
-      value: "sentyabr",
-      label: "Sentyabr",
-    },
-    {
-      value: "oktyabr",
-      label: "Oktyabr",
-    },
-    {
-      value: "noyabr",
-      label: "Noyabr",
-    },
-  ];
 
   const yearOptions = [];
 

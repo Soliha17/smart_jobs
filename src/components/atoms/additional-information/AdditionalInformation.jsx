@@ -12,7 +12,10 @@ import LicenseDrawer from "../../molecules/drawer/LicenseDrawer";
 
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { useCreateResumeMutation } from "src/store/api/resumeApiSlice";
+import {
+  useAcademicResultMutation,
+  useCreateResumeMutation,
+} from "src/store/api/resumeApiSlice";
 import { setAdditionalFormData } from "src/store/resume.slice";
 import { useSelector } from "react-redux";
 

@@ -50,7 +50,6 @@ const BasicInfoResume = ({ props }) => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
-    next(1);
   };
 
   const onChange = (date, dateString) => {

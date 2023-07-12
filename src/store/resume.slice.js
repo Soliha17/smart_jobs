@@ -10,6 +10,7 @@ const initialState = {
     ],
   },
   experienceDrawerData: {},
+  familyDrawerData: {},
   additionalFormData: {
     languageFiles: [
       {
@@ -36,6 +37,9 @@ export const createResumeSlice = createSlice({
     setExperienceDrawerData: (state, action) => {
       state.experienceDrawerData = action.payload;
     },
+    setFamilyDrawerData: (state, action) => {
+      state.familyDrawerData = action.payload;
+    },
     setExperienceData: (state, action) => {
       state.experienceData = action.payload;
     },
@@ -48,6 +52,7 @@ export const {
   setExperienceDrawerData,
   setAdditionalFormData,
   setExperienceData,
+  setFamilyDrawerData,
 } = createResumeSlice.actions;
 
 export default createResumeSlice.reducer;

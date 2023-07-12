@@ -3,11 +3,8 @@ import React from "react";
 import LabeledInput from "src/components/molecules/labeled-input/LabeledInput";
 
 import { useTranslation } from "react-i18next";
-import {
-  useCreateSkillMutation,
-  useGetAllSkillQuery,
-} from "src/store/api/resumeApiSlice";
 import { useState } from "react";
+import { useCreateSkillMutation, useGetAllSkillQuery } from "src/store/api/apiSlice";
 
 const SkillSelect = ({ form }) => {
   const { t } = useTranslation();
