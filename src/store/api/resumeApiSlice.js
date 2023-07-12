@@ -9,6 +9,13 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
+    createResumeStep1: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/CreateStep1`,
+        method: "POST",
+        body,
+      }),
+    }),
     academicResult: builder.mutation({
       query: (body) => ({
         url: `/Resume/AcademicResult`,
@@ -23,6 +30,20 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
+    link: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/Link`,
+        method: "POST",
+        body,
+      }),
+    }),
+    education: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/Education`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -30,4 +51,7 @@ export const {
   useCreateResumeMutation,
   useGetAllWorkFormatQuery,
   useLicenseMutation,
+  useCreateResumeStep1Mutation,
+  useLinkMutation,
+  useEducationMutation
 } = resumeApiSlice;

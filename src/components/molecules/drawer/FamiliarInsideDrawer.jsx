@@ -29,6 +29,8 @@ const FamiliarInsideDrawer = ({
     (state) => state.createResumeSlice
   );
 
+  console.log(familyDrawerData);
+
   const dispatch = useDispatch();
 
   const { data: countries } = useGetCountriesQuery();
@@ -49,15 +51,14 @@ const FamiliarInsideDrawer = ({
 
   // []da faqat open qolishi kerak, netlifyga deploy qilishda xato bermasligi uchun qoyilgan qolganlari
 
-  const onChildrenDriwerFinish = (data) => {
-    console.log("Success:", data);
+  const onChildrenDriwerFinish = (values) => {
+    console.log("Success:", values);
     dispatch(setFamilyDrawerData({}));
     form.resetFields();
     setOpen(false);
   };
 
   function onClose() {
-    
     // if (isFamilyEditValues !== null) {
     //   localStorage.removeItem("isFamilyEdit");
     // }
@@ -105,12 +106,7 @@ const FamiliarInsideDrawer = ({
             layout="vertical"
             // validateMessages={validateMessages}
             name="basic"
-            initialValues={
-              {
-                // remember: true,
-                // requiredMarkValue: requiredMark,
-              }
-            }
+            initialValues={familyDrawerData}
             onFinish={onChildrenDriwerFinish}
             // onValuesChange={onRequiredTypeChange}
             // requiredMark={requiredMark}

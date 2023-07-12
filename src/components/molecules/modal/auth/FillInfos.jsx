@@ -324,7 +324,7 @@ const InfoFills = ({ setOpen, prev, next }) => {
                 labelName={t("comeUpWithAPassword")}
                 labelFor="password"
                 req={true}
-                input={<Input.Password minLength={8} size="large" />}
+                input={<Input.Password className="password__register" minLength={8} size="large" />}
               />
             </Col>
             <Col xs={24} sm={24}>
@@ -332,7 +332,7 @@ const InfoFills = ({ setOpen, prev, next }) => {
                 labelName={t("enterThePasswordAgain")}
                 labelFor="confirmPassword"
                 req={true}
-                input={<Input.Password size="large" />}
+                input={<Input.Password className="password__register" size="large" />}
               />
             </Col>
             <Col xs={24} sm={24}>

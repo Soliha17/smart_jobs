@@ -8,6 +8,7 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import { useTranslation } from "react-i18next";
 import { monthOptions } from "src/assets/constants/inputConstants";
 import { useGetAllEducationLevelQuery } from "src/store/api/apiSlice";
+import { useEducationMutation } from "src/store/api/resumeApiSlice";
 
 const StudyDrawer = ({
   open,
@@ -20,6 +21,7 @@ const StudyDrawer = ({
   const [isChecked, setIsChecked] = useState(false);
 
   const { data: allEducationLevel } = useGetAllEducationLevelQuery();
+  const [createEducation] = useEducationMutation();
 
   console.log(allEducationLevel);
 
@@ -48,6 +50,7 @@ const StudyDrawer = ({
   const onFinish = (data) => {
     console.log("Success:", data);
     setOpen(false);
+
 
     // next(2);
   };
@@ -118,7 +121,7 @@ const StudyDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("educationalInstitution")}
-                  labelFor="studySchool"
+                  labelFor="organization"
                   req={true}
                   input={<Input size="large" placeholder="Masalan, Harvard" />}
                 />
@@ -126,7 +129,7 @@ const StudyDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("facultyName")}
-                  labelFor="facultyName"
+                  labelFor="faculty"
                   req={true}
                   input={
                     <Input size="large" placeholder="Masalan, Psixologiya" />
@@ -136,7 +139,7 @@ const StudyDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("educationLevel")}
-                  labelFor="studyLevel"
+                  labelFor="educationLevelId"
                   req={true}
                   input={
                     <Select
