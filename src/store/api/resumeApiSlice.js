@@ -44,6 +44,13 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
+    postPlacesOfWork: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/AddPlacesOfWork`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -53,5 +60,6 @@ export const {
   useLicenseMutation,
   useCreateResumeStep1Mutation,
   useLinkMutation,
-  useEducationMutation
+  useEducationMutation,
+  usePostPlacesOfWorkMutation,
 } = resumeApiSlice;

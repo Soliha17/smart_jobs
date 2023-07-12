@@ -30,14 +30,22 @@ import {
   setExperienceData,
   setExperienceDrawerData,
 } from "src/store/resume.slice";
-import { monthOptions } from "src/assets/constants/inputConstants";
-import { useGetAllWorkFormatQuery } from "src/store/api/resumeApiSlice";
+import {
+  getYearOptions,
+  monthOptions,
+} from "src/assets/constants/inputConstants";
+import {
+  useGetAllWorkFormatQuery,
+  usePostPlacesOfWorkMutation,
+} from "src/store/api/resumeApiSlice";
 
 const JobDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
 
+  const [address, setAddress] = useState({ countryId: null, cityId: null });
   const [childrenDrawer, setChildrenDrawer] = useState(false);
+  const [endYearOptions, setEndYearOptions] = useState(getYearOptions());
 
   const { experienceDrawerData, experienceData } = useSelector(
     (state) => state.createResumeSlice
@@ -48,15 +56,12 @@ const JobDrawer = ({ open, setOpen }) => {
 
   const { data: workFormat } = useGetAllWorkFormatQuery();
   const { data: typeOfOrganization } = useGetAllTypeOfOrganizationQuery();
-
-  const [address, setAddress] = useState({ countryId: null, cityId: null });
-
   const { data: countries } = useGetCountriesQuery();
-
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
     { davlatId: address.countryId },
     { skip: !address.countryId }
   );
+  const [postPlacesOfWork] = usePostPlacesOfWorkMutation();
 
   let isJobEditValues = JSON.parse(localStorage.getItem("isJobEdit"));
 
@@ -68,10 +73,11 @@ const JobDrawer = ({ open, setOpen }) => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    dispatch(setExperienceData([...experienceData, values]));
-    dispatch(setExperienceDrawerData({}));
-    form.resetFields();
-    setOpen(false);
+    // dispatch(setExperienceData([...experienceData, values]));
+    // dispatch(setExperienceDrawerData({}));
+    // form.resetFields();
+    // setOpen(false);
+    postPlacesOfWork(values);
   };
 
   const onClose = () => {
@@ -108,23 +114,17 @@ const JobDrawer = ({ open, setOpen }) => {
     setAddress({ ...address, countryId: value });
   }
 
-  const yearOptions = [];
-
-  for (let i = 1970; i <= 2023; i++) {
-    yearOptions.push({
-      value: i.toString(),
-      label: i.toString(),
-    });
-  }
-
-  const finishYearOptions = yearOptions.filter(
-    (item) => item.value >= Number(form.getFieldValue("beginsYearOfJob"))
-  );
-
-  console.log(finishYearOptions);
-
   function onChange(event) {
     setIsChecked(event.target.checked);
+  }
+
+  function onChangeBeginsYears(e) {
+    setEndYearOptions(
+      getYearOptions().filter(
+        (item) =>
+          item.value >= (Number(form.getFieldValue("beginsYearOfJob")) ?? 1970)
+      )
+    );
   }
 
   return (
@@ -285,8 +285,8 @@ const JobDrawer = ({ open, setOpen }) => {
                           // defaultValue="oy"
                           placeholder="Yil"
                           size="large"
-                          // onChange={onChange}
-                          options={yearOptions}
+                          onChange={onChangeBeginsYears}
+                          options={getYearOptions()}
                         />
                       }
                     />
@@ -323,7 +323,7 @@ const JobDrawer = ({ open, setOpen }) => {
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={finishYearOptions}
+                          options={endYearOptions}
                         />
                       }
                     />
