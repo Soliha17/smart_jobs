@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Col, Divider, Form, Input, Row, Select, Space } from "antd";
+import { Button, Col, Divider, Form, Input, Row, Select } from "antd";
 import "./professionalInformation.css";
 
 import { useTranslation } from "react-i18next";
@@ -10,23 +10,16 @@ import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 import Trash from "src/assets/images/trash-icon.svg";
 import Edit from "src/assets/images/edit-icon.svg";
 import AddCircle from "src/assets/images/add-circle.svg";
-import AddTag from "../../molecules/add-tag/AddTag";
 import JobDrawer from "../../molecules/drawer/JobDrawer";
 import StudyDrawer from "../../molecules/drawer/StudyDrawer";
-import {
-  useGetAllSkillQuery,
-  useGetAllTypeOfOrganizationQuery,
-  useGetAllWorkFormatQuery,
-  useGetCurrenciesQuery,
-  useGetTypeOfOrganizationQuery,
-  useGetWorkFormatQuery,
-} from "src/store/api/resumeApiSlice";
 import SkillSelect from "./SkillSelect";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setExperienceData,
   setExperienceDrawerData,
 } from "src/store/resume.slice";
+import { useGetAllWorkFormatQuery } from "src/store/api/resumeApiSlice";
+import { useGetAllSkillQuery, useGetAllTypeOfOrganizationQuery, useGetCurrenciesQuery } from "src/store/api/apiSlice";
 
 const ProfessionalInformation = ({ props }) => {
   const [form] = Form.useForm();

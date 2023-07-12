@@ -11,28 +11,29 @@ import {
 } from "antd";
 import { useEffect, useState } from "react";
 
-import CloseIcon from "../../../assets/images/Exit.svg";
+import CloseIcon from "src/assets/images/Exit.svg";
 
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
-import AddCircle from "../../../assets/images/add-circle.svg";
-import { v4 as uuidv4 } from "uuid";
+import AddCircle from "src/assets/images/add-circle.svg";
 import ExtraExperience from "./ExtraExperience";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+
+import {
+  useGetAllTypeOfOrganizationQuery,
+  useGetCountriesQuery,
+  useGetRegionsQuery,
+} from "src/store/api/apiSlice";
 import {
   setExperienceData,
   setExperienceDrawerData,
 } from "src/store/resume.slice";
+import { monthOptions } from "src/assets/constants/inputConstants";
+import { useGetAllWorkFormatQuery } from "src/store/api/resumeApiSlice";
 
-const JobDrawer = ({
-  open,
-  setOpen,
-  jobValues,
-  setJobValues,
-  getJobFunction,
-}) => {
+const JobDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
 
@@ -43,7 +44,19 @@ const JobDrawer = ({
   );
 
   const dispatch = useDispatch();
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const { data: workFormat } = useGetAllWorkFormatQuery();
+  const { data: typeOfOrganization } = useGetAllTypeOfOrganizationQuery();
+
+  const [address, setAddress] = useState({ countryId: null, cityId: null });
+
+  const { data: countries } = useGetCountriesQuery();
+
+  const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
+    { davlatId: address.countryId },
+    { skip: !address.countryId }
+  );
 
   let isJobEditValues = JSON.parse(localStorage.getItem("isJobEdit"));
 
@@ -75,56 +88,25 @@ const JobDrawer = ({
     console.log("Failed:", errorInfo);
   };
 
-  const monthOptions = [
-    {
-      value: "dekabr",
-      label: "Dekabr",
-    },
-    {
-      value: "yanvar",
-      label: "Yanvar",
-    },
-    {
-      value: "fevral",
-      label: "Fevral",
-    },
-    {
-      value: "mart",
-      label: "Mart",
-    },
-    {
-      value: "aprel",
-      label: "Aprel",
-    },
-    {
-      value: "may",
-      label: "May",
-    },
-    {
-      value: "iyun",
-      label: "Iyun",
-    },
-    {
-      value: "iyul",
-      label: "Iyul",
-    },
-    {
-      value: "avgust",
-      label: "Avgust",
-    },
-    {
-      value: "sentyabr",
-      label: "Sentyabr",
-    },
-    {
-      value: "oktyabr",
-      label: "Oktyabr",
-    },
-    {
-      value: "noyabr",
-      label: "Noyabr",
-    },
-  ];
+  // const validateMessages = {
+  //   required: "Iltimos, ${label}ni kiriting!",
+  //   types: {
+  //     email: "${label} is not a valid email!",
+  //     number: "${label} is not a valid number!",
+  //   },
+  //   number: {
+  //     range: "${label} must be between ${0} and ${10}",
+  //   },
+  // };
+
+  function onChangeCountry(value, a, b, c) {
+    form.setFieldsValue({
+      countries: value,
+      regions: undefined,
+      cities: undefined,
+    });
+    setAddress({ ...address, countryId: value });
+  }
 
   const yearOptions = [];
 
@@ -134,6 +116,12 @@ const JobDrawer = ({
       label: i.toString(),
     });
   }
+
+  const finishYearOptions = yearOptions.filter(
+    (item) => item.value >= Number(form.getFieldValue("beginsYearOfJob"))
+  );
+
+  console.log(finishYearOptions);
 
   function onChange(event) {
     setIsChecked(event.target.checked);
@@ -183,7 +171,7 @@ const JobDrawer = ({
                   input={<Input size="large" maxLength={9} />}
                 />
               </Col>
-              <Col xs={24} sm={24}>
+              <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("typeOfEmployment")}
                   labelFor="workedType"
@@ -194,46 +182,16 @@ const JobDrawer = ({
                       placeholder={t("selectTheTypeOfEmployment")}
                       size="large"
                       // onChange={onChange}
-                      options={[
-                        {
-                          value: "full",
-                          label: "To'liq stavka",
-                        },
-                        {
-                          value: "part",
-                          label: "Part time",
-                        },
-                      ]}
+                      options={typeOfOrganization?.result?.map((option) => ({
+                        value: option.id.toString(),
+                        label: option.name,
+                      }))}
                     />
                   }
                 />
               </Col>
-              <Col xs={24} sm={24}>
-                <LabeledInput
-                  labelName={t("location")}
-                  labelFor="location"
-                  req={true}
-                  input={
-                    <Select
-                      // defaultValue="full"
-                      placeholder={t("choose")}
-                      size="large"
-                      // onChange={onChange}
-                      options={[
-                        {
-                          value: "buxoro",
-                          label: "Buxoro",
-                        },
-                        {
-                          value: "toshkent",
-                          label: "Toshkent",
-                        },
-                      ]}
-                    />
-                  }
-                />
-              </Col>
-              <Col xs={24} sm={24}>
+
+              <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("format")}
                   labelFor="format"
@@ -244,16 +202,52 @@ const JobDrawer = ({
                       placeholder={t("choose")}
                       size="large"
                       // onChange={onChange}
-                      options={[
-                        {
-                          value: "masofadan",
-                          label: "Masofadan",
-                        },
-                        {
-                          value: "offisda",
-                          label: "Offisda",
-                        },
-                      ]}
+                      options={workFormat?.result?.map((option) => ({
+                        value: option.id.toString(),
+                        label: option.name,
+                      }))}
+                    />
+                  }
+                />
+              </Col>
+              <Col xs={24} sm={12}>
+                <LabeledInput
+                  labelName={t("country")}
+                  labelFor="country"
+                  req={true}
+                  input={
+                    <Select
+                      // defaultValue="uzbekistan"
+                      placeholder={t("choose")}
+                      size="large"
+                      onChange={onChangeCountry}
+                      options={countries?.result?.map((option) => ({
+                        value: option.id.toString(),
+                        label: option.name,
+                      }))}
+                    />
+                  }
+                />
+              </Col>
+              <Col xs={24} sm={12}>
+                <LabeledInput
+                  labelName={t("province")}
+                  labelFor="regions"
+                  req={true}
+                  input={
+                    <Select
+                      // defaultValue="buxoro"
+                      placeholder={t("choose")}
+                      size="large"
+                      // onChange={onChange}
+                      options={
+                        isRegionsFetching
+                          ? []
+                          : regions?.result?.map((option) => ({
+                              value: option.id.toString(),
+                              label: option.name,
+                            }))
+                      }
                     />
                   }
                 />
@@ -329,11 +323,7 @@ const JobDrawer = ({
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={yearOptions.filter(
-                            (item) =>
-                              item.value >=
-                              Number(form.getFieldValue("beginsYearOfJob"))
-                          )}
+                          options={finishYearOptions}
                         />
                       }
                     />

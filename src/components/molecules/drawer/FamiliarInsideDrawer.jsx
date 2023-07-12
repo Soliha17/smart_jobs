@@ -4,6 +4,13 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import CloseIcon from "../../../assets/images/Exit.svg";
 import { v4 as uuidv4 } from "uuid";
 import { useTranslation } from "react-i18next";
+import {
+  useGetCountriesGeneralQuery,
+  useGetCountriesQuery,
+  useGetRegionsQuery,
+} from "src/store/api/apiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setFamilyDrawerData } from "src/store/resume.slice";
 
 const FamiliarInsideDrawer = ({
   open,
@@ -16,46 +23,46 @@ const FamiliarInsideDrawer = ({
 
   const [date, setDate] = useState(new Date());
 
+  const [address, setAddress] = useState({ countryId: null, cityId: null });
+
+  const { familyDrawerData, experienceData } = useSelector(
+    (state) => state.createResumeSlice
+  );
+
+  console.log(familyDrawerData);
+
+  const dispatch = useDispatch();
+
+  const { data: countries } = useGetCountriesQuery();
+  const { data: countriesGeneral } = useGetCountriesGeneralQuery();
+
+  console.log(countriesGeneral);
+
+  const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
+    { davlatId: address.countryId },
+    { skip: !address.countryId }
+  );
+
   let isFamilyEditValues = JSON.parse(localStorage.getItem("isFamilyEdit"));
 
   useEffect(() => {
-    if (isFamilyEditValues !== null) {
-      form.setFieldValue(isFamilyEditValues);
-    }
+    form.setFieldValue(familyDrawerData);
   }, [open, isFamilyEditValues, form]);
+
   // []da faqat open qolishi kerak, netlifyga deploy qilishda xato bermasligi uchun qoyilgan qolganlari
 
-  const onChildrenDriwerFinish = (data) => {
-    console.log("Success:", data);
-    setOpen(false);
-
-    // your code here
-    getFamilyFn();
-
-    if (isFamilyEditValues !== null) {
-      const index = familyValues.findIndex(
-        (item) => item.id === isFamilyEditValues.id
-      );
-
-      if (index !== -1) {
-        familyValues[index] = data;
-        setFamilyValues([...familyValues]);
-        localStorage.removeItem("isFamilyEdit");
-      }
-    } else {
-      familyValues.push({ ...data, id: uuidv4() });
-      setFamilyValues([...familyValues]);
-    }
-
-    localStorage.setItem("familyDrawerValues", JSON.stringify(familyValues));
+  const onChildrenDriwerFinish = (values) => {
+    console.log("Success:", values);
+    dispatch(setFamilyDrawerData({}));
     form.resetFields();
+    setOpen(false);
   };
 
   function onClose() {
-    if (isFamilyEditValues !== null) {
-      localStorage.removeItem("isFamilyEdit");
-      form.resetFields();
-    }
+    // if (isFamilyEditValues !== null) {
+    //   localStorage.removeItem("isFamilyEdit");
+    // }
+    form.resetFields();
 
     setOpen(false);
   }
@@ -67,6 +74,15 @@ const FamiliarInsideDrawer = ({
   const onChange = (date) => {
     setDate(date);
   };
+
+  function onChangeCountry(value, a, b, c) {
+    form.setFieldsValue({
+      countries: value,
+      regions: undefined,
+      cities: undefined,
+    });
+    setAddress({ ...address, countryId: value });
+  }
 
   const { t } = useTranslation();
 
@@ -90,12 +106,7 @@ const FamiliarInsideDrawer = ({
             layout="vertical"
             // validateMessages={validateMessages}
             name="basic"
-            initialValues={
-              {
-                // remember: true,
-                // requiredMarkValue: requiredMark,
-              }
-            }
+            initialValues={familyDrawerData}
             onFinish={onChildrenDriwerFinish}
             // onValuesChange={onRequiredTypeChange}
             // requiredMark={requiredMark}
@@ -152,16 +163,10 @@ const FamiliarInsideDrawer = ({
                       size="large"
                       placeholder={t("choose")}
                       // onChange={onChange}
-                      options={[
-                        {
-                          value: "uzb",
-                          label: "O'zbek",
-                        },
-                        {
-                          value: "qozoq",
-                          label: "Qozoq",
-                        },
-                      ]}
+                      options={countriesGeneral?.result?.map((option) => ({
+                        value: option.id.toString(),
+                        label: option.name,
+                      }))}
                     />
                   }
                 />
@@ -173,10 +178,10 @@ const FamiliarInsideDrawer = ({
                   req={true}
                   input={
                     <DatePicker
-                      onChange={onChange}
                       size="large"
+                      picker="date"
+                      format={"DD/MM/YYYY"}
                       placeholder="kun/oy/yil"
-                      value={date}
                     />
                   }
                 />
@@ -188,51 +193,34 @@ const FamiliarInsideDrawer = ({
                   req={true}
                   input={
                     <Select
-                      defaultValue="uzbekistan"
                       size="large"
-                      // onChange={onChange}
-                      options={[
-                        {
-                          value: "uzbekistan",
-                          label: "O'zbekiston",
-                        },
-                        {
-                          value: "turkey",
-                          label: "Turkiya",
-                        },
-                        {
-                          value: "usa",
-                          label: "AQSH",
-                        },
-                      ]}
+                      placeholder={t("choose")}
+                      onChange={onChangeCountry}
+                      options={countries?.result?.map((option) => ({
+                        value: option.id.toString(),
+                        label: option.name,
+                      }))}
                     />
                   }
                 />
               </Col>
               <Col xs={24} sm={12}>
                 <LabeledInput
-                  labelName={t("city")}
-                  labelFor="cityFamily"
+                  labelName={t("province")}
+                  labelFor="regions"
                   req={true}
                   input={
                     <Select
-                      defaultValue="buxoro"
                       size="large"
-                      // onChange={onChange}
-                      options={[
-                        {
-                          value: "buxoro",
-                          label: "Buxoro",
-                        },
-                        {
-                          value: "toshkent",
-                          label: "Toshkent",
-                        },
-                        {
-                          value: "istanbul",
-                          label: "Istanbul",
-                        },
-                      ]}
+                      placeholder={t("choose")}
+                      options={
+                        isRegionsFetching
+                          ? []
+                          : regions?.result?.map((option) => ({
+                              value: option.id.toString(),
+                              label: option.name,
+                            }))
+                      }
                     />
                   }
                 />

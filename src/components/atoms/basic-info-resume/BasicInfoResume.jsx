@@ -18,6 +18,10 @@ import {
 } from "src/store/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setResumeFormData } from "src/store/resume.slice";
+import {
+  useCreateResumeMutation,
+  useCreateResumeStep1Mutation,
+} from "src/store/api/resumeApiSlice";
 
 const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
@@ -30,6 +34,7 @@ const BasicInfoResume = ({ props }) => {
 
   const { data: countries } = useGetCountriesQuery();
   const { data: countriesGeneral } = useGetCountriesGeneralQuery();
+  const [createResumeStep1] = useCreateResumeStep1Mutation();
 
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
     { davlatId: address.countryId },
@@ -45,7 +50,27 @@ const BasicInfoResume = ({ props }) => {
       "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
     );
 
+    const filteredFiles = values.files.filter(
+      (item) => item.type !== null && item.value !== ""
+    );
+
     dispatch(setResumeFormData(values));
+
+    createResumeStep1({
+      name: "string",
+      firstName: values.firstName,
+      lastName: values.lastName,
+      birthDate: formattedBirthDate,
+      sex: values.sex === "male" ? true : false,
+      citizenshipId: values.citizenship,
+      countryId: values.country,
+      cityId: values.region,
+      about: values.about,
+      tel: values.numberPrefix + values.number,
+      email: values.email,
+      links: filteredFiles,
+    });
+
     next(1);
   };
 
@@ -53,7 +78,6 @@ const BasicInfoResume = ({ props }) => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
-    next(1);
   };
 
   const onChange = (date, dateString) => {

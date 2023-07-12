@@ -7,10 +7,15 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useAcademicResultMutation } from "src/store/api/apiSlice";
+// import { useAcademicResultMutation } from "src/store/api/resumeApiSlice";
 
 const AcademicResultDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
   const [files, setFiles] = useState([]);
+
+  // const [academicResult] = useAcademicResultMutation();
+
 
   const onClose = () => {
     setOpen(false);
@@ -104,7 +109,7 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("testName")}
-                  labelFor="testName"
+                  labelFor="name"
                   req={true}
                   input={<Input size="large" placeholder="Masalan, SAT" />}
                 />
@@ -112,10 +117,10 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("accumulatedPoints")}
-                  labelFor="facultyName"
+                  labelFor="results"
                   req={true}
                   input={
-                    <Input size="large" type="number" placeholder="1580" />
+                    <Input size="large" type="number" min={0} placeholder="1580" />
                   }
                 />
               </Col>
@@ -143,7 +148,7 @@ const AcademicResultDrawer = ({ open, setOpen }) => {
                       onChange={handleUpload}
                     >
                       <Button
-                        icon={<img src={UploadIcon} alt="" />}
+                        icon={<img src={UploadIcon} alt="upload icon" />}
                         size="large"
                       >
                         {t("uploadDocument")}

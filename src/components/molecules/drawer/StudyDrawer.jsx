@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Checkbox, Col, Drawer, Form, Input, Row, Select, Space } from "antd";
 
-import { v4 as uuidv4 } from "uuid";
-
 import CloseIcon from "../../../assets/images/Exit.svg";
 
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import { useTranslation } from "react-i18next";
+import { monthOptions } from "src/assets/constants/inputConstants";
+import { useGetAllEducationLevelQuery } from "src/store/api/apiSlice";
+import { useEducationMutation } from "src/store/api/resumeApiSlice";
 
 const StudyDrawer = ({
   open,
@@ -17,7 +18,12 @@ const StudyDrawer = ({
   getStudyFunction,
 }) => {
   const [form] = Form.useForm();
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const { data: allEducationLevel } = useGetAllEducationLevelQuery();
+  const [createEducation] = useEducationMutation();
+
+  console.log(allEducationLevel);
 
   let isStudyEditValues = JSON.parse(localStorage.getItem("isStudyEdit"));
 
@@ -45,25 +51,6 @@ const StudyDrawer = ({
     console.log("Success:", data);
     setOpen(false);
 
-    getStudyFunction();
-
-    if (isStudyEditValues !== null) {
-      const index = studyValues.findIndex(
-        (item) => item.id === isStudyEditValues.id
-      );
-
-      if (index !== -1) {
-        studyValues[index] = data;
-        setStudyValues([...studyValues]);
-        localStorage.removeItem("isStudyEdit");
-      }
-    } else {
-      studyValues.push({ ...data, id: uuidv4() });
-      setStudyValues([...studyValues]);
-    }
-
-    localStorage.setItem("studyDrawerValues", JSON.stringify(studyValues));
-    form.resetFields();
 
     // next(2);
   };
@@ -84,6 +71,19 @@ const StudyDrawer = ({
   // };
 
   const { t } = useTranslation();
+
+  const yearOptions = [];
+
+  for (let i = 1970; i <= 2023; i++) {
+    yearOptions.push({
+      value: i.toString(),
+      label: i.toString(),
+    });
+  }
+
+  const finishYearOptions = yearOptions.filter(
+    (item) => item.value >= Number(form.getFieldValue("beginsYearOfJob"))
+  );
 
   return (
     <>
@@ -121,7 +121,7 @@ const StudyDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("educationalInstitution")}
-                  labelFor="studySchool"
+                  labelFor="organization"
                   req={true}
                   input={<Input size="large" placeholder="Masalan, Harvard" />}
                 />
@@ -129,7 +129,7 @@ const StudyDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("facultyName")}
-                  labelFor="facultyName"
+                  labelFor="faculty"
                   req={true}
                   input={
                     <Input size="large" placeholder="Masalan, Psixologiya" />
@@ -139,7 +139,7 @@ const StudyDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("educationLevel")}
-                  labelFor="studyLevel"
+                  labelFor="educationLevelId"
                   req={true}
                   input={
                     <Select
@@ -147,16 +147,10 @@ const StudyDrawer = ({
                       placeholder={t("choose")}
                       size="large"
                       // onChange={onChange}
-                      options={[
-                        {
-                          value: "bakalavr",
-                          label: "Bakalavr",
-                        },
-                        {
-                          value: "magistr",
-                          label: "Magistr",
-                        },
-                      ]}
+                      options={allEducationLevel?.result?.map((level) => ({
+                        id: level.id.toString(),
+                        value: level.name,
+                      }))}
                     />
                   }
                 />
@@ -174,28 +168,7 @@ const StudyDrawer = ({
                           placeholder={t("month")}
                           size="large"
                           // onChange={onChange}
-                          options={[
-                            {
-                              value: "dekabr",
-                              label: "Dekabr",
-                            },
-                            {
-                              value: "yanvar",
-                              label: "Yanvar",
-                            },
-                            {
-                              value: "fevral",
-                              label: "Fevral",
-                            },
-                            {
-                              value: "mart",
-                              label: "Mart",
-                            },
-                            {
-                              value: "iyun",
-                              label: "Iyun",
-                            },
-                          ]}
+                          options={monthOptions}
                         />
                       }
                     />
@@ -210,24 +183,7 @@ const StudyDrawer = ({
                           placeholder={t("year")}
                           size="large"
                           // onChange={onChange}
-                          options={[
-                            {
-                              value: "2020",
-                              label: "2020",
-                            },
-                            {
-                              value: "2021",
-                              label: "2021",
-                            },
-                            {
-                              value: "2022",
-                              label: "2022",
-                            },
-                            {
-                              value: "2023",
-                              label: "2023",
-                            },
-                          ]}
+                          options={yearOptions}
                         />
                       }
                     />
@@ -248,28 +204,7 @@ const StudyDrawer = ({
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={[
-                            {
-                              value: "dekabr",
-                              label: "Dekabr",
-                            },
-                            {
-                              value: "yanvar",
-                              label: "Yanvar",
-                            },
-                            {
-                              value: "fevral",
-                              label: "Fevral",
-                            },
-                            {
-                              value: "mart",
-                              label: "Mart",
-                            },
-                            {
-                              value: "iyun",
-                              label: "Iyun",
-                            },
-                          ]}
+                          options={monthOptions}
                         />
                       }
                     />
@@ -285,24 +220,7 @@ const StudyDrawer = ({
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={[
-                            {
-                              value: "2020",
-                              label: "2020",
-                            },
-                            {
-                              value: "2021",
-                              label: "2021",
-                            },
-                            {
-                              value: "2022",
-                              label: "2022",
-                            },
-                            {
-                              value: "2023",
-                              label: "2023",
-                            },
-                          ]}
+                          options={finishYearOptions}
                         />
                       }
                     />

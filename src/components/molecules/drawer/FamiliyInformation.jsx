@@ -10,6 +10,7 @@ import Trash from "../../../assets/images/trash-icon.svg";
 import Edit from "../../../assets/images/edit-icon.svg";
 import FamiliarInsideDrawer from "./FamiliarInsideDrawer";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 const FamilyInformationDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
@@ -17,6 +18,12 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
   const [childrenDrawer, setChildrenDrawer] = useState(false);
 
   const [familyValues, setFamilyValues] = useState([]);
+
+    const { familyDrawerData } = useSelector(
+      (state) => state.createResumeSlice
+  );
+
+  console.log(familyDrawerData);
 
   // const showDrawer = () => {
   //   setOpen(true);
@@ -156,11 +163,11 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
                 />
               </Col>
               <Col xs={24} sm={24}>
-                <LabeledInput
+                {/* <LabeledInput
                   labelName={t("addInformationAboutAFamilyMember")}
                   labelFor="extraInfoAboutFamilier"
-                  input={familyValues?.map((item) => (
-                    <div key={item?.id} className="field__resume">
+                  input={familyDrawerData?.map((item,index) => (
+                    <div key={index} className="field__resume">
                       <span>
                         <h4>{item?.familiarPerson}</h4>•
                         <p>{item?.fullNameOfFather}</p>•
@@ -206,7 +213,7 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
                       </span>
                     </div>
                   ))}
-                />
+                /> */}
                 <Row>
                   <Col xs={24} sm={24}>
                     <LabeledInput
@@ -232,23 +239,6 @@ const FamilyInformationDrawer = ({ open, setOpen }) => {
                   </Col>
                 </Row>
               </Col>
-
-              {/* <Col xs={24} sm={24}>
-                <Button
-                  block
-                  size="large"
-                  icon={<img src={AddCircle} alt="" />}
-
-                  style={{
-                    textAlign: "left",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                  }}
-                >
-                  Qo'shish
-                </Button>
-              </Col> */}
             </Row>
             <button
               type="submit"

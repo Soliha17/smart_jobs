@@ -9,44 +9,40 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
-    getAllWorkFormat: builder.query({
-      query: () => ({
-        url: `/WorkFormat/GetAll`,
-      }),
-    }),
-    getWorkFormat: builder.query({
-      query: () => ({
-        url: `/WorkFormat/Get`,
-      }),
-    }),
-    getAllTypeOfOrganization: builder.query({
-      query: () => ({
-        url: `/TypeOfOrganization/GetAll`,
-      }),
-    }),
-    getTypeOfOrganization: builder.query({
-      query: () => ({
-        url: `/TypeOfOrganization/Get`,
-      }),
-    }),
-    getCurrencies: builder.query({
-      query: () => ({
-        url: `/Currencies/Get`,
-      }),
-    }),
-    getAllSkill: builder.query({
-      query: () => ({
-        url: `/Skill/GetAll`,
-      }),
-      providesTags: ["skills"],
-    }),
-    createSkill: builder.mutation({
+    createResumeStep1: builder.mutation({
       query: (body) => ({
-        url: `/Skill/Create`,
+        url: `/Resume/CreateStep1`,
         method: "POST",
         body,
       }),
-      invalidatesTags: ["skills"],
+    }),
+    academicResult: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/AcademicResult`,
+        method: "POST",
+        body,
+      }),
+    }),
+    license: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/License`,
+        method: "POST",
+        body,
+      }),
+    }),
+    link: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/Link`,
+        method: "POST",
+        body,
+      }),
+    }),
+    education: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/Education`,
+        method: "POST",
+        body,
+      }),
     }),
   }),
 });
@@ -54,10 +50,8 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
 export const {
   useCreateResumeMutation,
   useGetAllWorkFormatQuery,
-  useGetWorkFormatQuery,
-  useGetAllTypeOfOrganizationQuery,
-  useGetTypeOfOrganizationQuery,
-  useGetCurrenciesQuery,
-  useGetAllSkillQuery,
-  useCreateSkillMutation,
+  useLicenseMutation,
+  useCreateResumeStep1Mutation,
+  useLinkMutation,
+  useEducationMutation
 } = resumeApiSlice;

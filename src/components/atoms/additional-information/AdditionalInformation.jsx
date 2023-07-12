@@ -12,11 +12,15 @@ import LicenseDrawer from "../../molecules/drawer/LicenseDrawer";
 
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { useCreateResumeMutation } from "src/store/api/resumeApiSlice";
+import {
+  useAcademicResultMutation,
+  useCreateResumeMutation,
+} from "src/store/api/resumeApiSlice";
+import { setAdditionalFormData } from "src/store/resume.slice";
+import { useSelector } from "react-redux";
 
 const AdditionalInformation = ({ props }) => {
   const [form] = Form.useForm();
-
 
   const [createResume, { isLoading: createResumeLoading }] =
     useCreateResumeMutation();
@@ -25,6 +29,10 @@ const AdditionalInformation = ({ props }) => {
 
   const [openFamiliyInformationDrawer, setOpenFamiliyInformationDrawer] =
     useState(false);
+
+  const { additionalFormData } = useSelector(
+    (state) => state.createResumeSlice
+  );
 
   const [openPortfolioDrawer, setOpenPortfolioDrawer] = useState(false);
 
@@ -45,23 +53,9 @@ const AdditionalInformation = ({ props }) => {
   const [files, setFiles] = useState([]);
 
   const handleAdd = (add) => {
-    add();
-    form.validateFields().then((values) => {
-      const newFile = { language: selectedLanguage, level: selectedLevel };
-      setFiles([...files, newFile]);
-      setSelectedLanguage("");
-      setSelectedLevel("");
-      form.resetFields(["language", "level"]);
-    });
+    add({ language: null, level: null });
   };
 
-  const onChangeLanguage = (value) => {
-    setSelectedLanguage(value);
-  };
-
-  const onChangeLevel = (value) => {
-    setSelectedLevel(value);
-  };
   // const onChange = (date, dateString) => {
   //   console.log(date, dateString);
   // };
@@ -90,12 +84,7 @@ const AdditionalInformation = ({ props }) => {
           layout="vertical"
           // validateMessages={validateMessages}
           name="basic"
-          initialValues={
-            {
-              // remember: true,
-              // requiredMarkValue: requiredMark,
-            }
-          }
+          initialValues={additionalFormData}
           onFinish={onFinish}
           // onValuesChange={onRequiredTypeChange}
           // requiredMark={requiredMark}
@@ -105,104 +94,27 @@ const AdditionalInformation = ({ props }) => {
           <Row gutter={[24, 8]}>
             <Col xs={24}>
               <p className="language-label">{t("enterTheLanguagesYouKnow")}</p>
-              <Form.List name="files" initialValue={files}>
+              <Form.List name="languageFiles">
                 {(fields, { add, remove }) => (
                   <>
-                    <Row gutter={[15, 12]} className="main-lan-row__resume">
-                      <Col xs={24} sm={11}>
-                        <Form.Item>
-                          <Select
-                            // defaultValue={"uzb"}
-                            value={selectedLanguage || undefined}
-                            placeholder={t("chooseALanguage")}
-                            size="large"
-                            onChange={onChangeLanguage}
-                            options={[
-                              {
-                                value: "uzb",
-                                label: "O'zbek tili",
-                              },
-                              {
-                                value: "russian",
-                                label: "Rus tili",
-                              },
-                              {
-                                value: "english",
-                                label: "Ingliz tili",
-                              },
-                            ]}
-                          />
-                        </Form.Item>
-                      </Col>
-                      <Col sm={11} xs={24}>
-                        <Form.Item>
-                          <Select
-                            value={selectedLevel || undefined}
-                            // defaultValue={"b1"}
-                            placeholder={t("selectALevel")}
-                            size="large"
-                            onChange={onChangeLevel}
-                            options={[
-                              {
-                                value: "b1",
-                                label: "B1",
-                              },
-                              {
-                                value: "a2",
-                                label: "A2",
-                              },
-                            ]}
-                          />
-                        </Form.Item>
-                      </Col>
-                      <Col xs={24} sm={2}>
-                        <Form.Item>
-                          <Button
-                            className="action-btn__lan-resume"
-                            size="large"
-                            type="dashed"
-                            onClick={() => handleAdd(add)}
-                            block
-                          >
-                            <span className="hidden-text__lan-resume">
-                              {t("add")}
-                            </span>
-                            <PlusOutlined />
-                          </Button>
-                        </Form.Item>
-                      </Col>
-                    </Row>
                     {fields.map((field, index) => (
                       <Row gutter={[15, 12]} key={field.key}>
                         <Col xs={24} sm={11}>
-                          <Form.Item
-                            {...field}
-                            name={[field.name, "language"]}
-                            fieldKey={[field.fieldKey, "language"]}
-                            // rules={[
-                            //   {
-                            //     required: true,
-                            //     message: "Missing first name",
-                            //   },
-                            // ]}
-                          >
+                          <Form.Item {...field} name={[field.name, "language"]}>
                             <Select
-                              defaultValue={selectedLanguage}
-                              // value={language}
-                              // onChange={()=>setLanguage(language)}
-                              // placeholder="adsnk"
+                              placeholder="Tilni tanlang"
                               size="large"
                               options={[
                                 {
-                                  value: "uzb",
+                                  value: "uz",
                                   label: "O'zbek tili",
                                 },
                                 {
-                                  value: "russian",
+                                  value: "ru",
                                   label: "Rus tili",
                                 },
                                 {
-                                  value: "english",
+                                  value: "en",
                                   label: "Ingliz tili",
                                 },
                               ]}
@@ -210,21 +122,9 @@ const AdditionalInformation = ({ props }) => {
                           </Form.Item>
                         </Col>
                         <Col xs={24} sm={11}>
-                          <Form.Item
-                            {...field}
-                            name={[field.name, "level"]}
-                            fieldKey={[field.fieldKey, "level"]}
-                            // rules={[
-                            //   {
-                            //     required: true,
-                            //     message: "Missing last name",
-                            //   },
-                            // ]}
-                          >
+                          <Form.Item {...field} name={[field.name, "level"]}>
                             <Select
-                              defaultValue={selectedLevel}
-                              // placeholder="Daraja tanlang"
-                              // value={level}
+                              placeholder="Daraja tanlang"
                               size="large"
                               options={[
                                 {
@@ -240,18 +140,33 @@ const AdditionalInformation = ({ props }) => {
                           </Form.Item>
                         </Col>
                         <Col xs={24} sm={2}>
-                          <Button
-                            type="dashed"
-                            size="large"
-                            className="action-btn__lan-resume"
-                            onClick={() => remove(field.name)}
-                            block
-                          >
-                            <span className="hidden-text__lan-resume">
-                              {t("turnOff")}
-                            </span>
-                            <DeleteOutlined />
-                          </Button>
+                          {index === fields.length - 1 ? (
+                            <Button
+                              className="action-btn__lan-resume"
+                              size="large"
+                              type="dashed"
+                              onClick={() => handleAdd(add)}
+                              block
+                            >
+                              <span className="hidden-text__lan-resume">
+                                {t("add")}
+                              </span>
+                              <PlusOutlined />
+                            </Button>
+                          ) : (
+                            <Button
+                              type="dashed"
+                              size="large"
+                              className="action-btn__lan-resume"
+                              onClick={() => remove(field.name)}
+                              block
+                            >
+                              <span className="hidden-text__lan-resume">
+                                {t("turnOff")}
+                              </span>
+                              <DeleteOutlined />
+                            </Button>
+                          )}
                         </Col>
                       </Row>
                     ))}
@@ -262,7 +177,7 @@ const AdditionalInformation = ({ props }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("academicResults")}
-                labelFor="languages"
+                labelFor="academicResults"
                 input={
                   <Button
                     block
@@ -284,7 +199,7 @@ const AdditionalInformation = ({ props }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("licenseAndCertificates")}
-                labelFor="languages"
+                labelFor="licenseAndCertificates"
                 input={
                   <Button
                     block
@@ -306,7 +221,7 @@ const AdditionalInformation = ({ props }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("familyInformation")}
-                labelFor="languages"
+                labelFor="familyInformation"
                 input={
                   <Button
                     block
@@ -328,7 +243,7 @@ const AdditionalInformation = ({ props }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("portfolio")}
-                labelFor="languages"
+                labelFor="portfolio"
                 input={
                   <Button
                     block
