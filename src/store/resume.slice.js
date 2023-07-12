@@ -10,6 +10,14 @@ const initialState = {
     ],
   },
   experienceDrawerData: {},
+  additionalFormData: {
+    languageFiles: [
+      {
+        language: null,
+        level: null,
+      },
+    ],
+  },
 };
 
 export const createResumeSlice = createSlice({
@@ -18,6 +26,12 @@ export const createResumeSlice = createSlice({
   reducers: {
     setResumeFormData: (state, action) => {
       state.resumeFormData = { ...state.resumeFormData, ...action.payload };
+    },
+    setAdditionalFormData: (state, action) => {
+      state.additionalFormData = {
+        ...state.additionalFormData,
+        ...action.payload,
+      };
     },
     setExperienceDrawerData: (state, action) => {
       state.experienceDrawerData = {
@@ -29,7 +43,10 @@ export const createResumeSlice = createSlice({
   extraReducers: (builder) => {},
 });
 
-export const { setResumeFormData, setExperienceDrawerData } =
-  createResumeSlice.actions;
+export const {
+  setResumeFormData,
+  setExperienceDrawerData,
+  setAdditionalFormData,
+} = createResumeSlice.actions;
 
 export default createResumeSlice.reducer;

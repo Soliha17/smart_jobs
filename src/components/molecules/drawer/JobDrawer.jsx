@@ -22,6 +22,14 @@ import ExtraExperience from "./ExtraExperience";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { setExperienceDrawerData } from "src/store/resume.slice";
+import {
+  useGetAllTypeOfOrganizationQuery,
+  useGetAllWorkFormatQuery,
+} from "src/store/api/resumeApiSlice";
+import {
+  useGetCountriesQuery,
+  useGetRegionsQuery,
+} from "src/store/api/apiSlice";
 
 const JobDrawer = ({
   open,
@@ -41,7 +49,19 @@ const JobDrawer = ({
   console.log(experienceDrawerData);
 
   const dispatch = useDispatch();
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const { data: workFormat } = useGetAllWorkFormatQuery();
+  const { data: typeOfOrganization } = useGetAllTypeOfOrganizationQuery();
+
+  const [address, setAddress] = useState({ countryId: null, cityId: null });
+
+  const { data: countries } = useGetCountriesQuery();
+
+  const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
+    { davlatId: address.countryId },
+    { skip: !address.countryId }
+  );
 
   function onChange(event) {
     setIsChecked(event.target.checked);
@@ -97,6 +117,15 @@ const JobDrawer = ({
   //     range: "${label} must be between ${0} and ${10}",
   //   },
   // };
+
+  function onChangeCountry(value, a, b, c) {
+    form.setFieldsValue({
+      countries: value,
+      regions: undefined,
+      cities: undefined,
+    });
+    setAddress({ ...address, countryId: value });
+  }
 
   const { t } = useTranslation();
 
@@ -220,45 +249,15 @@ const JobDrawer = ({
                       placeholder={t("selectTheTypeOfEmployment")}
                       size="large"
                       // onChange={onChange}
-                      options={[
-                        {
-                          value: "full",
-                          label: "To'liq stavka",
-                        },
-                        {
-                          value: "part",
-                          label: "Part time",
-                        },
-                      ]}
+                      options={typeOfOrganization?.result?.map((option) => ({
+                        value: option.id.toString(),
+                        label: option.name,
+                      }))}
                     />
                   }
                 />
               </Col>
-              <Col xs={24} sm={24}>
-                <LabeledInput
-                  labelName={t("location")}
-                  labelFor="location"
-                  req={true}
-                  input={
-                    <Select
-                      // defaultValue="full"
-                      placeholder={t("choose")}
-                      size="large"
-                      // onChange={onChange}
-                      options={[
-                        {
-                          value: "buxoro",
-                          label: "Buxoro",
-                        },
-                        {
-                          value: "toshkent",
-                          label: "Toshkent",
-                        },
-                      ]}
-                    />
-                  }
-                />
-              </Col>
+
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("format")}
@@ -270,16 +269,52 @@ const JobDrawer = ({
                       placeholder={t("choose")}
                       size="large"
                       // onChange={onChange}
-                      options={[
-                        {
-                          value: "masofadan",
-                          label: "Masofadan",
-                        },
-                        {
-                          value: "offisda",
-                          label: "Offisda",
-                        },
-                      ]}
+                      options={workFormat?.result?.map((option) => ({
+                        value: option.id.toString(),
+                        label: option.name,
+                      }))}
+                    />
+                  }
+                />
+              </Col>
+              <Col xs={24} sm={12}>
+                <LabeledInput
+                  labelName={t("country")}
+                  labelFor="country"
+                  req={true}
+                  input={
+                    <Select
+                      // defaultValue="uzbekistan"
+                      placeholder={t("choose")}
+                      size="large"
+                      onChange={onChangeCountry}
+                      options={countries?.result?.map((option) => ({
+                        value: option.id.toString(),
+                        label: option.name,
+                      }))}
+                    />
+                  }
+                />
+              </Col>
+              <Col xs={24} sm={12}>
+                <LabeledInput
+                  labelName={t("province")}
+                  labelFor="regions"
+                  req={true}
+                  input={
+                    <Select
+                      // defaultValue="buxoro"
+                      placeholder={t("choose")}
+                      size="large"
+                      // onChange={onChange}
+                      options={
+                        isRegionsFetching
+                          ? []
+                          : regions?.result?.map((option) => ({
+                              value: option.id.toString(),
+                              label: option.name,
+                            }))
+                      }
                     />
                   }
                 />
