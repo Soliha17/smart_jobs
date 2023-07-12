@@ -6,7 +6,10 @@ import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import { useTranslation } from "react-i18next";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
-import { restrictedKeysInSignUpForm } from "src/assets/constants/inputConstants";
+import {
+  linkPattern,
+  restrictedKeysInSignUpForm,
+} from "src/assets/constants/inputConstants";
 
 import {
   useGetCountriesGeneralQuery,
@@ -288,6 +291,12 @@ const BasicInfoResume = ({ props }) => {
                           <Form.Item
                             {...field}
                             name={[field.name, "value"]}
+                            rules={[
+                              {
+                                pattern: linkPattern,
+                                message: "Enter valid url",
+                              },
+                            ]}
                             // // fieldKey={[field.fieldKey, "value"]}
                           >
                             <Input
