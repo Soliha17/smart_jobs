@@ -14,9 +14,8 @@ const LabeledInput = ({
   const rules = [
     {
       // require holatida language va link , image qismlar ishlamaydi
-      // required: req,
+      required: req,
       // max: 32,
-
       // message: validateMessages,
     },
   ];

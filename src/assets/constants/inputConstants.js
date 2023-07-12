@@ -74,3 +74,15 @@ export const monthOptions = [
     label: "Noyabr",
   },
 ];
+
+export function getYearOptions() {
+  const yearOptions = [];
+
+  for (let i = 1970; i <= 2023; i++) {
+    yearOptions.push({
+      value: i.toString(),
+      label: i.toString(),
+    });
+  }
+  return yearOptions;
+}
