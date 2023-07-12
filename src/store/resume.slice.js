@@ -47,6 +47,7 @@ export const {
   setResumeFormData,
   setExperienceDrawerData,
   setAdditionalFormData,
+  setExperienceData,
 } = createResumeSlice.actions;
 
 export default createResumeSlice.reducer;

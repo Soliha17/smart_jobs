@@ -17,7 +17,6 @@ import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import AddCircle from "../../../assets/images/add-circle.svg";
-import { v4 as uuidv4 } from "uuid";
 import ExtraExperience from "./ExtraExperience";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -175,6 +174,12 @@ const JobDrawer = ({
     });
   }
 
+  const finishYearOptions = yearOptions.filter(
+    (item) => item.value >= Number(form.getFieldValue("beginsYearOfJob"))
+  );
+
+  console.log(finishYearOptions);
+
   function onChange(event) {
     setIsChecked(event.target.checked);
   }
@@ -223,7 +228,7 @@ const JobDrawer = ({
                   input={<Input size="large" maxLength={9} />}
                 />
               </Col>
-              <Col xs={24} sm={24}>
+              <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("typeOfEmployment")}
                   labelFor="workedType"
@@ -243,7 +248,7 @@ const JobDrawer = ({
                 />
               </Col>
 
-              <Col xs={24} sm={24}>
+              <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("format")}
                   labelFor="format"
@@ -375,11 +380,7 @@ const JobDrawer = ({
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={yearOptions.filter(
-                            (item) =>
-                              item.value >=
-                              Number(form.getFieldValue("beginsYearOfJob"))
-                          )}
+                          options={finishYearOptions}
                         />
                       }
                     />
