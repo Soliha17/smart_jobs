@@ -21,6 +21,8 @@ import { setResumeFormData } from "src/store/resume.slice";
 import {
   useCreateResumeMutation,
   useCreateResumeStep1Mutation,
+  useLinkAllTypeQuery,
+  useLinkTypeQuery,
 } from "src/store/api/resumeApiSlice";
 
 const BasicInfoResume = ({ props }) => {
@@ -33,6 +35,8 @@ const BasicInfoResume = ({ props }) => {
   const { resumeFormData } = useSelector((state) => state.createResumeSlice);
 
   const { data: countries } = useGetCountriesQuery();
+  const { data: linkType } = useLinkTypeQuery();
+  const { data: linkAllType } = useLinkAllTypeQuery();
   const { data: countriesGeneral } = useGetCountriesGeneralQuery();
   const [createResumeStep1] = useCreateResumeStep1Mutation();
 
@@ -304,10 +308,10 @@ const BasicInfoResume = ({ props }) => {
                             <Select
                               placeholder="Choose Link or Image"
                               size="large"
-                              options={[
-                                { value: "image", label: "Image" },
-                                { value: "link", label: "Link" },
-                              ]}
+                              options={linkAllType?.result?.map((option) => ({
+                                value: option.id.toString(),
+                                label: option.name,
+                              }))}
                             />
                           </Form.Item>
                         </Col>

@@ -18,12 +18,18 @@ import {
 } from "src/store/api/resumeApiSlice";
 import { setAdditionalFormData } from "src/store/resume.slice";
 import { useSelector } from "react-redux";
+import {
+  useGetAllLanguageProficiencyQuery,
+  useGetLanguagesQuery,
+} from "src/store/api/apiSlice";
 
 const AdditionalInformation = ({ props }) => {
   const [form] = Form.useForm();
 
   const [createResume, { isLoading: createResumeLoading }] =
     useCreateResumeMutation();
+  const { data: allLanguages } = useGetLanguagesQuery();
+  const { data: allLanguageProficiency } = useGetAllLanguageProficiencyQuery();
 
   const [openAcademicResDrawer, setOpenAcademicResDrawer] = useState(false);
 
@@ -60,8 +66,13 @@ const AdditionalInformation = ({ props }) => {
   //   console.log(date, dateString);
   // };
 
-  const onFinish = (datas) => {
-    console.log("Success:", datas);
+  const onFinish = (values) => {
+    console.log("Success:", values);
+
+    const filteredFiles = values.languageFiles.filter(
+      (item) => item.type !== null && item.value !== ""
+    );
+
     message.success("Muvaffaqiyatli saqlandi!");
     next(0);
   };
@@ -104,20 +115,10 @@ const AdditionalInformation = ({ props }) => {
                             <Select
                               placeholder="Tilni tanlang"
                               size="large"
-                              options={[
-                                {
-                                  value: "uz",
-                                  label: "O'zbek tili",
-                                },
-                                {
-                                  value: "ru",
-                                  label: "Rus tili",
-                                },
-                                {
-                                  value: "en",
-                                  label: "Ingliz tili",
-                                },
-                              ]}
+                              options={allLanguages?.result?.map((option) => ({
+                                value: option.id.toString(),
+                                label: option.name,
+                              }))}
                             />
                           </Form.Item>
                         </Col>
@@ -126,16 +127,12 @@ const AdditionalInformation = ({ props }) => {
                             <Select
                               placeholder="Daraja tanlang"
                               size="large"
-                              options={[
-                                {
-                                  value: "b1",
-                                  label: "B1",
-                                },
-                                {
-                                  value: "a2",
-                                  label: "A2",
-                                },
-                              ]}
+                              options={allLanguageProficiency?.result?.map(
+                                (option) => ({
+                                  value: option.id.toString(),
+                                  label: option.name,
+                                })
+                              )}
                             />
                           </Form.Item>
                         </Col>

@@ -154,6 +154,30 @@ export const apiSlice = createApi({
       }),
       providesTags: ["skills"],
     }),
+    getLanguages: builder.query({
+      query: () => ({
+        url: `/Languages/GetAll`,
+      }),
+      providesTags: ["AllLanguages"],
+    }),
+    getLanguage: builder.query({
+      query: () => ({
+        url: `/Languages/Get`,
+      }),
+      providesTags: ["Language"],
+    }),
+    getAllLanguageProficiency: builder.query({
+      query: () => ({
+        url: `/LanguageProficiency/GetAll`,
+      }),
+      providesTags: ["AllLanguageProficiency"],
+    }),
+    getLanguageProficiency: builder.query({
+      query: () => ({
+        url: `/LanguageProficiency/Get`,
+      }),
+      providesTags: ["LanguageProficiency"],
+    }),
     createSkill: builder.mutation({
       query: (body) => ({
         url: `/Skill/Create`,
@@ -181,4 +205,8 @@ export const {
   useGetAllSkillQuery,
   useCreateSkillMutation,
   useAcademicResultMutation,
+  useGetLanguagesQuery,
+  useGetLanguageQuery,
+  useGetLanguageProficiencyQuery,
+  useGetAllLanguageProficiencyQuery,
 } = apiSlice;

@@ -37,6 +37,7 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
+
     education: builder.mutation({
       query: (body) => ({
         url: `/Resume/Education`,
@@ -58,6 +59,24 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
+    linkAllType: builder.query({
+      query: () => ({
+        url: `/LinkType/GetAll`,
+      }),
+      providesTags: ["LinkAllType"],
+    }),
+    linkType: builder.query({
+      query: () => ({
+        url: `/LinkType/Get`,
+      }),
+      providesTags: ["LinkType"],
+    }),
+    language: builder.query({
+      query: () => ({
+        url: `/Resume/Language`,
+      }),
+      providesTags: ["LanguageResume"],
+    }),
   }),
 });
 
@@ -69,5 +88,8 @@ export const {
   useLinkMutation,
   useEducationMutation,
   usePostPlacesOfWorkMutation,
-  usePostRelativeMutation
+  usePostRelativeMutation,
+  useLinkAllTypeQuery,
+  useLinkTypeQuery,
+  useLanguageQuery
 } = resumeApiSlice;
