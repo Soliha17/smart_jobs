@@ -62,19 +62,19 @@ const StudyDrawer = ({
   const onFinish = (data) => {
     console.log("Success:", data);
 
-     const from = new Date(
-       `${data.beginsYearOfStudy}-${data.beginsMonthOfStudy}`
-     ).toISOString();
+    const from = new Date(
+      `${data.beginsYearOfStudy}-${data.beginsMonthOfStudy}`
+    ).toISOString();
 
-     const to = isChecked
-       ? new Date().toISOString()
-       : new Date(
-           `${data.finishYearOfStudy}-${data.finishMonthOfStudy}`
-         ).toISOString();
+    const to = isChecked
+      ? new Date().toISOString()
+      : new Date(
+          `${data.finishYearOfStudy}-${data.finishMonthOfStudy}`
+        ).toISOString();
 
-     console.log("From:", from);
+    console.log("From:", from);
     console.log("To:", to);
-    
+
     setOpen(false);
 
     // next(2);
