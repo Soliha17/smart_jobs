@@ -22,10 +22,15 @@ import {
   useGetWorkFormatQuery,
 } from "src/store/api/resumeApiSlice";
 import SkillSelect from "./SkillSelect";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setExperienceData,
+  setExperienceDrawerData,
+} from "src/store/resume.slice";
 
 const ProfessionalInformation = ({ props }) => {
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
 
   const [openJobDrawer, setOpenJobDrawer] = useState(false);
   const [openStudyDrawer, setOpenStudyDrawer] = useState(false);
@@ -35,11 +40,9 @@ const ProfessionalInformation = ({ props }) => {
   const { data: currencies } = useGetCurrenciesQuery();
   const { data: skill } = useGetAllSkillQuery();
 
-  const { experienceDrawerData } = useSelector(
-    (state) => state.createResumeSlice
-  );
+  const { experienceData } = useSelector((state) => state.createResumeSlice);
 
-  console.log(workFormat, typeOfOrganization);
+  console.log(experienceData);
 
   const [jobValues, setJobValues] = useState([]);
   const [studyValues, setStudyValues] = useState([]);
@@ -134,8 +137,8 @@ const ProfessionalInformation = ({ props }) => {
                 labelName={t("yourWorkExperience")}
                 labelFor="experience"
                 // req="true"
-                input={jobValues?.map((item) => (
-                  <div key={item?.id} className="field__resume">
+                input={experienceData?.map((item, index) => (
+                  <div key={index} className="field__resume">
                     <span>
                       <h4>{item?.workedPosition}</h4>•
                       <p>{item?.workedCompany}</p>•
@@ -157,25 +160,22 @@ const ProfessionalInformation = ({ props }) => {
                         src={Edit}
                         alt="Edit icon"
                         onClick={() => {
-                          localStorage.setItem(
-                            "isJobEdit",
-                            JSON.stringify(item)
-                          );
+                          // localStorage.setItem(
+                          //   "isJobEdit",
+                          //   JSON.stringify(item)
+                          // );
+                          dispatch(setExperienceDrawerData(item));
                           setOpenJobDrawer(true);
                         }}
                       />
                       <img
                         src={Trash}
                         onClick={() => {
-                          let newArray = jobValues.filter(
-                            (del) => del.id !== item.id
-                          );
-                          setJobValues(newArray);
-                          localStorage.setItem(
-                            "jobDrawerValues",
-                            JSON.stringify(newArray)
-                          );
-                          getJobFromLocalStorage();
+                          let newArray = [
+                            ...experienceData.slice(0, index),
+                            ...experienceData.slice(index + 1),
+                          ];
+                          dispatch(setExperienceData(newArray));
                         }}
                         alt="Trash icon"
                       />

@@ -21,7 +21,10 @@ import { v4 as uuidv4 } from "uuid";
 import ExtraExperience from "./ExtraExperience";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { setExperienceDrawerData } from "src/store/resume.slice";
+import {
+  setExperienceData,
+  setExperienceDrawerData,
+} from "src/store/resume.slice";
 
 const JobDrawer = ({
   open,
@@ -31,74 +34,46 @@ const JobDrawer = ({
   getJobFunction,
 }) => {
   const [form] = Form.useForm();
+  const { t } = useTranslation();
 
   const [childrenDrawer, setChildrenDrawer] = useState(false);
 
-  const { experienceDrawerData } = useSelector(
+  const { experienceDrawerData, experienceData } = useSelector(
     (state) => state.createResumeSlice
   );
-
-  console.log(experienceDrawerData);
 
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(true);
 
-  function onChange(event) {
-    setIsChecked(event.target.checked);
-  }
-
-  // const showDrawer = () => {
-  //   setOpen(true);
-  // };
-
-  // const showChildrenDrawer = () => {
-  //   setChildrenDrawer(true);
-  // };
-
-  // const onChildrenDrawerClose = () => {
-  //   setChildrenDrawer(false);
-  // };
-
   let isJobEditValues = JSON.parse(localStorage.getItem("isJobEdit"));
 
   useEffect(() => {
-    if (isJobEditValues !== null) {
-      form.setFieldsValue(isJobEditValues);
-    }
+    // if (isJobEditValues !== null) {
+    // }
+    form.setFieldsValue(experienceDrawerData);
   }, [open, form, isJobEditValues]);
-
-  // []da faqat open qolishi kerak, netlifyga deploy qilishda xato bermasligi uchun qoyilgan qolganlari
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    dispatch(setExperienceDrawerData(values));
+    dispatch(setExperienceData([...experienceData, values]));
+    dispatch(setExperienceDrawerData({}));
+    form.resetFields();
     setOpen(false);
   };
 
   const onClose = () => {
-    if (isJobEditValues !== null) {
-      localStorage.removeItem("isJobEdit");
-      form.resetFields();
-    }
+    // if (isJobEditValues !== null) {
+    //   localStorage.removeItem("isJobEdit");
+    //   form.resetFields();
+    // }
+    form.resetFields();
+    // dispatch(setExperienceDrawerData({}));
     setOpen(false);
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
-  // const validateMessages = {
-  //   required: "Iltimos, ${label}ni kiriting!",
-  //   types: {
-  //     email: "${label} is not a valid email!",
-  //     number: "${label} is not a valid number!",
-  //   },
-  //   number: {
-  //     range: "${label} must be between ${0} and ${10}",
-  //   },
-  // };
-
-  const { t } = useTranslation();
 
   const monthOptions = [
     {
@@ -160,6 +135,10 @@ const JobDrawer = ({
     });
   }
 
+  function onChange(event) {
+    setIsChecked(event.target.checked);
+  }
+
   return (
     <>
       <Drawer
@@ -180,12 +159,7 @@ const JobDrawer = ({
             layout="vertical"
             // validateMessages={validateMessages}
             name="basic"
-            initialValues={
-              {
-                // remember: true,
-                // requiredMarkValue: requiredMark,
-              }
-            }
+            initialValues={experienceDrawerData}
             onFinish={onFinish}
             // onValuesChange={onRequiredTypeChange}
             // requiredMark={requiredMark}
@@ -355,7 +329,11 @@ const JobDrawer = ({
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={yearOptions}
+                          options={yearOptions.filter(
+                            (item) =>
+                              item.value >=
+                              Number(form.getFieldValue("beginsYearOfJob"))
+                          )}
                         />
                       }
                     />

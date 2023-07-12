@@ -7,36 +7,28 @@ import {
   useCreateSkillMutation,
   useGetAllSkillQuery,
 } from "src/store/api/resumeApiSlice";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 const SkillSelect = ({ form }) => {
   const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState("");
 
-  const { data: skill } = useGetAllSkillQuery();
+  const { data: skills } = useGetAllSkillQuery();
   const [createSkill] = useCreateSkillMutation();
 
-  function handleChange(id, arr) {
-    console.log("id:", id);
-    console.log("arr:", arr);
-    if (Object.keys(arr.at(-1) ?? {}).length === 0) {
-      createSkill({
-        name: id.at(-1),
-      })
-        .unwrap()
-        .then((res) => {
-          console.log(res.result.id);
-          // form.setFieldValue("skills", [
-          //   ...form.getFieldValue("skills"),
-          //   res.result.id,
-          // ]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-    }
+  function handleSearchSkill(value) {
+    setSearchValue(value);
+  }
 
-    console.log(form.getFieldValue("skills"));
+  function addNewSkill() {
+    createSkill({
+      name: searchValue,
+    })
+      .unwrap()
+      .then((res) => setSearchValue(""))
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -45,18 +37,24 @@ const SkillSelect = ({ form }) => {
       labelFor="skills"
       input={
         <Select
-          mode="tags"
+          mode="multiple"
           allowClear
           style={{
             width: "100%",
           }}
           size="large"
           placeholder="Please select"
-          onChange={handleChange}
-          options={skill?.result?.map((option) => ({
+          options={skills?.result?.map((option) => ({
             value: option.id.toString(),
             label: option.name,
           }))}
+          onSearch={handleSearchSkill}
+          notFoundContent={
+            <div onClick={addNewSkill} style={{ padding: "5px 10px" }}>
+              Add "{searchValue}"
+            </div>
+          }
+          optionFilterProp={"label"}
         />
       }
     />

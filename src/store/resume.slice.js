@@ -10,6 +10,7 @@ const initialState = {
     ],
   },
   experienceDrawerData: {},
+  experienceData: [],
 };
 
 export const createResumeSlice = createSlice({
@@ -20,16 +21,16 @@ export const createResumeSlice = createSlice({
       state.resumeFormData = { ...state.resumeFormData, ...action.payload };
     },
     setExperienceDrawerData: (state, action) => {
-      state.experienceDrawerData = {
-        ...state.experienceDrawerData,
-        ...action.payload,
-      };
+      state.experienceDrawerData = action.payload;
+    },
+    setExperienceData: (state, action) => {
+      state.experienceData = action.payload;
     },
   },
   extraReducers: (builder) => {},
 });
 
-export const { setResumeFormData, setExperienceDrawerData } =
+export const { setResumeFormData, setExperienceDrawerData, setExperienceData } =
   createResumeSlice.actions;
 
 export default createResumeSlice.reducer;
