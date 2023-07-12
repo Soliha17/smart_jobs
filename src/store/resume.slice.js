@@ -34,10 +34,10 @@ export const createResumeSlice = createSlice({
       };
     },
     setExperienceDrawerData: (state, action) => {
-      state.experienceDrawerData = {
-        ...state.experienceDrawerData,
-        ...action.payload,
-      };
+      state.experienceDrawerData = action.payload;
+    },
+    setExperienceData: (state, action) => {
+      state.experienceData = action.payload;
     },
   },
   extraReducers: (builder) => {},
