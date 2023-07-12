@@ -51,6 +51,13 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
+    postRelative: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/Relative`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -62,4 +69,5 @@ export const {
   useLinkMutation,
   useEducationMutation,
   usePostPlacesOfWorkMutation,
+  usePostRelativeMutation
 } = resumeApiSlice;

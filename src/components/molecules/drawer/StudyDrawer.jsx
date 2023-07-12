@@ -6,7 +6,10 @@ import CloseIcon from "../../../assets/images/Exit.svg";
 import "./drawerResume.css";
 import LabeledInput from "../labeled-input/LabeledInput";
 import { useTranslation } from "react-i18next";
-import { monthOptions } from "src/assets/constants/inputConstants";
+import {
+  getYearOptions,
+  monthOptions,
+} from "src/assets/constants/inputConstants";
 import { useGetAllEducationLevelQuery } from "src/store/api/apiSlice";
 import { useEducationMutation } from "src/store/api/resumeApiSlice";
 
@@ -19,6 +22,7 @@ const StudyDrawer = ({
 }) => {
   const [form] = Form.useForm();
   const [isChecked, setIsChecked] = useState(false);
+  const [endYearOptions, setEndYearOptions] = useState(getYearOptions());
 
   const { data: allEducationLevel } = useGetAllEducationLevelQuery();
   const [createEducation] = useEducationMutation();
@@ -37,17 +41,17 @@ const StudyDrawer = ({
   function onChange(event) {
     setIsChecked(event.target.checked);
 
-    if (event.target.checked) {
-      form.setFieldsValue({
-        finishMonthOfStudy: undefined,
-        finishYearOfStudy: undefined,
-      });
-    } else {
-      form.setFieldsValue({
-        finishMonthOfStudy: monthOptions[0].value,
-        finishYearOfStudy: yearOptions[0].value,
-      });
-    }
+    // if (event.target.checked) {
+    //   form.setFieldsValue({
+    //     finishMonthOfStudy: undefined,
+    //     finishYearOfStudy: undefined,
+    //   });
+    // } else {
+    //   form.setFieldsValue({
+    //     finishMonthOfStudy: monthOptions[0].value,
+    //     finishYearOfStudy: getYearOptions()[0].value,
+    //   });
+    // }
   }
 
   const onClose = () => {
@@ -62,18 +66,18 @@ const StudyDrawer = ({
   const onFinish = (data) => {
     console.log("Success:", data);
 
-    const from = new Date(
-      `${data.beginsYearOfStudy}-${data.beginsMonthOfStudy}`
-    ).toISOString();
+    // const from = new Date(
+    //   `${data.beginsYearOfStudy}-${data.beginsMonthOfStudy}`
+    // ).toISOString();
 
-    const to = isChecked
-      ? new Date().toISOString()
-      : new Date(
-          `${data.finishYearOfStudy}-${data.finishMonthOfStudy}`
-        ).toISOString();
+    // const to = isChecked
+    //   ? new Date().toISOString()
+    //   : new Date(
+    //       `${data.finishYearOfStudy}-${data.finishMonthOfStudy}`
+    //     ).toISOString();
 
-    console.log("From:", from);
-    console.log("To:", to);
+    // console.log("From:", from);
+    // console.log("To:", to);
 
     setOpen(false);
 
@@ -83,6 +87,16 @@ const StudyDrawer = ({
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  function onChangeBeginsYears(e) {
+    setEndYearOptions(
+      getYearOptions().filter(
+        (item) =>
+          item.value >=
+          (Number(form.getFieldValue("beginsYearOfStudy")) ?? 1970)
+      )
+    );
+  }
 
   // const validateMessages = {
   //   required: "Iltimos, ${label}ni kiriting!",
@@ -96,19 +110,6 @@ const StudyDrawer = ({
   // };
 
   const { t } = useTranslation();
-
-  const yearOptions = [];
-
-  for (let i = 1970; i <= 2023; i++) {
-    yearOptions.push({
-      value: i.toString(),
-      label: i.toString(),
-    });
-  }
-
-  const finishYearOptions = yearOptions.filter(
-    (item) => item.value >= Number(form.getFieldValue("beginsYearOfJob"))
-  );
 
   return (
     <>
@@ -207,8 +208,8 @@ const StudyDrawer = ({
                           // defaultValue="oy"
                           placeholder={t("year")}
                           size="large"
-                          // onChange={onChange}
-                          options={yearOptions}
+                          onChange={onChangeBeginsYears}
+                          options={getYearOptions()}
                         />
                       }
                     />
@@ -245,7 +246,7 @@ const StudyDrawer = ({
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
-                          options={finishYearOptions}
+                          options={endYearOptions}
                         />
                       }
                     />

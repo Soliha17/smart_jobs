@@ -19,7 +19,11 @@ import {
   setExperienceDrawerData,
 } from "src/store/resume.slice";
 import { useGetAllWorkFormatQuery } from "src/store/api/resumeApiSlice";
-import { useGetAllSkillQuery, useGetAllTypeOfOrganizationQuery, useGetCurrenciesQuery } from "src/store/api/apiSlice";
+import {
+  useGetAllSkillQuery,
+  useGetAllTypeOfOrganizationQuery,
+  useGetCurrenciesQuery,
+} from "src/store/api/apiSlice";
 
 const ProfessionalInformation = ({ props }) => {
   const [form] = Form.useForm();
@@ -47,6 +51,14 @@ const ProfessionalInformation = ({ props }) => {
   // const onRequiredTypeChange = ({ requiredMarkValue }) => {
   //   setRequiredMarkType(requiredMarkValue);
   // };
+
+  const options = [];
+  for (let i = 10; i < 36; i++) {
+    options.push({
+      label: i.toString(36) + i,
+      value: i.toString(36) + i,
+    });
+  }
 
   useEffect(() => {
     getJobFromLocalStorage();
@@ -338,7 +350,23 @@ const ProfessionalInformation = ({ props }) => {
             </Col>
 
             <Col xs={24} sm={24} style={{ marginTop: "20px" }}>
-              <SkillSelect form={form} />
+              <LabeledInput
+                labelName={t("skills")}
+                labelFor="skills"
+                input={
+                  <Select
+                    mode="multiple"
+                    allowClear
+                    size="large"
+                    style={{
+                      width: "100%",
+                    }}
+                    placeholder="Please select"
+                    // onChange={handleChange}
+                    options={options}
+                  />
+                }
+              />
             </Col>
           </Row>
           <div className="footer__resume">

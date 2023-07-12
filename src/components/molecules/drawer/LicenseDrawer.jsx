@@ -95,7 +95,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("sertificateName")}
-                  labelFor="sertificateName"
+                  labelFor="name"
                   req={true}
                   input={
                     <Input
@@ -108,7 +108,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("sertificateFrom")}
-                  labelFor="sertificateFrom"
+                  labelFor="organization"
                   req={true}
                   input={<Input size="large" placeholder="Masalan, Google" />}
                 />
@@ -116,7 +116,7 @@ const LicenseDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("documentConfirmingTheCertificate")}
-                  labelFor="sertificateFile"
+                  labelFor="document"
                   // req={true}
                   getValueFromEvent={normFile}
                   input={
