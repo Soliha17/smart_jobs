@@ -36,6 +36,18 @@ const StudyDrawer = ({
 
   function onChange(event) {
     setIsChecked(event.target.checked);
+
+    if (event.target.checked) {
+      form.setFieldsValue({
+        finishMonthOfStudy: undefined,
+        finishYearOfStudy: undefined,
+      });
+    } else {
+      form.setFieldsValue({
+        finishMonthOfStudy: monthOptions[0].value,
+        finishYearOfStudy: yearOptions[0].value,
+      });
+    }
   }
 
   const onClose = () => {
@@ -49,8 +61,21 @@ const StudyDrawer = ({
 
   const onFinish = (data) => {
     console.log("Success:", data);
-    setOpen(false);
 
+     const from = new Date(
+       `${data.beginsYearOfStudy}-${data.beginsMonthOfStudy}`
+     ).toISOString();
+
+     const to = isChecked
+       ? new Date().toISOString()
+       : new Date(
+           `${data.finishYearOfStudy}-${data.finishMonthOfStudy}`
+         ).toISOString();
+
+     console.log("From:", from);
+    console.log("To:", to);
+    
+    setOpen(false);
 
     // next(2);
   };
