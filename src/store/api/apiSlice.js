@@ -9,9 +9,18 @@ const baseQuery = fetchBaseQuery({
       headers.set("Authorization", `Bearer ${accessToken}`);
     }
     headers.set("Accept", `application/json`);
+    localStorage.getItem("language") == "en"
+      ? headers.set("lang", "en")
+      : localStorage.getItem("language") == "uz"
+      ? headers.set("lang", "uz")
+      : localStorage.getItem("language") == "ru"
+      ? headers.set("lang", "ru")
+      : headers.set("lang", "uz");
     return headers;
   },
 });
+
+console.log(localStorage.getItem("language"));
 
 const mutex = new Mutex();
 const customBaseQuery = async (args, api, extraOptions) => {
@@ -111,8 +120,8 @@ export const apiSlice = createApi({
       providesTags: ["GetShahar"],
     }),
     getCountriesGeneral: builder.query({
-      query: (countryId) => ({
-        url: `/Countries/Get/${countryId}`,
+      query: () => ({
+        url: `/Countries/GetAll`,
       }),
       providesTags: ["GetCountriesGeneral"],
     }),

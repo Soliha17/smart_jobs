@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Col, DatePicker, Drawer, Form, Input, Row, Select, Space } from "antd";
 import LabeledInput from "../labeled-input/LabeledInput";
 import CloseIcon from "../../../assets/images/Exit.svg";
-import { v4 as uuidv4 } from "uuid";
 import { useTranslation } from "react-i18next";
 import {
   useGetCountriesGeneralQuery,
@@ -33,10 +32,7 @@ const FamiliarInsideDrawer = ({
   const dispatch = useDispatch();
 
   const { data: countries } = useGetCountriesQuery();
-  const { data: countriesGeneral } = useGetCountriesGeneralQuery(
-    address.countryId,
-    { skip: !address.countryId }
-  );
+  const { data: countriesGeneral } = useGetCountriesGeneralQuery();
 
   console.log(countriesGeneral);
 
@@ -192,7 +188,7 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={12}>
                 <LabeledInput
-                  labelName={t("countryId")}
+                  labelName={t("country")}
                   labelFor="countryId"
                   req={true}
                   input={

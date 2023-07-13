@@ -88,6 +88,8 @@ function Header() {
 
   const handleLanguageChange = (value) => {
     i18n.changeLanguage(value);
+    localStorage.setItem("language", value);
+    console.log(localStorage.getItem("language"));
   };
 
   const showDrawer = () => {
