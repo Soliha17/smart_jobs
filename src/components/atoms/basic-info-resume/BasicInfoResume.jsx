@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 
 import "./basicInfoResume.css";
-import { Button, Col, DatePicker, Form, Input, Radio, Row, Select } from "antd";
+import {
+  Button,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  notification,
+  Radio,
+  Row,
+  Select,
+} from "antd";
 import LabeledInput from "../../molecules/labeled-input/LabeledInput";
 import TextArea from "antd/es/input/TextArea";
 import { useTranslation } from "react-i18next";
@@ -18,10 +28,8 @@ import {
 } from "src/store/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setResumeFormData } from "src/store/resume.slice";
-import {
-  useCreateResumeMutation,
-  useCreateResumeStep1Mutation,
-} from "src/store/api/resumeApiSlice";
+import { useCreateResumeStep1Mutation } from "src/store/api/resumeApiSlice";
+import { useGetAllLinkTypeQuery } from "src/store/api/linkTypeApiSlice";
 
 const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
@@ -34,12 +42,12 @@ const BasicInfoResume = ({ props }) => {
 
   const { data: countries } = useGetCountriesQuery();
   const { data: countriesGeneral } = useGetCountriesGeneralQuery();
-  const [createResumeStep1] = useCreateResumeStep1Mutation();
-
+  const { data: linkTypes } = useGetAllLinkTypeQuery();
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
     { davlatId: address.countryId },
     { skip: !address.countryId }
   );
+  const [createResumeStep1] = useCreateResumeStep1Mutation();
 
   const next = props.next;
 
@@ -69,9 +77,12 @@ const BasicInfoResume = ({ props }) => {
       tel: values.numberPrefix + values.number,
       email: values.email,
       links: filteredFiles,
-    });
-
-    next(1);
+    })
+      .unwrap()
+      .then(() => {
+        next(1);
+      })
+      .catch(() => notification["error"]({ message: "Xatolik yuz berdi" }));
   };
 
   console.log("resumeFormData:", resumeFormData);
@@ -113,7 +124,7 @@ const BasicInfoResume = ({ props }) => {
   const { Option } = Select;
 
   const prefixSelector = (
-    <Form.Item name="numberPrefix" noStyle>
+    <Form.Item name="numberPrefix" noStyle initialValue={"998"}>
       <Select style={{ width: 100 }} defaultValue={"998"}>
         <Option value="998">+998</Option>
         <Option value="1">+1</Option>
@@ -308,6 +319,7 @@ const BasicInfoResume = ({ props }) => {
                                 { value: "image", label: "Image" },
                                 { value: "link", label: "Link" },
                               ]}
+                              allowClear
                             />
                           </Form.Item>
                         </Col>

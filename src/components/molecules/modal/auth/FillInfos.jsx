@@ -42,8 +42,12 @@ const InfoFills = ({ setOpen, prev, next }) => {
   const phoneNumber = useSelector((state) => state.authSlice.phoneNumber);
 
   const [register, { isLoading: registerLoading }] = useRegisterMutation();
-  const { data: companyDirections } = useGetCompanyDirectionsQuery();
-  const { data: getCompanySizes } = useGetCompanySizesQuery();
+  const { data: companyDirections } = useGetCompanyDirectionsQuery(null, {
+    skip: selectedRole === "Worker",
+  });
+  const { data: getCompanySizes } = useGetCompanySizesQuery(null, {
+    skip: selectedRole === "Worker",
+  });
   const { data: countries } = useGetCountriesQuery();
 
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
@@ -73,18 +77,20 @@ const InfoFills = ({ setOpen, prev, next }) => {
               firstName: values.firstName,
               lastName: values.lastName,
               email: values.email,
-              phoneNumber: `${
-                phonePattern.test(phoneNumber) ? `+` : ""
-              }${phoneNumber}`,
+              phoneNumber: phoneNumber,
+              // `${
+              //   phonePattern.test(phoneNumber) ? `+` : ""
+              // }${phoneNumber}`,
               password: values.password,
               companySizeId: Number(values.companySizeId),
               companyDirectionId: Number(values.companyDirectionId),
             }
           : {
               addressId: values.countries,
-              phoneNumber: `${
-                phonePattern.test(phoneNumber) ? `+` : ""
-              }${phoneNumber}`,
+              phoneNumber: phoneNumber,
+              // `${
+              //   phonePattern.test(phoneNumber) ? `+` : ""
+              // }${phoneNumber}`,
               bithDate: formattedBirthDate,
               firstName: values.firstName,
               lastName: values.lastName,
