@@ -117,7 +117,7 @@ const FamiliarInsideDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("aFamilyMember")}
-                  labelFor="familiarPerson"
+                  labelFor="typeOfKinshipId"
                   req={true}
                   input={
                     <Select
@@ -142,7 +142,7 @@ const FamiliarInsideDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("fullNameOfFather")}
-                  labelFor="fullNameOfFather"
+                  labelFor="fio"
                   req={true}
                   input={
                     <Input
@@ -155,7 +155,7 @@ const FamiliarInsideDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("citizenship")}
-                  labelFor="citizenship"
+                  labelFor="citizenshipId"
                   req={true}
                   input={
                     <Select
@@ -174,7 +174,7 @@ const FamiliarInsideDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("birthday")}
-                  labelFor="workedDate"
+                  labelFor="birthDate"
                   req={true}
                   input={
                     <DatePicker
@@ -188,8 +188,8 @@ const FamiliarInsideDrawer = ({
               </Col>
               <Col xs={24} sm={12}>
                 <LabeledInput
-                  labelName={t("country")}
-                  labelFor="countryFamily"
+                  labelName={t("countryId")}
+                  labelFor="countryId"
                   req={true}
                   input={
                     <Select
@@ -207,7 +207,7 @@ const FamiliarInsideDrawer = ({
               <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("province")}
-                  labelFor="regions"
+                  labelFor="cityId"
                   req={true}
                   input={
                     <Select
@@ -228,7 +228,7 @@ const FamiliarInsideDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("workplace")}
-                  labelFor="workFamily"
+                  labelFor="workplace"
                   req={true}
                   input={<Input size="large" />}
                 />
@@ -236,7 +236,7 @@ const FamiliarInsideDrawer = ({
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("position")}
-                  labelFor="positionFamily"
+                  labelFor="position"
                   req={true}
                   input={<Input size="large" />}
                 />

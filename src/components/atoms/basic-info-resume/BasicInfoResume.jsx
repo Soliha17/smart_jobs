@@ -28,8 +28,13 @@ import {
 } from "src/store/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setResumeFormData } from "src/store/resume.slice";
-import { useCreateResumeStep1Mutation } from "src/store/api/resumeApiSlice";
 import { useGetAllLinkTypeQuery } from "src/store/api/linkTypeApiSlice";
+import {
+  useCreateResumeMutation,
+  useCreateResumeStep1Mutation,
+  useLinkAllTypeQuery,
+  useLinkTypeQuery,
+} from "src/store/api/resumeApiSlice";
 
 const BasicInfoResume = ({ props }) => {
   const [form] = Form.useForm();
@@ -41,6 +46,8 @@ const BasicInfoResume = ({ props }) => {
   const { resumeFormData } = useSelector((state) => state.createResumeSlice);
 
   const { data: countries } = useGetCountriesQuery();
+  const { data: linkType } = useLinkTypeQuery();
+  const { data: linkAllType } = useLinkAllTypeQuery();
   const { data: countriesGeneral } = useGetCountriesGeneralQuery();
   const { data: linkTypes } = useGetAllLinkTypeQuery();
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
@@ -315,11 +322,18 @@ const BasicInfoResume = ({ props }) => {
                             <Select
                               placeholder="Choose Link or Image"
                               size="large"
+<<<<<<< HEAD
                               options={[
                                 { value: "image", label: "Image" },
                                 { value: "link", label: "Link" },
                               ]}
                               allowClear
+=======
+                              options={linkAllType?.result?.map((option) => ({
+                                value: option.id.toString(),
+                                label: option.name,
+                              }))}
+>>>>>>> b3dd5eaee4b884de635dbd9f800f7dc4c60418fb
                             />
                           </Form.Item>
                         </Col>

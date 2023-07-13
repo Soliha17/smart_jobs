@@ -73,6 +73,11 @@ const JobDrawer = ({ open, setOpen }) => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    const from =
+      values.beginsYearOfJob + "-" + values.beginsMonthOfJob + "-" + "01";
+
+    const to =
+      values.finishYearOfJob + "-" + values.finishMonthOfJob + "-" + "01";
     // dispatch(setExperienceData([...experienceData, values]));
     // dispatch(setExperienceDrawerData({}));
     // form.resetFields();
@@ -158,7 +163,7 @@ const JobDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("whatCompanyDidYouWorkFor")}
-                  labelFor="workedCompany"
+                  labelFor="organization"
                   req={true}
                   input={<Input size="large" maxLength={9} />}
                 />
@@ -166,7 +171,7 @@ const JobDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("whatPositionDidYouWorkIn")}
-                  labelFor="workedPosition"
+                  labelFor="position"
                   req={true}
                   input={<Input size="large" maxLength={9} />}
                 />
@@ -174,7 +179,7 @@ const JobDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("typeOfEmployment")}
-                  labelFor="workedType"
+                  labelFor="typeOfEmploymentId"
                   req={true}
                   input={
                     <Select
@@ -194,7 +199,7 @@ const JobDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={12}>
                 <LabeledInput
                   labelName={t("format")}
-                  labelFor="format"
+                  labelFor="workFormatId"
                   req={true}
                   input={
                     <Select
@@ -255,7 +260,7 @@ const JobDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("writeAboutYourAchievementsAtWork")}
-                  labelFor="aboutAwardsOfJob"
+                  labelFor="achievements"
                   input={<TextArea rows={4} />}
                 />
               </Col>
@@ -268,7 +273,7 @@ const JobDrawer = ({ open, setOpen }) => {
                       input={
                         <Select
                           // defaultValue="oy"
-                          placeholder="Oy"
+                          placeholder={t("month")}
                           size="large"
                           // onChange={onChange}
                           options={monthOptions}
@@ -283,7 +288,7 @@ const JobDrawer = ({ open, setOpen }) => {
                       input={
                         <Select
                           // defaultValue="oy"
-                          placeholder="Yil"
+                          placeholder={t("year")}
                           size="large"
                           onChange={onChangeBeginsYears}
                           options={getYearOptions()}
@@ -303,7 +308,7 @@ const JobDrawer = ({ open, setOpen }) => {
                       input={
                         <Select
                           // defaultValue="oy"
-                          placeholder="Oy"
+                          placeholder={t("month")}
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}
@@ -319,7 +324,7 @@ const JobDrawer = ({ open, setOpen }) => {
                       input={
                         <Select
                           // defaultValue="oy"
-                          placeholder="Yil"
+                          placeholder={t("year")}
                           size="large"
                           disabled={isChecked}
                           // onChange={onChange}

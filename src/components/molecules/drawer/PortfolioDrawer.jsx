@@ -3,6 +3,7 @@ import { Button, Col, Drawer, Form, Input, Row, Space, Upload } from "antd";
 import CloseIcon from "../../../assets/images/Exit.svg";
 
 import "./drawerResume.css";
+
 import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import TextArea from "antd/es/input/TextArea";
@@ -95,7 +96,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("portfolioName")}
-                  labelFor="portfolioName"
+                  labelFor="name"
                   req={true}
                   input={<Input size="large" />}
                 />
@@ -103,7 +104,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("portfolioDesc")}
-                  labelFor="portfolioDesc"
+                  labelFor="description"
                   req={true}
                   input={<TextArea rows={4} />}
                 />
@@ -111,7 +112,7 @@ const PortfolioDrawer = ({ open, setOpen }) => {
               <Col xs={24} sm={24}>
                 <LabeledInput
                   labelName={t("portfolio")}
-                  labelFor="portfolioFile"
+                  labelFor="link"
                   // req={true}
                   getValueFromEvent={normFile}
                   input={
