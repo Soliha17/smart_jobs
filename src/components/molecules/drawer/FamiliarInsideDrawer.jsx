@@ -10,6 +10,7 @@ import {
 } from "src/store/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setFamilyDrawerData } from "src/store/resume.slice";
+import { usePostRelativeMutation } from "src/store/api/resumeApiSlice";
 
 const FamiliarInsideDrawer = ({
   open,
@@ -33,13 +34,11 @@ const FamiliarInsideDrawer = ({
 
   const { data: countries } = useGetCountriesQuery();
   const { data: countriesGeneral } = useGetCountriesGeneralQuery();
-
-  console.log(countriesGeneral);
-
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
     { davlatId: address.countryId },
     { skip: !address.countryId }
   );
+  const [postRelative] = usePostRelativeMutation();
 
   let isFamilyEditValues = JSON.parse(localStorage.getItem("isFamilyEdit"));
 
@@ -51,9 +50,15 @@ const FamiliarInsideDrawer = ({
 
   const onChildrenDriwerFinish = (values) => {
     console.log("Success:", values);
-    dispatch(setFamilyDrawerData({}));
-    form.resetFields();
-    setOpen(false);
+    // dispatch(setFamilyDrawerData({}));
+    // form.resetFields();
+    // setOpen(false);
+    postRelative({
+      ...values,
+      typeOfKinshipId: 0,
+      birthDate: values?.birthDate?.format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
+      resumeId: 0,
+    });
   };
 
   function onClose() {
