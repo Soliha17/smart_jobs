@@ -7,11 +7,13 @@ import LabeledInput from "../labeled-input/LabeledInput";
 import UploadIcon from "../../../assets/images/upload-icon.svg";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useUploadFileMutation } from "src/store/api/assistantApiSlice";
 
 const LicenseDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
 
   const [files, setFiles] = useState([]);
+  const [uploadFile] = useUploadFileMutation();
 
   const onClose = () => {
     setOpen(false);
@@ -25,21 +27,33 @@ const LicenseDrawer = ({ open, setOpen }) => {
   };
 
   const normFile = (e) => {
-    console.log("Upload event:", e);
-    if (!e || !e.fileList) {
-      return [];
-    }
-    if (Array.isArray(e.fileList)) {
-      return e.fileList;
-    }
-    return [e.fileList];
+    // console.log("Upload event:", e);
+    // if (!e || !e.fileList) {
+    //   return [];
+    // }
+    // if (Array.isArray(e.fileList)) {
+    //   return e.fileList;
+    // }
+    // return [e.fileList];
   };
 
-  const handleUpload = (file) => {
-    if (file.type === "application/zip" || file.type === "application/pdf") {
-      setFiles([file]);
-    }
-    console.log(files);
+  const handleUpload = (e) => {
+    console.log(e);
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    uploadFile({
+      params: { parentObjectName: "resume", parentObjectId: 0 },
+      body: formData,
+    })
+      .unwrap()
+      .then((res) => {
+        form.setFieldValue("document", res.result?.fileUrl);
+      });
+    // if (file.type === "application/zip" || file.type === "application/pdf") {
+    //   setFiles([file]);
+    // }
+    // console.log(files);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -120,20 +134,18 @@ const LicenseDrawer = ({ open, setOpen }) => {
                   // req={true}
                   getValueFromEvent={normFile}
                   input={
-                    <Upload
-                      name="license result"
-                      action="/upload.do"
-                      listType="picture"
-                      accept="application/zip, application/x-rar-compressed, application/pdf, image/jpeg"
-                      onChange={handleUpload}
-                    >
-                      <Button
-                        icon={<img src={UploadIcon} alt="" />}
-                        size="large"
-                      >
-                        {t("uploadDocument")}
-                      </Button>
-                    </Upload>
+                    // <Upload
+                    //   name="license result"
+                    //   action={`${process.env.REACT_APP_API_ROUTE}/Assistant/UploadFile`}
+                    //   // listType="picture"
+                    //   accept="application/zip, application/x-rar-compressed, application/pdf, image/jpeg"
+                    //   onChange={handleUpload}
+                    // >
+                    <Button icon={<img src={UploadIcon} alt="" />} size="large">
+                      {t("uploadDocument")}
+                      <input type="file" hidden onChange={handleUpload} />
+                    </Button>
+                    // </Upload>
                   }
                 />
               </Col>
