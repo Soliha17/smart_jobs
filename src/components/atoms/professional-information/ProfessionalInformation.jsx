@@ -18,7 +18,10 @@ import {
   setExperienceData,
   setExperienceDrawerData,
 } from "src/store/resume.slice";
-import { useGetAllWorkFormatQuery } from "src/store/api/resumeApiSlice";
+import {
+  useCreateResumeStep2Mutation,
+  useGetAllWorkFormatQuery,
+} from "src/store/api/resumeApiSlice";
 import {
   useGetAllSkillQuery,
   useGetAllTypeOfOrganizationQuery,
@@ -31,6 +34,8 @@ const ProfessionalInformation = ({ props }) => {
 
   const [openJobDrawer, setOpenJobDrawer] = useState(false);
   const [openStudyDrawer, setOpenStudyDrawer] = useState(false);
+
+  const [createResumeStep2] = useCreateResumeStep2Mutation();
 
   const { data: workFormat } = useGetAllWorkFormatQuery();
   const { data: typeOfOrganization } = useGetAllTypeOfOrganizationQuery();
@@ -133,7 +138,7 @@ const ProfessionalInformation = ({ props }) => {
             <Col xs={24} sm={24}>
               <LabeledInput
                 labelName={t("profession")}
-                labelFor="profession"
+                labelFor="sfera"
                 req={true}
                 input={<Input maxLength={70} size="large" />}
               />
@@ -190,34 +195,28 @@ const ProfessionalInformation = ({ props }) => {
                 ))}
               />
               <Row>
-                <Col xs={24} sm={24}>
-                  <LabeledInput
-                    labelName=""
-                    labelFor="experianceAddButton"
-                    input={
-                      <Button
-                        block
-                        size="large"
-                        onClick={() => setOpenJobDrawer(true)}
-                        icon={<img src={AddCircle} alt="" />}
-                        style={{
-                          textAlign: "left",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "12px",
-                        }}
-                      >
-                        {t("add")}
-                      </Button>
-                    }
-                  />
+                <Col xs={24} sm={24} style={{ marginBottom: "20px" }}>
+                  <Button
+                    block
+                    size="large"
+                    onClick={() => setOpenJobDrawer(true)}
+                    icon={<img src={AddCircle} alt="" />}
+                    style={{
+                      textAlign: "left",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                    }}
+                  >
+                    {t("add")}
+                  </Button>
                 </Col>
               </Row>
             </Col>
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("theFormatYouWantToWorkWith")}
-                labelFor="workFormat"
+                labelFor="workFormatId"
                 req={true}
                 input={
                   <Select
@@ -236,7 +235,7 @@ const ProfessionalInformation = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("theTypeOfWorkYouWantToDo")}
-                labelFor="jobType"
+                labelFor="typeOfEmploymentId"
                 req={true}
                 input={
                   <Select
@@ -262,7 +261,7 @@ const ProfessionalInformation = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName="Valyutani tanlang"
-                labelFor="valyuteType"
+                labelFor="currenciesId"
                 req={true}
                 input={
                   <Select
@@ -353,15 +352,12 @@ const ProfessionalInformation = ({ props }) => {
             <Col xs={24} sm={24} style={{ marginTop: "20px" }}>
               <LabeledInput
                 labelName={t("skills")}
-                labelFor="skills"
+                labelFor="resumeSkills"
                 input={
                   <Select
                     mode="multiple"
                     allowClear
                     size="large"
-                    style={{
-                      width: "100%",
-                    }}
                     placeholder="Please select"
                     // onChange={handleChange}
                     options={options}

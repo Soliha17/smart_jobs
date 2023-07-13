@@ -16,6 +16,20 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body,
       }),
     }),
+    createResumeStep2: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/CreateStep2`,
+        method: "POST",
+        body,
+      }),
+    }),
+    createResumeStep3: builder.mutation({
+      query: (body) => ({
+        url: `/Resume/CreateStep3`,
+        method: "POST",
+        body,
+      }),
+    }),
     academicResult: builder.mutation({
       query: (body) => ({
         url: `/Resume/AcademicResult`,
@@ -84,12 +98,14 @@ export const {
   useCreateResumeMutation,
   useGetAllWorkFormatQuery,
   useLicenseMutation,
-  useCreateResumeStep1Mutation,
   useLinkMutation,
   useEducationMutation,
   usePostPlacesOfWorkMutation,
   usePostRelativeMutation,
   useLinkAllTypeQuery,
   useLinkTypeQuery,
-  useLanguageQuery
+  useLanguageQuery,
+  useCreateResumeStep1Mutation,
+  useCreateResumeStep2Mutation,
+  useCreateResumeStep3Mutation,
 } = resumeApiSlice;

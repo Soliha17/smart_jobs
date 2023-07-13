@@ -227,7 +227,7 @@ function Header() {
                         <button onClick={(e) => e.preventDefault()}>
                           <Space className="profile__name">
                             <img src={ProfileImg} alt="Pofile Img" width={43} />
-                            {me?.result?.fistName}
+                            {me?.result?.firstName}
                             {me?.result?.lastName}
                             <DownOutlined />
                           </Space>
@@ -290,7 +290,7 @@ function Header() {
                                 alt="Pofile Img"
                                 width={43}
                               />
-                              {me?.result?.fistName}
+                              {me?.result?.firstName}
                               {me?.result?.lastName}
                               <DownOutlined />
                             </Space>

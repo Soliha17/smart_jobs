@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import {
   useAcademicResultMutation,
   useCreateResumeMutation,
+  useCreateResumeStep3Mutation,
 } from "src/store/api/resumeApiSlice";
 import { setAdditionalFormData } from "src/store/resume.slice";
 import { useSelector } from "react-redux";
@@ -30,6 +31,9 @@ const AdditionalInformation = ({ props }) => {
     useCreateResumeMutation();
   const { data: allLanguages } = useGetLanguagesQuery();
   const { data: allLanguageProficiency } = useGetAllLanguageProficiencyQuery();
+
+  const [createResumeStep3] = useCreateResumeStep3Mutation();
+
 
   const [openAcademicResDrawer, setOpenAcademicResDrawer] = useState(false);
 
@@ -69,8 +73,8 @@ const AdditionalInformation = ({ props }) => {
   const onFinish = (values) => {
     console.log("Success:", values);
 
-    const filteredFiles = values.languageFiles.filter(
-      (item) => item.type !== null && item.value !== ""
+    const filteredFiles = values.knowingTheLanguages.filter(
+      (item) => item.languagesId !== null && item.languageProficiencyId !== ""
     );
 
     message.success("Muvaffaqiyatli saqlandi!");
@@ -105,13 +109,16 @@ const AdditionalInformation = ({ props }) => {
           <Row gutter={[24, 8]}>
             <Col xs={24}>
               <p className="language-label">{t("enterTheLanguagesYouKnow")}</p>
-              <Form.List name="languageFiles">
+              <Form.List name="knowingTheLanguages">
                 {(fields, { add, remove }) => (
                   <>
                     {fields.map((field, index) => (
                       <Row gutter={[15, 12]} key={field.key}>
                         <Col xs={24} sm={11}>
-                          <Form.Item {...field} name={[field.name, "language"]}>
+                          <Form.Item
+                            {...field}
+                            name={[field.name, "languagesId"]}
+                          >
                             <Select
                               placeholder="Tilni tanlang"
                               size="large"
@@ -123,7 +130,10 @@ const AdditionalInformation = ({ props }) => {
                           </Form.Item>
                         </Col>
                         <Col xs={24} sm={11}>
-                          <Form.Item {...field} name={[field.name, "level"]}>
+                          <Form.Item
+                            {...field}
+                            name={[field.name, "languageProficiencyId"]}
+                          >
                             <Select
                               placeholder="Daraja tanlang"
                               size="large"

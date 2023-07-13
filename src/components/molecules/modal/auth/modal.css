@@ -41,8 +41,8 @@
   width: 100% !important;
 }
 
-.password__register .ant-input-affix-wrapper > input.ant-input {
-  padding: 0 2px;
+.password__register .ant-input {
+  padding: 0 5px !important;
 }
 
 /* RESUME PROMO MODAL */

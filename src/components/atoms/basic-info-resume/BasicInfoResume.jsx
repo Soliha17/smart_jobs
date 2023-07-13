@@ -48,6 +48,7 @@ const BasicInfoResume = ({ props }) => {
   const { data: countries } = useGetCountriesQuery();
   const { data: linkType } = useLinkTypeQuery();
   const { data: linkAllType } = useLinkAllTypeQuery();
+  console.log(linkAllType);
   const { data: countriesGeneral } = useGetCountriesGeneralQuery();
   const { data: linkTypes } = useGetAllLinkTypeQuery();
   const { data: regions, isFetching: isRegionsFetching } = useGetRegionsQuery(
@@ -66,10 +67,12 @@ const BasicInfoResume = ({ props }) => {
     );
 
     const filteredFiles = values.files.filter(
-      (item) => item.type !== null && item.value !== ""
+      (item) => item.linkTypeId !== null && item.url !== ""
     );
 
     dispatch(setResumeFormData(values));
+
+    console.log(values.region);
 
     createResumeStep1({
       name: "string",
@@ -77,9 +80,9 @@ const BasicInfoResume = ({ props }) => {
       lastName: values.lastName,
       birthDate: formattedBirthDate,
       sex: values.sex === "male" ? true : false,
-      citizenshipId: values.citizenship,
-      countryId: values.country,
-      cityId: values.region,
+      citizenshipId: Number(values.citizenship),
+      countryId: Number(values.country),
+      cityId: Number(values.region),
       about: values.about,
       tel: values.numberPrefix + values.number,
       email: values.email,
@@ -144,7 +147,7 @@ const BasicInfoResume = ({ props }) => {
   );
 
   const handleAdd = (add) => {
-    add({ type: null, value: "" });
+    add({ linkTypeId: null, url: "" });
   };
 
   return (
@@ -237,7 +240,7 @@ const BasicInfoResume = ({ props }) => {
             <Col xs={24} sm={12}>
               <LabeledInput
                 labelName={t("province")}
-                labelFor="regions"
+                labelFor="region"
                 req={true}
                 input={
                   <Select
@@ -320,7 +323,7 @@ const BasicInfoResume = ({ props }) => {
                         <Col xs={24} sm={11}>
                           <Form.Item
                             {...field}
-                            name={[field.name, "type"]}
+                            name={[field.name, "linkTypeId"]}
                             // fieldKey={[field.fieldKey, "type"]}
                           >
                             <Select
@@ -341,7 +344,7 @@ const BasicInfoResume = ({ props }) => {
                         <Col xs={24} sm={11}>
                           <Form.Item
                             {...field}
-                            name={[field.name, "value"]}
+                            name={[field.name, "url"]}
                             rules={[
                               {
                                 pattern: linkPattern,

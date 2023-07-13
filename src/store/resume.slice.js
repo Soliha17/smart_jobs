@@ -4,18 +4,18 @@ const initialState = {
   resumeFormData: {
     files: [
       {
-        type: null,
-        value: "",
+        linkTypeId: null,
+        url: "",
       },
     ],
   },
   experienceDrawerData: {},
   familyDrawerData: {},
   additionalFormData: {
-    languageFiles: [
+    knowingTheLanguages: [
       {
-        language: null,
-        level: null,
+        languagesId: null,
+        languageProficiencyId: null,
       },
     ],
   },
