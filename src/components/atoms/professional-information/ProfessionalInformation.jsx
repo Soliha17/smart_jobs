@@ -26,6 +26,7 @@ import {
   useGetAllSkillQuery,
   useGetAllTypeOfOrganizationQuery,
   useGetCurrenciesQuery,
+  useGetEducationLevelQuery,
 } from "src/store/api/apiSlice";
 
 const ProfessionalInformation = ({ props }) => {
@@ -42,9 +43,15 @@ const ProfessionalInformation = ({ props }) => {
   const { data: currencies } = useGetCurrenciesQuery();
   const { data: skill } = useGetAllSkillQuery();
 
-  const { experienceData } = useSelector((state) => state.createResumeSlice);
+  const { experienceData, educationData, educationDrawerData, resumeID } =
+    useSelector((state) => state.createResumeSlice);
 
-  console.log(experienceData);
+  const { data: educationalLevel } = useGetEducationLevelQuery(
+    educationData.educationLevelId
+  );
+
+  // console.log(educationDrawerData);
+  // console.log(educationData?.map((item) => item.faculty));
 
   const [jobValues, setJobValues] = useState([]);
   const [studyValues, setStudyValues] = useState([]);
@@ -95,7 +102,7 @@ const ProfessionalInformation = ({ props }) => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    // createResumeStep2(values);
+    // createResumeStep2({..values,educationData,experienceData});
     next(2);
   };
   const onFinishFailed = (errorInfo) => {
@@ -152,17 +159,13 @@ const ProfessionalInformation = ({ props }) => {
                 input={experienceData?.map((item, index) => (
                   <div key={index} className="field__resume">
                     <span>
-                      <h4>{item?.workedPosition}</h4>•
-                      <p>{item?.workedCompany}</p>•
-                      <p>
-                        {item?.beginsMonthOfJob} {item?.beginsYearOfJob}
-                      </p>
+                      <h4>{item?.organization}</h4>•<p>{item?.workedCompany}</p>
+                      •<p>{item?.from}</p>
                       {item.workingUntilNow ? (
                         <p>- hozirgacha</p>
                       ) : (
                         <>
-                          <p>- {item?.finishMonthOfJob}</p>
-                          <p>{item?.finishYearOfJob}</p>
+                          <p>- {item?.to}</p>
                         </>
                       )}
                       •<p>{item?.workedType}</p>•<p>{item?.format}</p>
@@ -282,20 +285,16 @@ const ProfessionalInformation = ({ props }) => {
               <LabeledInput
                 labelName={t("enterTheEducationalInstitution")}
                 labelFor="education"
-                input={studyValues?.map((item) => (
+                input={educationData?.map((item) => (
                   <div key={item?.id} className="field__resume">
                     <span>
-                      <h4>{item?.facultyName}</h4>•<p>{item?.studySchool}</p>•
-                      <p>{item?.studyLevel}</p>•
-                      <p>
-                        {item?.beginsMonthOfStudy} {item?.beginsYearOfStudy}
-                      </p>
+                      <h4>{item?.faculty}</h4>•<p>{item?.organization}</p>•
+                      <p>{item?.educationLevelId}</p>•<p>{item?.from}</p>
                       {item.studyingUntilNow ? (
                         <p>- hozirgacha</p>
                       ) : (
                         <>
-                          <p>- {item?.finishMonthOfStudy}</p>
-                          <p>{item?.finishYearOfStudy}</p>
+                          <p>- {item?.to}</p>
                         </>
                       )}
                     </span>

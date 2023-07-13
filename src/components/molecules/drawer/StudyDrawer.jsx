@@ -12,6 +12,11 @@ import {
 } from "src/assets/constants/inputConstants";
 import { useGetAllEducationLevelQuery } from "src/store/api/apiSlice";
 import { useEducationMutation } from "src/store/api/resumeApiSlice";
+import {
+  setEducationData,
+  setEducationDrawerData,
+} from "src/store/resume.slice";
+import { useDispatch, useSelector } from "react-redux";
 
 const StudyDrawer = ({
   open,
@@ -26,6 +31,10 @@ const StudyDrawer = ({
 
   const { data: allEducationLevel } = useGetAllEducationLevelQuery();
   const [createEducation] = useEducationMutation();
+
+  const { educationData } = useSelector((state) => state.createResumeSlice);
+
+  const dispatch = useDispatch();
 
   console.log(allEducationLevel);
 
@@ -63,21 +72,24 @@ const StudyDrawer = ({
     setOpen(false);
   };
 
-  const onFinish = (data) => {
-    console.log("Success:", data);
+  const onFinish = (values) => {
+    console.log("Success:", values);
 
-    // const from = new Date(
-    //   `${data.beginsYearOfStudy}-${data.beginsMonthOfStudy}`
-    // ).toISOString();
-
-    // const to = isChecked
-    //   ? new Date().toISOString()
-    //   : new Date(
-    //       `${data.finishYearOfStudy}-${data.finishMonthOfStudy}`
-    //     ).toISOString();
-
-    // console.log("From:", from);
-    // console.log("To:", to);
+    const from =
+      values.beginsYearOfStudy + "-" + values.beginsMonthOfStudy + "-01";
+    const to =
+      values.finishYearOfStudy + "-" + values.finishMonthOfStudy + "-01";
+    const newValues = {
+      resumeId: 0,
+      organization: values.organization,
+      faculty: values.faculty,
+      educationLevelId: values.educationLevelId,
+      from,
+      to: values.studyingUntilNow ? null : to,
+    };
+    dispatch(setEducationData([...educationData, newValues]));
+    dispatch(setEducationDrawerData({}));
+    form.resetFields();
 
     setOpen(false);
 
@@ -174,8 +186,8 @@ const StudyDrawer = ({
                       size="large"
                       // onChange={onChange}
                       options={allEducationLevel?.result?.map((level) => ({
-                        id: level.id.toString(),
-                        value: level.name,
+                        value: level.id.toString(),
+                        label: level.name,
                       }))}
                     />
                   }

@@ -131,6 +131,12 @@ export const apiSlice = createApi({
       }),
       providesTags: ["GetAllEducationLevel"],
     }),
+    getEducationLevel: builder.query({
+      query: (educationLevelId) => ({
+        url: `/EducationLevel/Get/${educationLevelId}`,
+      }),
+      providesTags: ["GetEducationLevel"],
+    }),
     getAllWorkFormat: builder.query({
       query: () => ({
         url: `/WorkFormat/GetAll`,
@@ -217,4 +223,5 @@ export const {
   useGetLanguageQuery,
   useGetLanguageProficiencyQuery,
   useGetAllLanguageProficiencyQuery,
+  useGetEducationLevelQuery,
 } = apiSlice;

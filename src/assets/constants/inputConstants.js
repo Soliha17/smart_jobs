@@ -26,52 +26,52 @@ export const linkPattern =
 
 export const monthOptions = [
   {
-    value: "dekabr",
-    label: "Dekabr",
-  },
-  {
-    value: "yanvar",
+    value: "1",
     label: "Yanvar",
   },
   {
-    value: "fevral",
+    value: "2",
     label: "Fevral",
   },
   {
-    value: "mart",
+    value: "3",
     label: "Mart",
   },
   {
-    value: "aprel",
+    value: "4",
     label: "Aprel",
   },
   {
-    value: "may",
+    value: "5",
     label: "May",
   },
   {
-    value: "iyun",
+    value: "6",
     label: "Iyun",
   },
   {
-    value: "iyul",
+    value: "7",
     label: "Iyul",
   },
   {
-    value: "avgust",
+    value: "8",
     label: "Avgust",
   },
   {
-    value: "sentyabr",
+    value: "9",
     label: "Sentyabr",
   },
   {
-    value: "oktyabr",
+    value: "10",
     label: "Oktyabr",
   },
   {
-    value: "noyabr",
+    value: "11",
     label: "Noyabr",
+  },
+  {
+    value: "12",
+    label: "Dekabr",
   },
 ];
 

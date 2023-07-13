@@ -9,8 +9,11 @@ const initialState = {
       },
     ],
   },
+  resumeID: null,
   experienceDrawerData: {},
   experienceData: [],
+  educationData: [],
+  educationDrawerData: {},
   familyDrawerData: {},
   additionalFormData: {
     knowingTheLanguages: [
@@ -38,11 +41,20 @@ export const createResumeSlice = createSlice({
     setExperienceDrawerData: (state, action) => {
       state.experienceDrawerData = action.payload;
     },
+    setExperienceData: (state, action) => {
+      state.experienceData = action.payload;
+    },
+    setEducationDrawerData: (state, action) => {
+      state.educationDrawerData = action.payload;
+    },
+    setEducationData: (state, action) => {
+      state.educationData = action.payload;
+    },
     setFamilyDrawerData: (state, action) => {
       state.familyDrawerData = action.payload;
     },
-    setExperienceData: (state, action) => {
-      state.experienceData = action.payload;
+    setResumeID: (state, action) => {
+      state.resumeID = action.payload;
     },
   },
   extraReducers: (builder) => {},
@@ -54,6 +66,9 @@ export const {
   setAdditionalFormData,
   setExperienceData,
   setFamilyDrawerData,
+  setEducationDrawerData,
+  setEducationData,
+  setResumeID,
 } = createResumeSlice.actions;
 
 export default createResumeSlice.reducer;

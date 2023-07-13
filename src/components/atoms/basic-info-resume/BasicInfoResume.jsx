@@ -27,7 +27,7 @@ import {
   useGetRegionsQuery,
 } from "src/store/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { setResumeFormData } from "src/store/resume.slice";
+import { setResumeFormData, setResumeID } from "src/store/resume.slice";
 import { useGetAllLinkTypeQuery } from "src/store/api/linkTypeApiSlice";
 import {
   useCreateResumeMutation,
@@ -43,7 +43,9 @@ const BasicInfoResume = ({ props }) => {
 
   const [address, setAddress] = useState({ countryId: null, cityId: null });
 
-  const { resumeFormData } = useSelector((state) => state.createResumeSlice);
+  const { resumeFormData, resumeID } = useSelector(
+    (state) => state.createResumeSlice
+  );
 
   const { data: countries } = useGetCountriesQuery();
   const { data: linkType } = useLinkTypeQuery();
@@ -89,8 +91,10 @@ const BasicInfoResume = ({ props }) => {
       links: filteredFiles.map((item) => ({ ...item, resumeId: 0 })),
     })
       .unwrap()
-      .then(() => {
+      .then((res) => {
         next(1);
+        console.log(res.result.id);
+        setResumeID(res.result.id);
       })
       .catch(() => {
         notification["error"]({ message: "Xatolik yuz berdi" });

@@ -98,6 +98,7 @@ const JobDrawer = ({ open, setOpen }) => {
     //   localStorage.removeItem("isJobEdit");
     //   form.resetFields();
     // }
+    dispatch(setExperienceDrawerData({}));
     form.resetFields();
     // dispatch(setExperienceDrawerData({}));
     setOpen(false);
