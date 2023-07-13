@@ -153,7 +153,7 @@ export const apiSlice = createApi({
     }),
     getCurrencies: builder.query({
       query: () => ({
-        url: `/Currencies/Get`,
+        url: `/Currencies/GetAll`,
       }),
     }),
     getAllSkill: builder.query({

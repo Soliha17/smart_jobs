@@ -10,6 +10,7 @@ const initialState = {
     ],
   },
   experienceDrawerData: {},
+  experienceData: [],
   familyDrawerData: {},
   additionalFormData: {
     knowingTheLanguages: [

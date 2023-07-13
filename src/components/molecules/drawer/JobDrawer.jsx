@@ -73,16 +73,24 @@ const JobDrawer = ({ open, setOpen }) => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    const from =
-      values.beginsYearOfJob + "-" + values.beginsMonthOfJob + "-" + "01";
-
-    const to =
-      values.finishYearOfJob + "-" + values.finishMonthOfJob + "-" + "01";
-    // dispatch(setExperienceData([...experienceData, values]));
-    // dispatch(setExperienceDrawerData({}));
-    // form.resetFields();
-    // setOpen(false);
-    postPlacesOfWork(values);
+    const from = values.beginsYearOfJob + "-" + values.beginsMonthOfJob + "-01";
+    const to = values.finishYearOfJob + "-" + values.finishMonthOfJob + "-01";
+    const newValues = {
+      achievements: values.achievements,
+      country: values.country,
+      organization: values.organization,
+      position: values.position,
+      regions: values.regions,
+      typeOfEmploymentId: values.typeOfEmploymentId,
+      workFormatId: values.workFormatId,
+      from,
+      to: values.workingUntilNow ? null : to,
+    };
+    dispatch(setExperienceData([...experienceData, newValues]));
+    dispatch(setExperienceDrawerData({}));
+    form.resetFields();
+    setOpen(false);
+    // postPlacesOfWork(values);
   };
 
   const onClose = () => {

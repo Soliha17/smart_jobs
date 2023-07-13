@@ -95,6 +95,7 @@ const ProfessionalInformation = ({ props }) => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
+    // createResumeStep2(values);
     next(2);
   };
   const onFinishFailed = (errorInfo) => {
