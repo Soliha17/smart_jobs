@@ -14,14 +14,10 @@ import { useSelector } from "react-redux";
 
 const FamilyInformationDrawer = ({ open, setOpen }) => {
   const [form] = Form.useForm();
-
   const [childrenDrawer, setChildrenDrawer] = useState(false);
-
   const [familyValues, setFamilyValues] = useState([]);
 
-    const { familyDrawerData } = useSelector(
-      (state) => state.createResumeSlice
-  );
+  const { familyDrawerData } = useSelector((state) => state.createResumeSlice);
 
   console.log(familyDrawerData);
 

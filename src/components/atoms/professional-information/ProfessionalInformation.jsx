@@ -94,6 +94,7 @@ const ProfessionalInformation = ({ props }) => {
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+    next(2);
   };
 
   // const validateMessages = {

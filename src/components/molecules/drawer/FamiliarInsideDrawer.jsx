@@ -22,7 +22,6 @@ const FamiliarInsideDrawer = ({
   const [form] = Form.useForm();
 
   const [date, setDate] = useState(new Date());
-
   const [address, setAddress] = useState({ countryId: null, cityId: null });
 
   const { familyDrawerData, experienceData } = useSelector(
@@ -34,7 +33,10 @@ const FamiliarInsideDrawer = ({
   const dispatch = useDispatch();
 
   const { data: countries } = useGetCountriesQuery();
-  const { data: countriesGeneral } = useGetCountriesGeneralQuery();
+  const { data: countriesGeneral } = useGetCountriesGeneralQuery(
+    address.countryId,
+    { skip: !address.countryId }
+  );
 
   console.log(countriesGeneral);
 
@@ -163,10 +165,12 @@ const FamiliarInsideDrawer = ({
                       size="large"
                       placeholder={t("choose")}
                       // onChange={onChange}
-                      options={countriesGeneral?.result?.map((option) => ({
-                        value: option.id.toString(),
-                        label: option.name,
-                      }))}
+                      options={(countriesGeneral?.result ?? [])?.map(
+                        (option) => ({
+                          value: option.id.toString(),
+                          label: option.name,
+                        })
+                      )}
                     />
                   }
                 />

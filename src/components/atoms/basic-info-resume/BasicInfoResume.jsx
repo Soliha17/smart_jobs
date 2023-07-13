@@ -83,18 +83,22 @@ const BasicInfoResume = ({ props }) => {
       about: values.about,
       tel: values.numberPrefix + values.number,
       email: values.email,
-      links: filteredFiles,
+      links: filteredFiles.map((item) => ({ ...item, resumeId: 0 })),
     })
       .unwrap()
       .then(() => {
         next(1);
       })
-      .catch(() => notification["error"]({ message: "Xatolik yuz berdi" }));
+      .catch(() => {
+        notification["error"]({ message: "Xatolik yuz berdi" });
+        next(1);
+      });
   };
 
   console.log("resumeFormData:", resumeFormData);
 
   const onFinishFailed = (errorInfo) => {
+    next(1);
     console.log("Failed:", errorInfo);
   };
 
@@ -322,18 +326,15 @@ const BasicInfoResume = ({ props }) => {
                             <Select
                               placeholder="Choose Link or Image"
                               size="large"
-<<<<<<< HEAD
-                              options={[
-                                { value: "image", label: "Image" },
-                                { value: "link", label: "Link" },
-                              ]}
+                              // options={[
+                              //   { value: "image", label: "Image" },
+                              //   { value: "link", label: "Link" },
+                              // ]}
                               allowClear
-=======
                               options={linkAllType?.result?.map((option) => ({
                                 value: option.id.toString(),
                                 label: option.name,
                               }))}
->>>>>>> b3dd5eaee4b884de635dbd9f800f7dc4c60418fb
                             />
                           </Form.Item>
                         </Col>
